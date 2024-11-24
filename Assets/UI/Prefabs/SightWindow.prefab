@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 3521868201188270017}
   - component: {fileID: 8470147464332531641}
   m_Layer: 0
-  m_Name: Heart
+  m_Name: HeartFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,8 +282,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7756555476629265883}
+  m_Children: []
   m_Father: {fileID: 6882651470782412714}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -653,6 +652,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6882651470782412714}
+  - component: {fileID: 5714770083172625753}
   m_Layer: 0
   m_Name: Healthbar
   m_TagString: Untagged
@@ -675,6 +675,7 @@ RectTransform:
   - {fileID: 2138828870423746777}
   - {fileID: 6410853256160590451}
   - {fileID: 5929807616979480221}
+  - {fileID: 7756555476629265883}
   - {fileID: 1919981312051817350}
   m_Father: {fileID: 3156594310591509698}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -683,6 +684,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -140}
   m_SizeDelta: {x: 334, y: 65}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &5714770083172625753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4874558599460127031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa83f876bf9b444faed6d9207554da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _barFill: {fileID: 5422335842260245771}
+  _heartFill: {fileID: 4599352379532493433}
+  _fillAmount: 1
+  _barFillPercent: 0.6
 --- !u!1 &5256818911480042522
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,7 +1014,7 @@ GameObject:
   - component: {fileID: 7510082188168856329}
   - component: {fileID: 1022912358942781062}
   m_Layer: 0
-  m_Name: Background
+  m_Name: HeartBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1010,17 +1027,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6643841201398957191}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6410853256160590451}
+  m_Father: {fileID: 6882651470782412714}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -8, y: -8}
+  m_AnchoredPosition: {x: -134.5, y: 0}
+  m_SizeDelta: {x: -277, y: -8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7510082188168856329
 CanvasRenderer:
