@@ -1,4 +1,6 @@
-﻿using Assets.Sources.Services.StateMachine;
+﻿using Assets.Sources.Infrastructure.GameStateMachine.States;
+using Assets.Sources.Services.StateMachine;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -18,6 +20,11 @@ namespace Assets.Sources.Infrastructure
 
         private void Start()
         {
+            _gameStateMachine.RegisterState(_statesFactory.Create<BootstapGameState>());
+            _gameStateMachine.RegisterState(_statesFactory.Create<GameplayLoopState>());
+
+            _gameStateMachine.Enter<BootstapGameState>().Forget();
+
             DontDestroyOnLoad(this);
         }
     }

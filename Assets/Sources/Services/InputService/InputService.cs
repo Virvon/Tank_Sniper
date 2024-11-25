@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Sources.Services.InputService
 {
-    public class InputService : IDisposable
+    public class InputService : IDisposable, IInputService
     {
         private readonly InputActionSheme _inputActionSheme;
 
@@ -13,7 +13,7 @@ namespace Assets.Sources.Services.InputService
 
             _inputActionSheme.Enable();
 
-            _inputActionSheme.PlayerInput.Aiming.performed += ctx => Debug.Log(ctx);
+            _inputActionSheme.PlayerInput.Aiming.performed += ctx => Debug.Log(ctx.ReadValue<Vector2>());
         }
 
         public void Dispose()
