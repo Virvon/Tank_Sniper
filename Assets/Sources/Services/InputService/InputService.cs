@@ -13,8 +13,10 @@ namespace Assets.Sources.Services.InputService
 
             _inputActionSheme.Enable();
 
-            _inputActionSheme.PlayerInput.Aiming.performed += ctx => Debug.Log(ctx.ReadValue<Vector2>());
+            _inputActionSheme.PlayerInput.Aiming.performed += ctx => SightShifted?.Invoke(ctx.ReadValue<Vector2>());
         }
+
+        public event Action<Vector2> SightShifted;
 
         public void Dispose()
         {
