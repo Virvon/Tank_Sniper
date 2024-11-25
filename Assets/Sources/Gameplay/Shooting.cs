@@ -9,12 +9,14 @@ namespace Assets.Sources.Gameplay
     {
         private IInputService _inputService;
         private IGameplayFactory _gameplayFactory;
+        private PlayerTank _playerTank;
 
         [Inject]
-        private void Construct(IInputService inputService, IGameplayFactory gameplayFactory)
+        private void Construct(IInputService inputService, IGameplayFactory gameplayFactory, PlayerTank playerTank)
         {
             _inputService = inputService;
             _gameplayFactory = gameplayFactory;
+            _playerTank = playerTank;
 
             _inputService.Shooted += OnShooted;
         }
@@ -26,6 +28,7 @@ namespace Assets.Sources.Gameplay
 
         private void OnShooted()
         {
+            _playerTank.Attack();
             _gameplayFactory.CreateBullet(transform.position, transform.rotation);
         }
     }

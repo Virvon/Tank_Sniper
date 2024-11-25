@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Cysharp.Threading.Tasks;
+using UnityEngine.InputSystem.Utilities;
 
 namespace Assets.Sources.Services.StateMachine
 {
@@ -12,6 +14,8 @@ namespace Assets.Sources.Services.StateMachine
 
         public StateMachine() =>
             _states = new ();
+
+        protected ReadOnlyArray<IExitableState> States => _states.Values.ToArray();
 
         public async UniTask Enter<TState>()
             where TState : class, IState
