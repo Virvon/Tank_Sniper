@@ -35,6 +35,15 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shooting"",
+                    ""type"": ""Button"",
+                    ""id"": ""1f78a897-4704-4cce-9986-cb30cfdb656f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +57,17 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
                     ""action"": ""Aiming"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""960938c1-5dac-48d7-a596-f55df0274dce"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shooting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +77,7 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
         // PlayerInput
         m_PlayerInput = asset.FindActionMap("PlayerInput", throwIfNotFound: true);
         m_PlayerInput_Aiming = m_PlayerInput.FindAction("Aiming", throwIfNotFound: true);
+        m_PlayerInput_Shooting = m_PlayerInput.FindAction("Shooting", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -119,11 +140,13 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerInput;
     private List<IPlayerInputActions> m_PlayerInputActionsCallbackInterfaces = new List<IPlayerInputActions>();
     private readonly InputAction m_PlayerInput_Aiming;
+    private readonly InputAction m_PlayerInput_Shooting;
     public struct PlayerInputActions
     {
         private @InputActionSheme m_Wrapper;
         public PlayerInputActions(@InputActionSheme wrapper) { m_Wrapper = wrapper; }
         public InputAction @Aiming => m_Wrapper.m_PlayerInput_Aiming;
+        public InputAction @Shooting => m_Wrapper.m_PlayerInput_Shooting;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -136,6 +159,9 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
             @Aiming.started += instance.OnAiming;
             @Aiming.performed += instance.OnAiming;
             @Aiming.canceled += instance.OnAiming;
+            @Shooting.started += instance.OnShooting;
+            @Shooting.performed += instance.OnShooting;
+            @Shooting.canceled += instance.OnShooting;
         }
 
         private void UnregisterCallbacks(IPlayerInputActions instance)
@@ -143,6 +169,9 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
             @Aiming.started -= instance.OnAiming;
             @Aiming.performed -= instance.OnAiming;
             @Aiming.canceled -= instance.OnAiming;
+            @Shooting.started -= instance.OnShooting;
+            @Shooting.performed -= instance.OnShooting;
+            @Shooting.canceled -= instance.OnShooting;
         }
 
         public void RemoveCallbacks(IPlayerInputActions instance)
@@ -163,5 +192,6 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
     public interface IPlayerInputActions
     {
         void OnAiming(InputAction.CallbackContext context);
+        void OnShooting(InputAction.CallbackContext context);
     }
 }

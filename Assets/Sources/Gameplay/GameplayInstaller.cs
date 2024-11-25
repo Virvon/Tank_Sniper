@@ -1,4 +1,5 @@
-﻿using Assets.Sources.Infrastructure.Factories.UiFactory;
+﻿using Assets.Sources.Infrastructure.Factories.GameplayFactory;
+using Assets.Sources.Infrastructure.Factories.UiFactory;
 using Zenject;
 
 namespace Assets.Sources.Gameplay
@@ -9,7 +10,11 @@ namespace Assets.Sources.Gameplay
         {
             BindGameplayBootstrapper();
             BindUiFactory();
+            BindGameplayFactory();
         }
+
+        private void BindGameplayFactory() =>
+            GameplayFactoryInstaller.Install(Container);
 
         private void BindUiFactory() =>
             UiFactoryInstaller.Install(Container);

@@ -14,9 +14,11 @@ namespace Assets.Sources.Services.InputService
             _inputActionSheme.Enable();
 
             _inputActionSheme.PlayerInput.Aiming.performed += ctx => SightShifted?.Invoke(ctx.ReadValue<Vector2>());
+            _inputActionSheme.PlayerInput.Shooting.performed += ctx => Shooted?.Invoke();
         }
 
         public event Action<Vector2> SightShifted;
+        public event Action Shooted;
 
         public void Dispose()
         {
