@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Sources.Ui
+namespace Assets.Sources.UI
 {
     public class Window : MonoBehaviour
     {

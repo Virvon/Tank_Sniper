@@ -1,5 +1,5 @@
 ﻿using Assets.Sources.Services.AssetManagement;
-using Assets.Sources.Ui;
+using Assets.Sources.UI;
 using Cysharp.Threading.Tasks;
 using Zenject;
 

@@ -3,5 +3,6 @@
     public class UiFactoryAssets
     {
         public const string Window = "Window";
+        public const string MainMenuWindow = "MainMenuWindow";
     }
 }

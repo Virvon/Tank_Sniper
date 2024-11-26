@@ -1,4 +1,4 @@
-﻿using Assets.Sources.Ui;
+﻿using Assets.Sources.UI;
 using Cysharp.Threading.Tasks;
 
 namespace Assets.Sources.Infrastructure.Factories.UiFactory
@@ -14,5 +14,10 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
 
         public async UniTask CreateWindow() =>
             await _windowFactory.Create(UiFactoryAssets.Window);
+
+        public async UniTask<MainMenuWindow> CreateMainMenu()
+        {
+            return await _windowFactory.Create(UiFactoryAssets.MainMenuWindow) as MainMenuWindow;
+        }
     }
 }

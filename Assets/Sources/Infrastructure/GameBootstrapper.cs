@@ -22,6 +22,7 @@ namespace Assets.Sources.Infrastructure
         {
             _gameStateMachine.RegisterState(_statesFactory.Create<BootstapGameState>());
             _gameStateMachine.RegisterState(_statesFactory.Create<GameplayLoopState>());
+            _gameStateMachine.RegisterState(_statesFactory.Create<MainMenuState>());
 
             _gameStateMachine.Enter<BootstapGameState>().Forget();
 

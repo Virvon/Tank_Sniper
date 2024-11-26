@@ -3,5 +3,6 @@
     public class InfrastructureAssetPath
     {
         public const string GameplayScene = "GameplayScene";
+        public static string MainMenuScene = "MainMenuScene";
     }
 }

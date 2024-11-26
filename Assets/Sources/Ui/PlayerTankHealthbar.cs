@@ -4,7 +4,7 @@ using MPUIKIT;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Sources.Ui
+namespace Assets.Sources.UI
 {
     public class PlayerTankHealthbar : MonoBehaviour
     {
@@ -33,8 +33,8 @@ namespace Assets.Sources.Ui
 
         private void ChangeHealthbar()
         {
-            _barFill.fillAmount = Extensions.Remap(_fillAmount, 1 - _barFillPercent, 1, 0, 1);
-            _heartFill.fillAmount = Extensions.Remap(_fillAmount, 0, 1 - _barFillPercent, 0, 1);
+            _barFill.fillAmount = _fillAmount.Remap(1 - _barFillPercent, 1, 0, 1);
+            _heartFill.fillAmount = _fillAmount.Remap(0, 1 - _barFillPercent, 0, 1);
         }
 
         private void OnHealthChanged()

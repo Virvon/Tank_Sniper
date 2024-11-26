@@ -19,7 +19,7 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
         {
             await Initialize();
 
-            _gameStateMachine.Enter<GameplayLoopState>().Forget();
+            _gameStateMachine.Enter<MainMenuState>().Forget();
         }
 
         public UniTask Exit() =>
