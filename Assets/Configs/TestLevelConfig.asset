@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a87c29d869695419b8a3be35f20186, type: 3}
+  m_Name: TestLevelConfig
+  m_EditorClassIdentifier: 
+  LevelKey: GameplayScene
+  EnemyPoints:
+  - Id: GameplayScene_a90167b6-1468-401e-94de-43b6ce96f549
+    Position: {x: -1.281, y: 0, z: -18.5}
+    Rotation: {x: 0, y: 1, z: 0, w: 0}

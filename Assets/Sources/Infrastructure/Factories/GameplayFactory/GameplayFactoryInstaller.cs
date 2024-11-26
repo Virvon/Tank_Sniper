@@ -29,7 +29,7 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
                 .FromFactory<KeyPrefabFactoryAsync<GameplayCamera>>();
 
             Container
-                .BindFactory<string, UniTask<Enemy>, Enemy.Factory>()
+                .BindFactory<string, Vector3, Quaternion, UniTask<Enemy>, Enemy.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<Enemy>>();
         }
     }

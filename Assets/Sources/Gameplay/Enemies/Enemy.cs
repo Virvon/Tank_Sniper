@@ -33,7 +33,7 @@ namespace Assets.Sources.Gameplay.Enemies
             _gameplayFactory.CreateBullet(_shootPoint.position, Quaternion.LookRotation(direciton));
         }
 
-        public class Factory : PlaceholderFactory<string, UniTask<Enemy>>
+        public class Factory : PlaceholderFactory<string, Vector3, Quaternion, UniTask<Enemy>>
         {
         }
     }

@@ -3,6 +3,7 @@ using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.Services.CoroutineRunner;
 using Assets.Sources.Services.InputService;
 using Assets.Sources.Services.SceneManagment;
+using Assets.Sources.Services.StaticDataService;
 using Zenject;
 
 namespace Assets.Sources.CompositionRoot
@@ -16,7 +17,11 @@ namespace Assets.Sources.CompositionRoot
             BindSceneLoader();
             BindAssetProvider();
             BindCoroutineRunner();
+            BindStaticDataService();
         }
+
+        private void BindStaticDataService() =>
+            Container.BindInterfacesTo<StaticDataService>().AsSingle();
 
         private void BindCoroutineRunner() =>
             Container.Bind(typeof(ICoroutineRunner)).FromInstance(this).AsSingle();

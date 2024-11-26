@@ -36,7 +36,7 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         public async UniTask CreateCamera() =>
             await _gameplayCameraFactory.Create(GameplayFactoryAssets.Camera);
 
-        public async UniTask CreateEnemy() =>
-            await _enemyFactory.Create(GameplayFactoryAssets.Enemy);
+        public async UniTask CreateEnemy(Vector3 position, Quaternion rotation) =>
+            await _enemyFactory.Create(GameplayFactoryAssets.Enemy, position, rotation);
     }
 }
