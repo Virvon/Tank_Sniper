@@ -1,4 +1,4 @@
-﻿using Assets.Sources.Gameplay.Enemies;
+﻿using Assets.Sources.Gameplay.Enemies.Points;
 using System;
 using System.Linq;
 using UnityEditor;
@@ -7,23 +7,23 @@ using UnityEngine;
 
 namespace Assets.Sources.Editor
 {
-    [CustomEditor(typeof(EnemyPoint))]
-    internal class UniqueIdEditor : UnityEditor.Editor
+    internal class UniqueIdEditor<TType> : UnityEditor.Editor
+        where TType : EnemyPoint
     {
         private void OnEnable()
         {
-            EnemyPoint uniqueId = (EnemyPoint)target;
+            TType enemyPoint = (TType)target;
 
-            if (string.IsNullOrEmpty(uniqueId.Id))
+            if (string.IsNullOrEmpty(enemyPoint.Id))
             {
-                Generate(uniqueId);
+                Generate(enemyPoint);
             }
             else
             {
                 EnemyPoint[] uniqueIds = FindObjectsOfType<EnemyPoint>();
 
-                if (uniqueIds.Any(other => other != uniqueId && other.Id == uniqueId.Id))
-                    Generate(uniqueId);
+                if (uniqueIds.Any(other => other != enemyPoint && other.Id == enemyPoint.Id))
+                    Generate(enemyPoint);
             }
         }
 
@@ -36,6 +36,16 @@ namespace Assets.Sources.Editor
                 EditorUtility.SetDirty(uniqueId);
                 EditorSceneManager.MarkSceneDirty(uniqueId.gameObject.scene);
             }
-        }
+        } 
+    }
+
+    [CustomEditor(typeof(EnemyPoint))]
+    internal class UniqueIdEnemyPointEditor : UniqueIdEditor<EnemyPoint>
+    {
+    }
+
+    [CustomEditor(typeof(WalkingEnemyPoint))]
+    internal class UniqueIdWalkingEnemyPointEditor : UniqueIdEditor<WalkingEnemyPoint>
+    {
     }
 }

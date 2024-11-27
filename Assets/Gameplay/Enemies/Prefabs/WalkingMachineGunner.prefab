@@ -45,8 +45,9 @@ GameObject:
   - component: {fileID: 2707198569930038007}
   - component: {fileID: 3886911883097476702}
   - component: {fileID: 3343874825938365215}
+  - component: {fileID: 2177764804708686104}
   m_Layer: 0
-  m_Name: MachineGunner
+  m_Name: WalkingMachineGunner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,9 +94,9 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &537616414339332110
 MonoBehaviour:
@@ -129,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 6922126017035446069}
+  - {fileID: 3845536407663627871}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
@@ -173,6 +174,23 @@ MonoBehaviour:
   _animator: {fileID: 1450937159660069090}
   _enemyAnimation: {fileID: 7250098948348573515}
   _shootPoint: {fileID: 3991455467061476280}
+--- !u!114 &2177764804708686104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4138023367297425149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f879ecc17fb544685d031e4ae65dc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 9076924983185086577}
+  _speed: 0.8
+  _rotationSpeed: 60
+  _animator: {fileID: 1450937159660069090}
+  _stoppingDuration: 5
 --- !u!1 &4175893814029842060
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 532662209733645914}
-  - component: {fileID: 6922126017035446069}
+  - component: {fileID: 3845536407663627871}
   m_Layer: 0
   m_Name: EnemyInstaller
   m_TagString: Untagged
@@ -205,7 +223,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3232716617254278474}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6922126017035446069
+--- !u!114 &3845536407663627871
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,10 +232,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4175893814029842060}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 441c50f565303a94f9f5ad7a98e02bdc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1019276d178abcf4981335ab77a8c104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 537616414339332110}
+  _walking: {fileID: 2177764804708686104}
 --- !u!1001 &292318394016689401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -414,7 +433,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: f13f7787150556242b20d86fe7962a64, type: 2}
+      objectReference: {fileID: 9100000, guid: 19368394ea1029443a7d85d6b49d8e2f, type: 2}
     - target: {fileID: 411349118769922975, guid: 6810331dcd1ab874297599b0bb26ff31,
         type: 3}
       propertyPath: m_Name

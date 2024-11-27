@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Sources.Gameplay.Enemies
+namespace Assets.Sources.Gameplay.Enemies.Root
 {
     public class EnemyInstaller : MonoInstaller
     {
@@ -15,13 +15,13 @@ namespace Assets.Sources.Gameplay.Enemies
             BindEnemy();
         }
 
+        protected virtual void BindEnemyBootstrapper() =>
+            Container.BindInterfacesTo<EnemyBootstrapper>().AsSingle().NonLazy();
+
         private void BindEnemy() =>
             Container.BindInstance(_enemy).AsSingle();
 
         private void BindEnemyStateMachine() =>
             EnemyStateMachineInstaller.Install(Container);
-
-        private void BindEnemyBootstrapper() =>
-            Container.BindInterfacesTo<EnemyBootstrapper>().AsSingle().NonLazy();
     }
 }

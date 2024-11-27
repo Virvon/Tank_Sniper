@@ -1,4 +1,4 @@
-﻿using Assets.Sources.Gameplay.Enemies;
+﻿using Assets.Sources.Gameplay.Enemies.Points;
 using Assets.Sources.Services.StaticDataService.Configs.Level;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
@@ -22,7 +22,13 @@ namespace Assets.Sources.Editor
 
             if (GUILayout.Button("Collect"))
             {
-                List<EnemyPointConfig> collectedEnemyPoints = FindObjectsOfType<EnemyPoint>().Select(value => new EnemyPointConfig(value.Id, value.transform.position, value.transform.rotation, value.EnemyType)).ToList();
+                List<string> collectedIds = new();
+
+                List<WalkingEnemyPointConfig> collectendWalkingEnemyPoints = FindObjectsOfType<WalkingEnemyPoint>().Select(value => new WalkingEnemyPointConfig(value.Id, value.EnemyType, value.Path)).ToList();
+                collectedIds.AddRange(collectendWalkingEnemyPoints.Select(value => value.Id));
+
+                List<EnemyPointConfig> collectedEnemyPoints = FindObjectsOfType<EnemyPoint>().Where(value => collectedIds.Contains(value.Id) == false).Select(value => new EnemyPointConfig(value.Id, value.transform.position, value.transform.rotation, value.EnemyType)).ToList();
+                collectedIds.AddRange(collectedEnemyPoints.Select(value => value.Id));
 
                 //foreach (var value in collectedEnemyPoints)
                 //{
@@ -34,6 +40,7 @@ namespace Assets.Sources.Editor
                 //}
 
                 levelData.EnemyPoints = collectedEnemyPoints;
+                levelData.WalkingEnemyPoints = collectendWalkingEnemyPoints;
 
                 levelData.LevelKey = SceneManager.GetActiveScene().name;
             }

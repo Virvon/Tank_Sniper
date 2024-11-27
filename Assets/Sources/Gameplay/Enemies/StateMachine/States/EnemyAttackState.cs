@@ -27,18 +27,5 @@ namespace Assets.Sources.Gameplay.Enemies.StateMachine.States
         {
             return default;
         }
-
-        //private IEnumerator Shooter()
-        //{
-        //    WaitForSeconds duration = new(_shootingCoolDown);
-        //    _isShooted = true;
-
-        //    while (_isShooted)
-        //    {
-        //        _enemy.StartShoot((_playerTank.transform.position - _enemy.ShootPoint.position).normalized);
-
-        //        yield return duration;
-        //    }     
-        //}
     }
 }

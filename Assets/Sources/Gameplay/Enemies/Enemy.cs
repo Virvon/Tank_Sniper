@@ -15,6 +15,7 @@ namespace Assets.Sources.Gameplay.Enemies
         [SerializeField] private Animator _animator;
         [SerializeField] private EnemyAnimation _enemyAnimation;
         [SerializeField] private Weapon _weapon;
+        [SerializeField] private float _rotationSpeed;
 
         public Animator Animator => _animator;
 
@@ -49,17 +50,14 @@ namespace Assets.Sources.Gameplay.Enemies
         {
             Quaternion startRotation = transform.rotation;
 
-            float rotationSpeed = 4;
-            float progress = 0;
-
             while(transform.rotation != targetRotation)
             {
-                progress += Time.deltaTime * rotationSpeed;
-
-                transform.rotation = Quaternion.Lerp(startRotation, targetRotation, progress);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
 
                 yield return null;
             }
+
+            Debug.Log("rotated");
 
             callback?.Invoke();
         }

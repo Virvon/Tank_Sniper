@@ -1,19 +1,20 @@
 ﻿using Assets.Sources.Services.StateMachine;
 using Cysharp.Threading.Tasks;
 using System;
-using UnityEngine;
 
 namespace Assets.Sources.Gameplay.Enemies.StateMachine.States
 {
-    public class EnemyIdleState : IState, IDisposable
+    public class EnemyWalkingState : IState, IDisposable
     {
         private readonly PlayerTank _playerTank;
         private readonly EnemyStateMachine _enemyStateMachine;
+        private readonly Walking _walking;
 
-        public EnemyIdleState(PlayerTank playerTank, EnemyStateMachine enemyStateMachine)
+        public EnemyWalkingState(PlayerTank playerTank, EnemyStateMachine enemyStateMachine, Walking walking)
         {
             _playerTank = playerTank;
             _enemyStateMachine = enemyStateMachine;
+            _walking = walking;
 
             _playerTank.Attacked += OnPlayerTankAttacked;
         }
@@ -21,8 +22,12 @@ namespace Assets.Sources.Gameplay.Enemies.StateMachine.States
         public void Dispose() =>
             _playerTank.Attacked -= OnPlayerTankAttacked;
 
-        public UniTask Enter() =>
-            default;
+        public UniTask Enter()
+        {
+            _walking.StartWalking();
+
+            return default;
+        }
 
         public UniTask Exit()
         {
@@ -31,7 +36,10 @@ namespace Assets.Sources.Gameplay.Enemies.StateMachine.States
             return default;
         }
 
-        private void OnPlayerTankAttacked() =>
+        private void OnPlayerTankAttacked()
+        {
+            _walking.StopWalking();
             _enemyStateMachine.Enter<EnemyAttackState>().Forget();
+        }
     }
 }

@@ -40,7 +40,7 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         public async UniTask CreateCamera() =>
             await _gameplayCameraFactory.Create(GameplayFactoryAssets.Camera);
 
-        public async UniTask CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation) =>
+        public async UniTask<Enemy> CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation) =>
             await _enemyFactory.Create(_staticDataService.GetEnemy(type).AssetReference, position, rotation);
     }
 }

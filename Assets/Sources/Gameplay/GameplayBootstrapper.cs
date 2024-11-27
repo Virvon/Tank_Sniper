@@ -36,8 +36,11 @@ namespace Assets.Sources.Gameplay
 
             List<UniTask> tasks = new();
 
-            foreach(EnemyPointConfig enemyPointConfig in levelConfig.EnemyPoints)
-                tasks.Add(_gameplayFactory.CreateEnemy(enemyPointConfig.EnemyType, enemyPointConfig.Position, enemyPointConfig.Rotation));
+            foreach (EnemyPointConfig enemyPointConfig in levelConfig.EnemyPoints)
+                tasks.Add(enemyPointConfig.Create(_gameplayFactory));
+
+            foreach (WalkingEnemyPointConfig walkingEnemyPointConfig in levelConfig.WalkingEnemyPoints)
+                tasks.Add(walkingEnemyPointConfig.Create(_gameplayFactory));
 
             await UniTask.WhenAll(tasks);
         }

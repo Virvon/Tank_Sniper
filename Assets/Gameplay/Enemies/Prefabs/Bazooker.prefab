@@ -200,6 +200,7 @@ MonoBehaviour:
   _animator: {fileID: 1450937159660069090}
   _enemyAnimation: {fileID: 7250098948348573515}
   _weapon: {fileID: 3343874825938365215}
+  _rotationSpeed: 360
 --- !u!114 &2707198569930038007
 MonoBehaviour:
   m_ObjectHideFlags: 0

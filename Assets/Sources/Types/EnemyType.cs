@@ -2,4 +2,5 @@
 {
     MachineGunner,
     Bazooker,
+    WalkingMachineGunner,
 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Assets.Sources.Gameplay.Enemies;
+using Assets.Sources.Infrastructure.Factories.GameplayFactory;
+using Cysharp.Threading.Tasks;
+using System;
 using UnityEngine;
 
 namespace Assets.Sources.Services.StaticDataService.Configs.Level
@@ -17,6 +20,11 @@ namespace Assets.Sources.Services.StaticDataService.Configs.Level
             Position = position;
             Rotation = rotation;
             EnemyType = enemyType;
+        }
+
+        public virtual async UniTask<Enemy> Create(IGameplayFactory gameplayFactory)
+        {
+            return await gameplayFactory.CreateEnemy(EnemyType, Position, Rotation);
         }
     }
 }
