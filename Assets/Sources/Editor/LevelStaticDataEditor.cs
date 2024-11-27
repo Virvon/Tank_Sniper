@@ -1,5 +1,5 @@
 ﻿using Assets.Sources.Gameplay.Enemies;
-using Assets.Sources.Services.StaticDataService.Configs.Building;
+using Assets.Sources.Services.StaticDataService.Configs.Level;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;

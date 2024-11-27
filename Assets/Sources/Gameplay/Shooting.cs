@@ -29,7 +29,7 @@ namespace Assets.Sources.Gameplay
         private void OnShooted()
         {
             _playerTank.Attack();
-            _gameplayFactory.CreateBullet(transform.position, transform.rotation);
+            _gameplayFactory.CreateBullet(BulletType.TestBullet, transform.position, transform.rotation);
         }
     }
 }

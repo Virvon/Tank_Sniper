@@ -45,7 +45,7 @@ namespace Assets.Sources.Gameplay.Enemies
         private void CreateBullet()
         {
             test = (_playerTank.transform.position - _shootPoint.position).normalized;
-            _gameplayFactory.CreateBullet(_shootPoint.position, Quaternion.LookRotation((_playerTank.transform.position - _shootPoint.position).normalized));
+            _gameplayFactory.CreateBullet(BulletType.MachineGunBullet, _shootPoint.position, Quaternion.LookRotation((_playerTank.transform.position - _shootPoint.position).normalized));
         }
 
         private void OnDrawGizmos()

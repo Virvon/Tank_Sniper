@@ -1,7 +1,7 @@
 ﻿using Assets.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.Sources.Infrastructure.Factories.UiFactory;
 using Assets.Sources.Services.StaticDataService;
-using Assets.Sources.Services.StaticDataService.Configs.Building;
+using Assets.Sources.Services.StaticDataService.Configs.Level;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;

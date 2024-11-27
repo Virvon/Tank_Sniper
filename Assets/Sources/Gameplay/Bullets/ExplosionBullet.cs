@@ -1,23 +1,14 @@
-﻿using Cysharp.Threading.Tasks;
-using UnityEngine;
-using Zenject;
+﻿using UnityEngine;
 
-namespace Assets.Sources.Gameplay
+namespace Assets.Sources.Gameplay.Bullets
 {
-    public class Bullet : MonoBehaviour
+    public class ExplosionBullet : Bullet
     {
         private readonly Collider[] _overlapColliders = new Collider[32];
-
-        [SerializeField] private Rigidbody _rigidBody;
-        [SerializeField] private float _speed;
+        
         [SerializeField] private float _radius;
 
-        private void Start()
-        {
-            _rigidBody.velocity = transform.forward * _speed;
-        }
-
-        private void OnCollisionEnter(Collision collision)
+        protected override void OnCollisionEnter(Collision collision)
         {
             int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _radius, _overlapColliders);
 
@@ -28,10 +19,6 @@ namespace Assets.Sources.Gameplay
             }
 
             Destroy(gameObject);
-        }
-
-        public class Factory : PlaceholderFactory<string, Vector3, Quaternion, UniTask<Bullet>>
-        {
         }
     }
 }

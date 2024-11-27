@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Sources.Services.StaticDataService.Configs.Building
+namespace Assets.Sources.Services.StaticDataService.Configs.Level
 {
     [Serializable]
     public class EnemyPointConfig
