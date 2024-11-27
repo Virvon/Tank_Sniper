@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.Services.StaticDataService.Configs;
 using Assets.Sources.Services.StaticDataService.Configs.Level;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 namespace Assets.Sources.Services.StaticDataService
 {
@@ -15,6 +13,7 @@ namespace Assets.Sources.Services.StaticDataService
 
         private Dictionary<string, LevelConfig> _levelConfigs;
         private Dictionary<BulletType, BulletConfig> _bulletConfigs;
+        private Dictionary<EnemyType, EnemyConfig> _enemyConfigs;
 
         public StaticDataService(IAssetProvider assetsProvider) =>
             _assetsProvider = assetsProvider;
@@ -24,11 +23,15 @@ namespace Assets.Sources.Services.StaticDataService
             List<UniTask> tasks = new()
             {
                 UniTask.Create(async () => _levelConfigs = await LoadConfigs<string, LevelConfig>()),
-                UniTask.Create(async () => _bulletConfigs = await LoadConfigs<BulletType, BulletConfig>())
+                UniTask.Create(async () => _bulletConfigs = await LoadConfigs<BulletType, BulletConfig>()),
+                UniTask.Create(async () => _enemyConfigs = await LoadConfigs<EnemyType, EnemyConfig>()),
             };
 
             await UniTask.WhenAll(tasks);
         }
+
+        public EnemyConfig GetEnemy(EnemyType type) =>
+            _enemyConfigs.TryGetValue(type, out EnemyConfig config) ? config : null;
 
         public LevelConfig GetLevel(string key) =>
             _levelConfigs.TryGetValue(key, out LevelConfig config) ? config : null;
@@ -53,9 +56,5 @@ namespace Assets.Sources.Services.StaticDataService
 
         private async UniTask<List<string>> GetConfigKeys<TConfig>() =>
             await _assetsProvider.GetAssetsListByLabel<TConfig>(AssetLabels.Configs);
-    }
-    public interface IConfig<TKey>
-    {
-        public TKey Key { get; }
     }
 }

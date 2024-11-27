@@ -22,7 +22,7 @@ namespace Assets.Sources.Editor
 
             if (GUILayout.Button("Collect"))
             {
-                List<EnemyPointConfig> collectedEnemyPoints = FindObjectsOfType<EnemyPoint>().Select(value => new EnemyPointConfig(value.Id, value.transform.position, value.transform.rotation)).ToList();
+                List<EnemyPointConfig> collectedEnemyPoints = FindObjectsOfType<EnemyPoint>().Select(value => new EnemyPointConfig(value.Id, value.transform.position, value.transform.rotation, value.EnemyType)).ToList();
 
                 //foreach (var value in collectedEnemyPoints)
                 //{

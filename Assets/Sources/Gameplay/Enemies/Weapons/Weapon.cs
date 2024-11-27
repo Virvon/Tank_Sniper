@@ -8,6 +8,7 @@ namespace Assets.Sources.Gameplay.Enemies
 {
     public class Weapon : MonoBehaviour
     {
+        [SerializeField] private BulletType _bulletType;
         [SerializeField] private uint _bulletsCapacity;
         [SerializeField] private float _shootCooldown;
         [SerializeField] private float _reloadDuration;
@@ -20,8 +21,6 @@ namespace Assets.Sources.Gameplay.Enemies
 
         private uint _bulletsCount;
         private bool _isShooted;
-
-        Vector3 test;
 
         [Inject]
         private void Construct(IGameplayFactory gameplayFactory, PlayerTank playerTank)
@@ -42,17 +41,8 @@ namespace Assets.Sources.Gameplay.Enemies
         public void StartShooting() =>
             StartCoroutine(Shooter());
 
-        private void CreateBullet()
-        {
-            test = (_playerTank.transform.position - _shootPoint.position).normalized;
-            _gameplayFactory.CreateBullet(BulletType.MachineGunBullet, _shootPoint.position, Quaternion.LookRotation((_playerTank.transform.position - _shootPoint.position).normalized));
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(_shootPoint.transform.position, _shootPoint.transform.position + (test * 3));
-        }
+        private void CreateBullet() =>
+            _gameplayFactory.CreateBullet(_bulletType, _shootPoint.position, Quaternion.LookRotation((_playerTank.transform.position - _shootPoint.position).normalized));
 
         private IEnumerator Shooter()
         {

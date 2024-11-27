@@ -43,7 +43,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: eb1ee9fb05a2d3e4eb1771f0b26d6b03
-    m_Address: Enemy
+    m_Address: MachineGunner
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -79,6 +79,34 @@ MonoBehaviour:
     m_Address: MachineGunBullet
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ce36344fadcc1a479734d1212afa15b
+    m_Address: BazookaRocketConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d3fdf51c8114d984a9aa1539b354dcb7
+    m_Address: BazookaRocket
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd1f18b294fa19a4e97f1597af66562a
+    m_Address: Bazooker
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e3cfe1304bca46244805f70f43b194c7
+    m_Address: MachineGunnerConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d3c758cd8d33b0144a85c9d7b49b7ac2
+    m_Address: BazookerConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a44638466bf414438293c9d18a37e72, type: 2}

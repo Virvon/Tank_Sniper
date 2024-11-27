@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelKey: GameplayScene
   EnemyPoints:
+  - Id: GameplayScene_262f468f-ef52-4d29-9738-57e52b974d56
+    Position: {x: 13.39, y: 0, z: -17.2}
+    Rotation: {x: 0, y: 1, z: 0, w: 0}
+    EnemyType: 1
   - Id: GameplayScene_a90167b6-1468-401e-94de-43b6ce96f549
     Position: {x: 0, y: 0, z: -18.5}
     Rotation: {x: 0, y: 1, z: 0, w: 0}
+    EnemyType: 0

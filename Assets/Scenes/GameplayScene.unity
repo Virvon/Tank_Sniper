@@ -1781,6 +1781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: GameplayScene_a90167b6-1468-401e-94de-43b6ce96f549
+  EnemyType: 0
 --- !u!4 &298595857
 Transform:
   m_ObjectHideFlags: 0
@@ -8617,6 +8618,52 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7840480288341843272, guid: 071f9928d7c8c064ea1ad36131c496cb, type: 3}
+--- !u!1 &1219510623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1219510625}
+  - component: {fileID: 1219510624}
+  m_Layer: 0
+  m_Name: EnemyPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1219510624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219510623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555b601e5a9b37e478123bfbc85c45c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: GameplayScene_262f468f-ef52-4d29-9738-57e52b974d56
+  EnemyType: 1
+--- !u!4 &1219510625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219510623}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 13.39, y: 0, z: -17.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1244952237 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 989324189707156643, guid: 071f9928d7c8c064ea1ad36131c496cb,
@@ -13175,3 +13222,4 @@ SceneRoots:
   - {fileID: 335334412}
   - {fileID: 313548204}
   - {fileID: 298595857}
+  - {fileID: 1219510625}

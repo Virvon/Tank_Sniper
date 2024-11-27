@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace Assets.Sources.Gameplay.Enemies
@@ -63,7 +64,7 @@ namespace Assets.Sources.Gameplay.Enemies
             callback?.Invoke();
         }
 
-        public class Factory : PlaceholderFactory<string, Vector3, Quaternion, UniTask<Enemy>>
+        public class Factory : PlaceholderFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<Enemy>>
         {
         }
     }

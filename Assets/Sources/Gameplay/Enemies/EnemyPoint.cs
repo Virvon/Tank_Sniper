@@ -5,6 +5,7 @@ namespace Assets.Sources.Gameplay.Enemies
     public class EnemyPoint : MonoBehaviour
     {
         public string Id;
+        public EnemyType EnemyType;
 
         private void OnDrawGizmos()
         {
