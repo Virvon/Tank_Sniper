@@ -7,12 +7,12 @@ namespace Assets.Sources.Services.StaticDataService.Configs
     public class WeaponConfig : ScriptableObject, IConfig<WeaponType>
     {
         public WeaponType Type;
-        public AssetReferenceGameObject AssetReference;
+        public AssetReferenceGameObject BulletAssetReference;
+        public uint BulletsCapacity;
+        public float ShootCooldown;
+        public float ReloadDuration;
 
         public WeaponType Key => Type;
 
-        public uint BulletsCapacity { get; internal set; }
-        public float ShootCooldown { get; internal set; }
-        public float ReloadDuration { get; internal set; }
     }
 }

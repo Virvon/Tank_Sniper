@@ -8,10 +8,11 @@ namespace Assets.Sources.Gameplay.Enemies
 {
     public class Weapon : IDisposable
     {
+        public readonly float ShootCooldown;
+        public readonly float ReloadDuration;
+
         private readonly WeaponType _type;
         private readonly uint _bulletsCapacity;
-        private readonly float _shootCooldown;
-        private readonly float _reloadDuration;
         private readonly Animator _animator;
         private readonly EnemyAnimation _enemyAnimation;
         private readonly Transform _shootPoint;
@@ -28,10 +29,12 @@ namespace Assets.Sources.Gameplay.Enemies
             IGameplayFactory gameplayFactory,
             PlayerTank playerTank)
         {
+            Debug.Log("create weapon " + weaponConfig.Type);
+
             _type = weaponConfig.Type;
             _bulletsCapacity = weaponConfig.BulletsCapacity;
-            _shootCooldown = weaponConfig.ShootCooldown;
-            _reloadDuration = weaponConfig.ReloadDuration;
+            ShootCooldown = weaponConfig.ShootCooldown;
+            ReloadDuration = weaponConfig.ReloadDuration;
             _animator = animator;
             _enemyAnimation = enemyAnimation;
             _shootPoint = shootPoint;
@@ -40,6 +43,8 @@ namespace Assets.Sources.Gameplay.Enemies
             _enemyAnimation.BulletCreated += CreateBullet;
             _playerTank = playerTank;
         }
+
+        public bool CanShoot => _bulletsCount > 0;
 
         public void Dispose() =>
             _enemyAnimation.BulletCreated -= CreateBullet;

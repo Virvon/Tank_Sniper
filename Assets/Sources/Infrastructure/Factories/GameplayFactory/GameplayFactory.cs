@@ -29,12 +29,8 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             _carFactory = carFactory;
         }
 
-        public UniTask CreateBullet(WeaponType type, Vector3 position, Quaternion rotation)
-        {
-            //await _bulletFactory.Create(_staticDataService.GetBullet(type).AssetReference, position, rotation);
-
-            return default;
-        }
+        public async UniTask CreateBullet(WeaponType type, Vector3 position, Quaternion rotation) =>
+            await _bulletFactory.Create(_staticDataService.GetWeapon(type).BulletAssetReference, position, rotation);
 
         public async UniTask CreatePlayerTank()
         {
