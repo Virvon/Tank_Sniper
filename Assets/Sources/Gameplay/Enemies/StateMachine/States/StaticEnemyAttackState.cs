@@ -17,8 +17,8 @@ namespace Assets.Sources.Gameplay.Enemies.StateMachine.States
 
         public UniTask Enter()
         {
-            _enemy.Animator.SetBool(AnimationPath.IsShooted, true);
-            _enemy.Rotate(_playerTank, callback: () => _enemy.StartShooting());
+            //_enemy.Animator.SetBool(AnimationPath.IsShooted, true);
+            //_enemy.Rotate(_playerTank, callback: () => _enemy.StartShooting());
 
             return default;
         }

@@ -29,8 +29,6 @@ namespace Assets.Sources.Gameplay.Enemies
             IGameplayFactory gameplayFactory,
             PlayerTank playerTank)
         {
-            Debug.Log("create weapon " + weaponConfig.Type);
-
             _type = weaponConfig.Type;
             _bulletsCapacity = weaponConfig.BulletsCapacity;
             ShootCooldown = weaponConfig.ShootCooldown;

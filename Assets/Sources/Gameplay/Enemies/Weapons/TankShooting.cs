@@ -1,50 +1,58 @@
-﻿using Assets.Sources.Gameplay.Enemies.Animation;
-using Assets.Sources.Infrastructure.Factories.GameplayFactory;
+﻿using Assets.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.Sources.Services.StaticDataService;
+using Assets.Sources.Services.StaticDataService.Configs;
 using System.Collections;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Sources.Gameplay.Enemies
+namespace Assets.Sources.Gameplay.Enemies.Weapons
 {
-    public class EnemyShooter : MonoBehaviour
+    public class TankShooting : MonoBehaviour
     {
         private const int AngleDelta = 2;
         private const int RayCastDistance = 300;
 
         [SerializeField] private WeaponType _weaponType;
-        [SerializeField] private Animator _animator;
-        [SerializeField] private EnemyAnimation _enemyAnimation;
         [SerializeField] private Transform _shootPoint;
         [SerializeField] private uint _rotationSpeed;
 
         private PlayerTank _playerTank;
+        private IGameplayFactory _gameplayFactory;
 
-        private Weapon _weapon;
         private bool _isTurnedToPlayerTank;
+
+        private float _reloadDuration;
+        private float _shootCooldown;
+        private uint _bulletsCapacity;
+
+        private uint _bulletsCount;
 
         [Inject]
         private void Construct(PlayerTank playerTank, IStaticDataService staticDataService, IGameplayFactory gameplayFactory)
         {
             _playerTank = playerTank;
+            _gameplayFactory = gameplayFactory;
 
-            _weapon = new(staticDataService.GetWeapon(_weaponType), _animator, _enemyAnimation, _shootPoint, gameplayFactory, playerTank);
             _isTurnedToPlayerTank = false;
+
+            WeaponConfig weaponConfig = staticDataService.GetWeapon(_weaponType);
+
+            _reloadDuration = weaponConfig.ReloadDuration;
+            _shootCooldown = weaponConfig.ShootCooldown;
+            _bulletsCapacity = weaponConfig.BulletsCapacity;
+
+            _bulletsCount = _bulletsCapacity;
 
             _playerTank.Attacked += OnPlayerTankAttacked;
         }
 
         private void OnDestroy()
         {
-            _weapon.Dispose();
-
             _playerTank.Attacked -= OnPlayerTankAttacked;
         }
 
         private void OnPlayerTankAttacked()
         {
-            _animator.SetTrigger(AnimationPath.IsShooted);
-
             StartCoroutine(Shooter());
             StartCoroutine(Rotater());
         }
@@ -55,21 +63,25 @@ namespace Assets.Sources.Gameplay.Enemies
                 && hitInfo.transform.TryGetComponent(out PlayerTank _);
         }
 
+        private void Shoot() =>
+            _gameplayFactory.CreateBullet(_weaponType, _shootPoint.position, Quaternion.LookRotation((_playerTank.transform.position - _shootPoint.position).normalized));
+
         private IEnumerator Shooter()
         {
             bool isShooted = true;
-            WaitForSeconds reloadDuration = new WaitForSeconds(_weapon.ReloadDuration);
-            WaitForSeconds shootCooldown = new WaitForSeconds(_weapon.ShootCooldown);
+            WaitForSeconds reloadDuration = new WaitForSeconds(_reloadDuration);
+            WaitForSeconds shootCooldown = new WaitForSeconds(_shootCooldown);
 
             while (isShooted)
             {
                 yield return new WaitWhile(() => _isTurnedToPlayerTank == false || CheckPlayerTankVisibility() == false);
 
-                _weapon.Shoot();
+                _bulletsCount--;
+                Shoot();
 
-                if (_weapon.CanShoot == false)
+                if (_bulletsCount > 0 == false)
                 {
-                    _weapon.Reload();
+                    _bulletsCount = _bulletsCapacity;
                     yield return reloadDuration;
                 }
                 else
@@ -98,12 +110,12 @@ namespace Assets.Sources.Gameplay.Enemies
 
                 if (Vector3.Angle(shootPointForward, targetDirection) > AngleDelta)
                 {
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed);
-                    _isTurnedToPlayerTank = true;
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+                    _isTurnedToPlayerTank = false;
                 }
                 else
                 {
-                    _isTurnedToPlayerTank = false;
+                    _isTurnedToPlayerTank = true;
                 }
 
                 yield return null;

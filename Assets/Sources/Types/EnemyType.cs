@@ -4,4 +4,5 @@
     Bazooker,
     WalkingMachineGunner,
     Car,
+    Tank,
 }

@@ -15,8 +15,8 @@ namespace Assets.Sources.Gameplay.Enemies.StateMachine.States
 
         public UniTask Enter()
         {
-            _car.Animator.SetBool(AnimationPath.IsShooted, true);
-            _car.StartShooting();
+            //_car.Animator.SetBool(AnimationPath.IsShooted, true);
+            //_car.StartShooting();
 
             return default;
         }
