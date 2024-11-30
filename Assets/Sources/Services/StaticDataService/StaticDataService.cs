@@ -12,7 +12,7 @@ namespace Assets.Sources.Services.StaticDataService
         private readonly IAssetProvider _assetsProvider;
 
         private Dictionary<string, LevelConfig> _levelConfigs;
-        private Dictionary<BulletType, BulletConfig> _bulletConfigs;
+        private Dictionary<WeaponType, WeaponConfig> _bulletConfigs;
         private Dictionary<EnemyType, EnemyConfig> _enemyConfigs;
 
         public StaticDataService(IAssetProvider assetsProvider) =>
@@ -23,7 +23,7 @@ namespace Assets.Sources.Services.StaticDataService
             List<UniTask> tasks = new()
             {
                 UniTask.Create(async () => _levelConfigs = await LoadConfigs<string, LevelConfig>()),
-                UniTask.Create(async () => _bulletConfigs = await LoadConfigs<BulletType, BulletConfig>()),
+                UniTask.Create(async () => _bulletConfigs = await LoadConfigs<WeaponType, WeaponConfig>()),
                 UniTask.Create(async () => _enemyConfigs = await LoadConfigs<EnemyType, EnemyConfig>()),
             };
 
@@ -36,8 +36,8 @@ namespace Assets.Sources.Services.StaticDataService
         public LevelConfig GetLevel(string key) =>
             _levelConfigs.TryGetValue(key, out LevelConfig config) ? config : null;
 
-        public BulletConfig GetBullet(BulletType type) =>
-            _bulletConfigs.TryGetValue(type, out BulletConfig config) ? config : null;
+        public WeaponConfig GetBullet(WeaponType type) =>
+            _bulletConfigs.TryGetValue(type, out WeaponConfig config) ? config : null;
 
         private async UniTask<Dictionary<TKey, TConfig>> LoadConfigs<TKey, TConfig>()
             where TConfig : class, IConfig<TKey> 

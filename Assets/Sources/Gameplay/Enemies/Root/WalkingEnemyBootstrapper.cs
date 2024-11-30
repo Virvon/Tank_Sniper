@@ -20,7 +20,7 @@ namespace Assets.Sources.Gameplay.Enemies.Root
         public void Initialize()
         {
             _enemyStateMachine.RegisterState(_statesFactory.Create<EnemyWalkingState>());
-            _enemyStateMachine.RegisterState(_statesFactory.Create<EnemyAttackState>());
+            _enemyStateMachine.RegisterState(_statesFactory.Create<StaticEnemyAttackState>());
 
             _enemyStateMachine.Enter<EnemyWalkingState>().Forget();
         }

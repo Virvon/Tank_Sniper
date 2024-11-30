@@ -4,12 +4,12 @@ using Cysharp.Threading.Tasks;
 
 namespace Assets.Sources.Gameplay.Enemies.StateMachine.States
 {
-    public class EnemyAttackState : IState
+    public class StaticEnemyAttackState : IState
     {
-        private readonly Enemy _enemy;
+        private readonly StaticEnemy _enemy;
         private readonly PlayerTank _playerTank;
 
-        public EnemyAttackState(Enemy enemy, PlayerTank playerTank)
+        public StaticEnemyAttackState(StaticEnemy enemy, PlayerTank playerTank)
         {
             _enemy = enemy;
             _playerTank = playerTank;

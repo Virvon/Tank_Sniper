@@ -6,7 +6,7 @@ namespace Assets.Sources.Gameplay.Enemies.Points
     {
         public Transform[] Path;
 
-        protected override void OnDrawGizmos()
+        protected void OnDrawGizmos()
         {
             Gizmos.DrawSphere(transform.position, 0.1f);
 

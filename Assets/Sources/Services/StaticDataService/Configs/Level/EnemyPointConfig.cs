@@ -10,21 +10,21 @@ namespace Assets.Sources.Services.StaticDataService.Configs.Level
     public class EnemyPointConfig
     {
         public string Id;
-        public Vector3 Position;
-        public Quaternion Rotation;
+        public Vector3 StartPosition;
+        public Quaternion StartRotation;
         public EnemyType EnemyType;
 
-        public EnemyPointConfig(string id, Vector3 position, Quaternion rotation, EnemyType enemyType)
+        public EnemyPointConfig(string id, Vector3 startPosition, Quaternion startRotation, EnemyType enemyType)
         {
             Id = id;
-            Position = position;
-            Rotation = rotation;
+            StartPosition = startPosition;
+            StartRotation = startRotation;
             EnemyType = enemyType;
         }
 
         public virtual async UniTask<Enemy> Create(IGameplayFactory gameplayFactory)
         {
-            return await gameplayFactory.CreateEnemy(EnemyType, Position, Rotation);
+            return await gameplayFactory.CreateEnemy(EnemyType, StartPosition, StartRotation);
         }
     }
 }

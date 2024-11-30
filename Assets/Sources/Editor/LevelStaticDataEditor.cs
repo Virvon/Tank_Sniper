@@ -24,11 +24,14 @@ namespace Assets.Sources.Editor
             {
                 List<string> collectedIds = new();
 
-                List<WalkingEnemyPointConfig> collectendWalkingEnemyPoints = FindObjectsOfType<WalkingEnemyPoint>().Select(value => new WalkingEnemyPointConfig(value.Id, value.EnemyType, value.Path)).ToList();
-                collectedIds.AddRange(collectendWalkingEnemyPoints.Select(value => value.Id));
+                //List<WalkingEnemyPointConfig> collectedWalkingEnemyPoints = FindObjectsOfType<WalkingEnemyPoint>().Select(value => new WalkingEnemyPointConfig(value.Id, value.EnemyType, value.Path)).ToList();
+                //collectedIds.AddRange(collectedWalkingEnemyPoints.Select(value => value.Id));
 
-                List<EnemyPointConfig> collectedEnemyPoints = FindObjectsOfType<EnemyPoint>().Where(value => collectedIds.Contains(value.Id) == false).Select(value => new EnemyPointConfig(value.Id, value.transform.position, value.transform.rotation, value.EnemyType)).ToList();
-                collectedIds.AddRange(collectedEnemyPoints.Select(value => value.Id));
+                List<EnemyCarPointConfig> collectedEnemyCarPoints = FindObjectsOfType<EnemyCarPoint>().Select(value => new EnemyCarPointConfig(value.Id, value.EnemyType, value.Path, value.StartPoint, value.MaxRotationAngle, value.Speed)).ToList();
+                collectedIds.AddRange(collectedEnemyCarPoints.Select(value => value.Id));
+
+                //List<EnemyPointConfig> collectedEnemyPoints = FindObjectsOfType<EnemyPoint>().Where(value => collectedIds.Contains(value.Id) == false).Select(value => new EnemyPointConfig(value.Id, value.transform.position, value.transform.rotation, value.EnemyType)).ToList();
+                //collectedIds.AddRange(collectedEnemyPoints.Select(value => value.Id));
 
                 //foreach (var value in collectedEnemyPoints)
                 //{
@@ -39,8 +42,10 @@ namespace Assets.Sources.Editor
                 //    }
                 //}
 
-                levelData.EnemyPoints = collectedEnemyPoints;
-                levelData.WalkingEnemyPoints = collectendWalkingEnemyPoints;
+                //levelData.EnemyPoints = collectedEnemyPoints;
+                //levelData.WalkingEnemyPoints = collectedWalkingEnemyPoints;
+                //levelData.EnemyCarPoints = collectedEnemyCarPoints;
+                levelData.EnemyCarPoints = collectedEnemyCarPoints;
 
                 levelData.LevelKey = SceneManager.GetActiveScene().name;
             }

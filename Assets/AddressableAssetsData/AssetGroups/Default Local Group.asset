@@ -63,28 +63,10 @@ MonoBehaviour:
     m_SerializedLabels:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: df507689056a6354fa60ba48a6ce318d
-    m_Address: MachineGunBulletConfig
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Configs
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c5b6d47b7b6011047b2ceebe7cdac459
-    m_Address: TestBulletConfig
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Configs
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7aaba5b2a59e0c44b8f7c4bbbf06c5cb
     m_Address: MachineGunBullet
     m_ReadOnly: 0
     m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6ce36344fadcc1a479734d1212afa15b
-    m_Address: BazookaRocketConfig
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Configs
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d3fdf51c8114d984a9aa1539b354dcb7
     m_Address: BazookaRocket
@@ -118,6 +100,17 @@ MonoBehaviour:
     m_Address: WalkingMachineGunner
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d19153d633c4ae342bec0a756e399a52
+    m_Address: Car
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: df2b2eae2822685449f85a9244d557fd
+    m_Address: CarConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a44638466bf414438293c9d18a37e72, type: 2}

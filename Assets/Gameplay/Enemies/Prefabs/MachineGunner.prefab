@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 537616414339332110}
   - component: {fileID: 2707198569930038007}
   - component: {fileID: 3886911883097476702}
-  - component: {fileID: 3343874825938365215}
   m_Layer: 0
   m_Name: MachineGunner
   m_TagString: Untagged
@@ -113,7 +112,6 @@ MonoBehaviour:
   _shootPoint: {fileID: 3991455467061476280}
   _animator: {fileID: 1450937159660069090}
   _enemyAnimation: {fileID: 7250098948348573515}
-  _weapon: {fileID: 3343874825938365215}
   _rotationSpeed: 360
 --- !u!114 &2707198569930038007
 MonoBehaviour:
@@ -154,25 +152,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &3343874825938365215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4138023367297425149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bba8eded402e37468c8a7b87d103592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletType: 0
-  _bulletsCapacity: 2
-  _shootCooldown: 0.5
-  _reloadDuration: 2
-  _animator: {fileID: 1450937159660069090}
-  _enemyAnimation: {fileID: 7250098948348573515}
-  _shootPoint: {fileID: 3991455467061476280}
 --- !u!1 &4175893814029842060
 GameObject:
   m_ObjectHideFlags: 0

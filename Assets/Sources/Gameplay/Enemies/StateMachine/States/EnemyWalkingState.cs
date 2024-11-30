@@ -39,7 +39,7 @@ namespace Assets.Sources.Gameplay.Enemies.StateMachine.States
         private void OnPlayerTankAttacked()
         {
             _walking.StopWalking();
-            _enemyStateMachine.Enter<EnemyAttackState>().Forget();
+            _enemyStateMachine.Enter<StaticEnemyAttackState>().Forget();
         }
     }
 }

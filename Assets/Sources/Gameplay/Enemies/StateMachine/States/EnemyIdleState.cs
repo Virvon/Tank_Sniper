@@ -32,6 +32,30 @@ namespace Assets.Sources.Gameplay.Enemies.StateMachine.States
         }
 
         private void OnPlayerTankAttacked() =>
-            _enemyStateMachine.Enter<EnemyAttackState>().Forget();
+            _enemyStateMachine.Enter<StaticEnemyAttackState>().Forget();
+    }
+    public class EnemyPatrolState : IState
+    {
+        public UniTask Enter()
+        {
+            throw new NotImplementedException();
+        }
+
+        public UniTask Exit()
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class EnemyMovementState : IState
+    {
+        public UniTask Enter()
+        {
+            throw new NotImplementedException();
+        }
+
+        public UniTask Exit()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

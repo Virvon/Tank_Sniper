@@ -13,21 +13,26 @@ MonoBehaviour:
   m_Name: TestLevelConfig
   m_EditorClassIdentifier: 
   LevelKey: GameplayScene
-  EnemyPoints:
-  - Id: GameplayScene_a90167b6-1468-401e-94de-43b6ce96f549
-    Position: {x: 0, y: 0, z: -18.5}
-    Rotation: {x: 0, y: 1, z: 0, w: 0}
-    EnemyType: 0
-  - Id: GameplayScene_262f468f-ef52-4d29-9738-57e52b974d56
-    Position: {x: 13.39, y: 0, z: -17.2}
-    Rotation: {x: 0, y: 1, z: 0, w: 0}
-    EnemyType: 1
-  WalkingEnemyPoints:
-  - Id: GameplayScene_4fe0d0f9-241d-4599-94b4-da75ba13535d
-    Position: {x: -23.49, y: 0, z: -11.559999}
-    Rotation: {x: -0, y: 1, z: -0, w: 0}
-    EnemyType: 2
-    Points:
-    - {x: -23.49, y: 0, z: -11.559999}
-    - {x: -20.710001, y: 0, z: -14.389999}
-    - {x: -19.210001, y: 0, z: -11.099999}
+  EnemyPoints: []
+  EnemyCarPoints:
+  - Id: GameplayScene_463be06a-b209-41f1-b943-31698bf7905d
+    StartPosition: {x: 19.2, y: 0, z: 26.499998}
+    StartRotation: {x: -0, y: -0, z: -0, w: 1}
+    EnemyType: 3
+    Path:
+    - Position: {x: 32, y: 0, z: -2.8000002}
+      RotationAngle: 0
+      RotationDelta: 5
+    - Position: {x: 14.5, y: 0, z: -10.400001}
+      RotationAngle: 0
+      RotationDelta: 5
+    - Position: {x: 18.84, y: 0, z: -23.57}
+      RotationAngle: 0
+      RotationDelta: 5
+    - Position: {x: 35.989998, y: 0, z: -15.39}
+      RotationAngle: 0
+      RotationDelta: 5
+    MaxRotationAngle: 90
+    Speed: 12
+    IsLooped: 1
+    IsWaitedAttack: 1

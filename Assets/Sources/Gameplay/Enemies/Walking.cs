@@ -23,6 +23,8 @@ namespace Assets.Sources.Gameplay.Enemies
         private void Start()
         {
             _walker = StartCoroutine(Walker());
+
+            Debug.Log("start");
         }
 
         public void Init(Vector3[] points)
@@ -33,6 +35,8 @@ namespace Assets.Sources.Gameplay.Enemies
         public void StartWalking()
         {
             _isWalked = true;
+
+            Debug.Log("start walk");
         }
 
         public void StopWalking()
@@ -57,7 +61,7 @@ namespace Assets.Sources.Gameplay.Enemies
                     Quaternion targetRotation = Quaternion.LookRotation((targetPoint - currentPosition).normalized);
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
 
-                    _rigidbody.velocity = transform.forward;
+                    _rigidbody.velocity = transform.forward * _speed;
 
                     yield return null;
                 }

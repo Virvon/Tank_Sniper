@@ -7,7 +7,7 @@ namespace Assets.Sources.Services.StaticDataService
 {
     public interface IStaticDataService
     {
-        BulletConfig GetBullet(BulletType type);
+        WeaponConfig GetBullet(WeaponType type);
         EnemyConfig GetEnemy(EnemyType type);
         LevelConfig GetLevel(string key);
         UniTask InitializeAsync();

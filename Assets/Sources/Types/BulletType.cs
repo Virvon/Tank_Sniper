@@ -1,4 +1,4 @@
-public enum BulletType
+public enum WeaponType
 {
     MachineGunBullet,
     TestBullet,

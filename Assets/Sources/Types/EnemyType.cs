@@ -3,4 +3,5 @@
     MachineGunner,
     Bazooker,
     WalkingMachineGunner,
+    Car,
 }
