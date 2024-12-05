@@ -1,6 +1,11 @@
-public enum WeaponType
+namespace Assets.Sources.Types
 {
-    MachineGunBullet,
-    TestBullet,
-    BazookaRocket,
+    public enum BulletType
+    {
+        MachineGunBullet,
+        TestBullet,
+        BazookaRocket,
+        TankRocket,
+        SuperTankRocket,
+    }
 }

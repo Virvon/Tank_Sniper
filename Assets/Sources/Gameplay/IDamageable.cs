@@ -4,6 +4,6 @@ namespace Assets.Sources.Gameplay
 {
     public interface IDamageable
     {
-        void TakeDamage(Vector3 bulletPosition);
+        void TakeDamage(Vector3 bulletPosition, uint explosionForce);
     }
 }

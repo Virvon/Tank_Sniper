@@ -15,7 +15,7 @@ namespace Assets.Sources.Gameplay.Bullets
             for (int i = 0; i < overlapCount; i++)
             {
                 if (_overlapColliders[i].TryGetComponent(out IDamageable damageable))
-                    damageable.TakeDamage(transform.position);
+                    damageable.TakeDamage(transform.position, 1000);
             }
 
             Destroy(gameObject);

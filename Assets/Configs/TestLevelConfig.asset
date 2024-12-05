@@ -15,24 +15,4 @@ MonoBehaviour:
   LevelKey: GameplayScene
   EnemyPoints: []
   EnemyCarPoints: []
-  HelicopterPoints:
-  - Id: test
-    StartPosition: {x: -1.2, y: 21.9, z: 28.199999}
-    StartRotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
-    EnemyType: 5
-    Path:
-    - Position: {x: -1.2, y: 21.9, z: 28.199999}
-      RotationAngle: 0
-      RotationDelta: 4
-    - Position: {x: 28, y: 21.9, z: -3.1}
-      RotationAngle: 0
-      RotationDelta: 4
-    - Position: {x: -3.4, y: 21.9, z: -33.399998}
-      RotationAngle: 0
-      RotationDelta: 4
-    - Position: {x: -38, y: 16.9, z: -2.1}
-      RotationAngle: 0
-      RotationDelta: 4
-    MaxRotationAngle: 120
-    Speed: 8
-    IsWaitedAttack: 0
+  HelicopterPoints: []

@@ -1,9 +1,12 @@
-﻿public enum EnemyType
+﻿namespace Assets.Sources.Types
 {
-    MachineGunner,
-    Bazooker,
-    WalkingMachineGunner,
-    Car,
-    Tank,
-    Helicopter,
+    public enum EnemyType
+    {
+        MachineGunner,
+        Bazooker,
+        WalkingMachineGunner,
+        Car,
+        Tank,
+        Helicopter,
+    }
 }

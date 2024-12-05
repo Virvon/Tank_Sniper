@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Sources.Types;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace Assets.Sources.Services.StaticDataService.Configs

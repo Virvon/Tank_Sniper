@@ -13,71 +13,56 @@ namespace Assets.Sources.Gameplay.Weapons
         private readonly Collider[] _overlapColliders = new Collider[32];
 
         [SerializeField] private Rigidbody _rigidBody;
+        [SerializeField] private GameObject _projectile;
+        [SerializeField] private Collider _collider;
+        [SerializeField] private ParticleSystem _explosionParticlePrefab;
 
         private uint _explosionRadius;
         private uint _flightSpeed;
-        private float _explosionSpreadDuraion;
-        private List<IDamageable> _hitedTargets;
-        private float _gizmosRadius;
+        private float _explosionLifeTime;
+        private uint _explosionForce;
 
-        public void Initialize(uint explosionRadius, uint flightSpeed, float explosionSpreadSpeed)
+        public void Initialize(uint explosionRadius, uint flightSpeed, float explosionLifeTime, uint explosionForce)
         {
             _explosionRadius = explosionRadius;
             _flightSpeed = flightSpeed;
-            _explosionSpreadDuraion = explosionSpreadSpeed;
+            _explosionLifeTime = explosionLifeTime;
+            _explosionForce = explosionForce;
 
             _rigidBody.velocity = transform.forward * _flightSpeed;
-            _hitedTargets = new();
         }
 
         private void OnCollisionEnter(Collision collision)
         {
+            List<IDamageable> HitedTargets = new();
+
+            _rigidBody.velocity = Vector3.zero;
+            _rigidBody.isKinematic = true;
+            _collider.enabled = false;
+
+            ParticleSystem explosionParticle = Instantiate(_explosionParticlePrefab, transform.position, Quaternion.identity, transform);
+            explosionParticle.Play();
+
+            Destroy(_projectile);
+
             if(collision.transform.TryGetComponent(out IDamageable damageable))
             {
-                damageable.TakeDamage(transform.position);
-                _hitedTargets.Add(damageable);
+                damageable.TakeDamage(transform.position, _explosionForce);
+                HitedTargets.Add(damageable);
             }
 
-            StartCoroutine(Explosition());
-        }
+            int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _explosionRadius, _overlapColliders);
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-
-            Gizmos.DrawSphere(transform.position, _gizmosRadius);
-        }
-
-        private IEnumerator Explosition()
-        {
-            float currentExplosionRadius = 0;
-            float passedTime = 0;
-            float progress;
-
-            while(currentExplosionRadius < _explosionRadius)
+            for (int i = 0; i < overlapCount; i++)
             {
-                passedTime += Time.deltaTime;
-                progress = passedTime / _explosionSpreadDuraion;
-
-                currentExplosionRadius = Mathf.Lerp(0, _explosionRadius, progress);
-
-                int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, currentExplosionRadius, _overlapColliders);
-
-                _gizmosRadius = currentExplosionRadius;
-
-                for (int i = 0; i < overlapCount; i++)
+                if (_overlapColliders[i].TryGetComponent(out damageable) && HitedTargets.Contains(damageable) == false)
                 {
-                    if (_overlapColliders[i].TryGetComponent(out IDamageable damageable) && _hitedTargets.Contains(damageable) == false)
-                    {
-                        damageable.TakeDamage(transform.position);
-                        _hitedTargets.Add(damageable);
-                    }
+                    damageable.TakeDamage(transform.position, _explosionForce);
+                    HitedTargets.Add(damageable);
                 }
-
-                yield return null;
             }
 
-            _gizmosRadius = 0;
+            Destroy(gameObject, _explosionLifeTime);
         }
 
         public class Factory : PlaceholderFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<TankRocket>>

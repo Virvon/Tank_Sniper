@@ -1,6 +1,7 @@
 ﻿using Assets.Sources.Gameplay.Enemies.Animation;
 using Assets.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.Sources.Services.StaticDataService;
+using Assets.Sources.Types;
 using System.Collections;
 using UnityEngine;
 using Zenject;
@@ -12,7 +13,7 @@ namespace Assets.Sources.Gameplay.Weapons
         private const int AngleDelta = 2;
         private const int RayCastDistance = 300;
 
-        [SerializeField] private WeaponType _weaponType;
+        [SerializeField] private BulletType _weaponType;
         [SerializeField] private Animator _animator;
         [SerializeField] private EnemyAnimation _enemyAnimation;
         [SerializeField] private Transform _shootPoint;

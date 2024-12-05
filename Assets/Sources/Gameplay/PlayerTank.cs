@@ -25,7 +25,7 @@ namespace Assets.Sources.Gameplay
             Attacked?.Invoke();
         }
 
-        public void TakeDamage(Vector3 bulletPosition)
+        public void TakeDamage(Vector3 bulletPosition, uint explosionForce)
         {
             if (Health == 0)
                 return;

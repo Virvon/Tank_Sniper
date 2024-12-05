@@ -1,6 +1,6 @@
 ﻿using Assets.Sources.Gameplay;
-using Assets.Sources.Gameplay.Bullets;
 using Assets.Sources.Gameplay.Enemies;
+using Assets.Sources.Gameplay.Weapons;
 using Assets.Sources.Services.AssetManagement;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -19,10 +19,6 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
                .AsSingle();
 
             Container
-                .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<ExplosionBullet>, ExplosionBullet.Factory>()
-                .FromFactory<ReferencePrefabFactoryAsync<ExplosionBullet>>();
-
-            Container
                 .BindFactory<string, UniTask<PlayerTank>, PlayerTank.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<PlayerTank>>();
 
@@ -33,6 +29,10 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<Enemy>, Enemy.Factory>()
                 .FromFactory<ReferencePrefabFactoryAsync<Enemy>>();
+
+            Container
+                .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<TankRocket>, TankRocket.Factory>()
+                .FromFactory<ReferencePrefabFactoryAsync<TankRocket>>();
         }
     }
 }

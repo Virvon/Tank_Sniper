@@ -1,7 +1,10 @@
 ﻿using Assets.Sources.Gameplay;
 using Assets.Sources.Gameplay.Bullets;
 using Assets.Sources.Gameplay.Enemies;
+using Assets.Sources.Gameplay.Weapons;
 using Assets.Sources.Services.StaticDataService;
+using Assets.Sources.Services.StaticDataService.Configs;
+using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
@@ -12,25 +15,39 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
     {
         private readonly IStaticDataService _staticDataService;
         private readonly DiContainer _container;
-        private readonly ExplosionBullet.Factory _bulletFactory;
+        //private readonly ExplosionBullet.Factory _bulletFactory;
         private readonly PlayerTank.Factory _playerTankFactory;
         private readonly GameplayCamera.Factory _gameplayCameraFactory;
         private readonly Enemy.Factory _enemyFactory;
         private readonly Car.Factory _carFactory;
+        private readonly TankRocket.Factory _tankRocketFactory;
 
-        public GameplayFactory(IStaticDataService staticDataService, DiContainer container, ExplosionBullet.Factory bulletFactory, PlayerTank.Factory playerTankFactory, GameplayCamera.Factory gameplayCameraFactory, Enemy.Factory enemyFactory, Car.Factory carFactory)
+        public GameplayFactory(IStaticDataService staticDataService, DiContainer container, PlayerTank.Factory playerTankFactory, GameplayCamera.Factory gameplayCameraFactory, Enemy.Factory enemyFactory, Car.Factory carFactory, TankRocket.Factory tankRocketFactory)
         {
             _staticDataService = staticDataService;
             _container = container;
-            _bulletFactory = bulletFactory;
+            //_bulletFactory = bulletFactory;
             _playerTankFactory = playerTankFactory;
             _gameplayCameraFactory = gameplayCameraFactory;
             _enemyFactory = enemyFactory;
             _carFactory = carFactory;
+            _tankRocketFactory = tankRocketFactory;
         }
 
-        public async UniTask CreateBullet(WeaponType type, Vector3 position, Quaternion rotation) =>
-            await _bulletFactory.Create(_staticDataService.GetWeapon(type).BulletAssetReference, position, rotation);
+        public async UniTask<TankRocket> CreateTankRocked(BulletType type, Vector3 position, Quaternion rotation)
+        {
+            BulletConfig tankRocketConfig = _staticDataService.GetBullet(type);
+            TankRocket tankRocket = await _tankRocketFactory.Create(tankRocketConfig.AssetReference, position, rotation);
+
+            tankRocket.Initialize(tankRocketConfig.ExplosionRadius, tankRocketConfig.FlightSpeed, tankRocketConfig.ExplosionLifeTime, tankRocketConfig.ExplosionForce);
+
+            return tankRocket;
+        }
+
+        public async UniTask CreateBullet(BulletType type, Vector3 position, Quaternion rotation)
+        {
+            //await _bulletFactory.Create(_staticDataService.GetWeapon(type).BulletAssetReference, position, rotation);
+        }
 
         public async UniTask CreatePlayerTank()
         {

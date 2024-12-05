@@ -56,12 +56,12 @@ namespace Assets.Sources.Gameplay.Weapons
 
         private void Shoot()
         {
-
+            _gameplayFactory.CreateTankRocked(Types.BulletType.TankRocket, transform.position, transform.rotation);
         }
 
         private void SuperShoot()
         {
-
+            _gameplayFactory.CreateTankRocked(Types.BulletType.SuperTankRocket, transform.position, transform.rotation);
         }
     }
 }

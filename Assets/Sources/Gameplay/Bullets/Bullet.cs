@@ -18,7 +18,7 @@ namespace Assets.Sources.Gameplay.Bullets
         protected virtual void OnCollisionEnter(Collision collision)
         {
             if (collision.transform.TryGetComponent(out IDamageable damageable))
-                damageable.TakeDamage(transform.position);
+                damageable.TakeDamage(transform.position, 1000);
 
             Destroy(gameObject);
         }

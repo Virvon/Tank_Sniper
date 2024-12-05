@@ -1,6 +1,7 @@
 ﻿using Assets.Sources.Gameplay.Enemies.Animation;
 using Assets.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.Sources.Services.StaticDataService.Configs;
+using Assets.Sources.Types;
 using System;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace Assets.Sources.Gameplay.Weapons
         public readonly float ShootCooldown;
         public readonly float ReloadDuration;
 
-        private readonly WeaponType _type;
+        private readonly BulletType _type;
         private readonly uint _bulletsCapacity;
         private readonly Animator _animator;
         private readonly EnemyAnimation _enemyAnimation;

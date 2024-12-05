@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
 using System.Linq;
+using Assets.Sources.Types;
 
 namespace Assets.Sources.Services.StaticDataService.Configs.Level
 {

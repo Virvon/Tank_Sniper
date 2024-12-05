@@ -1,5 +1,6 @@
 ﻿using Assets.Sources.Gameplay.Enemies;
 using Assets.Sources.Infrastructure.Factories.GameplayFactory;
+using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;

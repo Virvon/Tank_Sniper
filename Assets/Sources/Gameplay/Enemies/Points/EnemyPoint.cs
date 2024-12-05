@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Sources.Types;
+using UnityEngine;
 
 namespace Assets.Sources.Gameplay.Enemies.Points
 {
