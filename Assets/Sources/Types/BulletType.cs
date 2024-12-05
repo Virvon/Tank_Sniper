@@ -7,5 +7,6 @@ namespace Assets.Sources.Types
         BazookaRocket,
         TankRocket,
         SuperTankRocket,
+        TankRocket2,
     }
 }

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abf65238707194f49a8c5ae5d42c0ef9, type: 3}
-  m_Name: SuperTankRocket
+  m_Name: TankRocket2
   m_EditorClassIdentifier: 
-  Type: 4
+  Type: 5
   AssetReference:
-    m_AssetGUID: f63ea09f2f7ddc24fbe147d5d15151fa
+    m_AssetGUID: 3aec6ad423970b54a89ab606530765ef
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  ExplosionRadius: 8
+  ExplosionRadius: 5
   FlightSpeed: 150
   ExplosionLifeTime: 2
-  ExplosionForce: 300
+  ExplosionForce: 200

@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 5129002337199314797}
   - component: {fileID: 3841043016381415692}
   - component: {fileID: -4001570397779127320}
-  - component: {fileID: 5714248309824306932}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -31,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6295523216517667783}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 17.4, z: -52.5}
+  m_LocalPosition: {x: 0, y: 12, z: -61.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -163,17 +162,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2766745ee9c88bf4b95120ec97a2e4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5714248309824306932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6295523216517667783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e845a25c83d4db41a148c04e058e8c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletsCapacity: 3
-  _requireShotsNumberToSuperShot: 3

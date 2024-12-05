@@ -69,4 +69,37 @@ namespace Assets.Sources.Gameplay.Weapons
         {
         }
     }
+    public class Laser : MonoBehaviour
+    {
+        private const float MaxDistance = 200;
+
+        [SerializeField] private ParticleSystem _explosionParticlePrefab;
+        [SerializeField] private ParticleSystem _projectileParticlePrefab;
+
+        private float _lifeTime;
+        private float _explosionRadius;
+        private uint _explosionForce;
+
+        public void Initialize(float lifeTime, float explosionRadius, uint explosionForce)
+        {
+            _lifeTime = lifeTime;
+            _explosionRadius = explosionRadius;
+            _explosionForce = explosionForce;
+
+            if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, MaxDistance))
+            {
+                ParticleSystem explosionParticle = Instantiate(_explosionParticlePrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal, transform.forward), transform);
+                explosionParticle.Play();
+            }
+
+            Destroy(gameObject, lifeTime);
+        }
+
+        private void CreateTrail(Vector3 endPosition)
+        {
+            float size = Vector3.Distance(transform.position, endPosition);
+
+            Instantiate(_projectileParticlePrefab, transform.position, transform.rotation)
+        }
+    }
 }

@@ -5,22 +5,28 @@ using Zenject;
 
 namespace Assets.Sources.Gameplay.Weapons
 {
-    public class PlayerWeapon : MonoBehaviour
+    public abstract class PlayerWeapon : MonoBehaviour
     {
         [SerializeField] private uint _bulletsCapacity;
         [SerializeField] private uint _requireShotsNumberToSuperShot;
+        [SerializeField] private Transform _shootPoint;
 
-        private IGameplayFactory _gameplayFactory;
         private IInputService _inputService;
+        private GameplayCamera _gameplayCamera;
 
         private uint _shootsNumberToSuperShot;
         private uint _bulletsCount;
 
+        protected IGameplayFactory GameplayFactory { get; private set; }
+        protected Vector3 ShootPoint => _shootPoint.position;
+        protected Quaternion BulletRotation => _gameplayCamera.transform.rotation;
+
         [Inject]
-        private void Construct(IGameplayFactory gameplayFactory, IInputService inputService)
+        private void Construct(IGameplayFactory gameplayFactory, IInputService inputService, GameplayCamera gameplayCamera)
         {
-            _gameplayFactory = gameplayFactory;
+            GameplayFactory = gameplayFactory;
             _inputService = inputService;
+            _gameplayCamera = gameplayCamera;
 
             _shootsNumberToSuperShot = _requireShotsNumberToSuperShot;
             _bulletsCount = _bulletsCapacity;
@@ -54,14 +60,8 @@ namespace Assets.Sources.Gameplay.Weapons
             }
         }
 
-        private void Shoot()
-        {
-            _gameplayFactory.CreateTankRocked(Types.BulletType.TankRocket, transform.position, transform.rotation);
-        }
+        protected abstract void Shoot();
 
-        private void SuperShoot()
-        {
-            _gameplayFactory.CreateTankRocked(Types.BulletType.SuperTankRocket, transform.position, transform.rotation);
-        }
+        protected abstract void SuperShoot();
     }
 }

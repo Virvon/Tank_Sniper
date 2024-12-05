@@ -56,8 +56,12 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             _container.BindInstance(playerTank).AsSingle();
         }
 
-        public async UniTask CreateCamera() =>
-            await _gameplayCameraFactory.Create(GameplayFactoryAssets.Camera);
+        public async UniTask CreateCamera()
+        {
+            GameplayCamera gameplayCamera = await _gameplayCameraFactory.Create(GameplayFactoryAssets.Camera);
+
+            _container.BindInstance(gameplayCamera).AsSingle();
+        }
 
         public async UniTask<Enemy> CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation) =>
             await _enemyFactory.Create(_staticDataService.GetEnemy(type).AssetReference, position, rotation);

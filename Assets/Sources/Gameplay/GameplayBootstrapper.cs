@@ -24,9 +24,9 @@ namespace Assets.Sources.Gameplay
 
         public async void Initialize()
         {
+            await _gameplayFactory.CreateCamera();
             await _gameplayFactory.CreatePlayerTank();
             await CreateEnemies();
-            await _gameplayFactory.CreateCamera();
             await _uiFactory.CreateWindow();
         }
 
