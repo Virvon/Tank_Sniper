@@ -14,40 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelKey: GameplayScene
   EnemyPoints: []
-  EnemyCarPoints:
-  - Id: GameplayScene_a77b8083-4b98-4700-b963-0f861f3e2693
-    StartPosition: {x: -38.64, y: 0, z: 15.82}
-    StartRotation: {x: -0, y: 1, z: -0, w: 0}
-    EnemyType: 4
+  EnemyCarPoints: []
+  HelicopterPoints:
+  - Id: test
+    StartPosition: {x: -1.2, y: 21.9, z: 28.199999}
+    StartRotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
+    EnemyType: 5
     Path:
-    - Position: {x: -38.64, y: 0, z: 15.82}
+    - Position: {x: -1.2, y: 21.9, z: 28.199999}
       RotationAngle: 0
-      RotationDelta: 5
-    - Position: {x: -38.1, y: 0, z: -3.5}
+      RotationDelta: 4
+    - Position: {x: 28, y: 21.9, z: -3.1}
       RotationAngle: 0
-      RotationDelta: 5
-    MaxRotationAngle: 90
-    Speed: 5
-    IsLooped: 0
-    IsWaitedAttack: 0
-  - Id: GameplayScene_7bc916af-c66d-4301-9fac-139294bd4f10
-    StartPosition: {x: -21.4, y: 0, z: 21.6}
-    StartRotation: {x: -0, y: -0, z: -0, w: 1}
-    EnemyType: 3
-    Path:
-    - Position: {x: -21.4, y: 0, z: 21.6}
+      RotationDelta: 4
+    - Position: {x: -3.4, y: 21.9, z: -33.399998}
       RotationAngle: 0
-      RotationDelta: 5
-    - Position: {x: 23.9, y: 0, z: 19.9}
+      RotationDelta: 4
+    - Position: {x: -38, y: 16.9, z: -2.1}
       RotationAngle: 0
-      RotationDelta: 5
-    - Position: {x: 20, y: 0, z: -8.9}
-      RotationAngle: 0
-      RotationDelta: 5
-    - Position: {x: -20.4, y: 0, z: -10.1}
-      RotationAngle: 0
-      RotationDelta: 5
-    MaxRotationAngle: 90
-    Speed: 10
-    IsLooped: 0
+      RotationDelta: 4
+    MaxRotationAngle: 120
+    Speed: 8
     IsWaitedAttack: 0

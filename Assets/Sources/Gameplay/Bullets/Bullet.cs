@@ -23,7 +23,7 @@ namespace Assets.Sources.Gameplay.Bullets
             Destroy(gameObject);
         }
 
-        public class Factory : PlaceholderFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<ExplosionBullet>>
+        public class Factory : PlaceholderFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<Bullet>>
         {
         }
     }

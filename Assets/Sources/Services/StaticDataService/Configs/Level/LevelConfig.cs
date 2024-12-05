@@ -11,6 +11,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs.Level
         //public List<WalkingEnemyPointConfig> WalkingEnemyPoints;
         //public List<EnemyCarPointConfig> EnemyCarPoints;
         public List<EnemyCarPointConfig> EnemyCarPoints;
+        public List<HelicopterPointConfig> HelicopterPoints;
 
         public string Key => LevelKey;
     }

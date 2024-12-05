@@ -5,4 +5,5 @@
     WalkingMachineGunner,
     Car,
     Tank,
+    Helicopter,
 }

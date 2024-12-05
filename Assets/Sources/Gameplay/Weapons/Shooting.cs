@@ -3,7 +3,7 @@ using Assets.Sources.Services.InputService;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Sources.Gameplay
+namespace Assets.Sources.Gameplay.Weapons
 {
     public class Shooting : MonoBehaviour
     {

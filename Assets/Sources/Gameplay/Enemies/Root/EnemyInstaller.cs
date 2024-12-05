@@ -10,13 +10,13 @@ namespace Assets.Sources.Gameplay.Enemies.Root
 
         public override void InstallBindings()
         {
-            BindEnemyBootstrapper();
+            //BindEnemyBootstrapper();
             BindEnemyStateMachine();
             BindEnemy();
         }
 
-        protected virtual void BindEnemyBootstrapper() =>
-            Container.BindInterfacesTo<EnemyBootstrapper>().AsSingle().NonLazy();
+        //protected virtual void BindEnemyBootstrapper() =>
+        //    Container.BindInterfacesTo<EnemyBootstrapper>().AsSingle().NonLazy();
 
         private void BindEnemy() =>
             Container.BindInstance(_enemy).AsSingle();

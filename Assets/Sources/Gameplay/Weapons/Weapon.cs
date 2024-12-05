@@ -4,7 +4,7 @@ using Assets.Sources.Services.StaticDataService.Configs;
 using System;
 using UnityEngine;
 
-namespace Assets.Sources.Gameplay.Enemies
+namespace Assets.Sources.Gameplay.Weapons
 {
     public class Weapon : IDisposable
     {

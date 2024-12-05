@@ -12,8 +12,8 @@ namespace Assets.Sources.Gameplay.Enemies.Root
             BindWalking();
         }
 
-        protected override void BindEnemyBootstrapper() =>
-            Container.BindInterfacesTo<WalkingEnemyBootstrapper>().AsSingle().NonLazy();
+        //protected override void BindEnemyBootstrapper() =>
+        //    Container.BindInterfacesTo<WalkingEnemyBootstrapper>().AsSingle().NonLazy();
 
         private void BindWalking() =>
             Container.BindInstance(_walking).AsSingle();

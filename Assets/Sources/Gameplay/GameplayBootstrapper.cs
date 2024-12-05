@@ -47,6 +47,9 @@ namespace Assets.Sources.Gameplay
 
             foreach (EnemyCarPointConfig enemyCarPointConfig in levelConfig.EnemyCarPoints)
                 tasks.Add(enemyCarPointConfig.Create(_gameplayFactory));
+            
+            foreach (HelicopterPointConfig helicopterPointConfig in levelConfig.HelicopterPoints)
+                tasks.Add(helicopterPointConfig.Create(_gameplayFactory));
 
             await UniTask.WhenAll(tasks);
         }
