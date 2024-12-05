@@ -13,6 +13,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public uint FlightSpeed;
         public float ExplosionLifeTime;
         public uint ExplosionForce;
+        public float ProjectileLifeTime;
 
         public BulletType Key => Type;
 

@@ -11,6 +11,7 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         UniTask CreateBullet(BulletType type, Vector3 position, Quaternion rotation);
         UniTask CreateCamera();
         UniTask<Enemy> CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation);
+        UniTask<Laser> CreateLaser(BulletType type, Vector3 position, Quaternion rotation);
         UniTask CreatePlayerTank();
         UniTask<TankRocket> CreateTankRocked(BulletType type, Vector3 position, Quaternion rotation);
     }

@@ -21,8 +21,9 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         private readonly Enemy.Factory _enemyFactory;
         private readonly Car.Factory _carFactory;
         private readonly TankRocket.Factory _tankRocketFactory;
+        private readonly Laser.Factory _laserFactory;
 
-        public GameplayFactory(IStaticDataService staticDataService, DiContainer container, PlayerTank.Factory playerTankFactory, GameplayCamera.Factory gameplayCameraFactory, Enemy.Factory enemyFactory, Car.Factory carFactory, TankRocket.Factory tankRocketFactory)
+        public GameplayFactory(IStaticDataService staticDataService, DiContainer container, PlayerTank.Factory playerTankFactory, GameplayCamera.Factory gameplayCameraFactory, Enemy.Factory enemyFactory, Car.Factory carFactory, TankRocket.Factory tankRocketFactory, Laser.Factory laserFactory)
         {
             _staticDataService = staticDataService;
             _container = container;
@@ -32,6 +33,17 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             _enemyFactory = enemyFactory;
             _carFactory = carFactory;
             _tankRocketFactory = tankRocketFactory;
+            _laserFactory = laserFactory;
+        }
+
+        public async UniTask<Laser> CreateLaser(BulletType type, Vector3 position, Quaternion rotation)
+        {
+            BulletConfig laserConfig = _staticDataService.GetBullet(type);
+            Laser laser = await _laserFactory.Create(laserConfig.AssetReference, position, rotation);
+
+            laser.Initialize(laserConfig.ExplosionLifeTime, laserConfig.ExplosionRadius, laserConfig.ExplosionForce, laserConfig.ProjectileLifeTime);
+
+            return laser;
         }
 
         public async UniTask<TankRocket> CreateTankRocked(BulletType type, Vector3 position, Quaternion rotation)

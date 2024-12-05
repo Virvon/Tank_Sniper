@@ -34,7 +34,7 @@ namespace Assets.Sources.Gameplay.Weapons
 
         private void OnCollisionEnter(Collision collision)
         {
-            List<IDamageable> HitedTargets = new();
+            List<IDamageable> hitedTargets = new();
 
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.isKinematic = true;
@@ -48,17 +48,17 @@ namespace Assets.Sources.Gameplay.Weapons
             if(collision.transform.TryGetComponent(out IDamageable damageable))
             {
                 damageable.TakeDamage(transform.position, _explosionForce);
-                HitedTargets.Add(damageable);
+                hitedTargets.Add(damageable);
             }
 
             int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _explosionRadius, _overlapColliders);
 
             for (int i = 0; i < overlapCount; i++)
             {
-                if (_overlapColliders[i].TryGetComponent(out damageable) && HitedTargets.Contains(damageable) == false)
+                if (_overlapColliders[i].TryGetComponent(out damageable) && hitedTargets.Contains(damageable) == false)
                 {
                     damageable.TakeDamage(transform.position, _explosionForce);
-                    HitedTargets.Add(damageable);
+                    hitedTargets.Add(damageable);
                 }
             }
 
@@ -67,39 +67,6 @@ namespace Assets.Sources.Gameplay.Weapons
 
         public class Factory : PlaceholderFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<TankRocket>>
         {
-        }
-    }
-    public class Laser : MonoBehaviour
-    {
-        private const float MaxDistance = 200;
-
-        [SerializeField] private ParticleSystem _explosionParticlePrefab;
-        [SerializeField] private ParticleSystem _projectileParticlePrefab;
-
-        private float _lifeTime;
-        private float _explosionRadius;
-        private uint _explosionForce;
-
-        public void Initialize(float lifeTime, float explosionRadius, uint explosionForce)
-        {
-            _lifeTime = lifeTime;
-            _explosionRadius = explosionRadius;
-            _explosionForce = explosionForce;
-
-            if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, MaxDistance))
-            {
-                ParticleSystem explosionParticle = Instantiate(_explosionParticlePrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal, transform.forward), transform);
-                explosionParticle.Play();
-            }
-
-            Destroy(gameObject, lifeTime);
-        }
-
-        private void CreateTrail(Vector3 endPosition)
-        {
-            float size = Vector3.Distance(transform.position, endPosition);
-
-            Instantiate(_projectileParticlePrefab, transform.position, transform.rotation)
         }
     }
 }

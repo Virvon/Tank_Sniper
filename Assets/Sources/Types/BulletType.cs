@@ -8,5 +8,6 @@ namespace Assets.Sources.Types
         TankRocket,
         SuperTankRocket,
         TankRocket2,
+        Laser,
     }
 }

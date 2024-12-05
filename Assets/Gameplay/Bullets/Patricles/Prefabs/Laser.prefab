@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4203105315748748487}
   - component: {fileID: 2660794028732731926}
   - component: {fileID: 9164868648734999058}
+  - component: {fileID: 2127945624844509065}
+  - component: {fileID: 1065822629272007470}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
@@ -27,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 72850770830953348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -41,7 +43,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72850770830953348}
   m_Enabled: 1
-  m_Asset: {fileID: 0}
+  m_Asset: {fileID: 8926484042661614526, guid: f32a53af3a219be4a86358f5e79930dd, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -53,9 +55,18 @@ VisualEffect:
     m_Vector2f:
       m_Array: []
     m_Vector3f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: Diretion_direction
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: Position_position
+        m_Overridden: 1
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.4000089, y: 0.74611294, z: 0.9528302, w: 0}
+        m_Name: Color
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -69,7 +80,10 @@ VisualEffect:
     m_NamedObject:
       m_Array: []
     m_Bool:
-      m_Array: []
+      m_Array:
+      - m_Value: 0
+        m_Name: IsHited
+        m_Overridden: 1
 --- !u!73398921 &9164868648734999058
 VFXRenderer:
   serializedVersion: 1
@@ -110,3 +124,44 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2127945624844509065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72850770830953348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdafc37f32b176349b1684c4455b98e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExecuteInEditor: 1
+  m_Bindings:
+  - {fileID: 1065822629272007470}
+  m_VisualEffect: {fileID: 2660794028732731926}
+--- !u!114 &1065822629272007470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72850770830953348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51d0c138bfbbe049917ff3ba4ea5221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TargetPosition:
+    m_Name: Position
+  m_TargetNormal:
+    m_Name: Diretion
+  m_TargetHit:
+    m_Name: IsHited
+  RaycastSource: {fileID: 72850770830953348}
+  RaycastDirection: {x: 0, y: 0, z: 1}
+  RaycastDirectionSpace: 0
+  Layers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  MaxDistance: 100
