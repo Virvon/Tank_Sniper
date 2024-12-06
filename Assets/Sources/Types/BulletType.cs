@@ -9,5 +9,6 @@ namespace Assets.Sources.Types
         SuperTankRocket,
         TankRocket2,
         Laser,
+        HomingLaser,
     }
 }

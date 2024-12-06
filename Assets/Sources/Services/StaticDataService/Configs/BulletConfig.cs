@@ -14,6 +14,9 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public float ExplosionLifeTime;
         public uint ExplosionForce;
         public float ProjectileLifeTime;
+        public float SearchRadius;
+        public float RotationSpeed;
+        public float TargetingDelay;
 
         public BulletType Key => Type;
 

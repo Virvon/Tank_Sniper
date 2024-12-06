@@ -22,8 +22,9 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         private readonly Car.Factory _carFactory;
         private readonly TankRocket.Factory _tankRocketFactory;
         private readonly Laser.Factory _laserFactory;
+        private readonly HomingBullet.Factory _homingBulletFactory;
 
-        public GameplayFactory(IStaticDataService staticDataService, DiContainer container, PlayerTank.Factory playerTankFactory, GameplayCamera.Factory gameplayCameraFactory, Enemy.Factory enemyFactory, Car.Factory carFactory, TankRocket.Factory tankRocketFactory, Laser.Factory laserFactory)
+        public GameplayFactory(IStaticDataService staticDataService, DiContainer container, PlayerTank.Factory playerTankFactory, GameplayCamera.Factory gameplayCameraFactory, Enemy.Factory enemyFactory, Car.Factory carFactory, TankRocket.Factory tankRocketFactory, Laser.Factory laserFactory, HomingBullet.Factory homingBulletFactory)
         {
             _staticDataService = staticDataService;
             _container = container;
@@ -34,6 +35,17 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             _carFactory = carFactory;
             _tankRocketFactory = tankRocketFactory;
             _laserFactory = laserFactory;
+            _homingBulletFactory = homingBulletFactory;
+        }
+
+        public async UniTask<HomingBullet> CreateHomingBullet(BulletType type, Vector3 position, Quaternion rotation)
+        {
+            BulletConfig homingBulletConfig = _staticDataService.GetBullet(type);
+            HomingBullet homingBullet = await _homingBulletFactory.Create(homingBulletConfig.AssetReference, position, rotation);
+
+            homingBullet.Initialize(homingBulletConfig.SearchRadius, homingBulletConfig.FlightSpeed, homingBulletConfig.ExplosionRadius, homingBulletConfig.ExplosionForce, homingBulletConfig.RotationSpeed, homingBulletConfig.ExplosionLifeTime, homingBulletConfig.TargetingDelay);
+
+            return homingBullet;
         }
 
         public async UniTask<Laser> CreateLaser(BulletType type, Vector3 position, Quaternion rotation)

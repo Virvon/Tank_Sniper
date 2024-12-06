@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6540234844315592483}
   - component: {fileID: 5973832433386125542}
   - component: {fileID: 4263773957983772572}
-  - component: {fileID: 6835593255797638566}
+  - component: {fileID: 1185322183779002912}
   m_Layer: 0
   m_Name: PlayerTank
   m_TagString: Untagged
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 20
---- !u!114 &6835593255797638566
+--- !u!114 &1185322183779002912
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,3 +159,5 @@ MonoBehaviour:
   _bulletsCapacity: 3
   _requireShotsNumberToSuperShot: 3
   _shootPoint: {fileID: 2093715113184439836}
+  _superBulletShootsCount: 4
+  _supperBUlletShootsDuration: 0.2

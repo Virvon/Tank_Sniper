@@ -37,6 +37,10 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<Laser>, Laser.Factory>()
                 .FromFactory<ReferencePrefabFactoryAsync<Laser>>();
+            
+            Container
+                .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<HomingBullet>, HomingBullet.Factory>()
+                .FromFactory<ReferencePrefabFactoryAsync<HomingBullet>>();
         }
     }
 }
