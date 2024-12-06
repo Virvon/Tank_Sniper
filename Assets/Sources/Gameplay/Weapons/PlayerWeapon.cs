@@ -1,4 +1,4 @@
-﻿using Assets.Sources.Infrastructure.Factories.GameplayFactory;
+﻿using Assets.Sources.Infrastructure.Factories.BulletFactory;
 using Assets.Sources.Services.InputService;
 using UnityEngine;
 using Zenject;
@@ -17,14 +17,14 @@ namespace Assets.Sources.Gameplay.Weapons
         private uint _shootsNumberToSuperShot;
         private uint _bulletsCount;
 
-        protected IGameplayFactory GameplayFactory { get; private set; }
+        protected IBulletFactory BulletFactory { get; private set; }
         protected Vector3 ShootPoint => _shootPoint.position;
         protected Quaternion BulletRotation => _gameplayCamera.transform.rotation;
 
         [Inject]
-        private void Construct(IGameplayFactory gameplayFactory, IInputService inputService, GameplayCamera gameplayCamera)
+        private void Construct(IBulletFactory bulletFactory, IInputService inputService, GameplayCamera gameplayCamera)
         {
-            GameplayFactory = gameplayFactory;
+            BulletFactory = bulletFactory;
             _inputService = inputService;
             _gameplayCamera = gameplayCamera;
 

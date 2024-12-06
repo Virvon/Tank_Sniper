@@ -13,7 +13,6 @@ namespace Assets.Sources.Gameplay.Weapons
         private const int AngleDelta = 2;
         private const int RayCastDistance = 300;
 
-        [SerializeField] private BulletType _weaponType;
         [SerializeField] private Transform _shootPoint;
         [SerializeField] private uint _rotationSpeed;
 
@@ -36,7 +35,7 @@ namespace Assets.Sources.Gameplay.Weapons
 
             _isTurnedToPlayerTank = false;
 
-            WeaponConfig weaponConfig = staticDataService.GetWeapon(_weaponType);
+            WeaponConfig weaponConfig = null;
 
             _reloadDuration = weaponConfig.ReloadDuration;
             _shootCooldown = weaponConfig.ShootCooldown;
@@ -64,8 +63,10 @@ namespace Assets.Sources.Gameplay.Weapons
                 && hitInfo.transform.TryGetComponent(out PlayerTank _);
         }
 
-        private void Shoot() =>
-            _gameplayFactory.CreateBullet(_weaponType, _shootPoint.position, Quaternion.LookRotation((_playerTank.transform.position - _shootPoint.position).normalized));
+        private void Shoot()
+        {
+            //_gameplayFactory.CreateBullet(_weaponType, _shootPoint.position, Quaternion.LookRotation((_playerTank.transform.position - _shootPoint.position).normalized));
+        }
 
         private IEnumerator Shooter()
         {

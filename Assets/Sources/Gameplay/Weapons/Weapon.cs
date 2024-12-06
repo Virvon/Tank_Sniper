@@ -12,7 +12,6 @@ namespace Assets.Sources.Gameplay.Weapons
         public readonly float ShootCooldown;
         public readonly float ReloadDuration;
 
-        private readonly BulletType _type;
         private readonly uint _bulletsCapacity;
         private readonly Animator _animator;
         private readonly EnemyAnimation _enemyAnimation;
@@ -30,7 +29,6 @@ namespace Assets.Sources.Gameplay.Weapons
             IGameplayFactory gameplayFactory,
             PlayerTank playerTank)
         {
-            _type = weaponConfig.Type;
             _bulletsCapacity = weaponConfig.BulletsCapacity;
             ShootCooldown = weaponConfig.ShootCooldown;
             ReloadDuration = weaponConfig.ReloadDuration;
@@ -60,7 +58,9 @@ namespace Assets.Sources.Gameplay.Weapons
         public void Reload() =>
             _bulletsCount = _bulletsCapacity;
 
-        private void CreateBullet() =>
-            _gameplayFactory.CreateBullet(_type, _shootPoint.position, Quaternion.LookRotation((_playerTank.transform.position - _shootPoint.position).normalized));
+        private void CreateBullet()
+        {
+            //_gameplayFactory.CreateBullet(_type, _shootPoint.position, Quaternion.LookRotation((_playerTank.transform.position - _shootPoint.position).normalized));
+        }
     }
 }

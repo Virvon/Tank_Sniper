@@ -10,7 +10,6 @@ namespace Assets.Sources.Gameplay.Enemies
         [SerializeField] private float _heightSpeed;
         [SerializeField] private bool _lookToTarget;
         [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private float _filter = 0.4f;
         [SerializeField] private float _filter2 = 15f;
         [SerializeField] private ForceMode _forceMode;
         [SerializeField] private float _waitingTime = 12;

@@ -2,6 +2,8 @@
 using System.Linq;
 using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.Services.StaticDataService.Configs;
+using Assets.Sources.Services.StaticDataService.Configs.Bullets.Colliding;
+using Assets.Sources.Services.StaticDataService.Configs.Bullets.Laser;
 using Assets.Sources.Services.StaticDataService.Configs.Level;
 using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
@@ -13,28 +15,38 @@ namespace Assets.Sources.Services.StaticDataService
         private readonly IAssetProvider _assetsProvider;
 
         private Dictionary<string, LevelConfig> _levelConfigs;
-        private Dictionary<BulletType, WeaponConfig> _weaponConfigs;
         private Dictionary<EnemyType, EnemyConfig> _enemyConfigs;
-        private Dictionary<BulletType, BulletConfig> _bulletConfigs;
+        private Dictionary<ForwardFlyingBulletType, ForwardFlyingBulletConfig> _forwardFlyingBulletConfigs;
+        private Dictionary<HomingBulletType, HomingBulletConfig> _homingBulletConfigs;
 
         public StaticDataService(IAssetProvider assetsProvider) =>
             _assetsProvider = assetsProvider;
+
+        public LaserConfig DiretionalLaserConfig { get; private set; }
+        public TargetingLaserConfig TargetingLaserConfig { get; private set; }
+        public TransmittingLaserConfig TransmittedLaserConfig { get; private set; }
 
         public async UniTask InitializeAsync()
         {
             List<UniTask> tasks = new()
             {
                 UniTask.Create(async () => _levelConfigs = await LoadConfigs<string, LevelConfig>()),
-                UniTask.Create(async () => _weaponConfigs = await LoadConfigs<BulletType, WeaponConfig>()),
                 UniTask.Create(async () => _enemyConfigs = await LoadConfigs<EnemyType, EnemyConfig>()),
-                UniTask.Create(async () => _bulletConfigs = await LoadConfigs<BulletType, BulletConfig>()),
+                UniTask.Create(async () => _forwardFlyingBulletConfigs = await LoadConfigs<ForwardFlyingBulletType, ForwardFlyingBulletConfig>()),
+                UniTask.Create(async () => _homingBulletConfigs = await LoadConfigs<HomingBulletType, HomingBulletConfig>()),
+                UniTask.Create(async () => DiretionalLaserConfig = await LoadConfig<LaserConfig>()),
+                UniTask.Create(async () => TargetingLaserConfig = await LoadConfig<TargetingLaserConfig>()),
+                UniTask.Create(async () => TransmittedLaserConfig = await LoadConfig<TransmittingLaserConfig>()),
             };
 
             await UniTask.WhenAll(tasks);
         }
 
-        public BulletConfig GetBullet(BulletType type) =>
-            _bulletConfigs.TryGetValue(type, out BulletConfig config) ? config : null;
+        public HomingBulletConfig GetBullet(HomingBulletType type) =>
+            _homingBulletConfigs.TryGetValue(type, out HomingBulletConfig config) ? config : null;
+
+        public ForwardFlyingBulletConfig GetBullet(ForwardFlyingBulletType type) =>
+            _forwardFlyingBulletConfigs.TryGetValue(type, out ForwardFlyingBulletConfig config) ? config : null;
 
         public EnemyConfig GetEnemy(EnemyType type) =>
             _enemyConfigs.TryGetValue(type, out EnemyConfig config) ? config : null;
@@ -42,8 +54,13 @@ namespace Assets.Sources.Services.StaticDataService
         public LevelConfig GetLevel(string key) =>
             _levelConfigs.TryGetValue(key, out LevelConfig config) ? config : null;
 
-        public WeaponConfig GetWeapon(BulletType type) =>
-            _weaponConfigs.TryGetValue(type, out WeaponConfig config) ? config : null;
+        private async UniTask<TConfig> LoadConfig<TConfig>()
+            where TConfig : class
+        {
+            TConfig[] configs = await GetConfigs<TConfig>();
+
+            return configs.FirstOrDefault();
+        }
 
         private async UniTask<Dictionary<TKey, TConfig>> LoadConfigs<TKey, TConfig>()
             where TConfig : class, IConfig<TKey> 

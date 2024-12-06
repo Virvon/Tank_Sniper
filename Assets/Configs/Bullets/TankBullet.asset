@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617d561f61e36554aa9cc93cc6d89f20, type: 3}
+  m_Name: TankBullet
+  m_EditorClassIdentifier: 
+  AssetReference:
+    m_AssetGUID: 54d6de79c8c9fcf4aa1e29f4a08760f5
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  ExplosionLifeTime: 1
+  ExplosionForce: 200
+  ExplosionRadius: 5
+  FlightSpeed: 150
+  LifeTimeLimit: 5
+  Type: 0

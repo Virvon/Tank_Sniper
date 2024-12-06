@@ -13,7 +13,7 @@ namespace Assets.Sources.Gameplay.Weapons
 
         protected override void SuperShoot()
         {
-            GameplayFactory.CreateCompositeBullet(BulletType.CompositeBullet, ShootPoint, BulletRotation);
+            //GameplayFactory.CreateCompositeBullet(BulletType.CompositeBullet, ShootPoint, BulletRotation);
         }
 
         private IEnumerator Shooter()
@@ -22,7 +22,7 @@ namespace Assets.Sources.Gameplay.Weapons
 
             for (int i = 0; i < 2; i++)
             {
-                GameplayFactory.CreateTankRocked(BulletType.TankRocket, ShootPoint, BulletRotation);
+                //GameplayFactory.CreateTankRocked(BulletType.TankRocket, ShootPoint, BulletRotation);
 
                 yield return duration;
             }

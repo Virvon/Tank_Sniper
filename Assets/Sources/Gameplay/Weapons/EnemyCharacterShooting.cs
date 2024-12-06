@@ -13,7 +13,6 @@ namespace Assets.Sources.Gameplay.Weapons
         private const int AngleDelta = 2;
         private const int RayCastDistance = 300;
 
-        [SerializeField] private BulletType _weaponType;
         [SerializeField] private Animator _animator;
         [SerializeField] private EnemyAnimation _enemyAnimation;
         [SerializeField] private Transform _shootPoint;
@@ -29,7 +28,7 @@ namespace Assets.Sources.Gameplay.Weapons
         {
             _playerTank = playerTank;
 
-            _weapon = new(staticDataService.GetWeapon(_weaponType), _animator, _enemyAnimation, _shootPoint, gameplayFactory, playerTank);
+            //_weapon = new(staticDataService.GetWeapon(_weaponType), _animator, _enemyAnimation, _shootPoint, gameplayFactory, playerTank);
             _isTurnedToPlayerTank = false;
 
             _playerTank.Attacked += OnPlayerTankAttacked;

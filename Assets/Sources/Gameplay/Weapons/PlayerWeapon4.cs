@@ -13,21 +13,21 @@ namespace Assets.Sources.Gameplay.Weapons
 
         protected override void Shoot()
         {
-            StartCoroutine(Shooter(BulletType.TankRocket, _bulletShootsCount, _bulletShootsDuration));
+            StartCoroutine(Shooter(_bulletShootsCount, _bulletShootsDuration));
         }
 
         protected override void SuperShoot()
         {
-            StartCoroutine(Shooter(BulletType.SuperTankRocket, _superBulletShootsCount, _supperBulletShootsDuration));
+            StartCoroutine(Shooter(_superBulletShootsCount, _supperBulletShootsDuration));
         }
 
-        private IEnumerator Shooter(BulletType bulletType, uint shootsCount, float shootsDuration)
+        private IEnumerator Shooter(uint shootsCount, float shootsDuration)
         {
             WaitForSeconds duration = new WaitForSeconds(shootsDuration);
 
             for(int i = 0; i < shootsCount; i++)
             {
-                GameplayFactory.CreateTankRocked(bulletType, ShootPoint, BulletRotation);
+                //GameplayFactory.CreateTankRocked(bulletType, ShootPoint, BulletRotation);
 
                 yield return duration;
             }

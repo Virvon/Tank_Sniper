@@ -1,4 +1,5 @@
-﻿using Assets.Sources.Infrastructure.Factories.GameplayFactory;
+﻿using Assets.Sources.Infrastructure.Factories.BulletFactory;
+using Assets.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.Sources.Infrastructure.Factories.UiFactory;
 using Zenject;
 
@@ -11,7 +12,11 @@ namespace Assets.Sources.Gameplay
             BindGameplayBootstrapper();
             BindUiFactory();
             BindGameplayFactory();
+            BindBulletFactory();
         }
+
+        private void BindBulletFactory() =>
+            BulletFactoryInstaller.Install(Container);
 
         private void BindGameplayFactory() =>
             GameplayFactoryInstaller.Install(Container);

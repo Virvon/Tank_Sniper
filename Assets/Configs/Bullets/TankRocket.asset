@@ -9,16 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abf65238707194f49a8c5ae5d42c0ef9, type: 3}
+  m_Script: {fileID: 11500000, guid: 617d561f61e36554aa9cc93cc6d89f20, type: 3}
   m_Name: TankRocket
   m_EditorClassIdentifier: 
-  Type: 3
   AssetReference:
-    m_AssetGUID: 54d6de79c8c9fcf4aa1e29f4a08760f5
+    m_AssetGUID: 3aec6ad423970b54a89ab606530765ef
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  ExplosionRadius: 5
-  FlightSpeed: 150
-  ExplosionLifeTime: 2
+  ExplosionLifeTime: 1
   ExplosionForce: 200
+  ExplosionRadius: 8
+  FlightSpeed: 150
+  LifeTimeLimit: 5
+  Type: 1

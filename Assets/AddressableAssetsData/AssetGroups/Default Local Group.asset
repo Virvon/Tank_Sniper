@@ -151,55 +151,25 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f0b9acab3fd65764d966a3f162dc9519
-    m_Address: TankRocketConfig
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Configs
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 54d6de79c8c9fcf4aa1e29f4a08760f5
-    m_Address: TankRocket
+    m_Address: TankBullet
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f63ea09f2f7ddc24fbe147d5d15151fa
-    m_Address: SuperTankRocket
+    m_Address: TankSuperBullet
     m_ReadOnly: 0
     m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 49c694d09bd001c4f942a661c298c810
-    m_Address: SuperTankRocketConfig
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Configs
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3aec6ad423970b54a89ab606530765ef
-    m_Address: TankRocket2
+    m_Address: TankRocket
     m_ReadOnly: 0
     m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a2cd836291b4f2446bc74ea6e5c5224c
-    m_Address: Assets/Configs/Bullets/TankRocket2.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Configs
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c5597ac86a998fb46a76f3f1317325ec
     m_Address: Laser
     m_ReadOnly: 0
     m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c0fc0f24267a5ba42b836f57703ad580
-    m_Address: LaserConfig
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Configs
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c774d5800f18c2247bc9dcb46185c13c
-    m_Address: HomingLaserConfig
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Configs
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 51416fe2087c8824fbb28281357e929e
     m_Address: HomingBullet
@@ -216,18 +186,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 00999e8cf81d2c34fa3a4a8ce9212326
-    m_Address: Laser2Config
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Configs
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 00c13a9ecd32e6a49941dc6c2739dbff
-    m_Address: TransmittingLaserConfig
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Configs
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f34555094aac6664984f35dc827b7f9d
     m_Address: CompositeBullet
     m_ReadOnly: 0
@@ -238,14 +196,20 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2f7fdfd283615fb4db821e5db2c479c4
-    m_Address: BombConfig
+  - m_GUID: 5ca8be7886d77154a833c6e43fc76f62
+    m_Address: TankBulletConfig
     m_ReadOnly: 0
     m_SerializedLabels:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: bbef698017380564b80018236b6326db
-    m_Address: CompositeBulletConfig
+  - m_GUID: cd0d3bc488c0f5345bc2053e04ab27b3
+    m_Address: TankSuperBullet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c1352cf0c9da6f24383b8b4acb38eabb
+    m_Address: TankRocketConfig
     m_ReadOnly: 0
     m_SerializedLabels:
     - Configs
