@@ -18,6 +18,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public float RotationSpeed;
         public float TargetingDelay;
         public int TargetsCount;
+        public uint PartsCount;
 
         public BulletType Key => Type;
 

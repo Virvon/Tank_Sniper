@@ -25,8 +25,10 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         private readonly HomingBullet.Factory _homingBulletFactory;
         private readonly TransmittingLaser.Factory _transmittingLaserFactory;
         private readonly Laser2.Factory _laser2Factory;
+        private readonly Bomb.Factory _bombFactory;
+        private readonly CompositeBullet.Factory _compositeBulletFactory;
 
-        public GameplayFactory(IStaticDataService staticDataService, DiContainer container, PlayerTank.Factory playerTankFactory, GameplayCamera.Factory gameplayCameraFactory, Enemy.Factory enemyFactory, Car.Factory carFactory, TankRocket.Factory tankRocketFactory, Laser.Factory laserFactory, HomingBullet.Factory homingBulletFactory, TransmittingLaser.Factory transmittingLaserFactory, Laser2.Factory laser2Factory)
+        public GameplayFactory(IStaticDataService staticDataService, DiContainer container, PlayerTank.Factory playerTankFactory, GameplayCamera.Factory gameplayCameraFactory, Enemy.Factory enemyFactory, Car.Factory carFactory, TankRocket.Factory tankRocketFactory, Laser.Factory laserFactory, HomingBullet.Factory homingBulletFactory, TransmittingLaser.Factory transmittingLaserFactory, Laser2.Factory laser2Factory, Bomb.Factory bombFactory, CompositeBullet.Factory compositeBulletFactory)
         {
             _staticDataService = staticDataService;
             _container = container;
@@ -40,6 +42,24 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             _homingBulletFactory = homingBulletFactory;
             _transmittingLaserFactory = transmittingLaserFactory;
             _laser2Factory = laser2Factory;
+            _bombFactory = bombFactory;
+            _compositeBulletFactory = compositeBulletFactory;
+        }
+
+        public async UniTask CreateCompositeBullet(BulletType type, Vector3 position, Quaternion rotation)
+        {
+            BulletConfig bulletConfig = _staticDataService.GetBullet(type);
+            CompositeBullet compsiteBullet = await _compositeBulletFactory.Create(bulletConfig.AssetReference, position, rotation);
+
+            compsiteBullet.Initialize(bulletConfig.ExplosionLifeTime, bulletConfig.ExplosionForce, bulletConfig.ExplosionRadius, bulletConfig.PartsCount, bulletConfig.FlightSpeed);
+        }
+
+        public async UniTask CreateBomb(BulletType type, Vector3 position, Quaternion rotation)
+        {
+            BulletConfig bulletConfig = _staticDataService.GetBullet(type);
+            Bomb bomb = await _bombFactory.Create(bulletConfig.AssetReference, position, rotation);
+
+            bomb.Initialize(bulletConfig.ExplosionLifeTime, bulletConfig.ExplosionForce, bulletConfig.ExplosionRadius, bulletConfig.ProjectileLifeTime, bulletConfig.FlightSpeed);
         }
 
         public async UniTask CreteLaser2(BulletType type, Vector3 position, Vector3 targetPosition)

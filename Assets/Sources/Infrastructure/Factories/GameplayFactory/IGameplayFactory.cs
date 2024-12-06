@@ -8,8 +8,10 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
 {
     public interface IGameplayFactory
     {
+        UniTask CreateBomb(BulletType type, Vector3 position, Quaternion rotation);
         UniTask CreateBullet(BulletType type, Vector3 position, Quaternion rotation);
         UniTask CreateCamera();
+        UniTask CreateCompositeBullet(BulletType type, Vector3 position, Quaternion rotation);
         UniTask<Enemy> CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation);
         UniTask<HomingBullet> CreateHomingBullet(BulletType type, Vector3 position, Quaternion rotation);
         UniTask<Laser> CreateLaser(BulletType type, Vector3 position, Quaternion rotation);

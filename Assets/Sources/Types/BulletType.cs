@@ -12,5 +12,7 @@ namespace Assets.Sources.Types
         HomingLaser,
         TransmittingLaser,
         Laser2,
+        CompositeBullet,
+        Bomb,
     }
 }
