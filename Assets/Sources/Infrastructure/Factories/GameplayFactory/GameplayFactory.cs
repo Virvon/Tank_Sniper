@@ -23,8 +23,10 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         private readonly TankRocket.Factory _tankRocketFactory;
         private readonly Laser.Factory _laserFactory;
         private readonly HomingBullet.Factory _homingBulletFactory;
+        private readonly TransmittingLaser.Factory _transmittingLaserFactory;
+        private readonly Laser2.Factory _laser2Factory;
 
-        public GameplayFactory(IStaticDataService staticDataService, DiContainer container, PlayerTank.Factory playerTankFactory, GameplayCamera.Factory gameplayCameraFactory, Enemy.Factory enemyFactory, Car.Factory carFactory, TankRocket.Factory tankRocketFactory, Laser.Factory laserFactory, HomingBullet.Factory homingBulletFactory)
+        public GameplayFactory(IStaticDataService staticDataService, DiContainer container, PlayerTank.Factory playerTankFactory, GameplayCamera.Factory gameplayCameraFactory, Enemy.Factory enemyFactory, Car.Factory carFactory, TankRocket.Factory tankRocketFactory, Laser.Factory laserFactory, HomingBullet.Factory homingBulletFactory, TransmittingLaser.Factory transmittingLaserFactory, Laser2.Factory laser2Factory)
         {
             _staticDataService = staticDataService;
             _container = container;
@@ -36,6 +38,24 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             _tankRocketFactory = tankRocketFactory;
             _laserFactory = laserFactory;
             _homingBulletFactory = homingBulletFactory;
+            _transmittingLaserFactory = transmittingLaserFactory;
+            _laser2Factory = laser2Factory;
+        }
+
+        public async UniTask CreteLaser2(BulletType type, Vector3 position, Vector3 targetPosition)
+        {
+            BulletConfig bulletConfig = _staticDataService.GetBullet(type);
+            Laser2 laser = await _laser2Factory.Create(bulletConfig.AssetReference, position);
+
+            laser.Initialize(targetPosition, bulletConfig.ProjectileLifeTime, bulletConfig.ExplosionLifeTime, bulletConfig.ExplosionRadius, bulletConfig.ExplosionForce);
+        }
+
+        public async UniTask CreateTransmittingLaser(BulletType type, Vector3 position, Quaternion rotation)
+        {
+            BulletConfig bulletConfig = _staticDataService.GetBullet(type);
+            TransmittingLaser transmittingLaser = await _transmittingLaserFactory.Create(bulletConfig.AssetReference, position, rotation);
+
+            transmittingLaser.Initialize(bulletConfig.ExplosionLifeTime, bulletConfig.ExplosionRadius, bulletConfig.ExplosionForce, bulletConfig.ProjectileLifeTime, bulletConfig.TargetsCount);
         }
 
         public async UniTask<HomingBullet> CreateHomingBullet(BulletType type, Vector3 position, Quaternion rotation)

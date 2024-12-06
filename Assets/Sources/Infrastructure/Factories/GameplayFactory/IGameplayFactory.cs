@@ -15,5 +15,7 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         UniTask<Laser> CreateLaser(BulletType type, Vector3 position, Quaternion rotation);
         UniTask CreatePlayerTank();
         UniTask<TankRocket> CreateTankRocked(BulletType type, Vector3 position, Quaternion rotation);
+        UniTask CreateTransmittingLaser(BulletType type, Vector3 position, Quaternion rotation);
+        UniTask CreteLaser2(BulletType type, Vector3 position, Vector3 targetPosition);
     }
 }

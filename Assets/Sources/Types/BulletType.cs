@@ -10,5 +10,7 @@ namespace Assets.Sources.Types
         TankRocket2,
         Laser,
         HomingLaser,
+        TransmittingLaser,
+        Laser2,
     }
 }

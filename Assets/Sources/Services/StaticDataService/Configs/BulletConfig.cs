@@ -17,6 +17,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public float SearchRadius;
         public float RotationSpeed;
         public float TargetingDelay;
+        public int TargetsCount;
 
         public BulletType Key => Type;
 

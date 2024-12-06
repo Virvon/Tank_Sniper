@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abf65238707194f49a8c5ae5d42c0ef9, type: 3}
-  m_Name: HomingLaser
+  m_Name: TransmittingLaser
   m_EditorClassIdentifier: 
-  Type: 7
+  Type: 8
   AssetReference:
-    m_AssetGUID: 51416fe2087c8824fbb28281357e929e
+    m_AssetGUID: 6f1ce352ec51e9041b7690420c37ae36
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   ExplosionRadius: 5
-  FlightSpeed: 75
+  FlightSpeed: 0
   ExplosionLifeTime: 2
   ExplosionForce: 200
-  ProjectileLifeTime: 0
-  SearchRadius: 280
-  RotationSpeed: 360
-  TargetingDelay: 0.1
+  ProjectileLifeTime: 0.2
+  SearchRadius: 0
+  RotationSpeed: 0
+  TargetingDelay: 0
+  TargetsCount: 3
