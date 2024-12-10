@@ -1,43 +1,47 @@
-﻿using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
-using Assets.Sources.UI;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
+using System;
 using System.Linq;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Assets.Sources.MainMenu
 {
     public class Desk : MonoBehaviour
     {
         [SerializeField] private DeskCell[] _cells;
-        [SerializeField] private float _tankScale;
-        [SerializeField] private Quaternion _tankRotation;
 
-        private MainMenuWindow _mainMenuWindow;
-        private IMainMenuFactory _mainMenuFactory;
+        public event Action<bool> EmploymentChanged;
 
-        [Inject]
-        private void Construct(MainMenuWindow mainMenuWindow, IMainMenuFactory mainMenuFactory)
+        private void Start()
         {
-            _mainMenuWindow = mainMenuWindow;
-            _mainMenuFactory = mainMenuFactory;
+            OnDeskCellEmploymentChanged();
 
-            _mainMenuWindow.BuyTankButtonClicked += OnBuyTankButtonClicked;
+            foreach (DeskCell deskCell in _cells)
+                deskCell.EmploymentChanged += OnDeskCellEmploymentChanged;
         }
 
-        private void OnDestroy() =>
-            _mainMenuWindow.BuyTankButtonClicked -= OnBuyTankButtonClicked;
+        private void OnDestroy()
+        {
+            foreach (DeskCell deskCell in _cells)
+                deskCell.EmploymentChanged -= OnDeskCellEmploymentChanged;
+        }
 
-        private async void OnBuyTankButtonClicked()
+        public async UniTask CreateTank()
         {
             DeskCell[] emptyCells = _cells.Where(cell => cell.IsEmpty).ToArray();
 
             DeskCell cell = emptyCells[Random.Range(0, emptyCells.Length)];
 
-            Tank tank = await _mainMenuFactory.CreateTank(Vector3.zero, _tankRotation, transform);
-            tank.transform.localScale = Vector3.one * _tankScale;
+            await cell.CreateTank(1);
+        }
 
-            cell.PutTank(tank);
+        private void OnDeskCellEmploymentChanged()
+        {
+            Debug.Log(_cells != null);
+            Debug.Log(_cells.Length);
+
+            EmploymentChanged?.Invoke(_cells.Any(cell => cell.IsEmpty));
         }
 
         public class Factory : PlaceholderFactory<string, UniTask<Desk>>

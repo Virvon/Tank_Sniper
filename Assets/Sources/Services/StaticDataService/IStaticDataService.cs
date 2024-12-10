@@ -17,5 +17,6 @@ namespace Assets.Sources.Services.StaticDataService
         UniTask InitializeAsync();
         ForwardFlyingBulletConfig GetBullet(ForwardFlyingBulletType type);
         HomingBulletConfig GetBullet(HomingBulletType type);
+        TankConfig GetTank(uint level);
     }
 }

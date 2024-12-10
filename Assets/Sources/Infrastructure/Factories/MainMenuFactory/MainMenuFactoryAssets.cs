@@ -2,7 +2,6 @@
 {
     public class MainMenuFactoryAssets
     {
-        public const string Tank = "MainMenuTank";
         public const string Desk = "Desk";
     }
 

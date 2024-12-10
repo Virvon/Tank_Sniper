@@ -18,6 +18,7 @@ namespace Assets.Sources.Services.StaticDataService
         private Dictionary<EnemyType, EnemyConfig> _enemyConfigs;
         private Dictionary<ForwardFlyingBulletType, ForwardFlyingBulletConfig> _forwardFlyingBulletConfigs;
         private Dictionary<HomingBulletType, HomingBulletConfig> _homingBulletConfigs;
+        private Dictionary<uint, TankConfig> _tankConfigs;
 
         public StaticDataService(IAssetProvider assetsProvider) =>
             _assetsProvider = assetsProvider;
@@ -37,10 +38,14 @@ namespace Assets.Sources.Services.StaticDataService
                 UniTask.Create(async () => DiretionalLaserConfig = await LoadConfig<LaserConfig>()),
                 UniTask.Create(async () => TargetingLaserConfig = await LoadConfig<TargetingLaserConfig>()),
                 UniTask.Create(async () => TransmittedLaserConfig = await LoadConfig<TransmittingLaserConfig>()),
+                UniTask.Create(async () => _tankConfigs = await LoadConfigs<uint, TankConfig>()),
             };
 
             await UniTask.WhenAll(tasks);
         }
+
+        public TankConfig GetTank(uint level) =>
+            _tankConfigs.TryGetValue(level, out TankConfig config) ? config : null;
 
         public HomingBulletConfig GetBullet(HomingBulletType type) =>
             _homingBulletConfigs.TryGetValue(type, out HomingBulletConfig config) ? config : null;

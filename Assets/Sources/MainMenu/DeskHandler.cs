@@ -12,9 +12,10 @@ namespace Assets.Sources.MainMenu
         private readonly IInputService _inputService;
         private readonly Camera _camera;
 
-        private DeskCell _lastCell;
+        private DeskCell _currentTankParentCell;
         private Tank _tank;
         private Vector2 _lastHandlePosition;
+        private DeskCell _lastMarkedCell;
 
         public DeskHandler(IInputService inputService, Camera camera)
         {
@@ -39,7 +40,7 @@ namespace Assets.Sources.MainMenu
             if(CheckDeskCellIntersection(handlePosition, out DeskCell deskCell))
             {
                 _tank = deskCell.GetTank();
-                _lastCell = deskCell;
+                _currentTankParentCell = deskCell;
             }
         }
 
@@ -57,19 +58,52 @@ namespace Assets.Sources.MainMenu
                     _tank.transform.position = new Vector3(worldPosition.x, ReplacedTankBuildingHeight, worldPosition.z);
                 }
 
+                if(CheckDeskCellIntersection(handlePosition, out DeskCell deskCell))
+                {
+                    if(deskCell != _lastMarkedCell)
+                    {
+                        _lastMarkedCell?.HideMark();
+                        _lastMarkedCell = deskCell;
+                        _lastMarkedCell.Mark(_tank.Level);
+                    }
+                }
+                else if(_lastMarkedCell != null)
+                {
+                    _lastMarkedCell.HideMark();
+                    _lastMarkedCell = null;
+                }
+
                 _lastHandlePosition = handlePosition;
             }
         }
 
-        private void OnHandleMoveCompleted()
+        private async void OnHandleMoveCompleted()
         {
             if (_tank == null)
                 return;
 
-            if (CheckDeskCellIntersection(_lastHandlePosition, out DeskCell deskCell))
-                deskCell.PutTank(_tank);
+            if (CheckDeskCellIntersection(_lastHandlePosition, out DeskCell deskCell) && deskCell.CanPlace(_tank.Level))
+            {
+                if(deskCell.IsEmpty)
+                {
+                    deskCell.PlaceTank(_tank);
+                }
+                else
+                {
+                    _tank.Destroy();
+                    await deskCell.UpgradeTank();
+                }
+            }
             else
-                _lastCell.PutTank(_tank);
+            {
+                _currentTankParentCell.PlaceTank(_tank);
+            }
+
+            if(_lastMarkedCell != null)
+            {
+                _lastMarkedCell.HideMark();
+                _lastMarkedCell = null;
+            }
 
             _tank = null;
         }

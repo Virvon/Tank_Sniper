@@ -7,6 +7,6 @@ namespace Assets.Sources.Infrastructure.Factories.MainMenuFactory
     public interface IMainMenuFactory
     {
         UniTask CreateDesk();
-        UniTask<Tank> CreateTank(Vector3 position, Quaternion rotation, Transform parent);
+        UniTask<Tank> CreateTank(uint tankLevel, Quaternion rotation);
     }
 }

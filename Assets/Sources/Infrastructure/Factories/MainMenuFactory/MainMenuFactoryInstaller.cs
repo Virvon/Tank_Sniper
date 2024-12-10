@@ -2,6 +2,7 @@
 using Assets.Sources.Services.AssetManagement;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace Assets.Sources.Infrastructure.Factories.MainMenuFactory
@@ -13,8 +14,8 @@ namespace Assets.Sources.Infrastructure.Factories.MainMenuFactory
             Container.BindInterfacesTo<MainMenuFactory>().AsSingle();
 
             Container
-                .BindFactory<string, Vector3, Quaternion, Transform, UniTask<Tank>, Tank.Factory>()
-                .FromFactory<KeyPrefabFactoryAsync<Tank>>();
+                .BindFactory<AssetReferenceGameObject, Quaternion, UniTask<Tank>, Tank.Factory>()
+                .FromFactory<ReferencePrefabFactoryAsync<Tank>>();
             
             Container
                 .BindFactory<string, UniTask<Desk>, Desk.Factory>()

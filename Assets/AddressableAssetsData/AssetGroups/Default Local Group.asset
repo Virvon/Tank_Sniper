@@ -219,8 +219,36 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 40f3c24d6f165814f93f06e55cf74e6b
+    m_Address: RangerConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9c7d14db3d1874f4bb9d2a130ca53161
+    m_Address: ArcherConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 109e01f8d5476de40a54069ee4cefdbe
+    m_Address: CrusherConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7003a0c28ed131a478b0f72c7c26bd39
-    m_Address: MainMenuTank
+    m_Address: Ranger
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 64bdfd1708b53a541a21ebad7aca690e
+    m_Address: Crusher
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 69015384c6a9b1e4db636bb8e7a5d2ba
+    m_Address: Archer
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
