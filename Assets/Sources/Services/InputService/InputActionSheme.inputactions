@@ -2,7 +2,7 @@
     "name": "InputActionSheme",
     "maps": [
         {
-            "name": "PlayerInput",
+            "name": "GameplayInput",
             "id": "054dcbaf-f8a7-4768-a885-f030c7a45fbc",
             "actions": [
                 {
@@ -46,6 +46,89 @@
                     "action": "Shooting",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "MainMenuInput",
+            "id": "ccc8b13e-a32a-4e33-999e-dbdaac51b6ba",
+            "actions": [
+                {
+                    "name": "HandleMove",
+                    "type": "Value",
+                    "id": "f503de89-ab1e-4aca-8b69-f70eca07200d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "One Modifier",
+                    "id": "1de50bb9-b6fb-4fc1-94b3-e6f671da8877",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HandleMove",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "a83b55af-d5a5-41e1-98b2-ecb47e4c930a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HandleMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Binding",
+                    "id": "65694cb1-8576-44eb-b90f-c5a84fa5198d",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HandleMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "473c2751-68a7-409f-ada3-75c9f3ae92d6",
+                    "path": "OneModifier",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HandleMove",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "bb4f99bf-c7cc-4501-9450-af21b1ed5da3",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HandleMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "da398dc4-2085-42e9-96f1-9004a44e104a",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HandleMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

@@ -7,5 +7,8 @@ namespace Assets.Sources.Services.InputService
     {
         public event Action<Vector2> SightShifted;
         event Action Shooted;
+        event Action<Vector2> HandlePressed;
+        event Action<Vector2> HandleMoved;
+        event Action HandleMoveCompleted;
     }
 }

@@ -9,7 +9,8 @@ namespace Assets.Sources.Services.AssetManagement
         IFactory<string, Vector3, Transform, UniTask<TComponent>>,
         IFactory<string, Transform, UniTask<TComponent>>,
         IFactory<string, Vector3, UniTask<TComponent>>,
-        IFactory<string, Vector3, Quaternion, UniTask<TComponent>>
+        IFactory<string, Vector3, Quaternion, UniTask<TComponent>>,
+        IFactory<string, Vector3, Quaternion, Transform, UniTask<TComponent>>
     {
         private readonly IAssetProvider _assetProvider;
         private readonly IInstantiator _instantiator;
@@ -57,6 +58,14 @@ namespace Assets.Sources.Services.AssetManagement
         {
             GameObject prefab = await _assetProvider.Load<GameObject>(assetKey);
             GameObject newObject = _instantiator.InstantiatePrefab(prefab, position, rotation, null);
+
+            return newObject.GetComponent<TComponent>();
+        }
+
+        public async UniTask<TComponent> Create(string assetKey, Vector3 position, Quaternion rotation, Transform parent)
+        {
+            GameObject prefab = await _assetProvider.Load<GameObject>(assetKey);
+            GameObject newObject = _instantiator.InstantiatePrefab(prefab, position, rotation, parent);
 
             return newObject.GetComponent<TComponent>();
         }

@@ -1,9 +1,11 @@
-﻿using Assets.Sources.Infrastructure.Factories.UiFactory;
+﻿using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
+using Assets.Sources.Infrastructure.Factories.UiFactory;
 using Assets.Sources.Infrastructure.GameStateMachine;
 using Assets.Sources.Infrastructure.GameStateMachine.States;
 using Assets.Sources.UI;
 using Cysharp.Threading.Tasks;
 using System;
+using UnityEngine;
 using Zenject;
 
 namespace Assets.Sources.MainMenu
@@ -12,13 +14,15 @@ namespace Assets.Sources.MainMenu
     {
         private readonly IUiFactory _uiFactory;
         private readonly GameStateMachine _gameStateMachine;
+        private readonly IMainMenuFactory _mainMenuFactory;
 
         private MainMenuWindow _mainMenuWindow;
 
-        public MainMenuBootstrapper(IUiFactory uiFactory, GameStateMachine gameStateMachine)
+        public MainMenuBootstrapper(IUiFactory uiFactory, GameStateMachine gameStateMachine, IMainMenuFactory mainMenuFactory)
         {
             _uiFactory = uiFactory;
             _gameStateMachine = gameStateMachine;
+            _mainMenuFactory = mainMenuFactory;
         }
 
         public void Dispose() =>
@@ -27,6 +31,7 @@ namespace Assets.Sources.MainMenu
         public async void Initialize()
         {
             _mainMenuWindow = await _uiFactory.CreateMainMenu();
+            await _mainMenuFactory.CreateDesk();
 
             _mainMenuWindow.FightButtonClicked += OnFightButtonClicked;
         }

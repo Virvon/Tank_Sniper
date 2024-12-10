@@ -24,7 +24,7 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
     ""name"": ""InputActionSheme"",
     ""maps"": [
         {
-            ""name"": ""PlayerInput"",
+            ""name"": ""GameplayInput"",
             ""id"": ""054dcbaf-f8a7-4768-a885-f030c7a45fbc"",
             ""actions"": [
                 {
@@ -70,14 +70,100 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MainMenuInput"",
+            ""id"": ""ccc8b13e-a32a-4e33-999e-dbdaac51b6ba"",
+            ""actions"": [
+                {
+                    ""name"": ""HandleMove"",
+                    ""type"": ""Value"",
+                    ""id"": ""f503de89-ab1e-4aca-8b69-f70eca07200d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""1de50bb9-b6fb-4fc1-94b3-e6f671da8877"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HandleMove"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""a83b55af-d5a5-41e1-98b2-ecb47e4c930a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HandleMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Binding"",
+                    ""id"": ""65694cb1-8576-44eb-b90f-c5a84fa5198d"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HandleMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""473c2751-68a7-409f-ada3-75c9f3ae92d6"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HandleMove"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""bb4f99bf-c7cc-4501-9450-af21b1ed5da3"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HandleMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""da398dc4-2085-42e9-96f1-9004a44e104a"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HandleMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // PlayerInput
-        m_PlayerInput = asset.FindActionMap("PlayerInput", throwIfNotFound: true);
-        m_PlayerInput_Aiming = m_PlayerInput.FindAction("Aiming", throwIfNotFound: true);
-        m_PlayerInput_Shooting = m_PlayerInput.FindAction("Shooting", throwIfNotFound: true);
+        // GameplayInput
+        m_GameplayInput = asset.FindActionMap("GameplayInput", throwIfNotFound: true);
+        m_GameplayInput_Aiming = m_GameplayInput.FindAction("Aiming", throwIfNotFound: true);
+        m_GameplayInput_Shooting = m_GameplayInput.FindAction("Shooting", throwIfNotFound: true);
+        // MainMenuInput
+        m_MainMenuInput = asset.FindActionMap("MainMenuInput", throwIfNotFound: true);
+        m_MainMenuInput_HandleMove = m_MainMenuInput.FindAction("HandleMove", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -136,26 +222,26 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // PlayerInput
-    private readonly InputActionMap m_PlayerInput;
-    private List<IPlayerInputActions> m_PlayerInputActionsCallbackInterfaces = new List<IPlayerInputActions>();
-    private readonly InputAction m_PlayerInput_Aiming;
-    private readonly InputAction m_PlayerInput_Shooting;
-    public struct PlayerInputActions
+    // GameplayInput
+    private readonly InputActionMap m_GameplayInput;
+    private List<IGameplayInputActions> m_GameplayInputActionsCallbackInterfaces = new List<IGameplayInputActions>();
+    private readonly InputAction m_GameplayInput_Aiming;
+    private readonly InputAction m_GameplayInput_Shooting;
+    public struct GameplayInputActions
     {
         private @InputActionSheme m_Wrapper;
-        public PlayerInputActions(@InputActionSheme wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Aiming => m_Wrapper.m_PlayerInput_Aiming;
-        public InputAction @Shooting => m_Wrapper.m_PlayerInput_Shooting;
-        public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
+        public GameplayInputActions(@InputActionSheme wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Aiming => m_Wrapper.m_GameplayInput_Aiming;
+        public InputAction @Shooting => m_Wrapper.m_GameplayInput_Shooting;
+        public InputActionMap Get() { return m_Wrapper.m_GameplayInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerInputActions set) { return set.Get(); }
-        public void AddCallbacks(IPlayerInputActions instance)
+        public static implicit operator InputActionMap(GameplayInputActions set) { return set.Get(); }
+        public void AddCallbacks(IGameplayInputActions instance)
         {
-            if (instance == null || m_Wrapper.m_PlayerInputActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerInputActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_GameplayInputActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GameplayInputActionsCallbackInterfaces.Add(instance);
             @Aiming.started += instance.OnAiming;
             @Aiming.performed += instance.OnAiming;
             @Aiming.canceled += instance.OnAiming;
@@ -164,7 +250,7 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
             @Shooting.canceled += instance.OnShooting;
         }
 
-        private void UnregisterCallbacks(IPlayerInputActions instance)
+        private void UnregisterCallbacks(IGameplayInputActions instance)
         {
             @Aiming.started -= instance.OnAiming;
             @Aiming.performed -= instance.OnAiming;
@@ -174,24 +260,74 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
             @Shooting.canceled -= instance.OnShooting;
         }
 
-        public void RemoveCallbacks(IPlayerInputActions instance)
+        public void RemoveCallbacks(IGameplayInputActions instance)
         {
-            if (m_Wrapper.m_PlayerInputActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_GameplayInputActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IPlayerInputActions instance)
+        public void SetCallbacks(IGameplayInputActions instance)
         {
-            foreach (var item in m_Wrapper.m_PlayerInputActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_GameplayInputActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerInputActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_GameplayInputActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public PlayerInputActions @PlayerInput => new PlayerInputActions(this);
-    public interface IPlayerInputActions
+    public GameplayInputActions @GameplayInput => new GameplayInputActions(this);
+
+    // MainMenuInput
+    private readonly InputActionMap m_MainMenuInput;
+    private List<IMainMenuInputActions> m_MainMenuInputActionsCallbackInterfaces = new List<IMainMenuInputActions>();
+    private readonly InputAction m_MainMenuInput_HandleMove;
+    public struct MainMenuInputActions
+    {
+        private @InputActionSheme m_Wrapper;
+        public MainMenuInputActions(@InputActionSheme wrapper) { m_Wrapper = wrapper; }
+        public InputAction @HandleMove => m_Wrapper.m_MainMenuInput_HandleMove;
+        public InputActionMap Get() { return m_Wrapper.m_MainMenuInput; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MainMenuInputActions set) { return set.Get(); }
+        public void AddCallbacks(IMainMenuInputActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MainMenuInputActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MainMenuInputActionsCallbackInterfaces.Add(instance);
+            @HandleMove.started += instance.OnHandleMove;
+            @HandleMove.performed += instance.OnHandleMove;
+            @HandleMove.canceled += instance.OnHandleMove;
+        }
+
+        private void UnregisterCallbacks(IMainMenuInputActions instance)
+        {
+            @HandleMove.started -= instance.OnHandleMove;
+            @HandleMove.performed -= instance.OnHandleMove;
+            @HandleMove.canceled -= instance.OnHandleMove;
+        }
+
+        public void RemoveCallbacks(IMainMenuInputActions instance)
+        {
+            if (m_Wrapper.m_MainMenuInputActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMainMenuInputActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MainMenuInputActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MainMenuInputActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MainMenuInputActions @MainMenuInput => new MainMenuInputActions(this);
+    public interface IGameplayInputActions
     {
         void OnAiming(InputAction.CallbackContext context);
         void OnShooting(InputAction.CallbackContext context);
+    }
+    public interface IMainMenuInputActions
+    {
+        void OnHandleMove(InputAction.CallbackContext context);
     }
 }
