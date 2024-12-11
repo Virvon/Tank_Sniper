@@ -26,6 +26,7 @@ namespace Assets.Sources.Services.StaticDataService
         public LaserConfig DiretionalLaserConfig { get; private set; }
         public TargetingLaserConfig TargetingLaserConfig { get; private set; }
         public TransmittingLaserConfig TransmittedLaserConfig { get; private set; }
+        public TankConfig[] TankConfigs => _tankConfigs.Values.ToArray();
 
         public async UniTask InitializeAsync()
         {

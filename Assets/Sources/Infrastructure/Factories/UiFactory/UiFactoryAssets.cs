@@ -4,5 +4,6 @@
     {
         public const string Window = "Window";
         public const string MainMenuWindow = "MainMenuWindow";
+        public const string TankPanel = "TankPanel";
     }
 }

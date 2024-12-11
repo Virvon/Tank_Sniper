@@ -4,12 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Assets.Sources.UI
+namespace Assets.Sources.UI.MainMenu
 {
     public class MainMenuWindow : Window
     {
         [SerializeField] private Button _fightButton;
         [SerializeField] private Button _buyTankButton;
+        [SerializeField] private Button _openStoreButton;
+        [SerializeField] private Button _closeStoreButton;
+
+        [SerializeField] private CanvasGroup _mainCanvasGroup;
+        [SerializeField] private CanvasGroup _storeCanvasGroup;
 
         private Desk _desk;
 
@@ -23,6 +28,8 @@ namespace Assets.Sources.UI
             _desk.EmploymentChanged += OnDeskEmploymentChanged;
             _fightButton.onClick.AddListener(OnFightButtonClicked);
             _buyTankButton.onClick.AddListener(OnBuyTankButtonClicked);
+            _openStoreButton.onClick.AddListener(OnOpenStoreButtonClicked);
+            _closeStoreButton.onClick.AddListener(OnCloseStoreButtonClicked);
         }
 
         private void OnDestroy()
@@ -30,6 +37,8 @@ namespace Assets.Sources.UI
             _desk.EmploymentChanged -= OnDeskEmploymentChanged;
             _fightButton.onClick.RemoveListener(OnFightButtonClicked);
             _buyTankButton.onClick.RemoveListener(OnBuyTankButtonClicked);
+            _openStoreButton.onClick.RemoveListener(OnOpenStoreButtonClicked);
+            _closeStoreButton.onClick.RemoveListener(OnCloseStoreButtonClicked);
         }
 
         private void OnDeskEmploymentChanged(bool hasEmptyCells) =>
@@ -40,5 +49,24 @@ namespace Assets.Sources.UI
 
         private async void OnBuyTankButtonClicked() =>
             await _desk.CreateTank();
+
+        private void OnCloseStoreButtonClicked()
+        {
+            SetCanvasGroupActive(_mainCanvasGroup, true);
+            SetCanvasGroupActive(_storeCanvasGroup, false);
+        }
+
+        private void OnOpenStoreButtonClicked()
+        {
+            SetCanvasGroupActive(_mainCanvasGroup, false);
+            SetCanvasGroupActive(_storeCanvasGroup, true);
+        }
+
+        private void SetCanvasGroupActive(CanvasGroup canvasGroup, bool isActive)
+        {
+            canvasGroup.alpha = isActive ? 1 : 0;
+            canvasGroup.interactable = isActive;
+            canvasGroup.blocksRaycasts = isActive;
+        }
     }
 }

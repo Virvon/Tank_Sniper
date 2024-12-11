@@ -36,13 +36,8 @@ namespace Assets.Sources.MainMenu
             await cell.CreateTank(1);
         }
 
-        private void OnDeskCellEmploymentChanged()
-        {
-            Debug.Log(_cells != null);
-            Debug.Log(_cells.Length);
-
+        private void OnDeskCellEmploymentChanged() =>
             EmploymentChanged?.Invoke(_cells.Any(cell => cell.IsEmpty));
-        }
 
         public class Factory : PlaceholderFactory<string, UniTask<Desk>>
         {

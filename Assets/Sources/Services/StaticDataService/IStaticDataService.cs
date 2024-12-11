@@ -12,6 +12,8 @@ namespace Assets.Sources.Services.StaticDataService
         LaserConfig DiretionalLaserConfig { get; }
         TargetingLaserConfig TargetingLaserConfig { get; }
         TransmittingLaserConfig TransmittedLaserConfig { get; }
+        TankConfig[] TankConfigs { get; }
+
         EnemyConfig GetEnemy(EnemyType type);
         LevelConfig GetLevel(string key);
         UniTask InitializeAsync();
