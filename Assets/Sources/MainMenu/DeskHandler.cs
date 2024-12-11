@@ -10,14 +10,14 @@ namespace Assets.Sources.MainMenu
         private const float ReplacedTankBuildingHeight = 2;
 
         private readonly IInputService _inputService;
-        private readonly Camera _camera;
+        private readonly MainMenuCamera _camera;
 
         private DeskCell _currentTankParentCell;
         private Tank _tank;
         private Vector2 _lastHandlePosition;
         private DeskCell _lastMarkedCell;
 
-        public DeskHandler(IInputService inputService, Camera camera)
+        public DeskHandler(IInputService inputService, MainMenuCamera camera)
         {
             _inputService = inputService;
 
@@ -119,6 +119,6 @@ namespace Assets.Sources.MainMenu
         }
 
         private Ray GetRay(Vector2 handlePosition) =>
-            _camera.ScreenPointToRay(new Vector3(handlePosition.x, handlePosition.y, 1));
+            _camera.MainCamera.ScreenPointToRay(new Vector3(handlePosition.x, handlePosition.y, 1));
     }
 }

@@ -16,14 +16,20 @@ namespace Assets.Sources.UI.MainMenu
         [SerializeField] private CanvasGroup _mainCanvasGroup;
         [SerializeField] private CanvasGroup _storeCanvasGroup;
 
+        [SerializeField] private Canvas _canvas;
+
+        [SerializeField] private UiSelectedTankPoint _selectedTankPoint;
+
         private Desk _desk;
 
         public event Action FightButtonClicked;
 
         [Inject]
-        public void Construct(Desk desk)
+        public void Construct(Desk desk, MainMenuCamera mainMenuCamera)
         {
             _desk = desk;
+
+            _canvas.worldCamera = mainMenuCamera.UiCamera;
 
             _desk.EmploymentChanged += OnDeskEmploymentChanged;
             _fightButton.onClick.AddListener(OnFightButtonClicked);
@@ -54,12 +60,16 @@ namespace Assets.Sources.UI.MainMenu
         {
             SetCanvasGroupActive(_mainCanvasGroup, true);
             SetCanvasGroupActive(_storeCanvasGroup, false);
+
+            _selectedTankPoint.Hide();
         }
 
         private void OnOpenStoreButtonClicked()
         {
             SetCanvasGroupActive(_mainCanvasGroup, false);
             SetCanvasGroupActive(_storeCanvasGroup, true);
+
+            _selectedTankPoint.Show();
         }
 
         private void SetCanvasGroupActive(CanvasGroup canvasGroup, bool isActive)

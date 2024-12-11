@@ -7,7 +7,7 @@ namespace Assets.Sources.MainMenu
 {
     public class MainMenuInstaller : MonoInstaller
     {
-        [SerializeField] Camera _camera;
+        [SerializeField] MainMenuCamera _camera;
          
         public override void InstallBindings()
         {
