@@ -21,11 +21,11 @@ namespace Assets.Sources.Infrastructure.Factories.MainMenuFactory
             _deskFactory = deskFactory;
         }
 
-        public async UniTask<Tank> CreateTank(uint tankLevel, Quaternion rotation)
+        public async UniTask<Tank> CreateTank(uint level, Vector3 position, Quaternion rotation, Transform parent)
         {
-            Tank tank = await _tankFactory.Create(_staticDataService.GetTank(tankLevel).AssetReference, rotation);
+            Tank tank = await _tankFactory.Create(_staticDataService.GetTank(level).AssetReference, position, rotation, parent);
 
-            tank.Initialize(tankLevel);
+            tank.Initialize(level);
 
             return tank;
         }

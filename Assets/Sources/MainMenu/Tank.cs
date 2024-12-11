@@ -19,7 +19,7 @@ namespace Assets.Sources.MainMenu
             Destroy(gameObject);
         }
 
-        public class Factory : PlaceholderFactory<AssetReferenceGameObject, Quaternion, UniTask<Tank>>
+        public class Factory : PlaceholderFactory<AssetReferenceGameObject, Vector3, Quaternion, Transform, UniTask<Tank>>
         {
         }
     }

@@ -14,7 +14,7 @@ namespace Assets.Sources.Infrastructure.Factories.MainMenuFactory
             Container.BindInterfacesTo<MainMenuFactory>().AsSingle();
 
             Container
-                .BindFactory<AssetReferenceGameObject, Quaternion, UniTask<Tank>, Tank.Factory>()
+                .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, Transform, UniTask<Tank>, Tank.Factory>()
                 .FromFactory<ReferencePrefabFactoryAsync<Tank>>();
             
             Container

@@ -1,4 +1,5 @@
 ﻿using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
+using Assets.Sources.Services.PersistentProgress;
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace Assets.Sources.MainMenu
         [SerializeField] private float _tankScale;
 
         private IMainMenuFactory _mainMenuFactory;
+        private IPersistentProgressService _persistentProgressService;
 
         private Tank _tank;
 
@@ -22,22 +24,25 @@ namespace Assets.Sources.MainMenu
         public event Action EmploymentChanged;
 
         [Inject]
-        private void Construct(IMainMenuFactory mainMenuFactory)
+        private void Construct(IMainMenuFactory mainMenuFactory, IPersistentProgressService persistentProgressService)
         {
             _mainMenuFactory = mainMenuFactory;
+            _persistentProgressService = persistentProgressService;
         }
 
         public async UniTask CreateTank(uint level)
         {
-            Tank tank = await _mainMenuFactory.CreateTank(level, _tankRotation);
-            tank.transform.localScale = Vector3.one * _tankScale;
+            _tank = await _mainMenuFactory.CreateTank(level, _tankPoint.position, _tankRotation, transform);
+            _tank.transform.localScale = Vector3.one * _tankScale;
 
-            PlaceTank(tank);
+            EmploymentChanged?.Invoke();
         }
 
         public async UniTask UpgradeTank()
         {
             uint targetLevel = _tank.Level + 1;
+
+            _persistentProgressService.Progress.TryUnlockTank(targetLevel);
 
             _tank.Destroy();
 
