@@ -1,4 +1,5 @@
-﻿using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
+﻿using Assets.Sources.Data;
+using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
 using Assets.Sources.Services.PersistentProgress;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -37,8 +38,10 @@ namespace Assets.Sources.MainMenu
 
         protected virtual async UniTask ChangeSelectedTank(uint level)
         {
+            TankData tankData = _persistentProgressService.Progress.GetTank(level);
+
             SelectedTank?.Destroy();
-            SelectedTank = await _mainMenuFactory.CreateTank(level, _tankPoint.position, GetRotation(), GetParent());
+            SelectedTank = await _mainMenuFactory.CreateTank(level, _tankPoint.position, GetRotation(), GetParent(), tankData.SkinType);
         }
 
         protected virtual Quaternion GetRotation() =>

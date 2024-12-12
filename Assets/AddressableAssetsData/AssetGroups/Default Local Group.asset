@@ -257,6 +257,38 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b70de2f0c5782f4393d592775557ad1
+    m_Address: TankSkinPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 598213e956ce54e418e12f4be18625c7
+    m_Address: TankSkinConfig1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8d6f65cacb4adaa4fbc3cc6fa3a0c318
+    m_Address: TankSkinConfig2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0deffc1048f90064eaf77b143079aff9
+    m_Address: BaseTankMaterial1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 239d2e3eaf7689b4bb3c4865a16f2631
+    m_Address: "\u0421amouflage1"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c3c76d38922bc044da8d7f3c921ec3ca
+    m_Address: "\u0421amouflage2"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a44638466bf414438293c9d18a37e72, type: 2}
   m_SchemaSet:

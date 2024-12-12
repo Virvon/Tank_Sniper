@@ -1,5 +1,6 @@
 ﻿using Assets.Sources.UI;
 using Assets.Sources.UI.MainMenu;
+using Assets.Sources.UI.MainMenu.Store;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
@@ -10,17 +11,20 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
     {
         private readonly Window.Factory _windowFactory;
         private readonly DiContainer _container;
-        private readonly TankPanel.Factory _tankPanelFactory;
+        private readonly SelectingPanelElement.Factory _selectingPanelElementFactory;
 
-        public UiFactory(Window.Factory windowFactory, DiContainer container, TankPanel.Factory tankPanelFactory)
+        public UiFactory(Window.Factory windowFactory, DiContainer container, SelectingPanelElement.Factory selectingPanelElementFactory)
         {
             _windowFactory = windowFactory;
             _container = container;
-            _tankPanelFactory = tankPanelFactory;
+            _selectingPanelElementFactory = selectingPanelElementFactory;
         }
 
-        public async UniTask<TankPanel> CreateTankPanel(Transform parent) =>
-            await _tankPanelFactory.Create(UiFactoryAssets.TankPanel, parent);
+        public async UniTask<SelectingPanelElement> CreateTankSkinPanel(Transform parent) =>
+            await _selectingPanelElementFactory.Create(UiFactoryAssets.TankSkinPanel, parent);
+
+        public async UniTask<SelectingPanelElement> CreateTankPanel(Transform parent) =>
+            await _selectingPanelElementFactory.Create(UiFactoryAssets.TankPanel, parent);
 
         public async UniTask CreateWindow() =>
             await _windowFactory.Create(UiFactoryAssets.Window);

@@ -1,6 +1,6 @@
 ﻿using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.UI;
-using Assets.Sources.UI.MainMenu;
+using Assets.Sources.UI.MainMenu.Store;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
@@ -21,8 +21,8 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
                 .FromFactory<KeyPrefabFactoryAsync<Window>>();
             
             Container
-                .BindFactory<string, Transform, UniTask<TankPanel>, TankPanel.Factory>()
-                .FromFactory<KeyPrefabFactoryAsync<TankPanel>>();
+                .BindFactory<string, Transform, UniTask<SelectingPanelElement>, SelectingPanelElement.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<SelectingPanelElement>>();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Sources.Types;
+using System;
 
 namespace Assets.Sources.Data
 {
@@ -7,11 +8,14 @@ namespace Assets.Sources.Data
     {
         public uint Level;
         public bool IsUnlocked;
+        public TankSkinType SkinType;
 
         public TankData(uint level, bool isUnlocked)
         {
             Level = level;
             IsUnlocked = isUnlocked;
+
+            SkinType = TankSkinType.Base;
         }
     }
 }

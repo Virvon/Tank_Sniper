@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9020359448176876023}
   - component: {fileID: 3150530185864794250}
+  - component: {fileID: 4887132264401719797}
   m_Layer: 0
   m_Name: Ranger
   m_TagString: Untagged
@@ -46,6 +47,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77900fd53aa930d439af8230dd9afb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tankSkin: {fileID: 4887132264401719797}
+--- !u!114 &4887132264401719797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2544042459494450154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66188db37c167a34db3758b5ca5830d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parts:
+  - {fileID: 7022645984736563640}
+  - {fileID: 874757004281142457}
+  - {fileID: 1682026206979167001}
 --- !u!1 &2594443887832802848
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,6 +75,7 @@ GameObject:
   - component: {fileID: 8560962619401490187}
   - component: {fileID: 3993610966219369022}
   - component: {fileID: 3811135850485205343}
+  - component: {fileID: 874757004281142457}
   m_Layer: 0
   m_Name: LargeTankTracks
   m_TagString: Untagged
@@ -107,7 +126,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0deffc1048f90064eaf77b143079aff9, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,6 +148,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &874757004281142457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2594443887832802848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced15a8daa2ef154986de8545c86869b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshrenderer: {fileID: 3811135850485205343}
+  _skinedMaterialIndex: 0
 --- !u!1 &3201086132696723733
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +173,7 @@ GameObject:
   - component: {fileID: 9196704835160247951}
   - component: {fileID: 3740399984004755202}
   - component: {fileID: 6142951599823529835}
+  - component: {fileID: 1682026206979167001}
   m_Layer: 0
   m_Name: LargeTrackSet
   m_TagString: Untagged
@@ -190,12 +224,12 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: faad95f570262ad41b94ff10d1b446ab, type: 2}
-  - {fileID: 2100000, guid: 0deffc1048f90064eaf77b143079aff9, type: 2}
-  - {fileID: -2813467912831258332, guid: a6b499fcc483a384bbf02007448e5042, type: 3}
-  - {fileID: -6629797300637803691, guid: a6b499fcc483a384bbf02007448e5042, type: 3}
-  - {fileID: 2100000, guid: 93b0ba08a73c8db48af6a3a9b6ada7cc, type: 2}
-  - {fileID: 2100000, guid: beba882afca7bd94b9ec6cfc5bde24e0, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -217,6 +251,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1682026206979167001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3201086132696723733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced15a8daa2ef154986de8545c86869b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshrenderer: {fileID: 6142951599823529835}
+  _skinedMaterialIndex: 1
 --- !u!1 &8227960990106412294
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,6 +276,7 @@ GameObject:
   - component: {fileID: 8747193624797659068}
   - component: {fileID: 5677805291600556057}
   - component: {fileID: 7579393922573518035}
+  - component: {fileID: 7022645984736563640}
   m_Layer: 0
   m_Name: TankTurret
   m_TagString: Untagged
@@ -278,8 +327,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0deffc1048f90064eaf77b143079aff9, type: 2}
-  - {fileID: 2100000, guid: 7a59b289abca9bd4992b902bb0b3eef0, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -301,6 +350,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7022645984736563640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227960990106412294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced15a8daa2ef154986de8545c86869b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshrenderer: {fileID: 7579393922573518035}
+  _skinedMaterialIndex: 0
 --- !u!1 &9193778898109619895
 GameObject:
   m_ObjectHideFlags: 0

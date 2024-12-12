@@ -19,6 +19,7 @@ namespace Assets.Sources.Services.StaticDataService
         private Dictionary<ForwardFlyingBulletType, ForwardFlyingBulletConfig> _forwardFlyingBulletConfigs;
         private Dictionary<HomingBulletType, HomingBulletConfig> _homingBulletConfigs;
         private Dictionary<uint, TankConfig> _tankConfigs;
+        private Dictionary<TankSkinType, TankSkinConfig> _tankSkinConfigs;
 
         public StaticDataService(IAssetProvider assetsProvider) =>
             _assetsProvider = assetsProvider;
@@ -27,6 +28,7 @@ namespace Assets.Sources.Services.StaticDataService
         public TargetingLaserConfig TargetingLaserConfig { get; private set; }
         public TransmittingLaserConfig TransmittedLaserConfig { get; private set; }
         public TankConfig[] TankConfigs => _tankConfigs.Values.ToArray();
+        public TankSkinConfig[] TankSkinConfigs => _tankSkinConfigs.Values.ToArray();
 
         public async UniTask InitializeAsync()
         {
@@ -40,10 +42,14 @@ namespace Assets.Sources.Services.StaticDataService
                 UniTask.Create(async () => TargetingLaserConfig = await LoadConfig<TargetingLaserConfig>()),
                 UniTask.Create(async () => TransmittedLaserConfig = await LoadConfig<TransmittingLaserConfig>()),
                 UniTask.Create(async () => _tankConfigs = await LoadConfigs<uint, TankConfig>()),
+                UniTask.Create(async () => _tankSkinConfigs = await LoadConfigs<TankSkinType, TankSkinConfig>()),
             };
 
             await UniTask.WhenAll(tasks);
         }
+
+        public TankSkinConfig GetSkin(TankSkinType type) =>
+            _tankSkinConfigs.TryGetValue(type, out TankSkinConfig config) ? config : null;
 
         public TankConfig GetTank(uint level) =>
             _tankConfigs.TryGetValue(level, out TankConfig config) ? config : null;
