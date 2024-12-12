@@ -19,7 +19,7 @@ namespace Assets.Sources.UI.MainMenu.Store
         private void OnDisable() =>
             _button.Clicked -= OnButtonClicked;
 
-        public void Open()
+        public virtual void Open()
         {
             _button.SetActive(true);
             _canvasGroup.alpha = 1;
@@ -27,7 +27,7 @@ namespace Assets.Sources.UI.MainMenu.Store
             _canvasGroup.blocksRaycasts = true;
         }
 
-        public void Hide()
+        public virtual void Hide()
         {
             _button.SetActive(false);
             _canvasGroup.alpha = 0;

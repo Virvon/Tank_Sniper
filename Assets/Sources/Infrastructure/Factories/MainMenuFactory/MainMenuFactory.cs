@@ -31,17 +31,24 @@ namespace Assets.Sources.Infrastructure.Factories.MainMenuFactory
             _deskFactory = deskFactory;
         }
 
-        public async UniTask<Tank> CreateTank(uint level, Vector3 position, Quaternion rotation, Transform parent, TankSkinType skinType = TankSkinType.Base)
+        public async UniTask<Tank> CreateTank(
+            uint level,
+            Vector3 position,
+            Quaternion rotation,
+            Transform parent,
+            TankSkinType skinType = TankSkinType.Base,
+            DecalType decalType = DecalType.Decal1,
+            bool isDecalsChangable = false)
         {
             Tank tank = await _tankFactory.Create(_staticDataService.GetTank(level).AssetReference, position, rotation, parent);
             Material skinMaterial;
 
             if(skinType == TankSkinType.Base)
-                skinMaterial = await _assetProvider.Load<Material>(_staticDataService.GetTank(level).BaseMaterial);
+                skinMaterial = await _assetProvider.Load<Material>(_staticDataService.GetTank(level).BaseMaterialAssetReference);
             else
-                skinMaterial = await _assetProvider.Load<Material>(_staticDataService.GetSkin(skinType).Material);
+                skinMaterial = await _assetProvider.Load<Material>(_staticDataService.GetSkin(skinType).MaterialAssetReference);
 
-            tank.Initialize(level, skinMaterial);
+            tank.Initialize(level, skinMaterial, decalType, isDecalsChangable);
 
             return tank;
         }

@@ -41,7 +41,14 @@ namespace Assets.Sources.MainMenu
             TankData tankData = _persistentProgressService.Progress.GetTank(level);
 
             SelectedTank?.Destroy();
-            SelectedTank = await _mainMenuFactory.CreateTank(level, _tankPoint.position, GetRotation(), GetParent(), tankData.SkinType);
+            SelectedTank = await _mainMenuFactory.CreateTank(
+                level,
+                _tankPoint.position,
+                GetRotation(),
+                GetParent(),
+                tankData.SkinType,
+                tankData.DecalType,
+                true);
         }
 
         protected virtual Quaternion GetRotation() =>

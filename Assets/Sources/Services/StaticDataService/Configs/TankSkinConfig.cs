@@ -9,7 +9,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs
     public class TankSkinConfig : ScriptableObject, IConfig<TankSkinType>
     {
         public TankSkinType Type;
-        public AssetReference Material;
+        public AssetReference MaterialAssetReference;
 
         public TankSkinType Key => Type;
     }

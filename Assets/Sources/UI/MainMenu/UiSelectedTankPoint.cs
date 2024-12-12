@@ -20,11 +20,15 @@ namespace Assets.Sources.UI.MainMenu
         private IInputService _inputService;
         private MainMenuCamera _camera;
 
+        private Vector3 _up;
+
         private Vector2 _lastHandlePosition;
         private bool _isRotatedToTarget;
         private Quaternion _startRotation;
         private bool _startHandledRotation;
         private bool _isHided;
+        private Quaternion _targetRotation;
+        private Coroutine _rotater;
 
         [Inject]
         private void Construct(IInputService inputService, MainMenuCamera camera)
@@ -59,6 +63,20 @@ namespace Assets.Sources.UI.MainMenu
             _isHided = true;
         }
 
+        public void SetTargetRotation(int angle)
+        {
+            _targetRotation = _startRotation * Quaternion.AngleAxis(angle, Vector3.up);
+
+            RotateToTarget();
+        }
+
+        public void ResetTargetRotation()
+        {
+            _targetRotation = _startRotation;
+
+            RotateToTarget();
+        }
+
         protected override async UniTask ChangeSelectedTank(uint level)
         {
             await base.ChangeSelectedTank(level);
@@ -72,16 +90,16 @@ namespace Assets.Sources.UI.MainMenu
                 Hide();
         }
 
-        protected override Quaternion GetRotation()
-        {
-            return TankPoint.transform.rotation * base.GetRotation();
-        }
+        protected override Quaternion GetRotation() =>
+            TankPoint.transform.rotation * base.GetRotation();
 
         protected override async UniTask OnStart()
         {
             _startRotation = TankPoint.transform.rotation;
+            ResetTargetRotation();
             await base.OnStart();
             Hide();
+            _up = TankPoint.transform.up;
         }
 
         protected override Transform GetParent() =>
@@ -91,6 +109,7 @@ namespace Assets.Sources.UI.MainMenu
         {
             _startHandledRotation = RectTransformUtility.RectangleContainsScreenPoint(_rotationArea, handlePosition, _camera.UiCamera);
             _lastHandlePosition = handlePosition;
+            _isRotatedToTarget = false;
         }
 
         private void OnHandleMoved(Vector2 handlePosition)
@@ -108,9 +127,15 @@ namespace Assets.Sources.UI.MainMenu
             TankPoint.transform.rotation = Quaternion.RotateTowards(TankPoint.transform.rotation, TankPoint.transform.rotation * Quaternion.Euler(0, 180, 0), rotation);
         }
 
-        private void OnHandleMoveCompleted()
+        private void OnHandleMoveCompleted() =>
+            RotateToTarget();
+
+        public void RotateToTarget()
         {
-            StartCoroutine(Rotater(_startRotation));
+            if (_rotater != null)
+                StopCoroutine(_rotater);
+
+            _rotater = StartCoroutine(Rotater(_targetRotation));
         }
 
         private IEnumerator Rotater(Quaternion targetRotation)

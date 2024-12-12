@@ -2,7 +2,7 @@
 
 namespace Assets.Sources.UI.MainMenu.Store
 {
-    public class TankSkinPanel : SelectingPanelElement
+    public class UnlokingPanel : SelectingPanelElement
     {
         [SerializeField] private CanvasGroup _adButton;
 

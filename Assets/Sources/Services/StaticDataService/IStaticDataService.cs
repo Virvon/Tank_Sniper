@@ -14,6 +14,7 @@ namespace Assets.Sources.Services.StaticDataService
         TransmittingLaserConfig TransmittedLaserConfig { get; }
         TankConfig[] TankConfigs { get; }
         TankSkinConfig[] TankSkinConfigs { get; }
+        DecalConfig[] DecalConfigs { get; }
 
         EnemyConfig GetEnemy(EnemyType type);
         LevelConfig GetLevel(string key);
@@ -22,5 +23,6 @@ namespace Assets.Sources.Services.StaticDataService
         HomingBulletConfig GetBullet(HomingBulletType type);
         TankConfig GetTank(uint level);
         TankSkinConfig GetSkin(TankSkinType type);
+        DecalConfig GetDecal(DecalType type);
     }
 }

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TankSkinConfig1
   m_EditorClassIdentifier: 
   Type: 1
-  Material:
-    m_AssetGUID: 
+  MaterialAssetReference:
+    m_AssetGUID: 239d2e3eaf7689b4bb3c4865a16f2631
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

@@ -20,8 +20,8 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
             _selectingPanelElementFactory = selectingPanelElementFactory;
         }
 
-        public async UniTask<SelectingPanelElement> CreateTankSkinPanel(Transform parent) =>
-            await _selectingPanelElementFactory.Create(UiFactoryAssets.TankSkinPanel, parent);
+        public async UniTask<SelectingPanelElement> CreateUnlockingPanel(Transform parent) =>
+            await _selectingPanelElementFactory.Create(UiFactoryAssets.UnlockingPanel, parent);
 
         public async UniTask<SelectingPanelElement> CreateTankPanel(Transform parent) =>
             await _selectingPanelElementFactory.Create(UiFactoryAssets.TankPanel, parent);

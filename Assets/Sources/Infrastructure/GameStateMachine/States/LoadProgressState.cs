@@ -3,6 +3,7 @@ using Assets.Sources.Services.PersistentProgress;
 using Assets.Sources.Services.SaveLoadProgress;
 using Assets.Sources.Services.StateMachine;
 using Assets.Sources.Services.StaticDataService;
+using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
 using System.Linq;
 
@@ -43,10 +44,12 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
 
         private PlayerProgress CreateNewProgress()
         {
-            TankData[] tankDatas = _staticDataService.TankConfigs.Select(config => new TankData(config.Level, config.IsUnlockOnStart)).ToArray();
+            DecalData[] decalDatas = _staticDataService.DecalConfigs.Select(config => new DecalData(config.Type, config.IsUnlockedOnStart)).ToArray();
+            DecalType startDecal = decalDatas.First(decal => decal.IsUnlocked).Type;
+            TankData[] tankDatas = _staticDataService.TankConfigs.Select(config => new TankData(config.Level, config.IsUnlockOnStart, startDecal)).ToArray();
             TankSkinData[] tankSkinDatas = _staticDataService.TankSkinConfigs.Select(config => new TankSkinData(config.Type)).ToArray();
 
-            PlayerProgress progress = new(tankDatas, tankSkinDatas);
+            PlayerProgress progress = new(tankDatas, tankSkinDatas, decalDatas);
 
             return progress;
         }

@@ -23,7 +23,7 @@ namespace Assets.Sources.UI.MainMenu.Store
 
             foreach(TankSkinData tankSkinData in persistentProgressService.Progress.TankSkins)
             {
-                SelectingPanelElement panel = await uiFactory.CreateTankSkinPanel(content);
+                SelectingPanelElement panel = await uiFactory.CreateUnlockingPanel(content);
 
                 panel.Initialize(tankSkinData.Type.ToString());
 

@@ -9,18 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad477fbe053aa4d4c84a8414cf6c9a82, type: 3}
-  m_Name: Crusher
+  m_Script: {fileID: 11500000, guid: 65d634749f973a34fa3af8e67f71b44b, type: 3}
+  m_Name: DecalConfig2
   m_EditorClassIdentifier: 
-  Level: 2
-  AssetReference:
-    m_AssetGUID: 64bdfd1708b53a541a21ebad7aca690e
+  Type: 0
+  MaterialAssetReference:
+    m_AssetGUID: 91a0ff561abc25640b2be38303bd618d
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  IsUnlockOnStart: 0
-  BaseMaterialAssetReference:
-    m_AssetGUID: 75f645f17e9aea64989a4478351f9b41
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 1
+  IsUnlockedOnStart: 1

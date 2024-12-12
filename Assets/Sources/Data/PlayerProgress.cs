@@ -11,11 +11,13 @@ namespace Assets.Sources.Data
         public TankData[] Tanks;
         public uint SelectedTankLevel;
         public TankSkinData[] TankSkins;
+        public DecalData[] Decals;
 
-        public PlayerProgress(TankData[] tanks, TankSkinData[] skins)
+        public PlayerProgress(TankData[] tanks, TankSkinData[] skins, DecalData[] decals)
         {
             Tanks = tanks;
             TankSkins = skins;
+            Decals = decals;
 
             SelectedTankLevel = Tanks.Where(tank => tank.IsUnlocked).First().Level;
         }
@@ -23,6 +25,8 @@ namespace Assets.Sources.Data
         public event Action<uint> TankUnlocked;
         public event Action<uint> SelectedTankChanged;
         public event Action<TankSkinType> TankSkinUnlocked;
+        public event Action<DecalType> DecalUnlocked;
+        public event Action<DecalType> DecalChanged;
 
         public void TryUnlockTank(uint level)
         {
@@ -60,8 +64,10 @@ namespace Assets.Sources.Data
 
         public void UnlockTankSkin(TankSkinType type)
         {
-            TankSkins.First(skin => skin.Type == type).IsUnlocked = true;
+            GetSkin(type).IsUnlocked = true;
             TankSkinUnlocked?.Invoke(type);
+
+            SelectTankSkin(type);
         }
 
         public TankSkinData GetSkin(TankSkinType type) =>
@@ -71,6 +77,23 @@ namespace Assets.Sources.Data
         {
             GetTank(SelectedTankLevel).SkinType = type;
             SelectedTankChanged?.Invoke(SelectedTankLevel);
+        }
+
+        public DecalData GetDecal(DecalType type) =>
+            Decals.First(decal => decal.Type == type);
+
+        public void UnlockDecal(DecalType type)
+        {
+            GetDecal(type).IsUnlocked = true;
+            DecalUnlocked?.Invoke(type);
+
+            SelectDecal(type);
+        }
+
+        public void SelectDecal(DecalType type)
+        {
+            GetTank(SelectedTankLevel).DecalType = type;
+            DecalChanged?.Invoke(type);
         }
     }
 }
