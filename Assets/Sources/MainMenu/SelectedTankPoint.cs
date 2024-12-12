@@ -18,7 +18,7 @@ namespace Assets.Sources.MainMenu
         protected Transform TankPoint => _tankPoint;
 
         [Inject]
-        private async void Construct(IPersistentProgressService persistentProgressService, IMainMenuFactory mainMenuFactory)
+        private void Construct(IPersistentProgressService persistentProgressService, IMainMenuFactory mainMenuFactory)
         {
             _persistentProgressService = persistentProgressService;
             _mainMenuFactory = mainMenuFactory;
@@ -38,7 +38,7 @@ namespace Assets.Sources.MainMenu
         protected virtual async UniTask ChangeSelectedTank(uint level)
         {
             SelectedTank?.Destroy();
-            SelectedTank = await _mainMenuFactory.CreateTank(level, _tankPoint.position, GetRotation(), transform);
+            SelectedTank = await _mainMenuFactory.CreateTank(level, _tankPoint.position, GetRotation(), GetParent());
         }
 
         protected virtual Quaternion GetRotation() =>
@@ -46,5 +46,8 @@ namespace Assets.Sources.MainMenu
 
         protected async virtual UniTask OnStart() =>
             await ChangeSelectedTank(_persistentProgressService.Progress.SelectedTankLevel);
+
+        protected virtual Transform GetParent() =>
+            transform;
     }
 }
