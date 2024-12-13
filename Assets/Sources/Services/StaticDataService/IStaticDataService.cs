@@ -15,6 +15,7 @@ namespace Assets.Sources.Services.StaticDataService
         TankConfig[] TankConfigs { get; }
         TankSkinConfig[] TankSkinConfigs { get; }
         DecalConfig[] DecalConfigs { get; }
+        AnimationsConfig AnimationsConfig { get; }
 
         EnemyConfig GetEnemy(EnemyType type);
         LevelConfig GetLevel(string key);
@@ -24,5 +25,6 @@ namespace Assets.Sources.Services.StaticDataService
         TankConfig GetTank(uint level);
         TankSkinConfig GetSkin(TankSkinType type);
         DecalConfig GetDecal(DecalType type);
+        MuzzleConfig GetMuzzle(MuzzleType type);
     }
 }

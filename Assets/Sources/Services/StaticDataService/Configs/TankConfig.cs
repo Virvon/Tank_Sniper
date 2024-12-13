@@ -10,6 +10,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public AssetReferenceGameObject AssetReference;
         public bool IsUnlockOnStart;
         public AssetReference BaseMaterialAssetReference;
+        public AssetReferenceGameObject MainMenuWrapperAssetReference;
 
         public uint Key => Level;
     }

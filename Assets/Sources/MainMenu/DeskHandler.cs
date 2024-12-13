@@ -48,7 +48,7 @@ namespace Assets.Sources.MainMenu
         {
             if (_tank != null)
             {
-                Ray ray = GetRay(handlePosition);
+                Ray ray = _camera.GetRay(handlePosition);
                 Plane plane = new Plane(Vector3.up, new Vector3(0, ReplacedTankBuildingHeight, 0));
 
                 if (plane.Raycast(ray, out float distanceToPlane))
@@ -113,12 +113,9 @@ namespace Assets.Sources.MainMenu
             deskCell = null;
 
             return Physics.Raycast(
-                GetRay(handlePosition),
+                _camera.GetRay(handlePosition),
                 out RaycastHit hitInfo,
                 MaxRaycastDistance) && hitInfo.transform.TryGetComponent(out deskCell);
         }
-
-        private Ray GetRay(Vector2 handlePosition) =>
-            _camera.MainCamera.ScreenPointToRay(new Vector3(handlePosition.x, handlePosition.y, 1));
     }
 }

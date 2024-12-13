@@ -1,4 +1,5 @@
 ﻿using Assets.Sources.Gameplay.Bullets;
+using Assets.Sources.MainMenu;
 using Assets.Sources.Services.AssetManagement;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -32,6 +33,10 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
             Container
                .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<TransmittingLaser>, BulletFactory.Factory<TransmittingLaser>>()
                .FromFactory<ReferencePrefabFactoryAsync<TransmittingLaser>>();
+            
+            Container
+               .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<Muzzle>, Muzzle.Factory>()
+               .FromFactory<ReferencePrefabFactoryAsync<Muzzle>>();
         }
     }
 }

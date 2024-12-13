@@ -21,6 +21,7 @@ namespace Assets.Sources.Services.StaticDataService
         private Dictionary<uint, TankConfig> _tankConfigs;
         private Dictionary<TankSkinType, TankSkinConfig> _tankSkinConfigs;
         private Dictionary<DecalType, DecalConfig> _decalConfigs;
+        private Dictionary<MuzzleType, MuzzleConfig> _muzzleConfigs;
 
         public StaticDataService(IAssetProvider assetsProvider) =>
             _assetsProvider = assetsProvider;
@@ -31,6 +32,7 @@ namespace Assets.Sources.Services.StaticDataService
         public TankConfig[] TankConfigs => _tankConfigs.Values.ToArray();
         public TankSkinConfig[] TankSkinConfigs => _tankSkinConfigs.Values.ToArray();
         public DecalConfig[] DecalConfigs => _decalConfigs.Values.ToArray();
+        public AnimationsConfig AnimationsConfig { get; private set; }
 
         public async UniTask InitializeAsync()
         {
@@ -46,10 +48,15 @@ namespace Assets.Sources.Services.StaticDataService
                 UniTask.Create(async () => _tankConfigs = await LoadConfigs<uint, TankConfig>()),
                 UniTask.Create(async () => _tankSkinConfigs = await LoadConfigs<TankSkinType, TankSkinConfig>()),
                 UniTask.Create(async () => _decalConfigs = await LoadConfigs<DecalType, DecalConfig>()),
+                UniTask.Create(async () => _muzzleConfigs = await LoadConfigs<MuzzleType, MuzzleConfig>()),
+                UniTask.Create(async () => AnimationsConfig = await LoadConfig<AnimationsConfig>()),
             };
 
             await UniTask.WhenAll(tasks);
         }
+
+        public MuzzleConfig GetMuzzle(MuzzleType type) =>
+            _muzzleConfigs.TryGetValue(type, out MuzzleConfig config) ? config : null;
 
         public DecalConfig GetDecal(DecalType type) =>
             _decalConfigs.TryGetValue(type, out DecalConfig config) ? config : null;

@@ -2,12 +2,13 @@
 using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
 using Assets.Sources.Services.PersistentProgress;
 using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
 namespace Assets.Sources.MainMenu
 {
-    public class SelectedTankPoint : MonoBehaviour
+    public abstract class SelectedTankPoint : MonoBehaviour
     {
         [SerializeField] private Transform _tankPoint;
         [SerializeField] private Quaternion _spawnRotation;
@@ -15,7 +16,7 @@ namespace Assets.Sources.MainMenu
         private IPersistentProgressService _persistentProgressService;
         private IMainMenuFactory _mainMenuFactory;
 
-        protected Tank SelectedTank { get; private set; }
+        protected GameObject SelectedTank { get; private set; }
         protected Transform TankPoint => _tankPoint;
 
         [Inject]
@@ -40,16 +41,18 @@ namespace Assets.Sources.MainMenu
         {
             TankData tankData = _persistentProgressService.Progress.GetTank(level);
 
-            SelectedTank?.Destroy();
-            SelectedTank = await _mainMenuFactory.CreateTank(
-                level,
-                _tankPoint.position,
-                GetRotation(),
-                GetParent(),
-                tankData.SkinType,
-                tankData.DecalType,
-                true);
+            if (SelectedTank != null)
+                Destroy(SelectedTank);
+
+            SelectedTank = await CreateTank(tankData, _tankPoint.position, GetRotation(), GetParent(), _mainMenuFactory);
         }
+
+        protected abstract UniTask<GameObject> CreateTank(
+            TankData tankData,
+            Vector3 position,
+            Quaternion rotation,
+            Transform parent,
+            IMainMenuFactory mainMenuFactory);
 
         protected virtual Quaternion GetRotation() =>
             _spawnRotation;

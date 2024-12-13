@@ -20,6 +20,10 @@ namespace Assets.Sources.Infrastructure.Factories.MainMenuFactory
             Container
                 .BindFactory<string, UniTask<Desk>, Desk.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<Desk>>();
+
+            Container
+                .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, Transform, UniTask<TankWrapper>, TankWrapper.Factory>()
+                .FromFactory<ReferencePrefabFactoryAsync<TankWrapper>>();
         }
     }
 }

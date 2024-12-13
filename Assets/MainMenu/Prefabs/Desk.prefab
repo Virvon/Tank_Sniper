@@ -82,7 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6100401773788368253}
   - component: {fileID: 5826012798169725076}
-  - component: {fileID: 4165042846431963130}
+  - component: {fileID: 2261705981886974983}
   m_Layer: 0
   m_Name: Desk
   m_TagString: Untagged
@@ -129,7 +129,7 @@ MonoBehaviour:
   - {fileID: 150168338839991862}
   - {fileID: 2916782702262706148}
   - {fileID: 3041707802849260387}
---- !u!114 &4165042846431963130
+--- !u!114 &2261705981886974983
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7312446752611664544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd9d151e57a36ba449a2ea317a7bddb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 93ec1322c1334fa43bca58db0abba45c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _tankPoint: {fileID: 1507788426044072568}

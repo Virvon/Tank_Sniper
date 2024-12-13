@@ -1,4 +1,6 @@
-﻿using Assets.Sources.MainMenu;
+﻿using Assets.Sources.Data;
+using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
+using Assets.Sources.MainMenu;
 using Assets.Sources.Services.InputService;
 using Cysharp.Threading.Tasks;
 using System;
@@ -105,6 +107,18 @@ namespace Assets.Sources.UI.MainMenu
         protected override Transform GetParent() =>
             TankPoint.transform;
 
+        protected override async UniTask<GameObject> CreateTank(
+            TankData tankData,
+            Vector3 position,
+            Quaternion rotation,
+            Transform parent,
+            IMainMenuFactory mainMenuFactory)
+        {
+            Tank tank = await mainMenuFactory.CreateTank(tankData.Level, position, rotation, parent, tankData.SkinType, tankData.DecalType, true);
+
+            return tank.gameObject;
+        }
+
         private void OnHandlePressed(Vector2 handlePosition)
         {
             _startHandledRotation = RectTransformUtility.RectangleContainsScreenPoint(_rotationArea, handlePosition, _camera.UiCamera);
@@ -130,7 +144,7 @@ namespace Assets.Sources.UI.MainMenu
         private void OnHandleMoveCompleted() =>
             RotateToTarget();
 
-        public void RotateToTarget()
+        private void RotateToTarget()
         {
             if (_rotater != null)
                 StopCoroutine(_rotater);

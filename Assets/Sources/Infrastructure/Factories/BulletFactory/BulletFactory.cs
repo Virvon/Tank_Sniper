@@ -1,5 +1,7 @@
 ﻿using Assets.Sources.Gameplay.Bullets;
+using Assets.Sources.MainMenu;
 using Assets.Sources.Services.StaticDataService;
+using Assets.Sources.Services.StaticDataService.Configs;
 using Assets.Sources.Services.StaticDataService.Configs.Bullets.Colliding;
 using Assets.Sources.Services.StaticDataService.Configs.Bullets.Laser;
 using Assets.Sources.Types;
@@ -18,15 +20,26 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
         private readonly Factory<Laser> _directionalLaserFactory;
         private readonly Factory<TargetingLaser> _targetingLaserFactory;
         private readonly Factory<TransmittingLaser> _transmittedLaserFactory;
+        private readonly Muzzle.Factory _muzzleFactory;
 
         public BulletFactory(
             IStaticDataService staticDataService,
             Factory<CollidingBullet> forwardFlyingBulletFactory,
-            Factory<Laser> directionalLaserFactory)
+            Factory<Laser> directionalLaserFactory,
+            Muzzle.Factory muzzleFactory)
         {
             _staticDataService = staticDataService;
             _forwardFlyingBulletFactory = forwardFlyingBulletFactory;
             _directionalLaserFactory = directionalLaserFactory;
+            _muzzleFactory = muzzleFactory;
+        }
+
+        public async UniTask CreateMuzzle(MuzzleType type, Vector3 position, Quaternion rotation)
+        {
+            MuzzleConfig muzzleConfig = _staticDataService.GetMuzzle(type);
+            Muzzle muzzle = await _muzzleFactory.Create(muzzleConfig.AssetReference, position, rotation);
+
+            muzzle.SetLifeTime(muzzleConfig.LifeTime);
         }
 
         public async UniTask CreateTransmittingLaser(Vector3 positoin, Quaternion rotation)

@@ -20,6 +20,6 @@ MonoBehaviour:
   ExplosionLifeTime: 1
   ExplosionForce: 200
   ExplosionRadius: 8
-  FlightSpeed: 150
+  FlightSpeed: 100
   LifeTimeLimit: 5
   Type: 2

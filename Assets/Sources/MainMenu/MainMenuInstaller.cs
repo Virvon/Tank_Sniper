@@ -1,4 +1,5 @@
-﻿using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
+﻿using Assets.Sources.Infrastructure.Factories.BulletFactory;
+using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
 using Assets.Sources.Infrastructure.Factories.UiFactory;
 using UnityEngine;
 using Zenject;
@@ -16,7 +17,11 @@ namespace Assets.Sources.MainMenu
             BindMainMenuFactory();
             BindCamera();
             BindDeskHandler();
+            BindBulletFactory();
         }
+
+        private void BindBulletFactory() =>
+            BulletFactoryInstaller.Install(Container);
 
         private void BindCamera() =>
             Container.BindInstance(_camera).AsSingle();

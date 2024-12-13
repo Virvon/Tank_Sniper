@@ -15,21 +15,26 @@ namespace Assets.Sources.Infrastructure.Factories.MainMenuFactory
         private readonly IAssetProvider _assetProvider;
         private readonly Tank.Factory _tankFactory;
         private readonly Desk.Factory _deskFactory;
+        private readonly TankWrapper.Factory _tankWrapperFactory;
 
         public MainMenuFactory(
             DiContainer container,
             IStaticDataService staticDataService,
             IAssetProvider assetProvider,
             Tank.Factory tankFactory,
-            Desk.Factory deskFactory
-            )
+            Desk.Factory deskFactory,
+            TankWrapper.Factory tankWrapperFactory)
         {
             _container = container;
             _staticDataService = staticDataService;
             _assetProvider = assetProvider;
             _tankFactory = tankFactory;
             _deskFactory = deskFactory;
+            _tankWrapperFactory = tankWrapperFactory;
         }
+
+        public async UniTask<TankWrapper> CreateTankWrapper(uint tankLevel, Vector3 position, Quaternion rotation, Transform parent) =>
+            await _tankWrapperFactory.Create(_staticDataService.GetTank(tankLevel).MainMenuWrapperAssetReference, position, rotation, parent);
 
         public async UniTask<Tank> CreateTank(
             uint level,

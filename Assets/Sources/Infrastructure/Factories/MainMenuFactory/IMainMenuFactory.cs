@@ -16,5 +16,6 @@ namespace Assets.Sources.Infrastructure.Factories.MainMenuFactory
             TankSkinType skinType = TankSkinType.Base,
             DecalType decalType = DecalType.Decal1,
             bool isDecalsChangable = false);
+        UniTask<TankWrapper> CreateTankWrapper(uint tankLevel, Vector3 position, Quaternion rotation, Transform parent);
     }
 }

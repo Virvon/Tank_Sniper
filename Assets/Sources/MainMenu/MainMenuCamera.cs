@@ -9,5 +9,8 @@ namespace Assets.Sources.MainMenu
 
         public Camera UiCamera => _uiCamera;
         public Camera MainCamera => _mainCamera;
+
+        public Ray GetRay(Vector2 handlePosition) =>
+            _mainCamera.ScreenPointToRay(new Vector3(handlePosition.x, handlePosition.y, 1));
     }
 }

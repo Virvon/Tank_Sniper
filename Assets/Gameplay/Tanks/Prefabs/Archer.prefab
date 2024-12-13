@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tankSkin: {fileID: 1901257438808936647}
-  _decals: {fileID: 0}
+  _decals: {fileID: 9117786577906985969}
 --- !u!114 &1901257438808936647
 MonoBehaviour:
   m_ObjectHideFlags: 0

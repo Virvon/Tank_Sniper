@@ -55,6 +55,37 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0.5}
   m_Size: {x: 0.7, y: 0.7, z: 1}
   m_FadeFactor: 1
+--- !u!1 &1866997468904874328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7193112378711610976}
+  m_Layer: 0
+  m_Name: BulletPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7193112378711610976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866997468904874328}
+  m_LocalRotation: {x: -0.061048605, y: 0, z: 0, w: 0.99813485}
+  m_LocalPosition: {x: 0, y: 0.6, z: 2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8747193624797659068}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -7, y: 0, z: 0}
 --- !u!1 &2129588366019107875
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,6 +169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tankSkin: {fileID: 4887132264401719797}
   _decals: {fileID: 3975926136852737171}
+  _bulletPoints:
+  - {fileID: 7193112378711610976}
 --- !u!114 &4887132264401719797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,6 +490,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5388502116027358445}
+  - {fileID: 7193112378711610976}
   m_Father: {fileID: 9020359448176876023}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

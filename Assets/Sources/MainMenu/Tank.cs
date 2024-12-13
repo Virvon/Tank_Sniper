@@ -10,8 +10,10 @@ namespace Assets.Sources.MainMenu
     {
         [SerializeField] private TankSkin _tankSkin;
         [SerializeField] private Decals _decals;
+        [SerializeField] private Transform[] _bulletPoints;
 
         public uint Level { get; private set; }
+        public Transform[] BulletPoints => _bulletPoints;
 
         public void Initialize(uint level, Material skinMaterial, DecalType decalType, bool isDecalsChangable)
         {
