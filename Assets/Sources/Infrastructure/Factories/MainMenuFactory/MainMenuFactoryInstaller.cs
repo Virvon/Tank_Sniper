@@ -22,8 +22,8 @@ namespace Assets.Sources.Infrastructure.Factories.MainMenuFactory
                 .FromFactory<KeyPrefabFactoryAsync<Desk>>();
 
             Container
-                .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, Transform, UniTask<TankWrapper>, TankWrapper.Factory>()
-                .FromFactory<ReferencePrefabFactoryAsync<TankWrapper>>();
+                .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, Transform, UniTask<TankShootingWrapper>, TankShootingWrapper.Factory>()
+                .FromFactory<ReferencePrefabFactoryAsync<TankShootingWrapper>>();
         }
     }
 }

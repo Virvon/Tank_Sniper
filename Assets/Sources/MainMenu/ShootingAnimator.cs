@@ -6,25 +6,47 @@ using Zenject;
 
 namespace Assets.Sources.MainMenu
 {
-    public class ShootingAnimator : MonoBehaviour
+    public class ShootingAnimator : TankAnimator
     {
-        private AnimationsConfig _animationsConfig;
+        
 
         private Quaternion _startRotation;
         private Quaternion _shootingRotation;
-        private Coroutine _animator;
 
-        [Inject]
-        private void Construct(IStaticDataService staticDataService)
-        {
-            _animationsConfig = staticDataService.AnimationsConfig;
-        }
+        
 
         private void Start()
         {
             _startRotation = transform.rotation;
-            _shootingRotation = _startRotation * Quaternion.AngleAxis(_animationsConfig.TankShootingRotationAngle, -Vector3.right);
+            _shootingRotation = _startRotation * Quaternion.AngleAxis(AnimationsConfig.TankShootingRotationAngle, -Vector3.right);
         }
+
+        protected override IEnumerator Animator()
+        {
+            float progress = 0;
+            float passedTime = 0;
+
+            while(progress < 1)
+            {
+                passedTime += Time.deltaTime;
+                progress = passedTime / AnimationsConfig.TankShootingDuration;
+
+                transform.rotation = Quaternion.Lerp(_startRotation, _shootingRotation, AnimationsConfig.TankShootingAnimationCurve.Evaluate(progress));
+
+                yield return null;
+            }
+        }
+    }
+
+    public abstract class TankAnimator : MonoBehaviour
+    {
+        private Coroutine _animator;
+
+        public AnimationsConfig AnimationsConfig { get; private set; }
+
+        [Inject]
+        private void Construct(IStaticDataService staticDataService) =>
+            AnimationsConfig = staticDataService.AnimationsConfig;
 
         public void Play()
         {
@@ -34,20 +56,6 @@ namespace Assets.Sources.MainMenu
             _animator = StartCoroutine(Animator());
         }
 
-        private IEnumerator Animator()
-        {
-            float progress = 0;
-            float passedTime = 0;
-
-            while(progress < 1)
-            {
-                passedTime += Time.deltaTime;
-                progress = passedTime / _animationsConfig.TankShootingDuration;
-
-                transform.rotation = Quaternion.Lerp(_startRotation, _shootingRotation, _animationsConfig.TankShootingAnimationCurve.Evaluate(progress));
-
-                yield return null;
-            }
-        }
+        protected abstract IEnumerator Animator();
     }
 }

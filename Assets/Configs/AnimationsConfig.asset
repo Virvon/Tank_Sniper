@@ -26,7 +26,7 @@ MonoBehaviour:
       outWeight: 0.1952921
     - serializedVersion: 3
       time: 0.25971413
-      value: 0.99121034
+      value: 1
       inSlope: -0.018946188
       outSlope: -0.018946188
       tangentMode: 0
@@ -34,8 +34,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.4832442
     - serializedVersion: 3
-      time: 1.0232972
-      value: 0.017100453
+      time: 1
+      value: 0
       inSlope: -3.5836573
       outSlope: -3.5836573
       tangentMode: 0
@@ -47,3 +47,56 @@ MonoBehaviour:
     m_RotationOrder: 4
   TankShootingRotationAngle: 5
   TankShootingDuration: 0.3
+  TankScalingAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.80856603
+      outSlope: -0.80856603
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.12367576
+      value: 0.9
+      inSlope: 1.1833841
+      outSlope: 1.1833841
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.470096
+      value: 2
+      inSlope: 0.02605778
+      outSlope: 0.02605778
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.45449004
+    - serializedVersion: 3
+      time: 0.9383804
+      value: 0.95
+      inSlope: -2.2544718
+      outSlope: -2.2544718
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.8114306
+      outSlope: 0.8114306
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  TankScaleMultiplier: 1
+  TankScalingDuration: 1

@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Assets.Sources.MainMenu
 {
-    public class TankWrapper : MonoBehaviour
+    public class TankShootingWrapper : MonoBehaviour
     {
         private const uint MaxRaycastDistance = 200;
 
@@ -41,7 +41,7 @@ namespace Assets.Sources.MainMenu
             }
         }
 
-        public class Factory : PlaceholderFactory<AssetReferenceGameObject, Vector3, Quaternion, Transform, UniTask<TankWrapper>>
+        public class Factory : PlaceholderFactory<AssetReferenceGameObject, Vector3, Quaternion, Transform, UniTask<TankShootingWrapper>>
         {
         }
     }

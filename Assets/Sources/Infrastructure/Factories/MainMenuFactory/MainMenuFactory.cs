@@ -15,7 +15,7 @@ namespace Assets.Sources.Infrastructure.Factories.MainMenuFactory
         private readonly IAssetProvider _assetProvider;
         private readonly Tank.Factory _tankFactory;
         private readonly Desk.Factory _deskFactory;
-        private readonly TankWrapper.Factory _tankWrapperFactory;
+        private readonly TankShootingWrapper.Factory _tankShootingWrapper;
 
         public MainMenuFactory(
             DiContainer container,
@@ -23,18 +23,18 @@ namespace Assets.Sources.Infrastructure.Factories.MainMenuFactory
             IAssetProvider assetProvider,
             Tank.Factory tankFactory,
             Desk.Factory deskFactory,
-            TankWrapper.Factory tankWrapperFactory)
+            TankShootingWrapper.Factory tankShootingWrapper)
         {
             _container = container;
             _staticDataService = staticDataService;
             _assetProvider = assetProvider;
             _tankFactory = tankFactory;
             _deskFactory = deskFactory;
-            _tankWrapperFactory = tankWrapperFactory;
+            _tankShootingWrapper = tankShootingWrapper;
         }
 
-        public async UniTask<TankWrapper> CreateTankWrapper(uint tankLevel, Vector3 position, Quaternion rotation, Transform parent) =>
-            await _tankWrapperFactory.Create(_staticDataService.GetTank(tankLevel).MainMenuWrapperAssetReference, position, rotation, parent);
+        public async UniTask<TankShootingWrapper> CreateTankShootingWrapper(uint tankLevel, Vector3 position, Quaternion rotation, Transform parent) =>
+            await _tankShootingWrapper.Create(_staticDataService.GetTank(tankLevel).MainMenuWrapperAssetReference, position, rotation, parent);
 
         public async UniTask<Tank> CreateTank(
             uint level,

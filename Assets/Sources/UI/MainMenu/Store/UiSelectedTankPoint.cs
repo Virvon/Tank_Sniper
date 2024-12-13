@@ -8,7 +8,7 @@ using System.Collections;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Sources.UI.MainMenu
+namespace Assets.Sources.UI.MainMenu.Store
 {
     public class UiSelectedTankPoint : SelectedTankPoint
     {
@@ -18,11 +18,10 @@ namespace Assets.Sources.UI.MainMenu
         [SerializeField] private float _rotationSensivity;
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private RectTransform _rotationArea;
+        [SerializeField] private Transform _tankParentPoint;
 
         private IInputService _inputService;
         private MainMenuCamera _camera;
-
-        private Vector3 _up;
 
         private Vector2 _lastHandlePosition;
         private bool _isRotatedToTarget;
@@ -79,11 +78,11 @@ namespace Assets.Sources.UI.MainMenu
             RotateToTarget();
         }
 
-        protected override async UniTask ChangeSelectedTank(uint level)
+        protected override async UniTask ChangeSelectedTank(uint level, bool needToAnimate)
         {
-            await base.ChangeSelectedTank(level);
+            await base.ChangeSelectedTank(level, needToAnimate);
 
-            foreach(Transform transform in SelectedTank.GetComponentsInChildren<Transform>())
+            foreach (Transform transform in SelectedTank.GetComponentsInChildren<Transform>())
                 transform.gameObject.layer = LayerMask.NameToLayer(Layer);
 
             SelectedTank.transform.localScale = Vector3.one * _scale;
@@ -101,11 +100,10 @@ namespace Assets.Sources.UI.MainMenu
             ResetTargetRotation();
             await base.OnStart();
             Hide();
-            _up = TankPoint.transform.up;
         }
 
         protected override Transform GetParent() =>
-            TankPoint.transform;
+            _tankParentPoint.transform;
 
         protected override async UniTask<GameObject> CreateTank(
             TankData tankData,

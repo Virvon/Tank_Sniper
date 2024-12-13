@@ -8,5 +8,11 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public AnimationCurve TankShootingAnimationCurve;
         public uint TankShootingRotationAngle;
         public float TankShootingDuration;
+
+        public AnimationCurve TankScalingAnimationCurve;
+        public float TankScalingDuration;
+
+        public AnimationCurve DecalScalingAnimationCurve;
+        public float DecalScalingDuration;
     }
 }

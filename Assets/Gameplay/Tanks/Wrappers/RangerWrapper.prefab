@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5817475581288104498}
-  - component: {fileID: -8524039765984144497}
   - component: {fileID: 866938334281171778}
   - component: {fileID: 6349683878451081771}
   - component: {fileID: 4278125934585706860}
+  - component: {fileID: 8979130892528045966}
   m_Layer: 7
   m_Name: RangerWrapper
   m_TagString: Untagged
@@ -35,20 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8524039765984144497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5373329883434616118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ee910db3f67c7f45bcaff007abdc418, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _weapon: {fileID: 6349683878451081771}
-  _shootingAnimator: {fileID: 4278125934585706860}
 --- !u!65 &866938334281171778
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -89,3 +75,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05246d89c46174147b489eff1d03051b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8979130892528045966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5373329883434616118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e47aa03e6ca5d44aa1bf22d9fd9cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weapon: {fileID: 6349683878451081771}
+  _shootingAnimator: {fileID: 4278125934585706860}

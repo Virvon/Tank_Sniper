@@ -50,6 +50,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1507788426044072568}
+  - component: {fileID: 3024959381914209819}
   m_Layer: 0
   m_Name: TankPoint
   m_TagString: Untagged
@@ -72,6 +73,18 @@ Transform:
   m_Father: {fileID: 4283463400554874995}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3024959381914209819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6941685994358740185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ddfdbfa4bcd31e44bf130fe72540a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7312446752611664544
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tankPoint: {fileID: 1507788426044072568}
   _spawnRotation: {x: 0, y: 0.9238795, z: 0, w: 0.38268343}
+  _scalingAnimator: {fileID: 3024959381914209819}
 --- !u!1001 &20943576148486322
 PrefabInstance:
   m_ObjectHideFlags: 0

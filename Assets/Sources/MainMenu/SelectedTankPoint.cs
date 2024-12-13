@@ -12,6 +12,7 @@ namespace Assets.Sources.MainMenu
     {
         [SerializeField] private Transform _tankPoint;
         [SerializeField] private Quaternion _spawnRotation;
+        [SerializeField] private TankScalingAnimator _scalingAnimator;
 
         private IPersistentProgressService _persistentProgressService;
         private IMainMenuFactory _mainMenuFactory;
@@ -35,9 +36,9 @@ namespace Assets.Sources.MainMenu
             _persistentProgressService.Progress.SelectedTankChanged -= OnSelectedTankChanged;
 
         private async void OnSelectedTankChanged(uint level) =>
-            await ChangeSelectedTank(level);
+            await ChangeSelectedTank(level, true);
 
-        protected virtual async UniTask ChangeSelectedTank(uint level)
+        protected virtual async UniTask ChangeSelectedTank(uint level, bool needToAnimate)
         {
             TankData tankData = _persistentProgressService.Progress.GetTank(level);
 
@@ -45,6 +46,9 @@ namespace Assets.Sources.MainMenu
                 Destroy(SelectedTank);
 
             SelectedTank = await CreateTank(tankData, _tankPoint.position, GetRotation(), GetParent(), _mainMenuFactory);
+
+            if (needToAnimate)
+                _scalingAnimator.Play();
         }
 
         protected abstract UniTask<GameObject> CreateTank(
@@ -58,7 +62,7 @@ namespace Assets.Sources.MainMenu
             _spawnRotation;
 
         protected async virtual UniTask OnStart() =>
-            await ChangeSelectedTank(_persistentProgressService.Progress.SelectedTankLevel);
+            await ChangeSelectedTank(_persistentProgressService.Progress.SelectedTankLevel, false);
 
         protected virtual Transform GetParent() =>
             transform;

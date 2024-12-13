@@ -14,7 +14,7 @@ namespace Assets.Sources.MainMenu
             Transform parent,
             IMainMenuFactory mainMenuFactory)
         {
-            TankWrapper tankWrapper = await mainMenuFactory.CreateTankWrapper(tankData.Level, position, rotation, parent);
+            TankShootingWrapper tankWrapper = await mainMenuFactory.CreateTankShootingWrapper(tankData.Level, position, rotation, parent);
 
             Tank tank = await mainMenuFactory.CreateTank(
                 tankData.Level,
@@ -29,5 +29,8 @@ namespace Assets.Sources.MainMenu
 
             return tankWrapper.gameObject;
         }
+
+        protected override Transform GetParent() =>
+            TankPoint.transform;
     }
 }

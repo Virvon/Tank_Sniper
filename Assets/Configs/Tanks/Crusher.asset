@@ -24,3 +24,8 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 1
+  MainMenuWrapperAssetReference:
+    m_AssetGUID: 1f4ad4a06ec122b47ac1638238cb8d0b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
