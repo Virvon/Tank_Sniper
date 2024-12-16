@@ -10,5 +10,6 @@ namespace Assets.Sources.Services.InputService
         event Action<Vector2> HandlePressed;
         event Action<Vector2> HandleMoved;
         event Action HandleMoveCompleted;
+        event Action AimingButtonPressed;
     }
 }

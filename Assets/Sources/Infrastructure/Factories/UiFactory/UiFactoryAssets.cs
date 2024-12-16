@@ -2,7 +2,7 @@
 {
     public class UiFactoryAssets
     {
-        public const string Window = "Window";
+        public const string GameplayWindow = "Window";
         public const string MainMenuWindow = "MainMenuWindow";
         public const string TankPanel = "TankPanel";
         public const string UnlockingPanel = "TankSkinPanel";

@@ -1,4 +1,5 @@
 ﻿using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
+using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Assets.Sources.Services.PersistentProgress;
 using Cysharp.Threading.Tasks;
 using System;
@@ -14,7 +15,7 @@ namespace Assets.Sources.MainMenu
         [SerializeField] private Quaternion _tankRotation;
         [SerializeField] private float _tankScale;
 
-        private IMainMenuFactory _mainMenuFactory;
+        private ITankFactory _tankFactory;
         private IPersistentProgressService _persistentProgressService;
 
         private Tank _tank;
@@ -24,15 +25,15 @@ namespace Assets.Sources.MainMenu
         public event Action EmploymentChanged;
 
         [Inject]
-        private void Construct(IMainMenuFactory mainMenuFactory, IPersistentProgressService persistentProgressService)
+        private void Construct(ITankFactory tankFactory, IPersistentProgressService persistentProgressService)
         {
-            _mainMenuFactory = mainMenuFactory;
+            _tankFactory = tankFactory;
             _persistentProgressService = persistentProgressService;
         }
 
         public async UniTask CreateTank(uint level)
         {
-            _tank = await _mainMenuFactory.CreateTank(level, _tankPoint.position, _tankRotation, transform);
+            _tank = await _tankFactory.CreateTank(level, _tankPoint.position, _tankRotation, transform);
             _tank.transform.localScale = Vector3.one * _tankScale;
 
             EmploymentChanged?.Invoke();

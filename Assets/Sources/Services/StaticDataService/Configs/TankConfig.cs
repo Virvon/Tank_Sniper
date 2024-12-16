@@ -11,6 +11,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public bool IsUnlockOnStart;
         public AssetReference BaseMaterialAssetReference;
         public AssetReferenceGameObject MainMenuWrapperAssetReference;
+        public AssetReferenceGameObject GameplayWrapperAssetReference;
 
         public uint Key => Level;
     }

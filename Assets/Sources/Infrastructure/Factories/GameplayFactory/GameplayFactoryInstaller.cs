@@ -1,5 +1,4 @@
 ﻿using Assets.Sources.Gameplay;
-using Assets.Sources.Gameplay.Bullets;
 using Assets.Sources.Gameplay.Enemies;
 using Assets.Sources.Services.AssetManagement;
 using Cysharp.Threading.Tasks;
@@ -29,6 +28,10 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<Enemy>, Enemy.Factory>()
                 .FromFactory<ReferencePrefabFactoryAsync<Enemy>>();
+            
+            Container
+                .BindFactory<string, Vector3, UniTask<AimingCamera>, AimingCamera.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<AimingCamera>>();
         }
     }
 }

@@ -37,8 +37,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 833f7363b653c254a8c7ab65365b8134
-    m_Address: Camera
+  - m_GUID: 940833409e3ac284986dbd3f7e0d825e
+    m_Address: GameplayCamera
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -322,7 +322,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b50d9a49709d91448b107fae767f87c7
-    m_Address: RangerWrapper
+    m_Address: RangerMainMenuWrapper
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -359,10 +359,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cba3af9180c6a454a9250b2bfdace3e5
-    m_Address: TankScalingWrapper
+  - m_GUID: 605391bb16fae904c98fc0e88c530451
+    m_Address: RangerGameplayWrapper
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d7d0d98dc73bf0449adc389c990eb76
+    m_Address: AimingCamera
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6bc026d165199ba45914839d4058b4a1
+    m_Address: Assets/Configs/AimingConfig.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a44638466bf414438293c9d18a37e72, type: 2}

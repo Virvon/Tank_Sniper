@@ -1,5 +1,6 @@
 ﻿using Assets.Sources.Data;
 using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
+using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -12,11 +13,11 @@ namespace Assets.Sources.MainMenu
             Vector3 position,
             Quaternion rotation,
             Transform parent,
-            IMainMenuFactory mainMenuFactory)
+            ITankFactory tankFactory)
         {
-            TankShootingWrapper tankWrapper = await mainMenuFactory.CreateTankShootingWrapper(tankData.Level, position, rotation, parent);
+            TankShootingWrapper tankWrapper = await tankFactory.CreateTankShootingWrapper(tankData.Level, position, rotation, parent);
 
-            Tank tank = await mainMenuFactory.CreateTank(
+            Tank tank = await tankFactory.CreateTank(
                 tankData.Level,
                 position,
                 tankWrapper.transform.rotation,

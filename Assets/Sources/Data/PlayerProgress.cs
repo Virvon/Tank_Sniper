@@ -62,6 +62,9 @@ namespace Assets.Sources.Data
             }
         }
 
+        public TankData GetSelectedTank() =>
+            GetTank(SelectedTankLevel);
+
         public void UnlockTankSkin(TankSkinType type)
         {
             GetSkin(type).IsUnlocked = true;

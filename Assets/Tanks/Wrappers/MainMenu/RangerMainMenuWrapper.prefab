@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4278125934585706860}
   - component: {fileID: 8979130892528045966}
   m_Layer: 7
-  m_Name: RangerWrapper
+  m_Name: RangerMainMenuWrapper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

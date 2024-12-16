@@ -10,6 +10,6 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         UniTask<MainMenuWindow> CreateMainMenu();
         UniTask<SelectingPanelElement> CreateTankPanel(Transform parent);
         UniTask<SelectingPanelElement> CreateUnlockingPanel(Transform parent);
-        UniTask CreateWindow();
+        UniTask CreateGameplayWindow();
     }
 }

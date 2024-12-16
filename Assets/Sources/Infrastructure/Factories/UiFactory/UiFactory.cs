@@ -26,8 +26,12 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         public async UniTask<SelectingPanelElement> CreateTankPanel(Transform parent) =>
             await _selectingPanelElementFactory.Create(UiFactoryAssets.TankPanel, parent);
 
-        public async UniTask CreateWindow() =>
-            await _windowFactory.Create(UiFactoryAssets.Window);
+        public async UniTask CreateGameplayWindow()
+        {
+            GameplayWindow gameplayWindow = await _windowFactory.Create(UiFactoryAssets.GameplayWindow) as GameplayWindow;
+
+            _container.BindInstance(gameplayWindow).AsSingle();
+        }
 
         public async UniTask<MainMenuWindow> CreateMainMenu()
         {

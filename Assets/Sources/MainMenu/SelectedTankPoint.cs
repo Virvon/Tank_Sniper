@@ -1,5 +1,6 @@
 ﻿using Assets.Sources.Data;
 using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
+using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Assets.Sources.Services.PersistentProgress;
 using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
@@ -15,16 +16,16 @@ namespace Assets.Sources.MainMenu
         [SerializeField] private TankScalingAnimator _scalingAnimator;
 
         private IPersistentProgressService _persistentProgressService;
-        private IMainMenuFactory _mainMenuFactory;
+        private ITankFactory _tankFactory;
 
         protected GameObject SelectedTank { get; private set; }
         protected Transform TankPoint => _tankPoint;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgressService, IMainMenuFactory mainMenuFactory)
+        private void Construct(IPersistentProgressService persistentProgressService, ITankFactory tankFactory)
         {
             _persistentProgressService = persistentProgressService;
-            _mainMenuFactory = mainMenuFactory;
+            _tankFactory = tankFactory;
 
             _persistentProgressService.Progress.SelectedTankChanged += OnSelectedTankChanged;          
         }
@@ -45,7 +46,7 @@ namespace Assets.Sources.MainMenu
             if (SelectedTank != null)
                 Destroy(SelectedTank);
 
-            SelectedTank = await CreateTank(tankData, _tankPoint.position, GetRotation(), GetParent(), _mainMenuFactory);
+            SelectedTank = await CreateTank(tankData, _tankPoint.position, GetRotation(), GetParent(), _tankFactory);
 
             if (needToAnimate)
                 _scalingAnimator.Play();
@@ -56,7 +57,7 @@ namespace Assets.Sources.MainMenu
             Vector3 position,
             Quaternion rotation,
             Transform parent,
-            IMainMenuFactory mainMenuFactory);
+            ITankFactory tankFactory);
 
         protected virtual Quaternion GetRotation() =>
             _spawnRotation;

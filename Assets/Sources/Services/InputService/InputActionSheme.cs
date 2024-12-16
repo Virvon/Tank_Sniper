@@ -37,9 +37,9 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Shooting"",
+                    ""name"": ""AimingButtonPressed"",
                     ""type"": ""Button"",
-                    ""id"": ""1f78a897-4704-4cce-9986-cb30cfdb656f"",
+                    ""id"": ""c077a74d-5b82-42e5-8a2b-b897ed523fc8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -49,25 +49,47 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""4116e9fc-a8d1-4ba8-ad58-eeaf0532f2ae"",
-                    ""path"": ""<Mouse>/delta"",
+                    ""id"": ""fac27b23-53c3-4c81-8a9f-7c0ce612dadd"",
+                    ""path"": ""<Keyboard>/#(1)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimingButtonPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""2ac432e0-ace0-4720-af9d-d5db055547f6"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aiming"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Modifier"",
+                    ""id"": ""a70e38b0-de37-47c9-90b4-2ea0b6e8b752"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Aiming"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""960938c1-5dac-48d7-a596-f55df0274dce"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""name"": ""Binding"",
+                    ""id"": ""605b9a96-77a0-45a3-9f36-4e71e06b7808"",
+                    ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Shooting"",
+                    ""action"": ""Aiming"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -160,7 +182,7 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
         // GameplayInput
         m_GameplayInput = asset.FindActionMap("GameplayInput", throwIfNotFound: true);
         m_GameplayInput_Aiming = m_GameplayInput.FindAction("Aiming", throwIfNotFound: true);
-        m_GameplayInput_Shooting = m_GameplayInput.FindAction("Shooting", throwIfNotFound: true);
+        m_GameplayInput_AimingButtonPressed = m_GameplayInput.FindAction("AimingButtonPressed", throwIfNotFound: true);
         // MainMenuInput
         m_MainMenuInput = asset.FindActionMap("MainMenuInput", throwIfNotFound: true);
         m_MainMenuInput_HandleMove = m_MainMenuInput.FindAction("HandleMove", throwIfNotFound: true);
@@ -226,13 +248,13 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_GameplayInput;
     private List<IGameplayInputActions> m_GameplayInputActionsCallbackInterfaces = new List<IGameplayInputActions>();
     private readonly InputAction m_GameplayInput_Aiming;
-    private readonly InputAction m_GameplayInput_Shooting;
+    private readonly InputAction m_GameplayInput_AimingButtonPressed;
     public struct GameplayInputActions
     {
         private @InputActionSheme m_Wrapper;
         public GameplayInputActions(@InputActionSheme wrapper) { m_Wrapper = wrapper; }
         public InputAction @Aiming => m_Wrapper.m_GameplayInput_Aiming;
-        public InputAction @Shooting => m_Wrapper.m_GameplayInput_Shooting;
+        public InputAction @AimingButtonPressed => m_Wrapper.m_GameplayInput_AimingButtonPressed;
         public InputActionMap Get() { return m_Wrapper.m_GameplayInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -245,9 +267,9 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
             @Aiming.started += instance.OnAiming;
             @Aiming.performed += instance.OnAiming;
             @Aiming.canceled += instance.OnAiming;
-            @Shooting.started += instance.OnShooting;
-            @Shooting.performed += instance.OnShooting;
-            @Shooting.canceled += instance.OnShooting;
+            @AimingButtonPressed.started += instance.OnAimingButtonPressed;
+            @AimingButtonPressed.performed += instance.OnAimingButtonPressed;
+            @AimingButtonPressed.canceled += instance.OnAimingButtonPressed;
         }
 
         private void UnregisterCallbacks(IGameplayInputActions instance)
@@ -255,9 +277,9 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
             @Aiming.started -= instance.OnAiming;
             @Aiming.performed -= instance.OnAiming;
             @Aiming.canceled -= instance.OnAiming;
-            @Shooting.started -= instance.OnShooting;
-            @Shooting.performed -= instance.OnShooting;
-            @Shooting.canceled -= instance.OnShooting;
+            @AimingButtonPressed.started -= instance.OnAimingButtonPressed;
+            @AimingButtonPressed.performed -= instance.OnAimingButtonPressed;
+            @AimingButtonPressed.canceled -= instance.OnAimingButtonPressed;
         }
 
         public void RemoveCallbacks(IGameplayInputActions instance)
@@ -324,7 +346,7 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
     public interface IGameplayInputActions
     {
         void OnAiming(InputAction.CallbackContext context);
-        void OnShooting(InputAction.CallbackContext context);
+        void OnAimingButtonPressed(InputAction.CallbackContext context);
     }
     public interface IMainMenuInputActions
     {

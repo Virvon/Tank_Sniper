@@ -15,9 +15,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Shooting",
+                    "name": "AimingButtonPressed",
                     "type": "Button",
-                    "id": "1f78a897-4704-4cce-9986-cb30cfdb656f",
+                    "id": "c077a74d-5b82-42e5-8a2b-b897ed523fc8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -27,25 +27,47 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "4116e9fc-a8d1-4ba8-ad58-eeaf0532f2ae",
-                    "path": "<Mouse>/delta",
+                    "id": "fac27b23-53c3-4c81-8a9f-7c0ce612dadd",
+                    "path": "<Keyboard>/#(1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AimingButtonPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "2ac432e0-ace0-4720-af9d-d5db055547f6",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aiming",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "a70e38b0-de37-47c9-90b4-2ea0b6e8b752",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Aiming",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "960938c1-5dac-48d7-a596-f55df0274dce",
-                    "path": "<Mouse>/leftButton",
+                    "name": "Binding",
+                    "id": "605b9a96-77a0-45a3-9f36-4e71e06b7808",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shooting",
+                    "action": "Aiming",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 }
             ]
         },

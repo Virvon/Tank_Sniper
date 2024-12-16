@@ -1,5 +1,6 @@
 ﻿using Assets.Sources.Data;
 using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
+using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Assets.Sources.MainMenu;
 using Assets.Sources.Services.InputService;
 using Cysharp.Threading.Tasks;
@@ -110,9 +111,9 @@ namespace Assets.Sources.UI.MainMenu.Store
             Vector3 position,
             Quaternion rotation,
             Transform parent,
-            IMainMenuFactory mainMenuFactory)
+            ITankFactory tankFactory)
         {
-            Tank tank = await mainMenuFactory.CreateTank(tankData.Level, position, rotation, parent, tankData.SkinType, tankData.DecalType, true);
+            Tank tank = await tankFactory.CreateTank(tankData.Level, position, rotation, parent, tankData.SkinType, tankData.DecalType, true);
 
             return tank.gameObject;
         }

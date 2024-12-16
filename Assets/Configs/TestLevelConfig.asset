@@ -16,3 +16,5 @@ MonoBehaviour:
   EnemyPoints: []
   EnemyCarPoints: []
   HelicopterPoints: []
+  PlayerTankPosition: {x: 0, y: 6, z: 3.1}
+  PlayerTankRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}

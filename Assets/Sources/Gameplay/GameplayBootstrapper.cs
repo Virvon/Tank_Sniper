@@ -1,10 +1,13 @@
-﻿using Assets.Sources.Infrastructure.Factories.GameplayFactory;
+﻿using Assets.Sources.Data;
+using Assets.Sources.Infrastructure.Factories.GameplayFactory;
+using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Assets.Sources.Infrastructure.Factories.UiFactory;
+using Assets.Sources.Services.PersistentProgress;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Services.StaticDataService.Configs.Level;
 using Cysharp.Threading.Tasks;
-using System;
 using System.Collections.Generic;
+using UnityEngine;
 using Zenject;
 
 namespace Assets.Sources.Gameplay
@@ -14,36 +17,59 @@ namespace Assets.Sources.Gameplay
         private readonly IUiFactory _uiFactory;
         private readonly IGameplayFactory _gameplayFactory;
         private readonly IStaticDataService _staticDataService;
+        private readonly ITankFactory _tankFactory;
+        private readonly IPersistentProgressService _persistentProgressService;
+        private readonly PlayerPoint _playerPoint;
+        private readonly AimingCameraPoint _aimingCameraPoint;
 
-        public GameplayBootstrapper(IUiFactory uiFactory, IGameplayFactory gameplayFactory, IStaticDataService staticDataService)
+        public GameplayBootstrapper(
+            IUiFactory uiFactory,
+            IGameplayFactory gameplayFactory,
+            IStaticDataService staticDataService,
+            ITankFactory tankFactory,
+            IPersistentProgressService persistentProgressService,
+            PlayerPoint playerPoint,
+            AimingCameraPoint aimingCameraPoint)
         {
             _uiFactory = uiFactory;
             _gameplayFactory = gameplayFactory;
             _staticDataService = staticDataService;
+            _tankFactory = tankFactory;
+            _persistentProgressService = persistentProgressService;
+            _playerPoint = playerPoint;
+            _aimingCameraPoint = aimingCameraPoint;
         }
 
         public async void Initialize()
         {
+            LevelConfig levelConfig = _staticDataService.GetLevel("GameplayScene");
+            TankData tankData = _persistentProgressService.Progress.GetSelectedTank();
+
             await _gameplayFactory.CreateCamera();
-            await _gameplayFactory.CreatePlayerTank();
-            await CreateEnemies();
-            await _uiFactory.CreateWindow();
+            await _gameplayFactory.CreateAimingVirtualCamera(_aimingCameraPoint.transform.position);
+            await _gameplayFactory.CreatePlayerTank();//
+
+            PlayerTankWrapper playerTankWrapper = await _tankFactory.CreatePlayerTankWrapper(
+                tankData.Level,
+                _playerPoint.transform.position,
+                _playerPoint.transform.rotation);
+
+            await _tankFactory.CreateTank(
+                tankData.Level,
+                playerTankWrapper.transform.position,
+                playerTankWrapper.transform.rotation,
+                playerTankWrapper.transform,
+                tankData.SkinType,
+                tankData.DecalType,
+                false);
+
+            await CreateEnemies(levelConfig);
+            await _uiFactory.CreateGameplayWindow();
         }
 
-        private async UniTask CreateEnemies()
+        private async UniTask CreateEnemies(LevelConfig levelConfig)
         {
-            LevelConfig levelConfig = _staticDataService.GetLevel("GameplayScene");
-
             List<UniTask> tasks = new();
-
-            //foreach (EnemyPointConfig enemyPointConfig in levelConfig.EnemyPoints)
-            //    tasks.Add(enemyPointConfig.Create(_gameplayFactory));
-
-            //foreach (WalkingEnemyPointConfig walkingEnemyPointConfig in levelConfig.WalkingEnemyPoints)
-            //    tasks.Add(walkingEnemyPointConfig.Create(_gameplayFactory));
-
-            //foreach (EnemyCarPointConfig enemyCarPointConfig in levelConfig.EnemyCarPoints)
-            //    tasks.Add(enemyCarPointConfig.Create(_gameplayFactory));
 
             foreach (EnemyCarPointConfig enemyCarPointConfig in levelConfig.EnemyCarPoints)
                 tasks.Add(enemyCarPointConfig.Create(_gameplayFactory));

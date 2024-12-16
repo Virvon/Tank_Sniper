@@ -53,50 +53,92 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -0.80856603
-      outSlope: -0.80856603
+      inSlope: -0.40428302
+      outSlope: -0.40428302
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.12367576
-      value: 0.9
-      inSlope: 1.1833841
-      outSlope: 1.1833841
-      tangentMode: 34
+      value: 0.95
+      inSlope: -0.0018580288
+      outSlope: -0.0018580288
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.9280659
     - serializedVersion: 3
       time: 0.470096
-      value: 2
-      inSlope: 0.02605778
-      outSlope: 0.02605778
+      value: 1.05
+      inSlope: 0.00016969765
+      outSlope: 0.00016969765
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.45449004
+      outWeight: 0.649034
     - serializedVersion: 3
-      time: 0.9383804
-      value: 0.95
-      inSlope: -2.2544718
-      outSlope: -2.2544718
+      time: 0.85
+      value: 0.98
+      inSlope: 0.006052309
+      outSlope: 0.006052309
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0.37441146
+      outWeight: 1
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0.8114306
-      outSlope: 0.8114306
-      tangentMode: 34
+      inSlope: 0.3715937
+      outSlope: 0.3715937
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.38888898
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  TankScaleMultiplier: 1
-  TankScalingDuration: 1
+  TankScalingDuration: 0.4
+  DecalScalingAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.4254451
+      outSlope: 0.4254451
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.470096
+      value: 1.2
+      inSlope: 0.00016969765
+      outSlope: 0.00016969765
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.649034
+    - serializedVersion: 3
+      time: 0.85
+      value: 0.9
+      inSlope: -0.0049809227
+      outSlope: -0.0049809227
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.37441146
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.3715937
+      outSlope: 0.3715937
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.38888898
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DecalScalingDuration: 0.2

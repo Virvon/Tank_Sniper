@@ -1,5 +1,6 @@
 ﻿using Assets.Sources.Infrastructure.Factories.BulletFactory;
 using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
+using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Assets.Sources.Infrastructure.Factories.UiFactory;
 using UnityEngine;
 using Zenject;
@@ -18,7 +19,11 @@ namespace Assets.Sources.MainMenu
             BindCamera();
             BindDeskHandler();
             BindBulletFactory();
+            BindTankFactoryInstaller();
         }
+
+        private void BindTankFactoryInstaller() =>
+            TankFactoryInstaller.Install(Container);
 
         private void BindBulletFactory() =>
             BulletFactoryInstaller.Install(Container);
@@ -27,7 +32,7 @@ namespace Assets.Sources.MainMenu
             Container.BindInstance(_camera).AsSingle();
 
         private void BindDeskHandler() =>
-            Container.Bind<DeskHandler>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<DeskHandler>().AsSingle().NonLazy();
 
         private void BindMainMenuFactory() =>
             MainMenuFactoryInstaller.Install(Container);
