@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using Zenject;
 
-namespace Assets.Sources.MainMenu
+namespace Assets.Sources.Tanks
 {
     public class Decals : MonoBehaviour
     {
@@ -41,7 +41,7 @@ namespace Assets.Sources.MainMenu
 
         public async void Initialize(DecalType decalType, bool isChangable)
         {
-            await ChangeDecal(decalType , false);
+            await ChangeDecal(decalType, false);
             _isChangable = isChangable;
         }
 

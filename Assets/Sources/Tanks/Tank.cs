@@ -4,16 +4,18 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
 
-namespace Assets.Sources.MainMenu
+namespace Assets.Sources.Tanks
 {
     public class Tank : MonoBehaviour
     {
         [SerializeField] private TankSkin _tankSkin;
         [SerializeField] private Decals _decals;
         [SerializeField] private Transform[] _bulletPoints;
+        [SerializeField] private Transform _turret;
 
         public uint Level { get; private set; }
         public Transform[] BulletPoints => _bulletPoints;
+        public Transform Turret => _turret;
 
         public void Initialize(uint level, Material skinMaterial, DecalType decalType, bool isDecalsChangable)
         {
@@ -22,10 +24,8 @@ namespace Assets.Sources.MainMenu
             _decals.Initialize(decalType, isDecalsChangable);
         }
 
-        public void Destroy()
-        {
+        public void Destroy() =>
             Destroy(gameObject);
-        }
 
         public class Factory : PlaceholderFactory<AssetReferenceGameObject, Vector3, Quaternion, Transform, UniTask<Tank>>
         {

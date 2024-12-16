@@ -7,5 +7,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs
     {
         public float AimingDuration;
         public float ShootingAimDuration;
+        public int TankTurretRotation;
+        public float TankMovingDistanceModifier;
     }
 }

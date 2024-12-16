@@ -5,8 +5,10 @@ using Assets.Sources.Infrastructure.Factories.UiFactory;
 using Assets.Sources.Services.PersistentProgress;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Services.StaticDataService.Configs.Level;
+using Assets.Sources.Tanks;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -49,12 +51,20 @@ namespace Assets.Sources.Gameplay
             await _gameplayFactory.CreateAimingVirtualCamera(_aimingCameraPoint.transform.position);
             await _gameplayFactory.CreatePlayerTank();//
 
+            await CreateTank(tankData);
+
+            await CreateEnemies(levelConfig);
+            await _uiFactory.CreateGameplayWindow();
+        }
+
+        private async Task CreateTank(TankData tankData)
+        {
             PlayerTankWrapper playerTankWrapper = await _tankFactory.CreatePlayerTankWrapper(
                 tankData.Level,
                 _playerPoint.transform.position,
                 _playerPoint.transform.rotation);
 
-            await _tankFactory.CreateTank(
+            Tank tank = await _tankFactory.CreateTank(
                 tankData.Level,
                 playerTankWrapper.transform.position,
                 playerTankWrapper.transform.rotation,
@@ -63,8 +73,7 @@ namespace Assets.Sources.Gameplay
                 tankData.DecalType,
                 false);
 
-            await CreateEnemies(levelConfig);
-            await _uiFactory.CreateGameplayWindow();
+            playerTankWrapper.Initialize(tank.BulletPoints, tank.Turret);
         }
 
         private async UniTask CreateEnemies(LevelConfig levelConfig)

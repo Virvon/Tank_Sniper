@@ -2,6 +2,7 @@
 using Assets.Sources.MainMenu;
 using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.Services.StaticDataService;
+using Assets.Sources.Tanks;
 using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
 using UnityEngine;

@@ -1,8 +1,9 @@
-﻿using Assets.Sources.Services.StaticDataService.Configs;
+﻿using Assets.Sources.MainMenu;
+using Assets.Sources.Services.StaticDataService.Configs;
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Sources.MainMenu
+namespace Assets.Sources.Tanks
 {
     public class DecalScalingAnimator : TankAnimator
     {

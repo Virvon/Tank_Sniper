@@ -1,6 +1,7 @@
 ﻿using Assets.Sources.Gameplay;
 using Assets.Sources.MainMenu;
 using Assets.Sources.Services.AssetManagement;
+using Assets.Sources.Tanks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;

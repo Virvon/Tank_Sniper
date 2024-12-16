@@ -184,6 +184,7 @@ MonoBehaviour:
   _decals: {fileID: 3975926136852737171}
   _bulletPoints:
   - {fileID: 7193112378711610976}
+  _turret: {fileID: 8747193624797659068}
 --- !u!114 &4887132264401719797
 MonoBehaviour:
   m_ObjectHideFlags: 0

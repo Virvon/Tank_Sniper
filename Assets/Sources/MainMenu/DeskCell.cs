@@ -1,6 +1,7 @@
 ﻿using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
 using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Assets.Sources.Services.PersistentProgress;
+using Assets.Sources.Tanks;
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
