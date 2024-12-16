@@ -18,12 +18,12 @@ namespace Assets.Sources.Gameplay.Weapons
             _gameplayFactory = gameplayFactory;
             _playerTank = playerTank;
 
-            _inputService.Shooted += OnShooted;
+            //_inputService.Shooted += OnShooted;
         }
 
         private void OnDestroy()
         {
-            _inputService.Shooted -= OnShooted;
+            //_inputService.Shooted -= OnShooted;
         }
 
         private void OnShooted()

@@ -6,18 +6,18 @@
             "id": "054dcbaf-f8a7-4768-a885-f030c7a45fbc",
             "actions": [
                 {
-                    "name": "Aiming",
-                    "type": "Value",
-                    "id": "f016a990-d607-42b7-8ada-422b59389d59",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "AimingButtonPressed",
                     "type": "Button",
                     "id": "c077a74d-5b82-42e5-8a2b-b897ed523fc8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UndoAimingButtonPressed",
+                    "type": "Button",
+                    "id": "dfa7a4ae-318b-42af-b9fd-7ed6f4a6d925",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -37,42 +37,20 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "One Modifier",
-                    "id": "2ac432e0-ace0-4720-af9d-d5db055547f6",
-                    "path": "OneModifier",
+                    "name": "",
+                    "id": "950efc78-e0a2-479f-8408-f16d9eab8efa",
+                    "path": "<Keyboard>/#(2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Aiming",
-                    "isComposite": true,
+                    "action": "UndoAimingButtonPressed",
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "Modifier",
-                    "id": "a70e38b0-de37-47c9-90b4-2ea0b6e8b752",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aiming",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Binding",
-                    "id": "605b9a96-77a0-45a3-9f36-4e71e06b7808",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aiming",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 }
             ]
         },
         {
-            "name": "MainMenuInput",
+            "name": "HandleInput",
             "id": "ccc8b13e-a32a-4e33-999e-dbdaac51b6ba",
             "actions": [
                 {

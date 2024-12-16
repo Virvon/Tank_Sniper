@@ -41,6 +41,7 @@ namespace Assets.Sources.Gameplay
             _inputService.HandleMoved += OnHandleMoved;
             _inputService.HandleMoveCompleted += OnHandleMoveCompleted;
             _inputService.AimingButtonPressed += OnAimingButtonPressed;
+            _inputService.UndoAimingButtonPressed += StopAiming;
         }
 
         public void Dispose()
@@ -49,6 +50,7 @@ namespace Assets.Sources.Gameplay
             _inputService.HandleMoved -= OnHandleMoved;
             _inputService.HandleMoveCompleted -= OnHandleMoveCompleted;
             _inputService.AimingButtonPressed -= OnAimingButtonPressed;
+            _inputService.UndoAimingButtonPressed -= StopAiming;
         }
 
         private void OnAimingButtonPressed()
@@ -65,39 +67,46 @@ namespace Assets.Sources.Gameplay
                 OnAiming();
         }
 
-        private void OnHandleMoved(Vector2 handlePosition)
-        {
+        private void OnHandleMoved(Vector2 handlePosition) =>
             AimShifted?.Invoke(handlePosition);
-        }
 
         private void OnHandleMoveCompleted()
         {
-            TryStopTimer();
-
             if (_aimingProgress == AimedProgress)
             {
+                TryStopTimer();
                 Shooted?.Invoke();
 
                 _timer = _coroutineRunner.StartCoroutine(Timer(_aimingConfig.ShootingAimDuration, callback: () =>
                 {
-                    TryStopTimer();
-
-                    _canAim = false;
-                    _timer = _coroutineRunner.StartCoroutine(Aimer(UnaimedProgress, callback: ()=> _canAim = true));
+                    StopAiming();
                 }));
             }
             else if(_aimingProgress != UnaimedProgress)
             {
-                _canAim = false;
-                _timer = _coroutineRunner.StartCoroutine(Aimer(UnaimedProgress, callback: () => _canAim = true));
+                StopAiming();
             }
+        }
+
+        private void StopAiming()
+        {
+            if (_aimingProgress == UnaimedProgress)
+                return;
+
+            TryStopTimer();
+
+            _canAim = false;
+            _timer = _coroutineRunner.StartCoroutine(Aimer(UnaimedProgress, callback: () => _canAim = true));
         }
 
         private void OnAiming()
         {
-            TryStopTimer();
+            if(_canAim)
+            {
+                TryStopTimer();
 
-            _timer = _coroutineRunner.StartCoroutine(Aimer(AimedProgress));
+                _timer = _coroutineRunner.StartCoroutine(Aimer(AimedProgress));
+            }
         }
 
         private void TryStopTimer()

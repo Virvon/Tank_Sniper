@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ccdd4793c9835a49ac88a75844b088a, type: 3}
   m_Name: AimingConfig
   m_EditorClassIdentifier: 
-  AimingDuration: 0
-  ShootingAimDuration: 0
+  AimingDuration: 0.5
+  ShootingAimDuration: 0.2

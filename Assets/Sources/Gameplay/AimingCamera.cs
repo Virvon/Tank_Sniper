@@ -55,7 +55,7 @@ namespace Assets.Sources.Gameplay
 
         private void OnAimShifted(Vector2 handlePosition)
         {
-            Vector2 delta = _lastHandlePosition - handlePosition;
+            Vector2 delta = handlePosition - _lastHandlePosition;
             _lastHandlePosition = handlePosition;
 
             _rotation += new Vector2(-delta.y, delta.x) * _sensivity;

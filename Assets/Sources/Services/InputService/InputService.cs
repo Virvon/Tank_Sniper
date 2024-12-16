@@ -13,19 +13,16 @@ namespace Assets.Sources.Services.InputService
 
             _inputActionSheme.Enable();
 
-            _inputActionSheme.GameplayInput.Aiming.performed += ctx => SightShifted?.Invoke(ctx.ReadValue<Vector2>());
-            _inputActionSheme.GameplayInput.Aiming.canceled += ctx => Shooted?.Invoke();
-
             _inputActionSheme.GameplayInput.AimingButtonPressed.performed += ctx => AimingButtonPressed?.Invoke();
+            _inputActionSheme.GameplayInput.UndoAimingButtonPressed.performed += ctx => UndoAimingButtonPressed?.Invoke();
 
-            _inputActionSheme.MainMenuInput.HandleMove.started += ctx => HandlePressed?.Invoke(ctx.ReadValue<Vector2>());
-            _inputActionSheme.MainMenuInput.HandleMove.performed += ctx => HandleMoved?.Invoke(ctx.ReadValue<Vector2>());
-            _inputActionSheme.MainMenuInput.HandleMove.canceled += ctx => HandleMoveCompleted?.Invoke();
+            _inputActionSheme.HandleInput.HandleMove.started += ctx => HandlePressed?.Invoke(ctx.ReadValue<Vector2>());
+            _inputActionSheme.HandleInput.HandleMove.performed += ctx => HandleMoved?.Invoke(ctx.ReadValue<Vector2>());
+            _inputActionSheme.HandleInput.HandleMove.canceled += ctx => HandleMoveCompleted?.Invoke();
         }
 
-        public event Action<Vector2> SightShifted;
-        public event Action Shooted;
         public event Action AimingButtonPressed;
+        public event Action UndoAimingButtonPressed;
 
         public event Action<Vector2> HandlePressed;
         public event Action<Vector2> HandleMoved;

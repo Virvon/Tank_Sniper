@@ -31,12 +31,12 @@ namespace Assets.Sources.Gameplay.Weapons
             _shootsNumberToSuperShot = _requireShotsNumberToSuperShot;
             _bulletsCount = _bulletsCapacity;
 
-            _inputService.Shooted += OnShoted;
+            //.Shooted += OnShoted;
         }
 
         private void OnDestroy()
         {
-            _inputService.Shooted -= OnShoted;
+            //_inputService.Shooted -= OnShoted;
         }
 
         private void OnShoted()

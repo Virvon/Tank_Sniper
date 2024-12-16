@@ -28,18 +28,18 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
             ""id"": ""054dcbaf-f8a7-4768-a885-f030c7a45fbc"",
             ""actions"": [
                 {
-                    ""name"": ""Aiming"",
-                    ""type"": ""Value"",
-                    ""id"": ""f016a990-d607-42b7-8ada-422b59389d59"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""AimingButtonPressed"",
                     ""type"": ""Button"",
                     ""id"": ""c077a74d-5b82-42e5-8a2b-b897ed523fc8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UndoAimingButtonPressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""dfa7a4ae-318b-42af-b9fd-7ed6f4a6d925"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -59,42 +59,20 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""One Modifier"",
-                    ""id"": ""2ac432e0-ace0-4720-af9d-d5db055547f6"",
-                    ""path"": ""OneModifier"",
+                    ""name"": """",
+                    ""id"": ""950efc78-e0a2-479f-8408-f16d9eab8efa"",
+                    ""path"": ""<Keyboard>/#(2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Aiming"",
-                    ""isComposite"": true,
+                    ""action"": ""UndoAimingButtonPressed"",
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Modifier"",
-                    ""id"": ""a70e38b0-de37-47c9-90b4-2ea0b6e8b752"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Aiming"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Binding"",
-                    ""id"": ""605b9a96-77a0-45a3-9f36-4e71e06b7808"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Aiming"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 }
             ]
         },
         {
-            ""name"": ""MainMenuInput"",
+            ""name"": ""HandleInput"",
             ""id"": ""ccc8b13e-a32a-4e33-999e-dbdaac51b6ba"",
             ""actions"": [
                 {
@@ -181,11 +159,11 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
 }");
         // GameplayInput
         m_GameplayInput = asset.FindActionMap("GameplayInput", throwIfNotFound: true);
-        m_GameplayInput_Aiming = m_GameplayInput.FindAction("Aiming", throwIfNotFound: true);
         m_GameplayInput_AimingButtonPressed = m_GameplayInput.FindAction("AimingButtonPressed", throwIfNotFound: true);
-        // MainMenuInput
-        m_MainMenuInput = asset.FindActionMap("MainMenuInput", throwIfNotFound: true);
-        m_MainMenuInput_HandleMove = m_MainMenuInput.FindAction("HandleMove", throwIfNotFound: true);
+        m_GameplayInput_UndoAimingButtonPressed = m_GameplayInput.FindAction("UndoAimingButtonPressed", throwIfNotFound: true);
+        // HandleInput
+        m_HandleInput = asset.FindActionMap("HandleInput", throwIfNotFound: true);
+        m_HandleInput_HandleMove = m_HandleInput.FindAction("HandleMove", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -247,14 +225,14 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
     // GameplayInput
     private readonly InputActionMap m_GameplayInput;
     private List<IGameplayInputActions> m_GameplayInputActionsCallbackInterfaces = new List<IGameplayInputActions>();
-    private readonly InputAction m_GameplayInput_Aiming;
     private readonly InputAction m_GameplayInput_AimingButtonPressed;
+    private readonly InputAction m_GameplayInput_UndoAimingButtonPressed;
     public struct GameplayInputActions
     {
         private @InputActionSheme m_Wrapper;
         public GameplayInputActions(@InputActionSheme wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Aiming => m_Wrapper.m_GameplayInput_Aiming;
         public InputAction @AimingButtonPressed => m_Wrapper.m_GameplayInput_AimingButtonPressed;
+        public InputAction @UndoAimingButtonPressed => m_Wrapper.m_GameplayInput_UndoAimingButtonPressed;
         public InputActionMap Get() { return m_Wrapper.m_GameplayInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -264,22 +242,22 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_GameplayInputActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_GameplayInputActionsCallbackInterfaces.Add(instance);
-            @Aiming.started += instance.OnAiming;
-            @Aiming.performed += instance.OnAiming;
-            @Aiming.canceled += instance.OnAiming;
             @AimingButtonPressed.started += instance.OnAimingButtonPressed;
             @AimingButtonPressed.performed += instance.OnAimingButtonPressed;
             @AimingButtonPressed.canceled += instance.OnAimingButtonPressed;
+            @UndoAimingButtonPressed.started += instance.OnUndoAimingButtonPressed;
+            @UndoAimingButtonPressed.performed += instance.OnUndoAimingButtonPressed;
+            @UndoAimingButtonPressed.canceled += instance.OnUndoAimingButtonPressed;
         }
 
         private void UnregisterCallbacks(IGameplayInputActions instance)
         {
-            @Aiming.started -= instance.OnAiming;
-            @Aiming.performed -= instance.OnAiming;
-            @Aiming.canceled -= instance.OnAiming;
             @AimingButtonPressed.started -= instance.OnAimingButtonPressed;
             @AimingButtonPressed.performed -= instance.OnAimingButtonPressed;
             @AimingButtonPressed.canceled -= instance.OnAimingButtonPressed;
+            @UndoAimingButtonPressed.started -= instance.OnUndoAimingButtonPressed;
+            @UndoAimingButtonPressed.performed -= instance.OnUndoAimingButtonPressed;
+            @UndoAimingButtonPressed.canceled -= instance.OnUndoAimingButtonPressed;
         }
 
         public void RemoveCallbacks(IGameplayInputActions instance)
@@ -298,57 +276,57 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
     }
     public GameplayInputActions @GameplayInput => new GameplayInputActions(this);
 
-    // MainMenuInput
-    private readonly InputActionMap m_MainMenuInput;
-    private List<IMainMenuInputActions> m_MainMenuInputActionsCallbackInterfaces = new List<IMainMenuInputActions>();
-    private readonly InputAction m_MainMenuInput_HandleMove;
-    public struct MainMenuInputActions
+    // HandleInput
+    private readonly InputActionMap m_HandleInput;
+    private List<IHandleInputActions> m_HandleInputActionsCallbackInterfaces = new List<IHandleInputActions>();
+    private readonly InputAction m_HandleInput_HandleMove;
+    public struct HandleInputActions
     {
         private @InputActionSheme m_Wrapper;
-        public MainMenuInputActions(@InputActionSheme wrapper) { m_Wrapper = wrapper; }
-        public InputAction @HandleMove => m_Wrapper.m_MainMenuInput_HandleMove;
-        public InputActionMap Get() { return m_Wrapper.m_MainMenuInput; }
+        public HandleInputActions(@InputActionSheme wrapper) { m_Wrapper = wrapper; }
+        public InputAction @HandleMove => m_Wrapper.m_HandleInput_HandleMove;
+        public InputActionMap Get() { return m_Wrapper.m_HandleInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MainMenuInputActions set) { return set.Get(); }
-        public void AddCallbacks(IMainMenuInputActions instance)
+        public static implicit operator InputActionMap(HandleInputActions set) { return set.Get(); }
+        public void AddCallbacks(IHandleInputActions instance)
         {
-            if (instance == null || m_Wrapper.m_MainMenuInputActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MainMenuInputActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_HandleInputActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_HandleInputActionsCallbackInterfaces.Add(instance);
             @HandleMove.started += instance.OnHandleMove;
             @HandleMove.performed += instance.OnHandleMove;
             @HandleMove.canceled += instance.OnHandleMove;
         }
 
-        private void UnregisterCallbacks(IMainMenuInputActions instance)
+        private void UnregisterCallbacks(IHandleInputActions instance)
         {
             @HandleMove.started -= instance.OnHandleMove;
             @HandleMove.performed -= instance.OnHandleMove;
             @HandleMove.canceled -= instance.OnHandleMove;
         }
 
-        public void RemoveCallbacks(IMainMenuInputActions instance)
+        public void RemoveCallbacks(IHandleInputActions instance)
         {
-            if (m_Wrapper.m_MainMenuInputActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_HandleInputActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IMainMenuInputActions instance)
+        public void SetCallbacks(IHandleInputActions instance)
         {
-            foreach (var item in m_Wrapper.m_MainMenuInputActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_HandleInputActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_MainMenuInputActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_HandleInputActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public MainMenuInputActions @MainMenuInput => new MainMenuInputActions(this);
+    public HandleInputActions @HandleInput => new HandleInputActions(this);
     public interface IGameplayInputActions
     {
-        void OnAiming(InputAction.CallbackContext context);
         void OnAimingButtonPressed(InputAction.CallbackContext context);
+        void OnUndoAimingButtonPressed(InputAction.CallbackContext context);
     }
-    public interface IMainMenuInputActions
+    public interface IHandleInputActions
     {
         void OnHandleMove(InputAction.CallbackContext context);
     }
