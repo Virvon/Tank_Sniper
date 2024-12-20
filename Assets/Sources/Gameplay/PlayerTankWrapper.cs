@@ -1,4 +1,5 @@
-﻿using Assets.Sources.Services.StaticDataService;
+﻿using Assets.Sources.Gameplay.Weapons;
+using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Services.StaticDataService.Configs;
 using Cysharp.Threading.Tasks;
 using System;
@@ -11,11 +12,12 @@ namespace Assets.Sources.Gameplay
 {
     public class PlayerTankWrapper : MonoBehaviour
     {
+        [SerializeField] private PlayerTankWeapon _playerTankWeapon;
+
         private Aiming _aiming;
         private AimingCameraPoint _aimingCameraPoint;
         private AimingConfig _aimingConfig;
 
-        private Transform[] _bulletPoints;
         private Transform _turret;
         private float _movingDistance;
         private Vector3 _startPosition;
@@ -40,12 +42,13 @@ namespace Assets.Sources.Gameplay
 
         public void Initialize(Transform[] bulletPoints, Transform turret)
         {
-            _bulletPoints = bulletPoints;
             _turret = turret;
 
             _movingDistance = MathF.Abs(_aimingCameraPoint.transform.position.x - turret.position.x);
             _startPosition = transform.position;
             _startTurretRotation = _turret.rotation;
+
+            _playerTankWeapon.SetBulletPoints(bulletPoints);
         }
 
         private void OnAimingStateChanged(bool isAimed, float duration)

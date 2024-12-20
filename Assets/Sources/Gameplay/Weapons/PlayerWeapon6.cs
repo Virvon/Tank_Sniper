@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Sources.Gameplay.Weapons
 {
-    public class PlayerWeapon6 : PlayerWeapon
+    public class PlayerWeapon6 : PlayerTankWeapon
     {
         protected override void Shoot()
         {

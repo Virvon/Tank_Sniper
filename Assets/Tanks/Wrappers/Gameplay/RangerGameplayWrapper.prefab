@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5480365533733352306}
   - component: {fileID: 2873176821194464424}
+  - component: {fileID: 409257823626229145}
   m_Layer: 0
   m_Name: RangerGameplayWrapper
   m_TagString: Untagged
@@ -44,3 +45,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 830a53da033998c42a16c0ae891a0afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerTankWeapon: {fileID: 409257823626229145}
+--- !u!114 &409257823626229145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8102308152371460489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74200aec15e616a47888fc02cdee3612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletsCapacity: 3
+  _requireShotsNumberToSuperShot: 3
+  _bulletShootsCount: 1
+  _bulletShootsDuration: 0
+  _bulletType: 0
+  _superBulletShootsCount: 1
+  _supperBulletShootsDuration: 0
+  _supperBulletType: 2

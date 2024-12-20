@@ -1,43 +1,43 @@
 ﻿using Assets.Sources.Infrastructure.Factories.BulletFactory;
-using Assets.Sources.Services.InputService;
 using UnityEngine;
 using Zenject;
 
 namespace Assets.Sources.Gameplay.Weapons
 {
-    public abstract class PlayerWeapon : MonoBehaviour
+    public abstract class PlayerTankWeapon : MonoBehaviour
     {
         [SerializeField] private uint _bulletsCapacity;
         [SerializeField] private uint _requireShotsNumberToSuperShot;
-        [SerializeField] private Transform _shootPoint;
 
-        private IInputService _inputService;
         private GameplayCamera _gameplayCamera;
+        private Aiming _aiming;
+
+        private Transform[] _bulletPoints;
 
         private uint _shootsNumberToSuperShot;
         private uint _bulletsCount;
 
         protected IBulletFactory BulletFactory { get; private set; }
-        protected Vector3 ShootPoint => _shootPoint.position;
         protected Quaternion BulletRotation => _gameplayCamera.transform.rotation;
 
         [Inject]
-        private void Construct(IBulletFactory bulletFactory, IInputService inputService, GameplayCamera gameplayCamera)
+        private void Construct(IBulletFactory bulletFactory, GameplayCamera gameplayCamera, Aiming aiming)
         {
             BulletFactory = bulletFactory;
-            _inputService = inputService;
             _gameplayCamera = gameplayCamera;
+            _aiming = aiming;
 
             _shootsNumberToSuperShot = _requireShotsNumberToSuperShot;
             _bulletsCount = _bulletsCapacity;
 
-            //.Shooted += OnShoted;
+            _aiming.Shooted += OnShoted;
         }
 
-        private void OnDestroy()
-        {
-            //_inputService.Shooted -= OnShoted;
-        }
+        public void SetBulletPoints(Transform[] bulletPoints) =>
+            _bulletPoints = bulletPoints;
+
+        private void OnDestroy() =>
+            _aiming.Shooted -= OnShoted;
 
         private void OnShoted()
         {
@@ -58,6 +58,13 @@ namespace Assets.Sources.Gameplay.Weapons
 
                 Shoot();
             }
+        }
+
+        protected Transform GetBulletPoint(int index)
+        {
+            int bulletPointIndex = index >= _bulletPoints.Length ? _bulletPoints.Length % index : index;
+
+            return _bulletPoints[bulletPointIndex];
         }
 
         protected abstract void Shoot();

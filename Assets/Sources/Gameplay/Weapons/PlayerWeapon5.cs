@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Sources.Gameplay.Weapons
 {
-    public class PlayerWeapon5 : PlayerWeapon
+    public class PlayerWeapon5 : PlayerTankWeapon
     {
         [SerializeField] private uint _bulletShootsCount;
         [SerializeField] private float _bulletShootsDuration;
