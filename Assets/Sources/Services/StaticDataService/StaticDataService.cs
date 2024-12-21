@@ -34,6 +34,7 @@ namespace Assets.Sources.Services.StaticDataService
         public DecalConfig[] DecalConfigs => _decalConfigs.Values.ToArray();
         public AnimationsConfig AnimationsConfig { get; private set; }
         public AimingConfig AimingConfig { get; private set; }
+        public DestructionConfig DestructionConfig { get; private set; }
 
         public async UniTask InitializeAsync()
         {
@@ -52,6 +53,7 @@ namespace Assets.Sources.Services.StaticDataService
                 UniTask.Create(async () => _muzzleConfigs = await LoadConfigs<MuzzleType, MuzzleConfig>()),
                 UniTask.Create(async () => AnimationsConfig = await LoadConfig<AnimationsConfig>()),
                 UniTask.Create(async () => AimingConfig = await LoadConfig<AimingConfig>()),
+                UniTask.Create(async () => DestructionConfig = await LoadConfig<DestructionConfig>()),
             };
 
             await UniTask.WhenAll(tasks);

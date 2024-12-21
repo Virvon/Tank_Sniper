@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Sources.Gameplay
+namespace Assets.Sources.Gameplay.Destructions.Building
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class DestructionCell : MonoBehaviour, IDamageable
+    public class DestructionCell : DestructionPart, IDamageable
     {
         private const float ScalingSpeed = 1;
         private const float DestroyDelay = 2;
@@ -52,7 +51,6 @@ namespace Assets.Sources.Gameplay
         public void Clear() =>
             _neighboringCells.Clear();
 
-
         public bool Contains(DestructionCell destructionCell) =>
             _neighboringCells.Contains(destructionCell);
 
@@ -64,13 +62,13 @@ namespace Assets.Sources.Gameplay
 
         public void TakeDamage(Vector3 bulletPosition, uint explosionForce)
         {
-            Breake(bulletPosition, explosionForce);
+            Destruct(bulletPosition, explosionForce);
         }
 
         public void ReportDestruction(List<DestructionCell> checkedCells, Vector3 bulletPosition, uint explosionForce)
         {
             if (IsConnectedToFondation(checkedCells) == false)
-                Breake(bulletPosition, explosionForce);
+                Destruct(bulletPosition, explosionForce);
         }
 
         public bool IsConnectedToFondation(List<DestructionCell> checkedCells)
@@ -93,45 +91,17 @@ namespace Assets.Sources.Gameplay
             return false;
         }
 
-        private void Breake(Vector3 bulletPosition, uint explosionForce)
+        public override void Destruct(Vector3 bulletPosition, uint explosionForce)
         {
             if (IsBreaked || IsFoundation)
                 return;
 
             IsBreaked = true;
-            transform.gameObject.layer = LayerMask.NameToLayer(DestroedLayer);
-
-            List<DestructionCell> checkedCells = new();
 
             foreach (DestructionCell neigboringCell in _neighboringCells)
-                neigboringCell.ReportDestruction(checkedCells, bulletPosition, explosionForce);
+                neigboringCell.ReportDestruction(new(), bulletPosition, explosionForce);
 
-            _rigidbody.isKinematic = false;
-            _rigidbody.AddForce((transform.position - bulletPosition).normalized * explosionForce, ForceMode.Impulse);
-
-            StartCoroutine(Destroyer());
-        }
-
-        private IEnumerator Destroyer()
-        {
-            yield return new WaitForSeconds(DestroyDelay);
-
-            Vector3 targetScale = Vector3.zero;
-            Vector3 startScale = transform.localScale;
-            float passedTime = 0;
-            float progress;
-
-            while (transform.localScale != targetScale)
-            {
-                progress = passedTime / ScalingSpeed;
-                passedTime += Time.deltaTime;
-
-                transform.localScale = Vector3.Lerp(startScale, targetScale, progress);
-
-                yield return null;
-            }
-
-            Destroy(gameObject);
+            base.Destruct(bulletPosition, explosionForce);
         }
     }
 }

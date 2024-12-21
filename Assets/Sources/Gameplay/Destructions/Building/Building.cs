@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.Sources.Gameplay
+namespace Assets.Sources.Gameplay.Destructions.Building
 {
     public class Building : MonoBehaviour
     {
@@ -23,18 +23,18 @@ namespace Assets.Sources.Gameplay
                 int conectionsCound = _connectsCount;
                 List<DestructionCell> cells = _destructionCells.Where(value => Vector3.Distance(cell.transform.position, value.transform.position) < _maxDistance && value != cell).ToList();
 
-                for(int i = 0; i < conectionsCound; i++)
+                for (int i = 0; i < conectionsCound; i++)
                 {
                     var foundationConnectedCell = cells.Where(value => value.Contains(cell) == false && value.IsConnectedToFondation(new())).FirstOrDefault();
 
-                    if(foundationConnectedCell != null)
+                    if (foundationConnectedCell != null)
                     {
                         foundationConnectedCell.AddNeighboring(cell);
                         cell.AddNeighboring(foundationConnectedCell);
                     }
                     else
                     {
-                        var connectedCell = cells[UnityEngine.Random.Range(0, cells.Count)];
+                        var connectedCell = cells[Random.Range(0, cells.Count)];
 
                         connectedCell.AddNeighboring(cell);
                         cell.AddNeighboring(connectedCell);

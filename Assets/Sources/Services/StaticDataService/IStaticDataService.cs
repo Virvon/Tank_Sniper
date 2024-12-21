@@ -17,6 +17,7 @@ namespace Assets.Sources.Services.StaticDataService
         DecalConfig[] DecalConfigs { get; }
         AnimationsConfig AnimationsConfig { get; }
         AimingConfig AimingConfig { get; }
+        DestructionConfig DestructionConfig { get; }
 
         EnemyConfig GetEnemy(EnemyType type);
         LevelConfig GetLevel(string key);
