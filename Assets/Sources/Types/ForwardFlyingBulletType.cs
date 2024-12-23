@@ -3,7 +3,8 @@
     public enum ForwardFlyingBulletType
     {
         Bullet,
-        Rocket,
+        TankRocket,
         SuperBullet,
+        BazookaRocket,
     }
 }

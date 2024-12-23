@@ -1,26 +1,36 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Assets.Sources.Gameplay.Destructions;
+using Cysharp.Threading.Tasks;
+using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace Assets.Sources.Gameplay.Enemies
 {
-    public class Enemy : MonoBehaviour, IDamageable
+    public class Enemy : DestructionPart, IDamageable
     {
-        [SerializeField] private Vector3 _additionalDestructionDirection;
-        [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private ForceMode _forceMode;
-        [SerializeField] private float _rotationForce = 1;
+        [SerializeField] private Animator _animator;
+        [SerializeField] private Collider _mainColider;
+        [SerializeField] private Rigidbody _destructionRigidbody;
+        [SerializeField] private DestructionPart _weapon;
+
+        public event Action Destructed;
 
         public void TakeDamage(Vector3 bulletPosition, uint explosionForce)
         {
-            Vector3 explosionDirection = (transform.position - bulletPosition).normalized;
-            explosionDirection += _additionalDestructionDirection;
-            explosionDirection.Normalize();
+            Destructed?.Invoke();
 
-            _rigidbody.AddForce(explosionDirection * explosionForce, _forceMode);
-            _rigidbody.AddTorque(explosionDirection * _rotationForce, _forceMode);
+            _animator.enabled = false;
+            _mainColider.enabled = false;
+
+            _weapon.transform.parent = null;
+            _weapon.Destruct(bulletPosition, explosionForce);
+
+            Destruct(bulletPosition, explosionForce);
         }
+
+        protected override Rigidbody GetDestructionRigidbody() =>
+            _destructionRigidbody;
 
         public class Factory : PlaceholderFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<Enemy>>
         {

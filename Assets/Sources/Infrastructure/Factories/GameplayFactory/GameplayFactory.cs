@@ -12,7 +12,6 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
     {
         private readonly IStaticDataService _staticDataService;
         private readonly DiContainer _container;
-        private readonly PlayerTank.Factory _playerTankFactory;
         private readonly GameplayCamera.Factory _gameplayCameraFactory;
         private readonly Enemy.Factory _enemyFactory;
         private readonly Car.Factory _carFactory;
@@ -21,7 +20,6 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         public GameplayFactory(
             IStaticDataService staticDataService,
             DiContainer container,
-            PlayerTank.Factory playerTankFactory,
             GameplayCamera.Factory gameplayCameraFactory,
             Enemy.Factory enemyFactory,
             Car.Factory carFactory,
@@ -29,7 +27,6 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         {
             _staticDataService = staticDataService;
             _container = container;
-            _playerTankFactory = playerTankFactory;
             _gameplayCameraFactory = gameplayCameraFactory;
             _enemyFactory = enemyFactory;
             _carFactory = carFactory;
@@ -38,13 +35,6 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
 
         public async UniTask CreateAimingVirtualCamera(Vector3 position) =>
             await _aimingFactory.Create(GameplayFactoryAssets.AimingCamera, position);
-
-        public async UniTask CreatePlayerTank()
-        {
-            PlayerTank playerTank = await _playerTankFactory.Create(GameplayFactoryAssets.PlayerTank);
-
-            _container.BindInstance(playerTank).AsSingle();
-        }
 
         public async UniTask CreateCamera()
         {

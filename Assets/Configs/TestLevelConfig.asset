@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: TestLevelConfig
   m_EditorClassIdentifier: 
   LevelKey: GameplayScene
-  EnemyPoints: []
+  StaticEnemyPoints:
+  - Id: GameplayScene_4d0b8d6e-d3af-4487-9a47-9c1475179c84
+    StartPosition: {x: 23.22, y: 0, z: 25.7}
+    StartRotation: {x: -0, y: 0.9659259, z: -0, w: -0.25881898}
+    EnemyType: 1
   EnemyCarPoints: []
   HelicopterPoints: []

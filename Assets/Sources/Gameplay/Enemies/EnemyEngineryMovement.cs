@@ -9,16 +9,16 @@ namespace Assets.Sources.Gameplay.Enemies
         private bool _isLooped;
         private bool _isWaitedAttack;
 
-        private PlayerTank _playerTank;
+        //private PlayerTank _playerTank;
 
         private EnemyCarPointConfig _enemyCarPointConfig;
 
         [Inject]
-        private void Construct(PlayerTank playerTank)
+        private void Construct()
         {
-            _playerTank = playerTank;
+            //_playerTank = playerTank;
 
-            _playerTank.Attacked += OnPlayerTankAttacked;
+            //_playerTank.Attacked += OnPlayerTankAttacked;
         }
 
         public void Initialize(EnemyCarPointConfig enemyCarPointConfig)
@@ -39,8 +39,8 @@ namespace Assets.Sources.Gameplay.Enemies
                 StartMovement();
         }
 
-        private void OnDestroy() =>
-            _playerTank.Attacked -= OnPlayerTankAttacked;
+        //private void OnDestroy() =>
+            //_playerTank.Attacked -= OnPlayerTankAttacked;
 
         private void OnPlayerTankAttacked()
         {

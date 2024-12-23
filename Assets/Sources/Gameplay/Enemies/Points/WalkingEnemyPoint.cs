@@ -2,7 +2,7 @@
 
 namespace Assets.Sources.Gameplay.Enemies.Points
 {
-    public class WalkingEnemyPoint : EnemyPoint
+    public class WalkingEnemyPoint : StaticEnemyPoint
     {
         public Transform[] Path;
 

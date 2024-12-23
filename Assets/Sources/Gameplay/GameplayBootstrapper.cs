@@ -48,7 +48,6 @@ namespace Assets.Sources.Gameplay
 
             await _gameplayFactory.CreateCamera();
             await _gameplayFactory.CreateAimingVirtualCamera(_aimingCameraPoint.transform.position);
-            await _gameplayFactory.CreatePlayerTank();//
 
             await CreateTank(tankData);
 
@@ -78,6 +77,9 @@ namespace Assets.Sources.Gameplay
         private async UniTask CreateEnemies(LevelConfig levelConfig)
         {
             List<UniTask> tasks = new();
+
+            foreach (StaticEnemyPointConfig staticEnemyPointConfig in levelConfig.StaticEnemyPoints)
+                tasks.Add(staticEnemyPointConfig.Create(_gameplayFactory));
 
             foreach (EnemyCarPointConfig enemyCarPointConfig in levelConfig.EnemyCarPoints)
                 tasks.Add(enemyCarPointConfig.Create(_gameplayFactory));

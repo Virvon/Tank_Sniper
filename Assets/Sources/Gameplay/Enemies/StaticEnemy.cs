@@ -1,17 +1,42 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Sources.Gameplay.Enemies
 {
     public class StaticEnemy : Enemy
     {
-        public void Rotate(PlayerTank playerTank, Action callback)
+        private Aiming _aiming;
+        private PlayerTankWrapper _playerTankWrapper;
+
+        private bool _isIdled;
+
+        [Inject]
+        private void Construct(Aiming aiming, PlayerTankWrapper playerTankWrapper)
         {
-            Vector3 targetDirection = (playerTank.transform.position - transform.position).normalized;
+            _aiming = aiming;
+            _playerTankWrapper = playerTankWrapper;
+
+            _isIdled = true;
+
+            _aiming.Shooted += OnPlayerShooted;
+        }
+
+        private void OnDestroy() =>
+            _aiming.Shooted -= OnPlayerShooted;
+
+        private void OnPlayerShooted()
+        {
+            
+        }
+
+        public void Rotate(Action callback)
+        {
+            //Vector3 targetDirection = (playerTank.transform.position - transform.position).normalized;
             //Vector3 shootPointForward = ShootPoint.forward;
 
-            targetDirection.y = 0;
+            //targetDirection.y = 0;
             //shootPointForward.y = 0;
 
             //Quaternion targetRotation = Quaternion.Euler(

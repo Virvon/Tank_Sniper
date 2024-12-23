@@ -7,22 +7,22 @@ namespace Assets.Sources.Gameplay.Enemies
     {
         [SerializeField] private float _stoppingDuration;
 
-        private PlayerTank _playerTank;
+        //private PlayerTank _playerTank;
 
         protected override float StoppingDuration => _stoppingDuration; 
 
         [Inject]
-        private void Construct(PlayerTank playerTank)
+        private void Construct()
         {
-            _playerTank = playerTank;
+            //_playerTank = playerTank;
 
-            _playerTank.Attacked += StopMovement;
+            //_playerTank.Attacked += StopMovement;
         }
 
         private void Start() =>
             StartMovement();
 
-        private void OnDestroy() =>
-            _playerTank.Attacked -= StopMovement;
+        //private void OnDestroy() =>
+        //    _playerTank.Attacked -= StopMovement;
     }
 }

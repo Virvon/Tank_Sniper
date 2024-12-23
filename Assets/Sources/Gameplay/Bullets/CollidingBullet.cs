@@ -6,6 +6,7 @@ namespace Assets.Sources.Gameplay.Bullets
     {
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private Collider _collider;
+        [SerializeField] private bool _isExplosionAlongMoveDiretion;
 
         private float _explosionLifeTime;
         private uint _flightSpeed;
@@ -27,7 +28,7 @@ namespace Assets.Sources.Gameplay.Bullets
         protected virtual void Explode()
         {
             Stop();
-            CreateExplosionParticle(transform.position, Quaternion.identity);
+            CreateExplosionParticle(transform.position, _isExplosionAlongMoveDiretion ? Quaternion.LookRotation(-transform.forward) : Quaternion.identity);
             DestroyProjectile();
             GiveDamage(transform.position);
             Destroy();

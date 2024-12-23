@@ -8,6 +8,6 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public AssetReferenceGameObject AssetReference;
         public float ExplosionLifeTime;
         public uint ExplosionForce;
-        public uint ExplosionRadius;
+        public float ExplosionRadius;
     }
 }

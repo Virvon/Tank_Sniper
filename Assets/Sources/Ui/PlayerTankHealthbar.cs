@@ -13,23 +13,23 @@ namespace Assets.Sources.UI
         [SerializeField, Range(0, 1)] private float _fillAmount;
         [SerializeField, Range(0, 1)] private float _barFillPercent;
 
-        private PlayerTank _playerTank;
+        //private PlayerTank _playerTank;
 
         [Inject]
-        private void Construct(PlayerTank playerTank)
+        private void Construct()
         {
-            _playerTank = playerTank;
+            //_playerTank = playerTank;
 
             OnHealthChanged();
 
-            _playerTank.HealthChanged += OnHealthChanged;
+            //_playerTank.HealthChanged += OnHealthChanged;
         }
 
         private void OnValidate() =>
             ChangeHealthbar();
 
-        private void OnDestroy() =>
-            _playerTank.HealthChanged -= OnHealthChanged;
+        //private void OnDestroy() =>
+        //    _playerTank.HealthChanged -= OnHealthChanged;
 
         private void ChangeHealthbar()
         {
@@ -39,7 +39,7 @@ namespace Assets.Sources.UI
 
         private void OnHealthChanged()
         {
-            _fillAmount = (float)_playerTank.Health / _playerTank.MaxHealth;
+            //_fillAmount = (float)_playerTank.Health / _playerTank.MaxHealth;
 
             ChangeHealthbar();
         }

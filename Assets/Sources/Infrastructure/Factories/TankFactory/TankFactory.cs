@@ -6,6 +6,7 @@ using Assets.Sources.Tanks;
 using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Sources.Infrastructure.Factories.TankFactory
 {
@@ -13,6 +14,7 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
     {
         private readonly IAssetProvider _assetProvider;
         private readonly IStaticDataService _staticDataService;
+        private readonly DiContainer _container;
         private readonly Tank.Factory _tankFactory;
         private readonly TankShootingWrapper.Factory _tankShootingWrapperFactory;
         private readonly PlayerTankWrapper.Factory _playerTankWrapperFactory;
@@ -20,19 +22,27 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
         public TankFactory(
             IAssetProvider assetProvider,
             IStaticDataService staticDataService,
+            DiContainer container,
             Tank.Factory tankFactory,
             TankShootingWrapper.Factory tankShootingWrapperFactory,
             PlayerTankWrapper.Factory playerTankWrapperFactory)
         {
             _assetProvider = assetProvider;
             _staticDataService = staticDataService;
+            _container = container;
             _tankFactory = tankFactory;
             _tankShootingWrapperFactory = tankShootingWrapperFactory;
             _playerTankWrapperFactory = playerTankWrapperFactory;
         }
 
-        public async UniTask<PlayerTankWrapper> CreatePlayerTankWrapper(uint tankLevel, Vector3 position, Quaternion rotation) =>
-            await _playerTankWrapperFactory.Create(_staticDataService.GetTank(tankLevel).GameplayWrapperAssetReference, position, rotation);
+        public async UniTask<PlayerTankWrapper> CreatePlayerTankWrapper(uint tankLevel, Vector3 position, Quaternion rotation)
+        {
+            PlayerTankWrapper wrapper = await _playerTankWrapperFactory.Create(_staticDataService.GetTank(tankLevel).GameplayWrapperAssetReference, position, rotation);
+
+            _container.BindInstance(wrapper).AsSingle();
+
+            return wrapper;
+        }
 
         public async UniTask<Tank> CreateTank(
             uint level,

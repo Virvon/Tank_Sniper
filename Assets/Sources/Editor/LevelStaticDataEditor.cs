@@ -25,6 +25,9 @@ namespace Assets.Sources.Editor
             {
                 List<string> collectedIds = new();
 
+                List<StaticEnemyPointConfig> collectedStaticEnemyPoints = FindObjectsOfType<StaticEnemyPoint>().Select(value => new StaticEnemyPointConfig(value.Id, value.StartPoint.position, value.StartPoint.rotation, value.EnemyType)).ToList();
+                collectedIds.AddRange(collectedStaticEnemyPoints.Select(value => value.Id));
+
                 List<EnemyCarPointConfig> collectedEnemyCarPoints = FindObjectsOfType<EnemyCarPoint>().Select(value => new EnemyCarPointConfig(value.Id, value.EnemyType, value.Path, value.StartPoint, value.MaxRotationAngle, value.Speed)).ToList();
                 collectedIds.AddRange(collectedEnemyCarPoints.Select(value => value.Id));
 
@@ -33,6 +36,7 @@ namespace Assets.Sources.Editor
 
                 Transform playerPoint = FindObjectOfType<PlayerPoint>().transform;
 
+                levelData.StaticEnemyPoints = collectedStaticEnemyPoints;
                 levelData.EnemyCarPoints = collectedEnemyCarPoints;
                 levelData.HelicopterPoints = collectedHelicopterPoints;
 

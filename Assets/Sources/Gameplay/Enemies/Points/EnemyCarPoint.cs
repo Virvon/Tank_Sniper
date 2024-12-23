@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Assets.Sources.Gameplay.Enemies.Points
 {
-    public class EnemyCarPoint : EnemyPoint
+    public class EnemyCarPoint : StaticEnemyPoint
     {
         public EnemyPathPoint[] Path;
         public uint MaxRotationAngle;

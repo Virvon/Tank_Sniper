@@ -9,7 +9,7 @@ using Assets.Sources.Types;
 namespace Assets.Sources.Services.StaticDataService.Configs.Level
 {
     [Serializable]
-    public class HelicopterPointConfig : EnemyPointConfig
+    public class HelicopterPointConfig : StaticEnemyPointConfig
     {
         public PathPointConfig[] Path;
         public uint MaxRotationAngle;

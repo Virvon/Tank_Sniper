@@ -7,8 +7,10 @@ using Zenject;
 namespace Assets.Sources.Gameplay.Destructions
 {
     [RequireComponent(typeof(Rigidbody))]
-    public abstract class DestructionPart : MonoBehaviour
+    public class DestructionPart : MonoBehaviour
     {
+        [SerializeField] private bool _isDestroyedImmediately;
+
         private const string DestructLayer = "IgnoreProjectile";
 
         private DestructionConfig _destructionConfig;
@@ -20,7 +22,7 @@ namespace Assets.Sources.Gameplay.Destructions
         {
             _destructionConfig = staticDataService.DestructionConfig;
 
-            _rigidbody = GetComponent<Rigidbody>();
+            _rigidbody = GetDestructionRigidbody();
             _rigidbody.isKinematic = true;
         }
 
@@ -39,9 +41,15 @@ namespace Assets.Sources.Gameplay.Destructions
             StartCoroutine(Destroyer());
         }
 
+        protected virtual Rigidbody GetDestructionRigidbody() =>
+            GetComponent<Rigidbody>();
+
         private IEnumerator Destroyer()
         {
             yield return new WaitForSeconds(_destructionConfig.DestroyDelay);
+
+            if (_isDestroyedImmediately)
+                Destroy(gameObject);
 
             Vector3 targetScale = Vector3.zero;
             Vector3 startScale = transform.localScale;

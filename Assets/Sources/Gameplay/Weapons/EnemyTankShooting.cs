@@ -16,7 +16,7 @@ namespace Assets.Sources.Gameplay.Weapons
         [SerializeField] private Transform _shootPoint;
         [SerializeField] private uint _rotationSpeed;
 
-        private PlayerTank _playerTank;
+        //private PlayerTank _playerTank;
         private IGameplayFactory _gameplayFactory;
 
         private bool _isTurnedToPlayerTank;
@@ -28,9 +28,9 @@ namespace Assets.Sources.Gameplay.Weapons
         private uint _bulletsCount;
 
         [Inject]
-        private void Construct(PlayerTank playerTank, IStaticDataService staticDataService, IGameplayFactory gameplayFactory)
+        private void Construct(IStaticDataService staticDataService, IGameplayFactory gameplayFactory)
         {
-            _playerTank = playerTank;
+            //_playerTank = playerTank;
             _gameplayFactory = gameplayFactory;
 
             _isTurnedToPlayerTank = false;
@@ -43,12 +43,12 @@ namespace Assets.Sources.Gameplay.Weapons
 
             _bulletsCount = _bulletsCapacity;
 
-            _playerTank.Attacked += OnPlayerTankAttacked;
+            //_playerTank.Attacked += OnPlayerTankAttacked;
         }
 
         private void OnDestroy()
         {
-            _playerTank.Attacked -= OnPlayerTankAttacked;
+            //_playerTank.Attacked -= OnPlayerTankAttacked;
         }
 
         private void OnPlayerTankAttacked()
@@ -59,8 +59,10 @@ namespace Assets.Sources.Gameplay.Weapons
 
         private bool CheckPlayerTankVisibility()
         {
-            return Physics.Raycast(_shootPoint.position, (_playerTank.transform.position - _shootPoint.position).normalized, out RaycastHit hitInfo, RayCastDistance)
-                && hitInfo.transform.TryGetComponent(out PlayerTank _);
+            //return Physics.Raycast(_shootPoint.position, (_playerTank.transform.position - _shootPoint.position).normalized, out RaycastHit hitInfo, RayCastDistance)
+            //    && hitInfo.transform.TryGetComponent(out PlayerTank _);
+
+            return true;
         }
 
         private void Shoot()
@@ -100,25 +102,25 @@ namespace Assets.Sources.Gameplay.Weapons
             while (isRotated)
             {
                 Vector3 shootPointForward = _shootPoint.forward;
-                Vector3 targetDirection = (_playerTank.transform.position - _shootPoint.position).normalized;
+                //Vector3 targetDirection = (_playerTank.transform.position - _shootPoint.position).normalized;
 
-                Quaternion targetRotation = Quaternion.Euler(
-                0,
-                transform.rotation.eulerAngles.y + Quaternion.FromToRotation(shootPointForward, targetDirection).eulerAngles.y,
-                0);
+                //Quaternion targetRotation = Quaternion.Euler(
+                //0,
+                //transform.rotation.eulerAngles.y + Quaternion.FromToRotation(shootPointForward, targetDirection).eulerAngles.y,
+                //0);
 
                 shootPointForward.y = 0;
-                targetDirection.y = 0;
+                //targetDirection.y = 0;
 
-                if (Vector3.Angle(shootPointForward, targetDirection) > AngleDelta)
-                {
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
-                    _isTurnedToPlayerTank = false;
-                }
-                else
-                {
-                    _isTurnedToPlayerTank = true;
-                }
+                //if (Vector3.Angle(shootPointForward, targetDirection) > AngleDelta)
+                //{
+                //    transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+                //    _isTurnedToPlayerTank = false;
+                //}
+                //else
+                //{
+                //    _isTurnedToPlayerTank = true;
+                //}
 
                 yield return null;
             }

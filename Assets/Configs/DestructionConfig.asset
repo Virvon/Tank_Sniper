@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b78af6991b25d24993866285cccf8a3, type: 3}
   m_Name: DestructionConfig
   m_EditorClassIdentifier: 
-  AdditionalDestructionDirection: {x: 0, y: 0, z: 0}
+  AdditionalDestructionDirection: {x: 0, y: 0.5, z: 0}
   RotationForce: 10
-  DestroyDelay: 0
-  DestroyDuration: 0
+  DestroyDelay: 3
+  DestroyDuration: 2

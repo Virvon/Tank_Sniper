@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Assets.Sources.Editor
 {
     internal class UniqueIdEditor<TType> : UnityEditor.Editor
-        where TType : EnemyPoint
+        where TType : StaticEnemyPoint
     {
         private void OnEnable()
         {
@@ -20,14 +20,14 @@ namespace Assets.Sources.Editor
             }
             else
             {
-                EnemyPoint[] uniqueIds = FindObjectsOfType<EnemyPoint>();
+                StaticEnemyPoint[] uniqueIds = FindObjectsOfType<StaticEnemyPoint>();
 
                 if (uniqueIds.Any(other => other != enemyPoint && other.Id == enemyPoint.Id))
                     Generate(enemyPoint);
             }
         }
 
-        private void Generate(EnemyPoint uniqueId)
+        private void Generate(StaticEnemyPoint uniqueId)
         {
             uniqueId.Id = $"{uniqueId.gameObject.scene.name}_{Guid.NewGuid()}";
 
@@ -39,8 +39,8 @@ namespace Assets.Sources.Editor
         } 
     }
 
-    [CustomEditor(typeof(EnemyPoint))]
-    internal class UniqueIdEnemyPointEditor : UniqueIdEditor<EnemyPoint>
+    [CustomEditor(typeof(StaticEnemyPoint))]
+    internal class UniqueIdEnemyPointEditor : UniqueIdEditor<StaticEnemyPoint>
     {
     }
 

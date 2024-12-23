@@ -10,6 +10,5 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         UniTask CreateAimingVirtualCamera(Vector3 position);
         UniTask CreateCamera();
         UniTask<Enemy> CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation);
-        UniTask CreatePlayerTank();
     }
 }

@@ -5,9 +5,9 @@ namespace Assets.Sources.Gameplay.Enemies.Animation
 {
     public class EnemyAnimation : MonoBehaviour
     {
-        public event Action BulletCreated;
+        public event Action BulletNeedetToCreate;
 
         public void CreateBullet() =>
-            BulletCreated?.Invoke();
+            BulletNeedetToCreate?.Invoke();
     }
 }

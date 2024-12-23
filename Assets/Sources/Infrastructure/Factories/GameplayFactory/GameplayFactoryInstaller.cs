@@ -18,10 +18,6 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
                .AsSingle();
 
             Container
-                .BindFactory<string, UniTask<PlayerTank>, PlayerTank.Factory>()
-                .FromFactory<KeyPrefabFactoryAsync<PlayerTank>>();
-
-            Container
                 .BindFactory<string, UniTask<GameplayCamera>, GameplayCamera.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<GameplayCamera>>();
 

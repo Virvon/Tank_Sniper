@@ -33,16 +33,16 @@ namespace Assets.Sources.Gameplay.Enemies
         Vector2 _rightWar;
 
         private PathPointConfig[] _path;
-        private PlayerTank _playerTank;
+        //private PlayerTank _playerTank;
 
         private PathPointConfig _targetPoint;
         private int _currentPointIndex;
 
-        [Inject]
-        private void Construct(PlayerTank playerTank)
-        {
-            _playerTank = playerTank;
-        }
+        //[Inject]
+        //private void Construct(PlayerTank playerTank)
+        //{
+        //    _playerTank = playerTank;
+        //}
 
         private void Start()
         {
@@ -95,24 +95,21 @@ namespace Assets.Sources.Gameplay.Enemies
             }
             else if (_lookToTarget)
             {
-                Vector3 targetDirection = _playerTank.transform.position - transform.position;
+                //Vector3 targetDirection = _playerTank.transform.position - transform.position;
                 Vector3 forward = new Vector3(transform.forward.x, 0, transform.forward.z).normalized;
 
-                targetDirection.y = 0;
-                targetDirection.Normalize();
+                //targetDirection.y = 0;
+                //targetDirection.Normalize();
 
                 
 
-                float rotationDirection = Vector3.Cross(forward, targetDirection).y * TurnForce;
+                //float rotationDirection = Vector3.Cross(forward, targetDirection).y * TurnForce;
 
-                //rotationDirection = rotationDirection < 0 ? -1 : 1;
+                //rotationDirection = Mathf.Max(Mathf.Abs(rotationDirection), 8 * Mathf.Min(1, Vector3.Angle(forward, targetDirection) / 45)) * (rotationDirection < 0 ? -1 : 1);
 
-                rotationDirection = Mathf.Max(Mathf.Abs(rotationDirection), 8 * Mathf.Min(1, Vector3.Angle(forward, targetDirection) / 45)) * (rotationDirection < 0 ? -1 : 1);
+                //float force = rotationDirection * (turnForcePercent - Mathf.Abs(_horizontalMovement.y)) * _rigidbody.mass;
 
-                float force = rotationDirection * (turnForcePercent - Mathf.Abs(_horizontalMovement.y)) * _rigidbody.mass;
-
-                _rigidbody.AddRelativeTorque(0f, force, 0, _forceMode);
-                //Debug.Log(_horizontalMovement);
+                //_rigidbody.AddRelativeTorque(0f, force, 0, _forceMode);
             }
 
             if (Vector3.Distance(new Vector3(0, _targetPoint.Position.y, 0), new Vector3(0, transform.position.y, 0)) > 3)
