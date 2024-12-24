@@ -3,15 +3,16 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Sources.Gameplay.Enemies
+namespace Assets.Sources.Gameplay.Enemies.Movement
 {
     public class EnemyMovement : MonoBehaviour
     {
         [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private float _testSpeed;
 
-        protected PathPointConfig[] Path;
-        protected uint MaxRotationAngle;
-        protected float Speed;
+        private PathPointConfig[] _path;
+        private uint _maxRotationAngle;
+        private float _speed;
 
         private bool _isMoved;
         private uint _currentPointIndex;
@@ -24,6 +25,13 @@ namespace Assets.Sources.Gameplay.Enemies
 
         private void Start() =>
             _currentPointIndex = 0;
+
+        public void Initialize(PathPointConfig[] path, float speed, uint maxRotationAngle)
+        {
+            _path = path;
+            _speed = speed;
+            _maxRotationAngle = maxRotationAngle;
+        }
 
         protected void StartMovement()
         {
@@ -47,8 +55,8 @@ namespace Assets.Sources.Gameplay.Enemies
 
             while (_isMoved)
             {
-                PathPointConfig targetPoint = _currentPointIndex < Path.Length - 1 ? Path[_currentPointIndex + 1] : Path[0];
-                float rotationAngle = Path[_currentPointIndex].RotationAngle == 0 ? MaxRotationAngle : Mathf.Clamp(Path[_currentPointIndex].RotationAngle, 0, MaxRotationAngle);
+                PathPointConfig targetPoint = _currentPointIndex < _path.Length - 1 ? _path[_currentPointIndex + 1] : _path[0];
+                float rotationAngle = _path[_currentPointIndex].RotationAngle == 0 ? _maxRotationAngle : Mathf.Clamp(_path[_currentPointIndex].RotationAngle, 0, _maxRotationAngle);
 
                 NextPointStarted?.Invoke();
 
@@ -59,21 +67,21 @@ namespace Assets.Sources.Gameplay.Enemies
 
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationAngle * Time.deltaTime);
 
-                    _rigidbody.velocity = transform.forward * Speed;
+                    _rigidbody.velocity = transform.forward * _speed * _testSpeed;
 
                     yield return null;
                 }
 
                 _currentPointIndex++;
 
-                if (_currentPointIndex == Path.Length - 1 && CanMoveNextCircle() == false)
+                if (_currentPointIndex == _path.Length - 1 && CanMoveNextCircle() == false)
                     _isMoved = false;
-                else if(_currentPointIndex > Path.Length - 1)
+                else if (_currentPointIndex > _path.Length - 1)
                     _currentPointIndex = 0;
 
                 PointFinished?.Invoke();
 
-                yield return null;
+                yield return stoppingDuration;
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using Assets.Sources.Gameplay.Weapons;
+﻿using Assets.Sources.Gameplay.Cameras;
+using Assets.Sources.Gameplay.Weapons;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Services.StaticDataService.Configs;
 using Cysharp.Threading.Tasks;
@@ -8,7 +9,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
 
-namespace Assets.Sources.Gameplay
+namespace Assets.Sources.Gameplay.Player
 {
     public class PlayerTankWrapper : MonoBehaviour
     {
@@ -71,7 +72,7 @@ namespace Assets.Sources.Gameplay
             Quaternion startRotation = _turret.rotation;
             Quaternion targetRotation = isAimed ? _startTurretRotation * Quaternion.AngleAxis(_aimingConfig.TankTurretRotation, Vector3.up) : _startTurretRotation;
 
-            while(isCompleted == false)
+            while (isCompleted == false)
             {
                 progress = passedTime / duration;
                 passedTime += Time.deltaTime;

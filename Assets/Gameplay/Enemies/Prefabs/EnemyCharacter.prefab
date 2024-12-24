@@ -1191,6 +1191,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 411349118769963007}
+  - component: {fileID: 2901453770088318663}
   m_Layer: 0
   m_Name: EnemyCharacter
   m_TagString: Untagged
@@ -1218,6 +1219,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2901453770088318663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411349118769922975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73313a0f07e2b54783330ccdcf959cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isDestroyedImmediately: 1
+  _colliders:
+  - {fileID: 7813870858183962113}
+  - {fileID: 278666086813280948}
+  - {fileID: 4668110654306185937}
+  - {fileID: 7629323752448625822}
+  - {fileID: 3501995359191785606}
+  - {fileID: 6488365545783289051}
+  - {fileID: 1666244326922883141}
+  - {fileID: 6892633139284189674}
+  - {fileID: 2333686871540487022}
+  - {fileID: 3156050779356885103}
+  - {fileID: 7628425563088105692}
+  _destructionRigidbody: {fileID: 3915892547706787766}
 --- !u!1 &411349118769922993
 GameObject:
   m_ObjectHideFlags: 0

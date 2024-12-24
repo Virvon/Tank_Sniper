@@ -1,4 +1,6 @@
-﻿using Assets.Sources.Infrastructure.Factories.BulletFactory;
+﻿using Assets.Sources.Gameplay.Cameras;
+using Assets.Sources.Gameplay.Player;
+using Assets.Sources.Infrastructure.Factories.BulletFactory;
 using UnityEngine;
 using Zenject;
 

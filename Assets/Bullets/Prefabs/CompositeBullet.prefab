@@ -159,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c34f11a2b843448b93b5dea24751a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionParticleSystemPrefab: {fileID: 19801142, guid: e4de031a7e52a614f942e1dc95dea5f0,
-    type: 3}
-  _rigidBody: {fileID: 3010728338934734121}
-  _collider: {fileID: 8414725328577390284}
+  _explosionParticlePrefab: {fileID: 0}
   _projectile: {fileID: 928422715872475701}
+  _rigidbody: {fileID: 0}
+  _collider: {fileID: 8414725328577390284}
+  _isExplosionAlongMoveDiretion: 0

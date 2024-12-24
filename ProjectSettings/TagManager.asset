@@ -11,12 +11,12 @@ TagManager:
   - 
   - Water
   - UI
-  - Projectile
+  - PlayerProjectile
   - Wrapper
   - IgnoreProjectile
   - PlayerBase
-  - 
-  - 
+  - PlayerTankWrapper
+  - EnemyProjectile
   - 
   - 
   - 

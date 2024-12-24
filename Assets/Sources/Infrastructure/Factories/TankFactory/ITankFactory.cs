@@ -1,4 +1,4 @@
-﻿using Assets.Sources.Gameplay;
+﻿using Assets.Sources.Gameplay.Player;
 using Assets.Sources.MainMenu;
 using Assets.Sources.Tanks;
 using Assets.Sources.Types;

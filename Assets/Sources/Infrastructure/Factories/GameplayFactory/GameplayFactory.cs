@@ -1,4 +1,4 @@
-﻿using Assets.Sources.Gameplay;
+﻿using Assets.Sources.Gameplay.Cameras;
 using Assets.Sources.Gameplay.Enemies;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Types;

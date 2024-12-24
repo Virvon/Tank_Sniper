@@ -44,8 +44,8 @@ namespace Assets.Sources.Editor
     {
     }
 
-    [CustomEditor(typeof(WalkingEnemyPoint))]
-    internal class UniqueIdWalkingEnemyPointEditor : UniqueIdEditor<WalkingEnemyPoint>
+    [CustomEditor(typeof(PatrolingEnemyPoint))]
+    internal class UniqueIdWalkingEnemyPointEditor : UniqueIdEditor<PatrolingEnemyPoint>
     {
     }
 

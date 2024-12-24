@@ -5,6 +5,7 @@ using System;
 using UnityEngine;
 using System.Linq;
 using Assets.Sources.Types;
+using Assets.Sources.Gameplay.Enemies.Points;
 
 namespace Assets.Sources.Services.StaticDataService.Configs.Level
 {

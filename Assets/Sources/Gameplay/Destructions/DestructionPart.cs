@@ -6,7 +6,6 @@ using Zenject;
 
 namespace Assets.Sources.Gameplay.Destructions
 {
-    [RequireComponent(typeof(Rigidbody))]
     public class DestructionPart : MonoBehaviour
     {
         [SerializeField] private bool _isDestroyedImmediately;

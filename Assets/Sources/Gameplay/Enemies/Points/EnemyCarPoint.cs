@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using UnityEngine;
-using Zenject;
-
-namespace Assets.Sources.Gameplay.Enemies.Points
+﻿namespace Assets.Sources.Gameplay.Enemies.Points
 {
     public class EnemyCarPoint : StaticEnemyPoint
     {

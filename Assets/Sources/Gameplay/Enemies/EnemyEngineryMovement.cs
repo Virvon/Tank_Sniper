@@ -1,4 +1,5 @@
-﻿using Assets.Sources.Services.StaticDataService.Configs.Level;
+﻿using Assets.Sources.Gameplay.Enemies.Movement;
+using Assets.Sources.Services.StaticDataService.Configs.Level;
 using UnityEngine;
 using Zenject;
 
@@ -28,9 +29,9 @@ namespace Assets.Sources.Gameplay.Enemies
             _isLooped = _enemyCarPointConfig.IsLooped;
             _isWaitedAttack = _enemyCarPointConfig.IsWaitedAttack;
 
-            Speed = _enemyCarPointConfig.Speed;
-            Path = _enemyCarPointConfig.Path;
-            MaxRotationAngle = _enemyCarPointConfig.MaxRotationAngle;
+            //_speed = _enemyCarPointConfig.Speed;
+            //_path = _enemyCarPointConfig.Path;
+            //_maxRotationAngle = _enemyCarPointConfig.MaxRotationAngle;
         }
 
         private void Start()

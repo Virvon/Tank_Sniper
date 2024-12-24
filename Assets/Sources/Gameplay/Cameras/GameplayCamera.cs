@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Sources.Gameplay
+namespace Assets.Sources.Gameplay.Cameras
 {
     public class GameplayCamera : MonoBehaviour
     {

@@ -1,9 +1,10 @@
-﻿using Cinemachine;
+﻿using Assets.Sources.Gameplay.Player;
+using Cinemachine;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Sources.Gameplay
+namespace Assets.Sources.Gameplay.Cameras
 {
     public class AimingCamera : MonoBehaviour
     {
@@ -66,7 +67,7 @@ namespace Assets.Sources.Gameplay
         {
             _camera.SetBlednDuration(duration);
 
-            if(_currentCamera != null)
+            if (_currentCamera != null)
                 _currentCamera.Priority = DisabledPriority;
 
             _currentCamera = targetCamera;

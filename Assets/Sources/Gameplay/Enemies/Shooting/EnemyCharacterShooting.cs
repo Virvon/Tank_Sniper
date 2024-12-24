@@ -1,5 +1,6 @@
 ﻿using Assets.Sources.Gameplay.Enemies;
 using Assets.Sources.Gameplay.Enemies.Animation;
+using Assets.Sources.Gameplay.Player;
 using Assets.Sources.Infrastructure.Factories.BulletFactory;
 using Assets.Sources.Types;
 using System;
@@ -65,6 +66,14 @@ namespace Assets.Sources.Gameplay.Weapons
             _enemy.Destructed -= OnEnemyDestructed;
         }
 
+        protected virtual void StartShooting()
+        {
+            _animator.SetTrigger(AnimationPath.IsShooted);
+
+            StartCoroutine(Shooter());
+            StartCoroutine(Rotater());
+        }
+
         private void OnEnemyDestructed()
         {
             _isShooted = false;
@@ -79,10 +88,7 @@ namespace Assets.Sources.Gameplay.Weapons
             if (_isStartedShoot)
                 return;
 
-            _animator.SetTrigger(AnimationPath.IsShooted);
-
-            StartCoroutine(Shooter());
-            StartCoroutine(Rotater());
+            StartShooting();
         }
 
         private bool CheckPlayerTankVisibility()

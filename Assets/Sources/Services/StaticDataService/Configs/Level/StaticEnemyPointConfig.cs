@@ -23,9 +23,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs.Level
             EnemyType = enemyType;
         }
 
-        public virtual async UniTask<Enemy> Create(IGameplayFactory gameplayFactory)
-        {
-            return await gameplayFactory.CreateEnemy(EnemyType, StartPosition, StartRotation);
-        }
+        public virtual async UniTask<Enemy> Create(IGameplayFactory gameplayFactory) =>
+            await gameplayFactory.CreateEnemy(EnemyType, StartPosition, StartRotation);
     }
 }

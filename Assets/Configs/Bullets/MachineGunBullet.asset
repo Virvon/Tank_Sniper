@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 617d561f61e36554aa9cc93cc6d89f20, type: 3}
-  m_Name: BazookaRocket
+  m_Name: MachineGunBullet
   m_EditorClassIdentifier: 
   AssetReference:
-    m_AssetGUID: b8f3cefc42f2718439c8d41d71189450
+    m_AssetGUID: 7aaba5b2a59e0c44b8f7c4bbbf06c5cb
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   ExplosionLifeTime: 1
   ExplosionForce: 200
   ExplosionRadius: 0.2
-  FlightSpeed: 100
+  FlightSpeed: 200
   LifeTimeLimit: 5
-  Type: 3
+  Type: 4

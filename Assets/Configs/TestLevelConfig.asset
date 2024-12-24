@@ -18,5 +18,23 @@ MonoBehaviour:
     StartPosition: {x: 23.22, y: 0, z: 25.7}
     StartRotation: {x: -0, y: 0.9659259, z: -0, w: -0.25881898}
     EnemyType: 1
-  EnemyCarPoints: []
-  HelicopterPoints: []
+  PatrolingEnemyPoints:
+  - Id: GameplayScene_40403f42-4395-4d3d-bd1a-50d0a9f1fa77
+    StartPosition: {x: 21.29, y: 0, z: 30.31}
+    StartRotation: {x: -0, y: 1, z: -0, w: 0}
+    EnemyType: 2
+    Path:
+    - Position: {x: 21.29, y: 0, z: 30.31}
+      RotationAngle: 0
+      RotationDelta: 1
+    - Position: {x: 18.43, y: 0, z: 36.28}
+      RotationAngle: 0
+      RotationDelta: 1
+    - Position: {x: 24.76, y: 0, z: 39.42}
+      RotationAngle: 0
+      RotationDelta: 1
+    - Position: {x: 27.61, y: 0, z: 33.09}
+      RotationAngle: 0
+      RotationDelta: 1
+    Speed: 2
+    MaxRotationAngle: 60

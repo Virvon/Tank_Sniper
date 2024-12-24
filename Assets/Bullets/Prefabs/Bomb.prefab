@@ -160,10 +160,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b68f36a6073f0740ac8d50675c45f76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidBody: {fileID: 3010728338934734121}
-  _collider: {fileID: 8414725328577390284}
-  _explosionPrefab: {fileID: 19801142, guid: 4dbd4b59f02b8bc4a9f5e340dce740f0, type: 3}
+  _explosionParticlePrefab: {fileID: 0}
   _projectile: {fileID: 928422715872475701}
+  _rigidbody: {fileID: 0}
+  _collider: {fileID: 8414725328577390284}
+  _isExplosionAlongMoveDiretion: 0
 --- !u!1 &2622374070197407179
 GameObject:
   m_ObjectHideFlags: 0

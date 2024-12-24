@@ -1,4 +1,6 @@
 ﻿using Assets.Sources.Data;
+using Assets.Sources.Gameplay.Cameras;
+using Assets.Sources.Gameplay.Player;
 using Assets.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Assets.Sources.Infrastructure.Factories.UiFactory;
@@ -78,14 +80,11 @@ namespace Assets.Sources.Gameplay
         {
             List<UniTask> tasks = new();
 
+            foreach(PatrolingEnemyPointConfig patrolingEnemyPointConfig in levelConfig.PatrolingEnemyPoints)
+                tasks.Add(patrolingEnemyPointConfig.Create(_gameplayFactory));
+
             foreach (StaticEnemyPointConfig staticEnemyPointConfig in levelConfig.StaticEnemyPoints)
                 tasks.Add(staticEnemyPointConfig.Create(_gameplayFactory));
-
-            foreach (EnemyCarPointConfig enemyCarPointConfig in levelConfig.EnemyCarPoints)
-                tasks.Add(enemyCarPointConfig.Create(_gameplayFactory));
-            
-            foreach (HelicopterPointConfig helicopterPointConfig in levelConfig.HelicopterPoints)
-                tasks.Add(helicopterPointConfig.Create(_gameplayFactory));
 
             await UniTask.WhenAll(tasks);
         }

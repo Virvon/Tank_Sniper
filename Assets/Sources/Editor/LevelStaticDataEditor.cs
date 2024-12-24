@@ -1,5 +1,5 @@
-﻿using Assets.Sources.Gameplay;
-using Assets.Sources.Gameplay.Enemies.Points;
+﻿using Assets.Sources.Gameplay.Enemies.Points;
+using Assets.Sources.Gameplay.Player;
 using Assets.Sources.Services.StaticDataService.Configs.Level;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
@@ -19,32 +19,34 @@ namespace Assets.Sources.Editor
         {
             base.OnInspectorGUI();
 
-            LevelConfig levelData = (LevelConfig)target;
+            LevelConfig levelConfig = (LevelConfig)target;
 
             if (GUILayout.Button("Collect"))
             {
                 List<string> collectedIds = new();
 
-                List<StaticEnemyPointConfig> collectedStaticEnemyPoints = FindObjectsOfType<StaticEnemyPoint>().Select(value => new StaticEnemyPointConfig(value.Id, value.StartPoint.position, value.StartPoint.rotation, value.EnemyType)).ToList();
+                List<PatrolingEnemyPointConfig> collectedPatrolingEnemyPointConfigs = FindObjectsOfType<PatrolingEnemyPoint>().Select(value => new PatrolingEnemyPointConfig(value.Id, value.StartPoint.position, value.StartPoint.rotation, value.EnemyType, value.Path.Select(value2 => new PathPointConfig(value2.transform.position, value2.RotationAngle, value2.RotationDelta)).ToArray())).ToList();
+                collectedIds.AddRange(collectedPatrolingEnemyPointConfigs.Select(value => value.Id));
+
+                List<StaticEnemyPointConfig> collectedStaticEnemyPoints = FindObjectsOfType<StaticEnemyPoint>().Where(value => collectedIds.Contains(value.Id) == false).Select(value => new StaticEnemyPointConfig(value.Id, value.StartPoint.position, value.StartPoint.rotation, value.EnemyType)).ToList();
                 collectedIds.AddRange(collectedStaticEnemyPoints.Select(value => value.Id));
 
-                List<EnemyCarPointConfig> collectedEnemyCarPoints = FindObjectsOfType<EnemyCarPoint>().Select(value => new EnemyCarPointConfig(value.Id, value.EnemyType, value.Path, value.StartPoint, value.MaxRotationAngle, value.Speed)).ToList();
-                collectedIds.AddRange(collectedEnemyCarPoints.Select(value => value.Id));
+                //List<EnemyCarPointConfig> collectedEnemyCarPoints = FindObjectsOfType<EnemyCarPoint>().Select(value => new EnemyCarPointConfig(value.Id, value.EnemyType, value.Path, value.StartPoint, value.MaxRotationAngle, value.Speed)).ToList();
+                //collectedIds.AddRange(collectedEnemyCarPoints.Select(value => value.Id));
 
-                List<HelicopterPointConfig> collectedHelicopterPoints = FindObjectsOfType<HelicopterPoint>().Where(value => collectedIds.Contains(value.Id) == false).Select(value => new HelicopterPointConfig(value.Id, value.EnemyType, value.Path, value.StartPoint, value.MaxRotationAngle, value.Speed)).ToList();
-                collectedIds.AddRange(collectedEnemyCarPoints.Select(value => value.Id));
+                //List<HelicopterPointConfig> collectedHelicopterPoints = FindObjectsOfType<HelicopterPoint>().Where(value => collectedIds.Contains(value.Id) == false).Select(value => new HelicopterPointConfig(value.Id, value.EnemyType, value.Path, value.StartPoint, value.MaxRotationAngle, value.Speed)).ToList();
+                //collectedIds.AddRange(collectedEnemyCarPoints.Select(value => value.Id));
 
                 Transform playerPoint = FindObjectOfType<PlayerPoint>().transform;
 
-                levelData.StaticEnemyPoints = collectedStaticEnemyPoints;
-                levelData.EnemyCarPoints = collectedEnemyCarPoints;
-                levelData.HelicopterPoints = collectedHelicopterPoints;
+                levelConfig.PatrolingEnemyPoints = collectedPatrolingEnemyPointConfigs;
+                levelConfig.StaticEnemyPoints = collectedStaticEnemyPoints;
 
-                levelData.LevelKey = SceneManager.GetActiveScene().name;
+                levelConfig.LevelKey = SceneManager.GetActiveScene().name;
             }
 
-            if (LevelDatas.ContainsKey(levelData.LevelKey) == false)
-                LevelDatas.Add(levelData.LevelKey, levelData);
+            if (LevelDatas.ContainsKey(levelConfig.LevelKey) == false)
+                LevelDatas.Add(levelConfig.LevelKey, levelConfig);
 
             EditorUtility.SetDirty(target);
             EditorUtility.SetDirty(target);

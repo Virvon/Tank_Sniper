@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Sources.Gameplay.Player;
+using System;
 using System.Collections;
 using UnityEngine;
 using Zenject;

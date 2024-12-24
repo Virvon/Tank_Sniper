@@ -7,7 +7,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Sources.Gameplay
+namespace Assets.Sources.Gameplay.Player
 {
     public class Aiming : IDisposable
     {
@@ -82,7 +82,7 @@ namespace Assets.Sources.Gameplay
                     StopAiming();
                 }));
             }
-            else if(_aimingProgress != UnaimedProgress)
+            else if (_aimingProgress != UnaimedProgress)
             {
                 StopAiming();
             }
@@ -101,7 +101,7 @@ namespace Assets.Sources.Gameplay
 
         private void OnAiming()
         {
-            if(_canAim)
+            if (_canAim)
             {
                 TryStopTimer();
 
@@ -129,7 +129,7 @@ namespace Assets.Sources.Gameplay
 
             float progress;
             float startAimingProgress = _aimingProgress;
-            float passedTime = Extensions.Remap(startAimingProgress, UnaimedProgress, AimedProgress, 0, _aimingConfig.AimingDuration);
+            float passedTime = startAimingProgress.Remap(UnaimedProgress, AimedProgress, 0, _aimingConfig.AimingDuration);
             bool isAimed = targetProgress >= _aimingProgress;
 
             if (targetProgress < _aimingProgress)
@@ -137,7 +137,7 @@ namespace Assets.Sources.Gameplay
 
             StateChanged?.Invoke(isAimed, _aimingConfig.AimingDuration - passedTime);
 
-            while(_aimingProgress != targetProgress)
+            while (_aimingProgress != targetProgress)
             {
                 progress = passedTime / _aimingConfig.AimingDuration;
                 passedTime += Time.deltaTime;
