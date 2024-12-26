@@ -9,5 +9,6 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public float RotationForce = 10;
         public float DestroyDelay;
         public float DestroyDuration;
+        public Color DestructionColor;
     }
 }

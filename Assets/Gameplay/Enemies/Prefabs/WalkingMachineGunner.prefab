@@ -124,10 +124,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3232716617254278474}
   - component: {fileID: 9076924983185086577}
-  - component: {fileID: 537616414339332110}
   - component: {fileID: 3886911883097476702}
   - component: {fileID: 4734222025430008789}
   - component: {fileID: 5197451324952423987}
+  - component: {fileID: 9068863795125584064}
   m_Layer: 0
   m_Name: WalkingMachineGunner
   m_TagString: Untagged
@@ -168,22 +168,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &537616414339332110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4138023367297425149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b725d4fe595a22d448178c610b763116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 219164319367645571}
-  _weapon: {fileID: 2996564312562468706}
-  _weaponCollider: {fileID: 1098510242677038126}
-  _ragdoll: {fileID: 5363489662299098317}
 --- !u!65 &3886911883097476702
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -210,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 9076924983185086577}
-  _testSpeed: 1
+  _enemy: {fileID: 9068863795125584064}
   _stoppingDuration: 4
   _layerMask:
     serializedVersion: 2
@@ -240,8 +224,24 @@ MonoBehaviour:
   _bulletType: 4
   _bulletsCapacity: 2
   _muzzleType: 0
-  _enemy: {fileID: 537616414339332110}
+  _enemy: {fileID: 9068863795125584064}
   _patroling: {fileID: 4734222025430008789}
+--- !u!114 &9068863795125584064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4138023367297425149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cfad494bfe6eb44bb9d112d0ca98c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 219164319367645571}
+  _weapon: {fileID: 2996564312562468706}
+  _weaponCollider: {fileID: 1098510242677038126}
+  _ragdoll: {fileID: 5363489662299098317}
 --- !u!1 &4980824925645522608
 GameObject:
   m_ObjectHideFlags: 0

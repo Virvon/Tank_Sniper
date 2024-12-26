@@ -41,9 +41,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3232716617254278474}
   - component: {fileID: 9076924983185086577}
-  - component: {fileID: 537616414339332110}
   - component: {fileID: 3886911883097476702}
   - component: {fileID: 7981881065610359487}
+  - component: {fileID: 7885364507080003773}
   m_Layer: 0
   m_Name: Bazooker
   m_TagString: Untagged
@@ -84,25 +84,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &537616414339332110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4138023367297425149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b725d4fe595a22d448178c610b763116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isDestroyedImmediately: 1
-  _animator: {fileID: 1632674083492839356}
-  _mainColider: {fileID: 3886911883097476702}
-  _destructionRigidbody: {fileID: 2868704960939853669}
-  _weapon: {fileID: 3725394474563577645}
-  _weaponCollider: {fileID: 5055749809326136072}
-  _ragdoll: {fileID: 4166863900836632084}
 --- !u!65 &3886911883097476702
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -140,7 +121,23 @@ MonoBehaviour:
   _bulletType: 3
   _bulletsCapacity: 1
   _muzzleType: 0
-  _enemy: {fileID: 537616414339332110}
+  _enemy: {fileID: 7885364507080003773}
+--- !u!114 &7885364507080003773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4138023367297425149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cfad494bfe6eb44bb9d112d0ca98c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1632674083492839356}
+  _weapon: {fileID: 3725394474563577645}
+  _weaponCollider: {fileID: 5055749809326136072}
+  _ragdoll: {fileID: 4166863900836632084}
 --- !u!1 &6082501012578401981
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,12 +390,6 @@ Transform:
 --- !u!4 &1450937159650709292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 411349118769963007, guid: 6810331dcd1ab874297599b0bb26ff31,
-    type: 3}
-  m_PrefabInstance: {fileID: 1267662624805425363}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &2868704960939853669 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 3915892547706787766, guid: 6810331dcd1ab874297599b0bb26ff31,
     type: 3}
   m_PrefabInstance: {fileID: 1267662624805425363}
   m_PrefabAsset: {fileID: 0}

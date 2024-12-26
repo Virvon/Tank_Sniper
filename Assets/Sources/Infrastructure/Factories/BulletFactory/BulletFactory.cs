@@ -50,7 +50,7 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
             laser
                 .BindTargetsCount(config.TargetsCount)
                 .BindLifeTimes(config.ExplosionLifeTime, config.ProjectileLifeTime)
-                .BindExplosionSettings(config.ExplosionRadius, config.ExplosionForce);
+                .BindExplosionSettings(config.ExplosionRadius, config.ExplosionForce, config.Damage);
         }
 
         public async UniTask CreateTargetingLaser(Vector3 position, Vector3 targetPosition)
@@ -61,7 +61,7 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
             laser
                 .BindTarget(targetPosition)
                 .BindLifeTimes(config.ExplosionLifeTime, config.ProjectileLifeTime)
-                .BindExplosionSettings(config.ExplosionRadius, config.ExplosionForce);
+                .BindExplosionSettings(config.ExplosionRadius, config.ExplosionForce, config.Damage);
         }
 
         public async UniTask CreateDirectionalLaser(Vector3 position, Quaternion rotation)
@@ -71,7 +71,7 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
 
             laser
                 .BindLifeTimes(config.ExplosionLifeTime, config.ProjectileLifeTime)
-                .BindExplosionSettings(config.ExplosionRadius, config.ExplosionForce);
+                .BindExplosionSettings(config.ExplosionRadius, config.ExplosionForce, config.Damage);
         }
 
         public async UniTask CreateForwardFlyingBullet(ForwardFlyingBulletType type, Vector3 position, Quaternion rotation)
@@ -81,7 +81,7 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
 
             bullet
                 .BindSettings(config.ExplosionLifeTime, config.FlightSpeed, config.LifeTimeLimit)
-                .BindExplosionSettings(config.ExplosionRadius, config.ExplosionForce);
+                .BindExplosionSettings(config.ExplosionRadius, config.ExplosionForce, config.Damage);
         }
 
         public async UniTask CreateHomingBullet(HomingBulletType type, Vector3 position, Quaternion rotation)
@@ -92,7 +92,7 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
             bullet
                 .BindHomingSettings(config.SearchRadius, config.RotationSpeed, config.TargetingDelay)
                 .BindSettings(config.ExplosionLifeTime, config.FlightSpeed, config.LifeTimeLimit)
-                .BindExplosionSettings(config.ExplosionRadius, config.ExplosionForce);
+                .BindExplosionSettings(config.ExplosionRadius, config.ExplosionForce, config.Damage);
         }
 
         public class Factory<TBullet> : PlaceholderFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<TBullet>>

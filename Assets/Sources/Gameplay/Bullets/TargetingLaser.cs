@@ -14,7 +14,7 @@ namespace Assets.Sources.Gameplay.Bullets
             _projectileVisualEffect.SetVector3(PositionValue, targetPosition);
 
             CreateExplosionParticle(targetPosition, Quaternion.identity);
-            GiveDamage(targetPosition);
+            Explode(targetPosition);
 
             return this;
         }

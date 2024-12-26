@@ -25,11 +25,11 @@ namespace Assets.Sources.Gameplay.Destructions
             _rigidbody.isKinematic = true;
         }
 
-        public virtual void Destruct(Vector3 bulletPosition, uint explosionForce)
+        public virtual void Destruct(Vector3 explosionPosition, uint explosionForce)
         {
             gameObject.layer = LayerMask.NameToLayer(DestructLayer);
 
-            Vector3 explosionDirection = (transform.position - bulletPosition).normalized;
+            Vector3 explosionDirection = (transform.position - explosionPosition).normalized;
             explosionDirection += _destructionConfig.AdditionalDestructionDirection;
             explosionDirection.Normalize();
 

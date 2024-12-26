@@ -38,3 +38,26 @@ MonoBehaviour:
       RotationDelta: 1
     Speed: 2
     MaxRotationAngle: 60
+  EnemyCarPoints:
+  - Id: GameplayScene_7cdc3855-e1da-4b98-a828-fd2311b1b400
+    StartPosition: {x: 55.04, y: 0, z: 49.73}
+    StartRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+    EnemyType: 3
+    Path:
+    - Position: {x: 55.04, y: 0, z: 49.73}
+      RotationAngle: 0
+      RotationDelta: 4
+    - Position: {x: 19.98, y: 0, z: 49.73}
+      RotationAngle: 0
+      RotationDelta: 4
+    - Position: {x: 19.760002, y: 0, z: 43.16}
+      RotationAngle: 0
+      RotationDelta: 4
+    - Position: {x: 55.030003, y: 0, z: 43.53}
+      RotationAngle: 0
+      RotationDelta: 4
+    Speed: 4
+    MaxRotationAngle: 90
+    IsLooped: 0
+    IsWaitedAttack: 0
+    SpeedAfterAttack: 8

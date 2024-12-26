@@ -8,7 +8,7 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
     public class EnemyMovement : MonoBehaviour
     {
         [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private float _testSpeed;
+        [SerializeField] private Enemy _enemy;
 
         private PathPointConfig[] _path;
         private uint _maxRotationAngle;
@@ -18,13 +18,21 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
         private uint _currentPointIndex;
         private Coroutine _mover;
 
+        protected virtual float Speed => _speed;
+
         protected event Action PointFinished;
         protected event Action NextPointStarted;
 
         protected virtual float StoppingDuration => 0;
 
-        private void Start() =>
+        protected virtual void Start()
+        {
             _currentPointIndex = 0;
+            _enemy.Destructed += StopMovement;
+        }
+
+        private void OnDestroy() =>
+            _enemy.Destructed -= StopMovement;
 
         public void Initialize(PathPointConfig[] path, float speed, uint maxRotationAngle)
         {
@@ -35,8 +43,7 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
 
         protected void StartMovement()
         {
-            if (_mover != null)
-                StopCoroutine(_mover);
+            StopMovement();
 
             _mover = StartCoroutine(Mover());
         }
@@ -44,7 +51,9 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
         protected void StopMovement()
         {
             _isMoved = false;
-            StopCoroutine(_mover);
+            
+            if(_mover != null)
+                StopCoroutine(_mover);
         }
 
         private IEnumerator Mover()
@@ -67,7 +76,7 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
 
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationAngle * Time.deltaTime);
 
-                    _rigidbody.velocity = transform.forward * _speed * _testSpeed;
+                    _rigidbody.velocity = transform.forward * Speed;
 
                     yield return null;
                 }

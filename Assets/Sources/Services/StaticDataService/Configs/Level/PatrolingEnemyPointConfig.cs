@@ -1,10 +1,12 @@
 ﻿using Assets.Sources.Gameplay.Enemies;
 using Assets.Sources.Gameplay.Enemies.Movement;
+using Assets.Sources.Gameplay.Enemies.Points;
 using Assets.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
+using System.Linq;
 
 namespace Assets.Sources.Services.StaticDataService.Configs.Level
 {
@@ -20,17 +22,18 @@ namespace Assets.Sources.Services.StaticDataService.Configs.Level
             Vector3 startPosition,
             Quaternion startRotation,
             EnemyType enemyType,
-            PathPointConfig[] path)
+            EnemyPathPoint[] path)
             : base(id, startPosition, startRotation, enemyType)
         {
-            Path = path;
+            Path = path.Select(value => new PathPointConfig(value.transform.position, value.RotationAngle, value.RotationDelta)).ToArray();
         }
 
         public override async UniTask<Enemy> Create(IGameplayFactory gameplayFactory)
         {
             Enemy enemy = await base.Create(gameplayFactory);
 
-            enemy.GetComponent<EnemyPatroling>().Initialize(Path, Speed, MaxRotationAngle);
+            if(enemy.TryGetComponent(out EnemyMovement enemyMovement))
+                enemyMovement.Initialize(Path, Speed, MaxRotationAngle);
 
             return enemy;
         }

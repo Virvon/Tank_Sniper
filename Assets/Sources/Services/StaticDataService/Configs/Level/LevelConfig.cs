@@ -9,6 +9,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs.Level
         public string LevelKey;
         public List<StaticEnemyPointConfig> StaticEnemyPoints;
         public List<PatrolingEnemyPointConfig> PatrolingEnemyPoints;
+        public List<EnemyCarPointConfig> EnemyCarPoints;
 
         public string Key => LevelKey;
     }

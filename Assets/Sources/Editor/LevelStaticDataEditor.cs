@@ -25,20 +25,18 @@ namespace Assets.Sources.Editor
             {
                 List<string> collectedIds = new();
 
-                List<PatrolingEnemyPointConfig> collectedPatrolingEnemyPointConfigs = FindObjectsOfType<PatrolingEnemyPoint>().Select(value => new PatrolingEnemyPointConfig(value.Id, value.StartPoint.position, value.StartPoint.rotation, value.EnemyType, value.Path.Select(value2 => new PathPointConfig(value2.transform.position, value2.RotationAngle, value2.RotationDelta)).ToArray())).ToList();
+                List<EnemyCarPointConfig> collectedEnemyCarPointConfigs = FindObjectsOfType<EnemyCarPoint>().Select(value => new EnemyCarPointConfig(value.Id, value.StartPoint.position, value.StartPoint.rotation, value.EnemyType, value.Path)).ToList();
+                collectedIds.AddRange(collectedEnemyCarPointConfigs.Select(value => value.Id));
+
+                List<PatrolingEnemyPointConfig> collectedPatrolingEnemyPointConfigs = FindObjectsOfType<PatrolingEnemyPoint>().Where(value => collectedIds.Contains(value.Id) == false).Select(value => new PatrolingEnemyPointConfig(value.Id, value.StartPoint.position, value.StartPoint.rotation, value.EnemyType, value.Path)).ToList();
                 collectedIds.AddRange(collectedPatrolingEnemyPointConfigs.Select(value => value.Id));
 
                 List<StaticEnemyPointConfig> collectedStaticEnemyPoints = FindObjectsOfType<StaticEnemyPoint>().Where(value => collectedIds.Contains(value.Id) == false).Select(value => new StaticEnemyPointConfig(value.Id, value.StartPoint.position, value.StartPoint.rotation, value.EnemyType)).ToList();
                 collectedIds.AddRange(collectedStaticEnemyPoints.Select(value => value.Id));
 
-                //List<EnemyCarPointConfig> collectedEnemyCarPoints = FindObjectsOfType<EnemyCarPoint>().Select(value => new EnemyCarPointConfig(value.Id, value.EnemyType, value.Path, value.StartPoint, value.MaxRotationAngle, value.Speed)).ToList();
-                //collectedIds.AddRange(collectedEnemyCarPoints.Select(value => value.Id));
-
-                //List<HelicopterPointConfig> collectedHelicopterPoints = FindObjectsOfType<HelicopterPoint>().Where(value => collectedIds.Contains(value.Id) == false).Select(value => new HelicopterPointConfig(value.Id, value.EnemyType, value.Path, value.StartPoint, value.MaxRotationAngle, value.Speed)).ToList();
-                //collectedIds.AddRange(collectedEnemyCarPoints.Select(value => value.Id));
-
                 Transform playerPoint = FindObjectOfType<PlayerPoint>().transform;
 
+                levelConfig.EnemyCarPoints = collectedEnemyCarPointConfigs;
                 levelConfig.PatrolingEnemyPoints = collectedPatrolingEnemyPointConfigs;
                 levelConfig.StaticEnemyPoints = collectedStaticEnemyPoints;
 

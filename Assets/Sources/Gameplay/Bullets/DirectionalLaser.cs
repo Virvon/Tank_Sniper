@@ -20,7 +20,7 @@ namespace Assets.Sources.Gameplay.Bullets
             if (isHited)
             {
                 CreateExplosionParticle(hitInfo.point, Quaternion.LookRotation(hitInfo.normal, transform.forward));
-                GiveDamage(hitInfo.point);
+                Explode(hitInfo.point);
             }
 
             return isHited;

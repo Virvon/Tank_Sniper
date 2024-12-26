@@ -7,7 +7,7 @@ namespace Assets.Sources.Gameplay.Destructions
     {
         public event Action<Vector3, uint> Damaged;
 
-        public void TakeDamage(Vector3 bulletPosition, uint explosionForce) =>
-            Damaged?.Invoke(bulletPosition, explosionForce);
+        public void TakeDamage(ExplosionInfo explosionInfo) =>
+            Damaged?.Invoke(explosionInfo.ExplosionPosition, explosionInfo.ExplosionForce);
     }
 }

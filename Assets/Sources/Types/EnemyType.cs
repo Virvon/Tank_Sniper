@@ -8,5 +8,6 @@
         Car,
         Tank,
         Helicopter,
+        CarBazooker,
     }
 }

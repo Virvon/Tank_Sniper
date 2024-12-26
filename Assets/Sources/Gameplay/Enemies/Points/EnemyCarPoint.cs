@@ -1,9 +1,10 @@
-﻿namespace Assets.Sources.Gameplay.Enemies.Points
+﻿using UnityEngine;
+
+namespace Assets.Sources.Gameplay.Enemies.Points
 {
-    public class EnemyCarPoint : StaticEnemyPoint
+    public class EnemyCarPoint : PatrolingEnemyPoint
     {
-        public EnemyPathPoint[] Path;
-        public uint MaxRotationAngle;
-        public float Speed;
+        protected override Vector3 GetEnemySize() =>
+            StartPoint.rotation * new Vector3(2, 2, 3);
     }
 }

@@ -60,10 +60,8 @@ namespace Assets.Sources.Gameplay.Destructions.Building
                 _neighboringCells.Add(destructionCell);
         }
 
-        public void TakeDamage(Vector3 bulletPosition, uint explosionForce)
-        {
-            Destruct(bulletPosition, explosionForce);
-        }
+        public void TakeDamage(ExplosionInfo explosionInfo) =>
+            Destruct(explosionInfo.ExplosionPosition, explosionInfo.ExplosionForce);
 
         public void ReportDestruction(List<DestructionCell> checkedCells, Vector3 bulletPosition, uint explosionForce)
         {

@@ -9,5 +9,6 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public float ExplosionLifeTime;
         public uint ExplosionForce;
         public float ExplosionRadius;
+        public uint Damage;
     }
 }

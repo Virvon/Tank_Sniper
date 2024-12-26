@@ -2,41 +2,26 @@
 
 namespace Assets.Sources.Gameplay.Bullets
 {
-    public abstract class ExplodingBullet : MonoBehaviour
+    public abstract class ExplodingBullet : Explosion
     {
-        private readonly Collider[] _overlapColliders = new Collider[32];
-
-        [SerializeField] private ParticleSystem _explosionParticlePrefab;
         [SerializeField] private GameObject _projectile;
 
         private float _explosionRadius;
         private uint _explosionForce;
+        private uint _damage;
 
         protected GameObject Projectile => _projectile;
 
-        public ExplodingBullet BindExplosionSettings(float explosionRadius, uint explosionForce)
+        public ExplodingBullet BindExplosionSettings(float explosionRadius, uint explosionForce, uint damage)
         {
             _explosionRadius = explosionRadius;
             _explosionForce = explosionForce;
+            _damage = damage;
 
             return this;
         }
 
-        protected void CreateExplosionParticle(Vector3 position, Quaternion rotation)
-        {
-            ParticleSystem explosionParticle = Instantiate(_explosionParticlePrefab, position, rotation, transform);
-            explosionParticle.Play();
-        }
-
-        protected void GiveDamage(Vector3 position)
-        {
-            int overlapCount = Physics.OverlapSphereNonAlloc(position, _explosionRadius, _overlapColliders);
-
-            for (int i = 0; i < overlapCount; i++)
-            {
-                if (_overlapColliders[i].TryGetComponent(out IDamageable damageable))
-                    damageable.TakeDamage(position, _explosionForce);
-            }
-        }
+        protected void Explode(Vector3 position) =>
+            Explode(position, _explosionRadius, _explosionForce, _damage);
     }
 }

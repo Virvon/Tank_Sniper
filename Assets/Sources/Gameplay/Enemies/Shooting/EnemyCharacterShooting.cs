@@ -88,6 +88,8 @@ namespace Assets.Sources.Gameplay.Weapons
             if (_isStartedShoot)
                 return;
 
+            _isStartedShoot = true;
+
             StartShooting();
         }
 

@@ -16,3 +16,4 @@ MonoBehaviour:
   RotationForce: 10
   DestroyDelay: 3
   DestroyDuration: 2
+  DestructionColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}

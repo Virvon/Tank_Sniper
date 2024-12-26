@@ -11,8 +11,13 @@ namespace Assets.Sources.Gameplay.Bullets
         private float _explosionLifeTime;
         private uint _flightSpeed;
 
-        protected virtual void OnCollisionEnter(Collision collision) =>
+        private bool _isDamageableCollided;
+
+        protected virtual void OnCollisionEnter(Collision collision)
+        {
+            _isDamageableCollided = collision.transform.TryGetComponent(out IDamageable _);
             Explode();
+        }
 
         public CollidingBullet BindSettings(float explosionLifeTime, uint flightSpeed, float lifeTimeLimit)
         {
@@ -30,7 +35,7 @@ namespace Assets.Sources.Gameplay.Bullets
             Stop();
             CreateExplosionParticle(transform.position, _isExplosionAlongMoveDiretion ? Quaternion.LookRotation(-transform.forward) : Quaternion.identity);
             DestroyProjectile();
-            GiveDamage(transform.position);
+            Explode(transform.position);
             Destroy();
         }
 

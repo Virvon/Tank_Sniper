@@ -14,7 +14,7 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         private readonly DiContainer _container;
         private readonly GameplayCamera.Factory _gameplayCameraFactory;
         private readonly Enemy.Factory _enemyFactory;
-        private readonly Car.Factory _carFactory;
+        private readonly EnemyCar.Factory _carFactory;
         private readonly AimingCamera.Factory _aimingFactory;
 
         public GameplayFactory(
@@ -22,7 +22,7 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             DiContainer container,
             GameplayCamera.Factory gameplayCameraFactory,
             Enemy.Factory enemyFactory,
-            Car.Factory carFactory,
+            EnemyCar.Factory carFactory,
             AimingCamera.Factory aimingFactory)
         {
             _staticDataService = staticDataService;
