@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 265899765862836568}
   - component: {fileID: 3010728338934734121}
-  - component: {fileID: 8414725328577390284}
   - component: {fileID: 4795327721023228160}
+  - component: {fileID: 576864404923939043}
   m_Layer: 11
   m_Name: BazookaRocket
   m_TagString: Untagged
@@ -52,19 +52,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!135 &8414725328577390284
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037542427579359671}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4795327721023228160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,8 +68,22 @@ MonoBehaviour:
     type: 3}
   _projectile: {fileID: 5942855789843813968}
   _rigidbody: {fileID: 3010728338934734121}
-  _collider: {fileID: 8414725328577390284}
+  _collider: {fileID: 576864404923939043}
   _isExplosionAlongMoveDiretion: 1
+--- !u!136 &576864404923939043
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037542427579359671}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 0.5
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.04}
 --- !u!1 &2983032846808075021
 GameObject:
   m_ObjectHideFlags: 0

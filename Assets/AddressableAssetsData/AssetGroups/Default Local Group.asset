@@ -27,11 +27,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1fd8d94f11ab0c34c8e44d6c676fe69b
-    m_Address: PlayerTank
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 940833409e3ac284986dbd3f7e0d825e
     m_Address: GameplayCamera
     m_ReadOnly: 0
@@ -105,11 +100,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e2d01332121a84443bb0c063aebb41b9
     m_Address: TeastWeaponConfig
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1ff4ec6adcaa1b348b6e8cd62e1b2765
-    m_Address: Tank
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -396,6 +386,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 24196c4a6311b9942abb58a53f81d93e
     m_Address: CarBazooker
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f6aafd4599fb0e845b467fb9aed10680
+    m_Address: EnemyTank
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c7073283e3968d94db1c432d7a7fd2ce
+    m_Address: EnemyTankRocket
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

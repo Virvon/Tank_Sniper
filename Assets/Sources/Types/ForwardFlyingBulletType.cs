@@ -7,5 +7,6 @@
         SuperBullet,
         BazookaRocket,
         MachineGunBullet,
+        EnemyTankRocket,
     }
 }

@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelKey: GameplayScene
   StaticEnemyPoints:
+  - Id: GameplayScene_1bd176b9-8980-402a-837a-56ccb35cdbc5
+    StartPosition: {x: 11.64, y: 0, z: 46.56}
+    StartRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+    EnemyType: 4
   - Id: GameplayScene_4d0b8d6e-d3af-4487-9a47-9c1475179c84
     StartPosition: {x: 23.22, y: 0, z: 25.7}
     StartRotation: {x: -0, y: 0.9659259, z: -0, w: -0.25881898}
@@ -36,8 +40,8 @@ MonoBehaviour:
     - Position: {x: 27.61, y: 0, z: 33.09}
       RotationAngle: 0
       RotationDelta: 1
-    Speed: 2
-    MaxRotationAngle: 60
+    Speed: 0
+    MaxRotationAngle: 0
   EnemyCarPoints:
   - Id: GameplayScene_7cdc3855-e1da-4b98-a828-fd2311b1b400
     StartPosition: {x: 55.04, y: 0, z: 49.73}
@@ -46,18 +50,18 @@ MonoBehaviour:
     Path:
     - Position: {x: 55.04, y: 0, z: 49.73}
       RotationAngle: 0
-      RotationDelta: 4
+      RotationDelta: 0
     - Position: {x: 19.98, y: 0, z: 49.73}
       RotationAngle: 0
-      RotationDelta: 4
+      RotationDelta: 0
     - Position: {x: 19.760002, y: 0, z: 43.16}
       RotationAngle: 0
-      RotationDelta: 4
+      RotationDelta: 0
     - Position: {x: 55.030003, y: 0, z: 43.53}
       RotationAngle: 0
-      RotationDelta: 4
-    Speed: 4
-    MaxRotationAngle: 90
+      RotationDelta: 0
+    Speed: 0
+    MaxRotationAngle: 0
     IsLooped: 0
     IsWaitedAttack: 0
-    SpeedAfterAttack: 8
+    SpeedAfterAttack: 0

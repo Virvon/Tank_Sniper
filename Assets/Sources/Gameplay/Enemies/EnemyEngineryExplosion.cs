@@ -2,7 +2,7 @@
 
 namespace Assets.Sources.Gameplay.Enemies
 {
-    public class EnemyEngineryExplsion : Explosion
+    public class EnemyEngineryExplosion : Explosion
     {
         [SerializeField] private float _explosionRadius;
         [SerializeField] private uint _damage;

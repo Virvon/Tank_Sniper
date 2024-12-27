@@ -10,7 +10,7 @@ namespace Assets.Sources.UI
 {
     public class EnemyHealthbar : MonoBehaviour
     {
-        [SerializeField] private EnemyCar _enemy;
+        [SerializeField] private EnemyEnginery _enemyEnginery;
         [SerializeField] private float _deltaRemoveDuration;
         [SerializeField] private float _showDuration;
         [SerializeField] private CanvasGroup _canvasGroup;
@@ -31,11 +31,11 @@ namespace Assets.Sources.UI
             _healthFill.fillAmount = 1;
             _healthDeltaFill.fillAmount = 1;
 
-            _enemy.Damaged += OnEnemyDamaged;
+            _enemyEnginery.Damaged += OnEnemyDamaged;
         }
 
         private void OnDestroy() =>
-            _enemy.Damaged -= OnEnemyDamaged;
+            _enemyEnginery.Damaged -= OnEnemyDamaged;
 
         private void Update() =>
             transform.rotation = Quaternion.LookRotation((_playerTankWrapper.transform.position - transform.position).normalized);
@@ -59,7 +59,7 @@ namespace Assets.Sources.UI
             _canvasGroup.alpha = isActive ? 1 : 0;
 
         private float RemapToFillValue(uint value) =>
-            Extensions.Remap(value, 0, _enemy.MaxHealth, 0, 1);
+            Extensions.Remap(value, 0, _enemyEnginery.MaxHealth, 0, 1);
 
         private IEnumerator BarChanger(uint health, uint damage)
         {
