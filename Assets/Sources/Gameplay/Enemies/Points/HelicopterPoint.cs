@@ -1,9 +1,6 @@
 ﻿namespace Assets.Sources.Gameplay.Enemies.Points
 {
-    public class HelicopterPoint : StaticEnemyPoint
+    public class HelicopterPoint : PatrolingEnemyPoint
     {
-        public EnemyPathPoint[] Path;
-        public uint MaxRotationAngle;
-        public float Speed;
     }
 }

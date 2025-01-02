@@ -53,4 +53,8 @@ namespace Assets.Sources.Editor
     internal class UniqueIdEnemyCarPointEditor : UniqueIdEditor<EnemyCarPoint>
     {
     }
+    [CustomEditor(typeof(HelicopterPoint))]
+    internal class UniqueIdHelicopterPointEditor : UniqueIdEditor<HelicopterPoint>
+    {
+    }
 }

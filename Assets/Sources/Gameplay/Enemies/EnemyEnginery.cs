@@ -1,9 +1,6 @@
 ﻿using Assets.Sources.Gameplay.Destructions;
-using Assets.Sources.Infrastructure.Factories.GameplayFactory;
-using Assets.Sources.Types;
 using System;
 using UnityEngine;
-using Zenject;
 
 namespace Assets.Sources.Gameplay.Enemies
 {

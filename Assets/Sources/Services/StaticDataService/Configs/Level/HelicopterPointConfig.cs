@@ -6,36 +6,26 @@ using UnityEngine;
 using System.Linq;
 using Assets.Sources.Types;
 using Assets.Sources.Gameplay.Enemies.Points;
+using Assets.Sources.Gameplay.Enemies.Movement;
 
 namespace Assets.Sources.Services.StaticDataService.Configs.Level
 {
     [Serializable]
-    public class HelicopterPointConfig : StaticEnemyPointConfig
+    public class HelicopterPointConfig : PatrolingEnemyPointConfig
     {
-        public PathPointConfig[] Path;
-        public uint MaxRotationAngle;
-        public float Speed;
         public bool IsWaitedAttack;
+        public bool IsPathLooped;
 
-        public HelicopterPointConfig(
-            string id,
-            EnemyType enemyType,
-            EnemyPathPoint[] path,
-            Transform startPoint,
-            uint maxRotationAngle,
-            float speed)
-            : base(id, startPoint.position, startPoint.rotation, enemyType)
+        public HelicopterPointConfig(string id, Vector3 startPosition, Quaternion startRotation, EnemyType enemyType, EnemyPathPoint[] path)
+            : base(id, startPosition, startRotation, enemyType, path)
         {
-            Path = path.Select(value => new PathPointConfig(value.transform.position, value.RotationAngle, value.RotationDelta)).ToArray();
-            MaxRotationAngle = maxRotationAngle;
-            Speed = speed;
         }
 
         public override async UniTask<Enemy> Create(IGameplayFactory gameplayFactory)
         {
-            Enemy enemy = await base.Create(gameplayFactory);
+            Enemy enemy = await gameplayFactory.CreateEnemy(EnemyType, StartPosition, StartRotation);
 
-            enemy.GetComponent<HelicopterMovement>().Initialize(this);
+            enemy.GetComponent<HelicopterMovement>().Initialize(Path, IsWaitedAttack, IsPathLooped);
 
             return enemy;
         }

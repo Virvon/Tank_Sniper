@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Sources.Gameplay.Weapons
 {
-    public class EnemyCharacterShooting : EnemyShooting
+    public class EnemyCharacterShooting : RotationEnemyShooting
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private EnemyAnimation _enemyAnimation;

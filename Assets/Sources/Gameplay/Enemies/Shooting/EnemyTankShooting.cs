@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Sources.Gameplay.Weapons
 {
-    public class EnemyTankShooting : EnemyShooting
+    public class EnemyTankShooting : RotationEnemyShooting
     {
         [SerializeField] private Transform _turret;
         [SerializeField] private uint _turretRotationSpeed;
