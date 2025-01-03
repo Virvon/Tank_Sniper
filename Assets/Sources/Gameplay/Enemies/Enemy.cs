@@ -1,4 +1,5 @@
 ﻿using Assets.Sources.Gameplay.Player;
+using Assets.Sources.Services.StaticDataService;
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
@@ -16,11 +17,11 @@ namespace Assets.Sources.Gameplay.Enemies
         public LayerMask LayerMask { get; private set; }
 
         [Inject]
-        private void Construct(PlayerTankWrapper playerTankWrapper, Aiming aiming, LayerMask enemyLayerMask)
+        private void Construct(PlayerTankWrapper playerTankWrapper, Aiming aiming, IStaticDataService staticDataService)
         {
             PlayerTankWrapper = playerTankWrapper;
             Aiming = aiming;
-            LayerMask = enemyLayerMask;
+            LayerMask = staticDataService.EnemiesSettingsConfig.LayerMask;
         }
 
         protected void OnDestructed() =>

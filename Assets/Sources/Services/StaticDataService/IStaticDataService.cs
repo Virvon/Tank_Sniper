@@ -18,6 +18,7 @@ namespace Assets.Sources.Services.StaticDataService
         AnimationsConfig AnimationsConfig { get; }
         AimingConfig AimingConfig { get; }
         DestructionConfig DestructionConfig { get; }
+        EnemiesSettingsConfig EnemiesSettingsConfig { get; }
 
         EnemyConfig GetEnemy(EnemyType type);
         LevelConfig GetLevel(string key);

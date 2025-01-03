@@ -35,6 +35,7 @@ namespace Assets.Sources.Services.StaticDataService
         public AnimationsConfig AnimationsConfig { get; private set; }
         public AimingConfig AimingConfig { get; private set; }
         public DestructionConfig DestructionConfig { get; private set; }
+        public EnemiesSettingsConfig EnemiesSettingsConfig { get; private set; }
 
         public async UniTask InitializeAsync()
         {
@@ -54,6 +55,7 @@ namespace Assets.Sources.Services.StaticDataService
                 UniTask.Create(async () => AnimationsConfig = await LoadConfig<AnimationsConfig>()),
                 UniTask.Create(async () => AimingConfig = await LoadConfig<AimingConfig>()),
                 UniTask.Create(async () => DestructionConfig = await LoadConfig<DestructionConfig>()),
+                UniTask.Create(async () => EnemiesSettingsConfig = await LoadConfig<EnemiesSettingsConfig>()),
             };
 
             await UniTask.WhenAll(tasks);
