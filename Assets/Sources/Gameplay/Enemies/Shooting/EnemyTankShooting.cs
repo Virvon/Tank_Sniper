@@ -10,13 +10,13 @@ namespace Assets.Sources.Gameplay.Weapons
         [SerializeField] private uint _turretRotationSpeed;
 
         private bool _isTurretRotated;
-        private bool _isTurnedToPlayerTank;
+        private bool _isTurretTurnedToPlayerTank;
 
-        protected override bool CanShoot => base.CanShoot && _isTurnedToPlayerTank;
+        protected override bool CanShoot => base.CanShoot && _isTurretTurnedToPlayerTank;
 
         private void Start()
         {
-            _isTurnedToPlayerTank = false;
+            _isTurretTurnedToPlayerTank = false;
             _isTurretRotated = false;
         }
 
@@ -45,11 +45,11 @@ namespace Assets.Sources.Gameplay.Weapons
                 if(Vector3.Angle(_turret.transform.forward, targetDiretion) > AngleDelta)
                 {
                     _turret.transform.rotation = Quaternion.RotateTowards(_turret.transform.rotation, targetRotation, _turretRotationSpeed * Time.deltaTime);
-                    _isTurnedToPlayerTank = false;
+                    _isTurretTurnedToPlayerTank = false;
                 }
                 else
                 {
-                    _isTurnedToPlayerTank = true;
+                    _isTurretTurnedToPlayerTank = true;
                 }
 
                 yield return null;

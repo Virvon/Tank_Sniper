@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelKey: GameplayScene
   StaticEnemyPoints:
+  - Id: GameplayScene_2dcccad7-efc5-42f8-a728-4f83a2de8bb2
+    StartPosition: {x: 24.487, y: 8.2, z: 68.883}
+    StartRotation: {x: -0, y: 1, z: -0, w: 0}
+    EnemyType: 7
   - Id: GameplayScene_4d0b8d6e-d3af-4487-9a47-9c1475179c84
     StartPosition: {x: 23.22, y: 0, z: 25.7}
     StartRotation: {x: -0, y: 0.9659259, z: -0, w: -0.25881898}
@@ -40,10 +44,10 @@ MonoBehaviour:
     - Position: {x: 27.61, y: 0, z: 33.09}
       RotationAngle: 0
       RotationDelta: 1
-    Speed: 1
-    MaxRotationAngle: 15
-    StoppingDuration: 2
-  EnemyCarPoints:
+    Speed: 0
+    MaxRotationAngle: 0
+    StoppingDuration: 0
+  MovementEngineryPoints:
   - Id: GameplayScene_7cdc3855-e1da-4b98-a828-fd2311b1b400
     StartPosition: {x: 55.04, y: 0, z: 49.73}
     StartRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
@@ -51,21 +55,21 @@ MonoBehaviour:
     Path:
     - Position: {x: 55.04, y: 0, z: 49.73}
       RotationAngle: 0
-      RotationDelta: 3
+      RotationDelta: 0
     - Position: {x: 19.98, y: 0, z: 49.73}
       RotationAngle: 0
-      RotationDelta: 3
+      RotationDelta: 0
     - Position: {x: 19.760002, y: 0, z: 43.16}
       RotationAngle: 0
-      RotationDelta: 3
+      RotationDelta: 0
     - Position: {x: 55.030003, y: 0, z: 43.53}
       RotationAngle: 0
-      RotationDelta: 3
-    Speed: 5
+      RotationDelta: 0
+    Speed: 0
     IsWaitedAttack: 0
     IsPathLooped: 0
-    MaxRotationAngle: 90
-    SpeedAfterAttack: 15
+    MaxRotationAngle: 0
+    SpeedAfterAttack: 0
   HelicopterPoints:
   - Id: GameplayScene_389b3421-3a55-46cb-9fa9-bd371a904e99
     StartPosition: {x: 93.5, y: 20.7, z: 15}
@@ -74,10 +78,10 @@ MonoBehaviour:
     Path:
     - Position: {x: 53.6, y: 20.7, z: 46.1}
       RotationAngle: 0
-      RotationDelta: 10
+      RotationDelta: 5
     - Position: {x: 8.4, y: 20.7, z: 47.8}
       RotationAngle: 0
-      RotationDelta: 10
-    Speed: 15
+      RotationDelta: 5
+    Speed: 0
     IsWaitedAttack: 0
     IsPathLooped: 0

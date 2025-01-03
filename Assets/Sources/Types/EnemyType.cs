@@ -9,5 +9,6 @@
         Tank,
         Helicopter,
         CarBazooker,
+        BuildingBazooker,
     }
 }

@@ -11,17 +11,13 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
     {
         private const float StartEngineForce = 30;
 
-        [SerializeField] private float _heightChangingSpeed = 0.5f;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private float _waitingTime = 12;
         [SerializeField] private Transform _helicopter;
-        [SerializeField] private float _turnForce = 20;
         [SerializeField] private float _movingForce = 2;
         [SerializeField] private float _tiltForce = 20;
         [SerializeField] private float _turnTiltForce = 30;
         [SerializeField] private float _effectiveHeight = 30;
-        [SerializeField] private float _turnTiltForcePercent = 1.5f;
-        [SerializeField] private float _turnForcePercent = 0.5f;
         [SerializeField] private uint _rotationSpeed = 60;
         [SerializeField] private Enemy _enemy;
 

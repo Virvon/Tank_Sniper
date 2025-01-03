@@ -57,4 +57,5 @@ namespace Assets.Sources.Editor
     internal class UniqueIdHelicopterPointEditor : UniqueIdEditor<HelicopterPoint>
     {
     }
+   
 }

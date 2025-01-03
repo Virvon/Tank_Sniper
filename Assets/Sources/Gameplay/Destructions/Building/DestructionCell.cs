@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,23 +7,17 @@ namespace Assets.Sources.Gameplay.Destructions.Building
     [RequireComponent(typeof(Rigidbody))]
     public class DestructionCell : DestructionPart, IDamageable
     {
-        private const float ScalingSpeed = 1;
-        private const float DestroyDelay = 2;
-        private const string DestroedLayer = "IgnoreProjectile";
-
         [SerializeField] private List<DestructionCell> _neighboringCells;
         [SerializeField] private bool _isFoundation = false;
 
-        private Rigidbody _rigidbody;
-
         public bool IsBreaked { get; private set; }
         public bool IsFoundation => _isFoundation;
-        public int ConnectionsCount => _neighboringCells.Count;
+
+        public event Action<Vector3, uint> Destructed;
 
         private void Start()
         {
             _neighboringCells = new();
-            _rigidbody = GetComponent<Rigidbody>();
 
             IsBreaked = false;
         }
@@ -93,6 +88,8 @@ namespace Assets.Sources.Gameplay.Destructions.Building
         {
             if (IsBreaked || IsFoundation)
                 return;
+
+            Destructed?.Invoke(bulletPosition, explosionForce);
 
             IsBreaked = true;
 

@@ -405,6 +405,17 @@ MonoBehaviour:
     m_SerializedLabels:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85a5d3ee8c1ff3a4184cb830448097b7
+    m_Address: BuildingBazooker
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5c5d26bcfa178a4e9082cb8a98d048a
+    m_Address: BuildingBazookerConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a44638466bf414438293c9d18a37e72, type: 2}
   m_SchemaSet:
