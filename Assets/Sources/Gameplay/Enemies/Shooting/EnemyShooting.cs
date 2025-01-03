@@ -55,15 +55,13 @@ namespace Assets.Sources.Gameplay.Weapons
             _bulletsCount = _bulletsCapacity;
             _isShooted = false;
 
-            _aiming.Shooted += OnPlayerTankAttacked;
-            
+            _aiming.Shooted += OnPlayerTankAttacked;  
             _enemy.Destructed += OnEnemyDestructed;
         }
 
         private void OnDestroy()
         {
             _aiming.Shooted -= OnPlayerTankAttacked;
-            
             _enemy.Destructed -= OnEnemyDestructed;
         }
 

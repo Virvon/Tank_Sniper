@@ -9,5 +9,8 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public float ShootingAimDuration;
         public int TankTurretRotation;
         public float TankMovingDistanceModifier;
+        public Vector2 StartRotation;
+        public Vector2 MaxRotation;
+        public Vector2 MinRotation;
     }
 }

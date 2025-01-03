@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AimingDuration: 0.3
   ShootingAimDuration: 0.2
-  TankTurretRotation: -45
-  TankMovingDistanceModifier: 0.5
+  TankTurretRotation: -60
+  TankMovingDistanceModifier: 0.7

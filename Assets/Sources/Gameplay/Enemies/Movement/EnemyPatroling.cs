@@ -64,6 +64,8 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
             if (_isStartedStopping)
                 return;
 
+            _isStartedStopping = true;
+
             StartCoroutine(Stopper());
         }
 

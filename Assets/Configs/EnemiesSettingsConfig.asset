@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b27a93d94d9954db19af0771e648c5, type: 3}
   m_Name: EnemiesSettingsConfig
   m_EditorClassIdentifier: 
-  Scatter: 0
+  Scatter: 2.5
   LayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1207
