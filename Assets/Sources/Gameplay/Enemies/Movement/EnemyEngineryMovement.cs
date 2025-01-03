@@ -16,17 +16,6 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
 
         protected override float Speed => _isAttacked ? _speedAfterAttack : base.Speed;
 
-        [Inject]
-        private void Construct(PlayerTankWrapper playerTankWrapper, Aiming aiming)
-        {
-            _playerTankWrapper = playerTankWrapper;
-            _aiming = aiming;
-
-            _isAttacked = false;
-
-            _aiming.Shooted += OnShooted;
-        }
-
         private void OnDestroy() =>
             _aiming.Shooted -= OnShooted;
 
@@ -34,17 +23,22 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
         {
             _speedAfterAttack = speedAfterAttack;
             _isLooped = true;
+
+            Enemy enemy = GetComponent<Enemy>();
+
+            _playerTankWrapper = enemy.PlayerTankWrapper;
+            _aiming = enemy.Aiming;
+
+            _isAttacked = false;
+
+            _aiming.Shooted += OnShooted;
+
+            StartMovement();
         }
 
         private void OnShooted()
         {
             _isAttacked = true;
-        }
-
-        protected override void Start()
-        {
-            base.Start();
-            StartMovement();
         }
 
         protected override bool CanMoveNextCircle() =>

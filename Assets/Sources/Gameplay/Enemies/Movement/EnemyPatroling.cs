@@ -1,21 +1,17 @@
 ﻿using Assets.Sources.Gameplay.Enemies.Animation;
 using Assets.Sources.Gameplay.Player;
-using System;
+using Assets.Sources.Gameplay.Weapons;
 using System.Collections;
 using UnityEngine;
-using Zenject;
 
 namespace Assets.Sources.Gameplay.Enemies.Movement
 {
     public class EnemyPatroling : EnemyMovement
     {
-        private const int RayCastDistance = 300;
+        private float _stoppingDuration;
+        private Animator _animator;
+        private PatrolingEnemyShooting _enemyShooting;
 
-        [SerializeField] private float _stoppingDuration;
-        [SerializeField] private LayerMask _layerMask;
-        [SerializeField] private Animator _animator;
-
-        private PlayerTankWrapper _playerTankWrapper;
         private Aiming _aiming;
 
         private bool _isStartedStopping;
@@ -24,11 +20,22 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
 
         protected override float StoppingDuration => _stoppingDuration;
 
-        [Inject]
-        private void Construct(PlayerTankWrapper playerTankWrapper, Aiming aiming)
+        private void OnDestroy()
         {
-            _playerTankWrapper = playerTankWrapper;
-            _aiming = aiming;
+            _aiming.Shooted -= OnPlayerShooted;
+            PointFinished -= OnPointFinished;
+            NextPointStarted -= OnNextPointStarted;
+        }
+
+        public void Initialize(float stoppingDuration)
+        {
+            _stoppingDuration = stoppingDuration;
+
+            _animator = GetComponentInChildren<Animator>();
+            _enemyShooting = GetComponent<PatrolingEnemyShooting>();
+            Enemy enemy = GetComponent<Enemy>();
+
+            _aiming = enemy.Aiming;
 
             _isStartedStopping = false;
             CanShoot = false;
@@ -36,16 +43,8 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
             _aiming.Shooted += OnPlayerShooted;
             PointFinished += OnPointFinished;
             NextPointStarted += OnNextPointStarted;
-        }
 
-        private void Start() =>
             StartMovement();
-
-        private void OnDestroy()
-        {
-            _aiming.Shooted -= OnPlayerShooted;
-            PointFinished -= OnPointFinished;
-            NextPointStarted -= OnNextPointStarted;
         }
 
         private void OnNextPointStarted()
@@ -68,18 +67,12 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
             StartCoroutine(Stopper());
         }
 
-        private bool CheckPlayerTankVisibility()
-        {
-            return Physics.Raycast(transform.position, (_playerTankWrapper.transform.position - transform.position).normalized, out RaycastHit hitInfo, RayCastDistance, _layerMask)
-                && hitInfo.transform.TryGetComponent(out PlayerTankWrapper _);
-        }
-
         private IEnumerator Stopper()
         {
-            yield return new WaitWhile(() => CheckPlayerTankVisibility() == false);
+            yield return new WaitWhile(() => _enemyShooting.CheckPlayerTankVisibility() == false);
 
             StopMovement();
-            CanShoot = true;
+            _enemyShooting.CanShooting();
         }
     }
 }

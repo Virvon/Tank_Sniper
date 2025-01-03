@@ -40,8 +40,9 @@ MonoBehaviour:
     - Position: {x: 27.61, y: 0, z: 33.09}
       RotationAngle: 0
       RotationDelta: 1
-    Speed: 0
-    MaxRotationAngle: 0
+    Speed: 1
+    MaxRotationAngle: 15
+    StoppingDuration: 2
   EnemyCarPoints:
   - Id: GameplayScene_7cdc3855-e1da-4b98-a828-fd2311b1b400
     StartPosition: {x: 55.04, y: 0, z: 49.73}
@@ -50,21 +51,21 @@ MonoBehaviour:
     Path:
     - Position: {x: 55.04, y: 0, z: 49.73}
       RotationAngle: 0
-      RotationDelta: 0
+      RotationDelta: 3
     - Position: {x: 19.98, y: 0, z: 49.73}
       RotationAngle: 0
-      RotationDelta: 0
+      RotationDelta: 3
     - Position: {x: 19.760002, y: 0, z: 43.16}
       RotationAngle: 0
-      RotationDelta: 0
+      RotationDelta: 3
     - Position: {x: 55.030003, y: 0, z: 43.53}
       RotationAngle: 0
-      RotationDelta: 0
-    Speed: 0
-    MaxRotationAngle: 0
-    IsLooped: 0
+      RotationDelta: 3
+    Speed: 5
     IsWaitedAttack: 0
-    SpeedAfterAttack: 0
+    IsPathLooped: 0
+    MaxRotationAngle: 90
+    SpeedAfterAttack: 15
   HelicopterPoints:
   - Id: GameplayScene_389b3421-3a55-46cb-9fa9-bd371a904e99
     StartPosition: {x: 93.5, y: 20.7, z: 15}
@@ -78,6 +79,5 @@ MonoBehaviour:
       RotationAngle: 0
       RotationDelta: 10
     Speed: 15
-    MaxRotationAngle: 0
     IsWaitedAttack: 0
     IsPathLooped: 0

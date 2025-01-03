@@ -13,6 +13,7 @@ namespace Assets.Sources.Gameplay
     {
         [SerializeField] private PlayerPoint _playerPoint;
         [SerializeField] private AimingCameraPoint _aimingCameraPoint;
+        [SerializeField] private LayerMask _enemyLayermask;
 
         public override void InstallBindings()
         {
@@ -24,7 +25,11 @@ namespace Assets.Sources.Gameplay
             BindPlayerPoint();
             BindAimingCamera();
             BindAiming();
+            BindEnemyLayerMask();
         }
+
+        private void BindEnemyLayerMask() =>
+            Container.BindInstance(_enemyLayermask).AsSingle();
 
         private void BindAiming() =>
             Container.BindInterfacesAndSelfTo<Aiming>().AsSingle();

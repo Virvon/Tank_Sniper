@@ -10,22 +10,23 @@ using UnityEngine;
 namespace Assets.Sources.Services.StaticDataService.Configs.Level
 {
     [Serializable]
-    public class EnemyCarPointConfig : PatrolingEnemyPointConfig
+    public class EnemyMovementEngineryPointConfig : HelicopterPointConfig
     {
-        public bool IsLooped;
-        public bool IsWaitedAttack;
+        public uint MaxRotationAngle;
         public float SpeedAfterAttack;
 
-        public EnemyCarPointConfig(string id, Vector3 startPosition, Quaternion startRotation, EnemyType enemyType, EnemyPathPoint[] path)
+        public EnemyMovementEngineryPointConfig(string id, Vector3 startPosition, Quaternion startRotation, EnemyType enemyType, EnemyPathPoint[] path)
             : base(id, startPosition, startRotation, enemyType, path)
         {
         }
 
         public override async UniTask<Enemy> Create(IGameplayFactory gameplayFactory)
         {
-            Enemy enemy = await base.Create(gameplayFactory);
+            Enemy enemy = await gameplayFactory.CreateEnemy(EnemyType, StartPosition, StartRotation);
 
-            enemy.GetComponent<EnemyEngineryMovement>().Initialize(SpeedAfterAttack);
+            EnemyEngineryMovement enemyEngineryMovement = enemy.gameObject.AddComponent<EnemyEngineryMovement>();
+            enemyEngineryMovement.Initialize(Path, Speed, MaxRotationAngle);
+            enemyEngineryMovement.Initialize(SpeedAfterAttack);
 
             return enemy;
         }

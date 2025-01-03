@@ -28,7 +28,7 @@ namespace Assets.Sources.Editor
                 List<HelicopterPointConfig> collectedHelicopterPoints = FindObjectsOfType<HelicopterPoint>().Select(value => new HelicopterPointConfig(value.Id, value.StartPoint.position, value.StartPoint.rotation, value.EnemyType, value.Path)).ToList();
                 collectedIds.AddRange(collectedHelicopterPoints.Select(value => value.Id));
 
-                List<EnemyCarPointConfig> collectedEnemyCarPointConfigs = FindObjectsOfType<EnemyCarPoint>().Where(value => collectedIds.Contains(value.Id) == false).Select(value => new EnemyCarPointConfig(value.Id, value.StartPoint.position, value.StartPoint.rotation, value.EnemyType, value.Path)).ToList();
+                List<EnemyMovementEngineryPointConfig> collectedEnemyCarPointConfigs = FindObjectsOfType<EnemyCarPoint>().Where(value => collectedIds.Contains(value.Id) == false).Select(value => new EnemyMovementEngineryPointConfig(value.Id, value.StartPoint.position, value.StartPoint.rotation, value.EnemyType, value.Path)).ToList();
                 collectedIds.AddRange(collectedEnemyCarPointConfigs.Select(value => value.Id));
 
                 List<PatrolingEnemyPointConfig> collectedPatrolingEnemyPointConfigs = FindObjectsOfType<PatrolingEnemyPoint>().Where(value => collectedIds.Contains(value.Id) == false).Select(value => new PatrolingEnemyPointConfig(value.Id, value.StartPoint.position, value.StartPoint.rotation, value.EnemyType, value.Path)).ToList();
@@ -39,7 +39,7 @@ namespace Assets.Sources.Editor
 
                 Transform playerPoint = FindObjectOfType<PlayerPoint>().transform;
 
-                levelConfig.EnemyCarPoints = collectedEnemyCarPointConfigs;
+                levelConfig.MovementEngineryPoints = collectedEnemyCarPointConfigs;
                 levelConfig.PatrolingEnemyPoints = collectedPatrolingEnemyPointConfigs;
                 levelConfig.StaticEnemyPoints = collectedStaticEnemyPoints;
                 levelConfig.HelicopterPoints = collectedHelicopterPoints;

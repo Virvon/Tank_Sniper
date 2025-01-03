@@ -8,14 +8,11 @@ namespace Assets.Sources.Gameplay.Weapons
     {
         [SerializeField] private EnemyPatroling _patroling;
 
-        protected override void StartShooting() =>
-            StartCoroutine(ShootingWaiter());
-
-        private IEnumerator ShootingWaiter()
+        protected override void StartShooting() 
         {
-            yield return new WaitWhile(() => _patroling.CanShoot == false);
-
-            base.StartShooting();
         }
+
+        public void CanShooting() =>
+            base.StartShooting();
     }
 }

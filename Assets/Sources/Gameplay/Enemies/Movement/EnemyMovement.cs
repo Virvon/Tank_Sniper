@@ -7,8 +7,8 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
 {
     public class EnemyMovement : MonoBehaviour
     {
-        [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private Enemy _enemy;
+        private Rigidbody _rigidbody;
+        private Enemy _enemy;
 
         private PathPointConfig[] _path;
         private uint _maxRotationAngle;
@@ -25,12 +25,6 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
 
         protected virtual float StoppingDuration => 0;
 
-        protected virtual void Start()
-        {
-            _currentPointIndex = 0;
-            _enemy.Destructed += StopMovement;
-        }
-
         private void OnDestroy() =>
             _enemy.Destructed -= StopMovement;
 
@@ -39,6 +33,13 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
             _path = path;
             _speed = speed;
             _maxRotationAngle = maxRotationAngle;
+
+            _rigidbody = GetComponent<Rigidbody>();
+            _enemy = GetComponent<Enemy>();
+
+            _currentPointIndex = 0;
+
+            _enemy.Destructed += StopMovement;
         }
 
         protected void StartMovement()

@@ -18,7 +18,6 @@ namespace Assets.Sources.Gameplay.Weapons
 
         [SerializeField] private float _reloadDuration;
         [SerializeField] private float _shootCooldown;
-        [SerializeField] private LayerMask _layerMask;
         [SerializeField] private ForwardFlyingBulletType _bulletType;
         [SerializeField] private uint _bulletsCapacity;
         [SerializeField] private MuzzleType _muzzleType;
@@ -26,6 +25,7 @@ namespace Assets.Sources.Gameplay.Weapons
 
         private Aiming _aiming;
         private IBulletFactory _bulletFactory;
+        private LayerMask _layerMask;
 
         private bool _isStartedShoot;
         private uint _bulletsCount;
@@ -38,11 +38,12 @@ namespace Assets.Sources.Gameplay.Weapons
         protected abstract Vector3 LookStartPosition { get; }
 
         [Inject]
-        private void Construct(PlayerTankWrapper playerTankWrapper, Aiming aiming, IBulletFactory bulletFactory)
+        private void Construct(PlayerTankWrapper playerTankWrapper, Aiming aiming, IBulletFactory bulletFactory, LayerMask enemyLayerMask)
         {
             PlayerTankWrapper = playerTankWrapper;
             _aiming = aiming;
             _bulletFactory = bulletFactory;
+            _layerMask = enemyLayerMask;
 
             _isStartedShoot = false;
             _bulletsCount = _bulletsCapacity;
@@ -58,6 +59,12 @@ namespace Assets.Sources.Gameplay.Weapons
             _aiming.Shooted -= OnPlayerTankAttacked;
             
             _enemy.Destructed -= OnEnemyDestructed;
+        }
+
+        public bool CheckPlayerTankVisibility()
+        {
+            return Physics.Raycast(LookStartPosition, (PlayerTankWrapper.transform.position - LookStartPosition).normalized, out RaycastHit hitInfo, RayCastDistance, _layerMask)
+                && hitInfo.transform.TryGetComponent(out PlayerTankWrapper _);
         }
 
         protected virtual void StartShooting() =>
@@ -82,12 +89,6 @@ namespace Assets.Sources.Gameplay.Weapons
             _isStartedShoot = true;
 
             StartShooting();
-        }
-
-        private bool CheckPlayerTankVisibility()
-        {
-            return Physics.Raycast(LookStartPosition, (PlayerTankWrapper.transform.position - LookStartPosition).normalized, out RaycastHit hitInfo, RayCastDistance, _layerMask)
-                && hitInfo.transform.TryGetComponent(out PlayerTankWrapper _);
         }
 
         private IEnumerator Shooter()

@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Assets.Sources.Gameplay.Player;
+using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -9,6 +10,18 @@ namespace Assets.Sources.Gameplay.Enemies
     public abstract class Enemy : MonoBehaviour
     {
         public event Action Destructed;
+
+        public PlayerTankWrapper PlayerTankWrapper { get; private set; }
+        public Aiming Aiming { get; private set; }
+        public LayerMask LayerMask { get; private set; }
+
+        [Inject]
+        private void Construct(PlayerTankWrapper playerTankWrapper, Aiming aiming, LayerMask enemyLayerMask)
+        {
+            PlayerTankWrapper = playerTankWrapper;
+            Aiming = aiming;
+            LayerMask = enemyLayerMask;
+        }
 
         protected void OnDestructed() =>
             Destructed?.Invoke();

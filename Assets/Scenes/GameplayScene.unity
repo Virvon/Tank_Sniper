@@ -29561,6 +29561,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPoint: {fileID: 89219529}
   _aimingCameraPoint: {fileID: 603738090}
+  _enemyLayermask:
+    serializedVersion: 2
+    m_Bits: 1207
 --- !u!4 &1993806547
 Transform:
   m_ObjectHideFlags: 0

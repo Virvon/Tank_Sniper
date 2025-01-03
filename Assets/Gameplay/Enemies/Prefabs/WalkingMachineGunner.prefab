@@ -125,7 +125,6 @@ GameObject:
   - component: {fileID: 3232716617254278474}
   - component: {fileID: 9076924983185086577}
   - component: {fileID: 3886911883097476702}
-  - component: {fileID: 4734222025430008789}
   - component: {fileID: 5197451324952423987}
   - component: {fileID: 9068863795125584064}
   m_Layer: 0
@@ -181,25 +180,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 2, z: 0.8}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &4734222025430008789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4138023367297425149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed445cdfd561b9a4ebb355176217ad1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 9076924983185086577}
-  _enemy: {fileID: 9068863795125584064}
-  _stoppingDuration: 4
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 1207
-  _animator: {fileID: 219164319367645571}
 --- !u!114 &5197451324952423987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,20 +192,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61845d2f2a4065e46b9fe1041b5fed98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 219164319367645571}
-  _enemyAnimation: {fileID: 5648650626953272145}
-  _shootPoint: {fileID: 3991455467061476280}
-  _rotationSpeed: 180
   _reloadDuration: 1
   _shootCooldown: 0.5
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 1207
   _bulletType: 4
   _bulletsCapacity: 2
   _muzzleType: 0
   _enemy: {fileID: 9068863795125584064}
-  _patroling: {fileID: 4734222025430008789}
+  _shootPoint: {fileID: 3991455467061476280}
+  _rotationSpeed: 180
+  _animator: {fileID: 219164319367645571}
+  _enemyAnimation: {fileID: 5648650626953272145}
+  _patroling: {fileID: 0}
 --- !u!114 &9068863795125584064
 MonoBehaviour:
   m_ObjectHideFlags: 0

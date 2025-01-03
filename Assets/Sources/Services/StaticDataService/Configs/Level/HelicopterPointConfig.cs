@@ -11,7 +11,7 @@ using Assets.Sources.Gameplay.Enemies.Movement;
 namespace Assets.Sources.Services.StaticDataService.Configs.Level
 {
     [Serializable]
-    public class HelicopterPointConfig : PatrolingEnemyPointConfig
+    public class HelicopterPointConfig : PathMovementEnemyPointConfig
     {
         public bool IsWaitedAttack;
         public bool IsPathLooped;
