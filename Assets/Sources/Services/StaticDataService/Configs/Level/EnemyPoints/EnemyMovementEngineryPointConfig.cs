@@ -7,7 +7,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
 
-namespace Assets.Sources.Services.StaticDataService.Configs.Level
+namespace Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints
 {
     [Serializable]
     public class EnemyMovementEngineryPointConfig : HelicopterPointConfig

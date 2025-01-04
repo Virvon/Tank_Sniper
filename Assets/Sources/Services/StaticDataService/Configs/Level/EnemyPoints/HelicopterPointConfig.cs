@@ -3,12 +3,11 @@ using Assets.Sources.Infrastructure.Factories.GameplayFactory;
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
-using System.Linq;
 using Assets.Sources.Types;
 using Assets.Sources.Gameplay.Enemies.Points;
 using Assets.Sources.Gameplay.Enemies.Movement;
 
-namespace Assets.Sources.Services.StaticDataService.Configs.Level
+namespace Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints
 {
     [Serializable]
     public class HelicopterPointConfig : PathMovementEnemyPointConfig

@@ -1,6 +1,6 @@
 ﻿using Assets.Sources.Gameplay.Enemies.Points;
 using Assets.Sources.Gameplay.Player;
-using Assets.Sources.Services.StaticDataService.Configs.Level;
+using Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;

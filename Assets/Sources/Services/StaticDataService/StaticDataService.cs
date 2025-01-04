@@ -4,7 +4,8 @@ using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.Services.StaticDataService.Configs;
 using Assets.Sources.Services.StaticDataService.Configs.Bullets.Colliding;
 using Assets.Sources.Services.StaticDataService.Configs.Bullets.Laser;
-using Assets.Sources.Services.StaticDataService.Configs.Level;
+using Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints;
+using Assets.Sources.Services.StaticDataService.Configs.Level.Sequence;
 using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
 
@@ -22,6 +23,7 @@ namespace Assets.Sources.Services.StaticDataService
         private Dictionary<TankSkinType, TankSkinConfig> _tankSkinConfigs;
         private Dictionary<DecalType, DecalConfig> _decalConfigs;
         private Dictionary<MuzzleType, MuzzleConfig> _muzzleConfigs;
+        private Dictionary<LevelType, LevelsSequenceConfig> _levelsSequenceCofnfig;
 
         public StaticDataService(IAssetProvider assetsProvider) =>
             _assetsProvider = assetsProvider;
@@ -56,10 +58,14 @@ namespace Assets.Sources.Services.StaticDataService
                 UniTask.Create(async () => AimingConfig = await LoadConfig<AimingConfig>()),
                 UniTask.Create(async () => DestructionConfig = await LoadConfig<DestructionConfig>()),
                 UniTask.Create(async () => GameplaySettingsConfig = await LoadConfig<GameplaySettingsConfig>()),
+                UniTask.Create(async () => _levelsSequenceCofnfig = await LoadConfigs<LevelType, LevelsSequenceConfig>()),
             };
 
             await UniTask.WhenAll(tasks);
         }
+
+        public LevelsSequenceConfig GetLevelsSequence(LevelType type) =>
+            _levelsSequenceCofnfig.TryGetValue(type, out LevelsSequenceConfig config) ? config : null;
 
         public MuzzleConfig GetMuzzle(MuzzleType type) =>
             _muzzleConfigs.TryGetValue(type, out MuzzleConfig config) ? config : null;

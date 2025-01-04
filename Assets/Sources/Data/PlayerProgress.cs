@@ -12,14 +12,18 @@ namespace Assets.Sources.Data
         public uint SelectedTankLevel;
         public TankSkinData[] TankSkins;
         public DecalData[] Decals;
+        public LevelType CurrentLevelType;
+        public uint CurrentLevelIndex;
 
-        public PlayerProgress(TankData[] tanks, TankSkinData[] skins, DecalData[] decals)
+        public PlayerProgress(TankData[] tanks, TankSkinData[] skins, DecalData[] decals, LevelType startLevelType)
         {
             Tanks = tanks;
             TankSkins = skins;
             Decals = decals;
+            CurrentLevelType = startLevelType;
 
             SelectedTankLevel = Tanks.Where(tank => tank.IsUnlocked).First().Level;
+            CurrentLevelIndex = 0;
         }
 
         public event Action<uint> TankUnlocked;

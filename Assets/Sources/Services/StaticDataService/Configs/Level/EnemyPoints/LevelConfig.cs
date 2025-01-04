@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Sources.Services.StaticDataService.Configs.Level
+namespace Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints
 {
     [CreateAssetMenu(fileName = "LevelConfig", menuName = "Configs/Create new level config", order = 51)]
     public class LevelConfig : ScriptableObject, IConfig<string>

@@ -8,7 +8,7 @@ using System;
 using UnityEngine;
 using System.Linq;
 
-namespace Assets.Sources.Services.StaticDataService.Configs.Level
+namespace Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints
 {
     [Serializable]
     public class PatrolingEnemyPointConfig : PathMovementEnemyPointConfig

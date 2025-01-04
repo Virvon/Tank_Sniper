@@ -1,4 +1,4 @@
-﻿using Assets.Sources.Services.StaticDataService.Configs.Level;
+﻿using Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints;
 using System;
 using System.Collections;
 using UnityEngine;

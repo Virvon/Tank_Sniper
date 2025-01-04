@@ -7,7 +7,7 @@ using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Assets.Sources.Infrastructure.Factories.UiFactory;
 using Assets.Sources.Services.PersistentProgress;
 using Assets.Sources.Services.StaticDataService;
-using Assets.Sources.Services.StaticDataService.Configs.Level;
+using Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints;
 using Assets.Sources.Tanks;
 using Assets.Sources.UI;
 using Cysharp.Threading.Tasks;
