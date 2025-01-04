@@ -1,4 +1,4 @@
-﻿using Assets.Sources.Gameplay;
+﻿using Assets.Sources.Gameplay.Handlers;
 using Assets.Sources.Infrastructure.GameStateMachine;
 using Assets.Sources.Infrastructure.GameStateMachine.States;
 using Assets.Sources.Services.StaticDataService;
@@ -12,7 +12,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Assets.Sources.UI
+namespace Assets.Sources.UI.Gameplay
 {
     public class DefeatWindow : OpenableWindow
     {

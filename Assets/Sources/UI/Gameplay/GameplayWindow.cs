@@ -1,11 +1,11 @@
-﻿using Assets.Sources.Gameplay;
+﻿using Assets.Sources.Gameplay.Handlers;
 using Assets.Sources.Gameplay.Player;
 using System;
 using System.Collections;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Sources.UI
+namespace Assets.Sources.UI.Gameplay
 {
     public class GameplayWindow : OpenableWindow
     {
@@ -95,7 +95,7 @@ namespace Assets.Sources.UI
             float targetAlpha = isAimed ? 1 : 0;
             float startAlpha = _aimingCanvasGroup.alpha;
 
-            while(_aimingCanvasGroup.alpha != targetAlpha)
+            while (_aimingCanvasGroup.alpha != targetAlpha)
             {
                 progress = passedTime / duration;
                 passedTime += Time.deltaTime;

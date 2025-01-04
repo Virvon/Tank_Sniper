@@ -1,4 +1,5 @@
 ﻿using Assets.Sources.Gameplay.Cameras;
+using Assets.Sources.Gameplay.Handlers;
 using Assets.Sources.Gameplay.Player;
 using Assets.Sources.Infrastructure.Factories.BulletFactory;
 using Assets.Sources.Infrastructure.Factories.GameplayFactory;
@@ -25,7 +26,11 @@ namespace Assets.Sources.Gameplay
             BindAimingCamera();
             BindAiming();
             BindDefeatHandler();
+            BindWinHandler();
         }
+
+        private void BindWinHandler() =>
+            Container.BindInterfacesAndSelfTo<WictoryHandler>().AsSingle();
 
         private void BindDefeatHandler() =>
             Container.Bind<DefeatHandler>().AsSingle();

@@ -1,5 +1,6 @@
 ﻿using Assets.Sources.Gameplay.Cameras;
 using Assets.Sources.Gameplay.Enemies;
+using Assets.Sources.Gameplay.Handlers;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
@@ -14,23 +15,23 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         private readonly DiContainer _container;
         private readonly GameplayCamera.Factory _gameplayCameraFactory;
         private readonly Enemy.Factory _enemyFactory;
-        private readonly EnemyCar.Factory _carFactory;
         private readonly AimingCamera.Factory _aimingFactory;
+        private readonly WictoryHandler _winHandler;
 
         public GameplayFactory(
             IStaticDataService staticDataService,
             DiContainer container,
             GameplayCamera.Factory gameplayCameraFactory,
             Enemy.Factory enemyFactory,
-            EnemyCar.Factory carFactory,
-            AimingCamera.Factory aimingFactory)
+            AimingCamera.Factory aimingFactory,
+            WictoryHandler winHandler)
         {
             _staticDataService = staticDataService;
             _container = container;
             _gameplayCameraFactory = gameplayCameraFactory;
             _enemyFactory = enemyFactory;
-            _carFactory = carFactory;
             _aimingFactory = aimingFactory;
+            _winHandler = winHandler;
         }
 
         public async UniTask CreateAimingVirtualCamera(Vector3 position) =>
@@ -43,7 +44,13 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             _container.BindInstance(gameplayCamera).AsSingle();
         }
 
-        public async UniTask<Enemy> CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation) =>
-            await _enemyFactory.Create(_staticDataService.GetEnemy(type).AssetReference, position, rotation);
+        public async UniTask<Enemy> CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation)
+        {
+            Enemy enemy = await _enemyFactory.Create(_staticDataService.GetEnemy(type).AssetReference, position, rotation);
+
+            _winHandler.AddEnemy(enemy);
+
+            return enemy;
+        }
     }
 }

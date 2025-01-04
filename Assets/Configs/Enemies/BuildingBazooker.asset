@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000f73780d52c404db06ccec380199e5, type: 3}
   m_Name: BuildingBazooker
   m_EditorClassIdentifier: 
-  Type: 7
+  Type: 6
   AssetReference:
     m_AssetGUID: dd1f18b294fa19a4e97f1597af66562a
     m_SubObjectName: 

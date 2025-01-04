@@ -31,6 +31,9 @@ namespace Assets.Sources.Gameplay.Enemies.Helicopter
 
         private void OnDamaged(ExplosionInfo explosionInfo)
         {
+            if (_isDestructed)
+                return;
+
             OnDestructed();
             StartCoroutine(Rotater());
             _isDestructed = true;

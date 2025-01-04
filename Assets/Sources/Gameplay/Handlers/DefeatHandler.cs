@@ -6,7 +6,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Sources.Gameplay
+namespace Assets.Sources.Gameplay.Handlers
 {
     public class DefeatHandler
     {

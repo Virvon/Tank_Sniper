@@ -378,17 +378,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 65dda6022a542994f8921b8681881e0a
-    m_Address: CarBazookerConfig
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Configs
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 24196c4a6311b9942abb58a53f81d93e
-    m_Address: CarBazooker
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f6aafd4599fb0e845b467fb9aed10680
     m_Address: EnemyTank
     m_ReadOnly: 0

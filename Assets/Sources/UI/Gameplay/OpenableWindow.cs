@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Assets.Sources.UI
+namespace Assets.Sources.UI.Gameplay
 {
     public class OpenableWindow : Window
     {
@@ -49,7 +49,7 @@ namespace Assets.Sources.UI
             float passedTime = 0;
             float progress;
 
-            while(_mainCanvasGroup.alpha != targetAlpha)
+            while (_mainCanvasGroup.alpha != targetAlpha)
             {
                 progress = passedTime / duration;
                 passedTime += Time.deltaTime;

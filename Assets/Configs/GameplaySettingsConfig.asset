@@ -16,6 +16,6 @@ MonoBehaviour:
   EnemyLayerMask:
     serializedVersion: 2
     m_Bits: 1207
-  PlayerHealth: 10
+  PlayerHealth: 1000
   DefeatWaitingDelay: 3
   ProgressRecoveryAvailableTime: 7

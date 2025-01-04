@@ -1,4 +1,5 @@
 ﻿using Assets.Sources.Gameplay.Enemies;
+using Assets.Sources.Gameplay.Handlers;
 using Assets.Sources.Gameplay.Player;
 using Assets.Sources.Infrastructure.Factories.BulletFactory;
 using Assets.Sources.Services.StaticDataService;

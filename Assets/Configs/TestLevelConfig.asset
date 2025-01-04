@@ -17,7 +17,7 @@ MonoBehaviour:
   - Id: GameplayScene_2dcccad7-efc5-42f8-a728-4f83a2de8bb2
     StartPosition: {x: 24.487, y: 8.2, z: 68.883}
     StartRotation: {x: -0, y: 1, z: -0, w: 0}
-    EnemyType: 7
+    EnemyType: 6
   - Id: GameplayScene_4d0b8d6e-d3af-4487-9a47-9c1475179c84
     StartPosition: {x: 23.22, y: 0, z: 25.7}
     StartRotation: {x: -0, y: 0.9659259, z: -0, w: -0.25881898}
