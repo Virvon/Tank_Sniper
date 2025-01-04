@@ -7,5 +7,7 @@
         public const string TankPanel = "TankPanel";
         public const string UnlockingPanel = "TankSkinPanel";
         public const string DefeatWindow = "DefeatWindow";
+        public const string WictoryWindow = "WictoryWindow";
+        public const string LoadingCurtain = "LoadingCurtain";
     }
 }

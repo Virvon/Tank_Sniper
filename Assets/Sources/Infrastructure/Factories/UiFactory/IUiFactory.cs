@@ -1,5 +1,4 @@
-﻿using Assets.Sources.UI;
-using Assets.Sources.UI.MainMenu;
+﻿using Assets.Sources.UI.MainMenu;
 using Assets.Sources.UI.MainMenu.Store;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -13,5 +12,7 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         UniTask<SelectingPanelElement> CreateUnlockingPanel(Transform parent);
         UniTask CreateGameplayWindow();
         UniTask CreateDefeatWindow();
+        UniTask CreateWictroyWindow();
+        UniTask CreateLoadingCurtain();
     }
 }

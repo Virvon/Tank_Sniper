@@ -8,7 +8,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public float EnemyScatter;
         public LayerMask EnemyLayerMask;
         public uint PlayerHealth;
-        public float DefeatWaitingDelay;
+        public float WindowsSwitchDeley;
         public float ProgressRecoveryAvailableTime;
     }
 }

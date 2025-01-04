@@ -59,6 +59,8 @@ namespace Assets.Sources.Gameplay
             await CreateEnemies(levelConfig);
             await _uiFactory.CreateGameplayWindow();
             await _uiFactory.CreateDefeatWindow();
+            await _uiFactory.CreateLoadingCurtain();
+            await _uiFactory.CreateWictroyWindow();
         }
 
         private async Task CreateTank(TankData tankData)

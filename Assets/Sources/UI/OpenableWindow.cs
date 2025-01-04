@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Assets.Sources.UI.Gameplay
+namespace Assets.Sources.UI
 {
     public class OpenableWindow : Window
     {
@@ -19,7 +19,7 @@ namespace Assets.Sources.UI.Gameplay
             _mainCanvasGroup.alpha = _isOpenedOnAwake ? 1 : 0;
         }
 
-        public void Open()
+        public void Show()
         {
             _mainCanvasGroup.blocksRaycasts = true;
             _mainCanvasGroup.interactable = true;
@@ -27,7 +27,7 @@ namespace Assets.Sources.UI.Gameplay
             Switch(1, _openDuration);
         }
 
-        public void Close()
+        public void Hide()
         {
             _mainCanvasGroup.blocksRaycasts = false;
             _mainCanvasGroup.interactable = false;

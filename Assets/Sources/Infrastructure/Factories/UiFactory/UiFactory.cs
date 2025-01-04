@@ -21,6 +21,15 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
             _selectingPanelElementFactory = selectingPanelElementFactory;
         }
 
+        public async UniTask CreateLoadingCurtain()
+        {
+            LoadingCurtain loadingCurtain = await _windowFactory.Create(UiFactoryAssets.LoadingCurtain) as LoadingCurtain;
+            _container.BindInstance(loadingCurtain).AsSingle();
+        }
+
+        public async UniTask CreateWictroyWindow() =>
+            await _windowFactory.Create(UiFactoryAssets.WictoryWindow);
+
         public async UniTask CreateDefeatWindow() =>
             await _windowFactory.Create(UiFactoryAssets.DefeatWindow);
 

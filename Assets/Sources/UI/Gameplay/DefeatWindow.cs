@@ -53,13 +53,13 @@ namespace Assets.Sources.UI.Gameplay
             _gameStateMachien.Enter<GameplayLoopState>().Forget();
 
         private void OnProgressRecovery() =>
-            Close();
+            Hide();
 
         private void OnWindowsSwitched()
         {
             _progressRecoveryButton.interactable = true;
 
-            Open();
+            Show();
 
             StartCoroutine(Timer());
         }

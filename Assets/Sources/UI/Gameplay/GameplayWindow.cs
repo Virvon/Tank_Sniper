@@ -15,32 +15,38 @@ namespace Assets.Sources.UI.Gameplay
 
         private Aiming _aiming;
         private DefeatHandler _defeatHandler;
+        private WictoryHandler _wictoryHangler;
 
         private Coroutine _aimChanger;
-        private bool _isDefeated;
+        private bool _isAimButtonHided;
 
         [Inject]
-        private void Construct(Aiming aiming, DefeatHandler defeatHandler)
+        private void Construct(Aiming aiming, DefeatHandler defeatHandler, WictoryHandler wictoryHandler)
         {
             _aiming = aiming;
             _defeatHandler = defeatHandler;
+            _wictoryHangler = wictoryHandler;
 
-            _isDefeated = false;
+            _isAimButtonHided = false;
 
             _aiming.StateChanged += OnAimingStateChanged;
             _aiming.StateChangingFinished += OnAimingStageChangingFinished;
-            _defeatHandler.Defeated += OnDefeat;
+            _defeatHandler.Defeated += HideAimButton;
             _defeatHandler.WindowsSwitched += OnWindowsSwithced;
             _defeatHandler.ProgressRecovery += OnProgressRecovery;
+            _wictoryHangler.WindowsSwithed += OnWindowsSwithced;
+            _wictoryHangler.Woned += HideAimButton;
         }
 
         private void OnDestroy()
         {
             _aiming.StateChanged -= OnAimingStateChanged;
             _aiming.StateChangingFinished -= OnAimingStageChangingFinished;
-            _defeatHandler.Defeated -= OnDefeat;
+            _defeatHandler.Defeated -= HideAimButton;
             _defeatHandler.WindowsSwitched -= OnWindowsSwithced;
             _defeatHandler.ProgressRecovery -= OnProgressRecovery;
+            _wictoryHangler.WindowsSwithed -= OnWindowsSwithced;
+            _wictoryHangler.Woned -= HideAimButton;
         }
 
         private void OnAimingStageChangingFinished(bool isAimed)
@@ -51,20 +57,20 @@ namespace Assets.Sources.UI.Gameplay
 
         private void OnProgressRecovery()
         {
-            _isDefeated = false;
+            _isAimButtonHided = false;
             SetAimButtonActive(true);
-            Open();
+            Show();
         }
 
-        private void OnDefeat() =>
-            _isDefeated = true;
+        private void HideAimButton() =>
+            _isAimButtonHided = true;
 
         private void OnWindowsSwithced() =>
-            Close();
+            Hide();
 
         private void SetAimButtonActive(bool isActive)
         {
-            isActive = _isDefeated ? false : isActive;
+            isActive = _isAimButtonHided ? false : isActive;
             _aimButtonCanvasGroup.alpha = isActive ? 1 : 0;
             _aimButtonCanvasGroup.blocksRaycasts = isActive;
             _aimButtonCanvasGroup.interactable = isActive;

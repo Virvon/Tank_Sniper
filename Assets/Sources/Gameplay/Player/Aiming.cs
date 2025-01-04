@@ -19,6 +19,7 @@ namespace Assets.Sources.Gameplay.Player
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly AimingConfig _aimingConfig;
         private readonly DefeatHandler _defeatHandler;
+        private readonly WictoryHandler _wictoryHandler;
 
         private Coroutine _timer;
         private float _aimingProgress;
@@ -35,12 +36,14 @@ namespace Assets.Sources.Gameplay.Player
             IInputService inputService,
             ICoroutineRunner coroutineRunner,
             IStaticDataService staticDataService,
-            DefeatHandler defeatHandler)
+            DefeatHandler defeatHandler,
+            WictoryHandler wictoryHandler)
         {
             _inputService = inputService;
             _coroutineRunner = coroutineRunner;
             _aimingConfig = staticDataService.AimingConfig;
             _defeatHandler = defeatHandler;
+            _wictoryHandler = wictoryHandler;
 
             _aimingProgress = 0;
             _canAim = true;
@@ -51,8 +54,9 @@ namespace Assets.Sources.Gameplay.Player
             _inputService.HandleMoveCompleted += OnHandleMoveCompleted;
             _inputService.AimingButtonPressed += OnAimingButtonPressed;
             _inputService.UndoAimingButtonPressed += StopAiming;
-            _defeatHandler.Defeated += OnDefeated;
+            _defeatHandler.Defeated += ProhibitShoot;
             _defeatHandler.ProgressRecovery += OnProgressRecovery;
+            _wictoryHandler.Woned += ProhibitShoot;
         }
 
         public void Dispose()
@@ -62,11 +66,12 @@ namespace Assets.Sources.Gameplay.Player
             _inputService.HandleMoveCompleted -= OnHandleMoveCompleted;
             _inputService.AimingButtonPressed -= OnAimingButtonPressed;
             _inputService.UndoAimingButtonPressed -= StopAiming;
-            _defeatHandler.Defeated -= OnDefeated;
+            _defeatHandler.Defeated -= ProhibitShoot;
             _defeatHandler.ProgressRecovery -= OnProgressRecovery;
+            _wictoryHandler.Woned -= ProhibitShoot;
         }
 
-        private void OnDefeated() =>
+        private void ProhibitShoot() =>
             _canShoot = false;
 
         private void OnProgressRecovery() =>

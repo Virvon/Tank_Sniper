@@ -11,7 +11,10 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
         private readonly GameStateMachine _gameStateMachine;
         private readonly IStaticDataService _staticDataService;
 
-        public BootstapGameState(IAssetProvider assetProvider, GameStateMachine gameStateMachine, IStaticDataService staticDataService)
+        public BootstapGameState(
+            IAssetProvider assetProvider,
+            GameStateMachine gameStateMachine,
+            IStaticDataService staticDataService)
         {
             _assetProvider = assetProvider;
             _gameStateMachine = gameStateMachine;
