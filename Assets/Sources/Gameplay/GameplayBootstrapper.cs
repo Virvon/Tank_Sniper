@@ -8,6 +8,7 @@ using Assets.Sources.Services.PersistentProgress;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Services.StaticDataService.Configs.Level;
 using Assets.Sources.Tanks;
+using Assets.Sources.UI;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -56,6 +57,7 @@ namespace Assets.Sources.Gameplay
 
             await CreateEnemies(levelConfig);
             await _uiFactory.CreateGameplayWindow();
+            await _uiFactory.CreateDefeatWindow();
         }
 
         private async Task CreateTank(TankData tankData)

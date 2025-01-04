@@ -6,5 +6,6 @@
         public const string MainMenuWindow = "MainMenuWindow";
         public const string TankPanel = "TankPanel";
         public const string UnlockingPanel = "TankSkinPanel";
+        public const string DefeatWindow = "DefeatWindow";
     }
 }

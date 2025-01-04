@@ -1,4 +1,4 @@
-﻿using Assets.Sources.Gameplay;
+﻿using Assets.Sources.Gameplay.Player;
 using Assets.Sources.Utils;
 using MPUIKIT;
 using System;
@@ -14,23 +14,23 @@ namespace Assets.Sources.UI
         [SerializeField, Range(0, 1)] private float _fillAmount;
         [SerializeField, Range(0, 1)] private float _barFillPercent;
 
-        //private PlayerTank _playerTank;
+        private PlayerTankWrapper _playerTankWrapper;
 
         [Inject]
-        private void Construct()
+        private void Construct(PlayerTankWrapper playerTankWrapper)
         {
-            //_playerTank = playerTank;
+            _playerTankWrapper = playerTankWrapper;
 
             OnHealthChanged();
 
-            //_playerTank.HealthChanged += OnHealthChanged;
+            _playerTankWrapper.HealthChanged += OnHealthChanged;
         }
 
         private void OnValidate() =>
             ChangeHealthbar();
 
-        //private void OnDestroy() =>
-        //    _playerTank.HealthChanged -= OnHealthChanged;
+        private void OnDestroy() =>
+            _playerTankWrapper.HealthChanged -= OnHealthChanged;
 
         private void ChangeHealthbar()
         {
@@ -40,7 +40,7 @@ namespace Assets.Sources.UI
 
         private void OnHealthChanged()
         {
-            //_fillAmount = (float)_playerTank.Health / _playerTank.MaxHealth;
+            _fillAmount = (float)_playerTankWrapper.Health / _playerTankWrapper.MaxHealth;
 
             ChangeHealthbar();
         }

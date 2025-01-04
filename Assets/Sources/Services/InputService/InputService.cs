@@ -11,7 +11,7 @@ namespace Assets.Sources.Services.InputService
         {
             _inputActionSheme = new();
 
-            _inputActionSheme.Enable();
+            SetActive(true);
 
             _inputActionSheme.GameplayInput.AimingButtonPressed.performed += ctx => AimingButtonPressed?.Invoke();
             _inputActionSheme.GameplayInput.UndoAimingButtonPressed.performed += ctx => UndoAimingButtonPressed?.Invoke();
@@ -31,6 +31,14 @@ namespace Assets.Sources.Services.InputService
         public void Dispose()
         {
             
+        }
+
+        public void SetActive(bool isActive)
+        {
+            if (isActive)
+                _inputActionSheme.Enable();
+            else
+                _inputActionSheme.Disable();
         }
     }
 }

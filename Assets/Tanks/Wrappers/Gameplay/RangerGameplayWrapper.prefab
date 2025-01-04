@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTankWeapon: {fileID: 409257823626229145}
+  _smokeParticlePrefab: {fileID: 199316, guid: a2198d165c0270848aa01adeb1d27577, type: 3}
 --- !u!114 &409257823626229145
 MonoBehaviour:
   m_ObjectHideFlags: 0

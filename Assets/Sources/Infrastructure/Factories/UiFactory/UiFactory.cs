@@ -20,6 +20,9 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
             _selectingPanelElementFactory = selectingPanelElementFactory;
         }
 
+        public async UniTask CreateDefeatWindow() =>
+            await _windowFactory.Create(UiFactoryAssets.DefeatWindow);
+
         public async UniTask<SelectingPanelElement> CreateUnlockingPanel(Transform parent) =>
             await _selectingPanelElementFactory.Create(UiFactoryAssets.UnlockingPanel, parent);
 

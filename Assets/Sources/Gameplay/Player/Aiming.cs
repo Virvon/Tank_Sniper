@@ -17,10 +17,12 @@ namespace Assets.Sources.Gameplay.Player
         private readonly IInputService _inputService;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly AimingConfig _aimingConfig;
+        private readonly DefeatHandler _defeatHandler;
 
         private Coroutine _timer;
         private float _aimingProgress;
         private bool _canAim;
+        private bool _canShoot;
 
         public event Action Shooted;
         public event Action<Vector2> AimShifted;
@@ -28,20 +30,28 @@ namespace Assets.Sources.Gameplay.Player
         public event Action<Vector2> HandlePressed;
         public event Action<bool> StateChangingFinished;
 
-        public Aiming(IInputService inputService, ICoroutineRunner coroutineRunner, IStaticDataService staticDataService)
+        public Aiming(
+            IInputService inputService,
+            ICoroutineRunner coroutineRunner,
+            IStaticDataService staticDataService,
+            DefeatHandler defeatHandler)
         {
             _inputService = inputService;
             _coroutineRunner = coroutineRunner;
             _aimingConfig = staticDataService.AimingConfig;
+            _defeatHandler = defeatHandler;
 
             _aimingProgress = 0;
             _canAim = true;
+            _canShoot = true;
 
             _inputService.HandlePressed += OnHandlePressed;
             _inputService.HandleMoved += OnHandleMoved;
             _inputService.HandleMoveCompleted += OnHandleMoveCompleted;
             _inputService.AimingButtonPressed += OnAimingButtonPressed;
             _inputService.UndoAimingButtonPressed += StopAiming;
+            _defeatHandler.Defeated += OnDefeated;
+            _defeatHandler.ProgressRecovery += OnProgressRecovery;
         }
 
         public void Dispose()
@@ -51,7 +61,15 @@ namespace Assets.Sources.Gameplay.Player
             _inputService.HandleMoveCompleted -= OnHandleMoveCompleted;
             _inputService.AimingButtonPressed -= OnAimingButtonPressed;
             _inputService.UndoAimingButtonPressed -= StopAiming;
+            _defeatHandler.Defeated -= OnDefeated;
+            _defeatHandler.ProgressRecovery -= OnProgressRecovery;
         }
+
+        private void OnDefeated() =>
+            _canShoot = false;
+
+        private void OnProgressRecovery() =>
+            _canShoot = true;
 
         private void OnAimingButtonPressed()
         {
@@ -75,7 +93,9 @@ namespace Assets.Sources.Gameplay.Player
             if (_aimingProgress == AimedProgress)
             {
                 TryStopTimer();
-                Shooted?.Invoke();
+                
+                if(_canShoot)
+                    Shooted?.Invoke();
 
                 _timer = _coroutineRunner.StartCoroutine(Timer(_aimingConfig.ShootingAimDuration, callback: () =>
                 {

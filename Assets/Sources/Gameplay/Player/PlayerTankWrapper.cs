@@ -11,34 +11,55 @@ using Zenject;
 
 namespace Assets.Sources.Gameplay.Player
 {
-    public class PlayerTankWrapper : MonoBehaviour
+    public class PlayerTankWrapper : MonoBehaviour, IDamageable
     {
         [SerializeField] private PlayerTankWeapon _playerTankWeapon;
+        [SerializeField] private GameObject _smokeParticlePrefab;
 
         private Aiming _aiming;
         private AimingCameraPoint _aimingCameraPoint;
         private AimingConfig _aimingConfig;
+        private DefeatHandler _defeatHandler;
 
         private Transform _turret;
         private float _movingDistance;
         private Vector3 _startPosition;
         private Quaternion _startTurretRotation;
+        private bool _isDestructed;
 
         private Coroutine _mover;
+        private GameObject _smokeParticle;
+
+        public event Action HealthChanged;
+
+        public uint MaxHealth { get; private set; }
+        public uint Health { get; private set; }
 
         [Inject]
-        private void Construct(Aiming aiming, AimingCameraPoint aimingCameraPoint, IStaticDataService staticDataService)
+        private void Construct(
+            Aiming aiming,
+            AimingCameraPoint aimingCameraPoint,
+            IStaticDataService staticDataService,
+            DefeatHandler defeatHandler)
         {
             _aiming = aiming;
             _aimingCameraPoint = aimingCameraPoint;
             _aimingConfig = staticDataService.AimingConfig;
+            _defeatHandler = defeatHandler;
+
+            MaxHealth = staticDataService.GameplaySettingsConfig.PlayerHealth;
+            Health = MaxHealth;
+
+            _isDestructed = false;
 
             _aiming.StateChanged += OnAimingStateChanged;
+            _defeatHandler.ProgressRecovery += OnProgressRecovery;
         }
 
         private void OnDestroy()
         {
             _aiming.StateChanged -= OnAimingStateChanged;
+            _defeatHandler.ProgressRecovery -= OnProgressRecovery;
         }
 
         public void Initialize(Transform[] bulletPoints, Transform turret)
@@ -52,6 +73,35 @@ namespace Assets.Sources.Gameplay.Player
             _playerTankWeapon.SetBulletPoints(bulletPoints);
         }
 
+        public void TakeDamage(ExplosionInfo explosionInfo)
+        {
+            uint damage = explosionInfo.Damage > Health ? Health : explosionInfo.Damage;
+            Health -= damage;
+
+            HealthChanged?.Invoke();
+
+            if(Health == 0 )
+                Destruct();
+        }
+
+        private void Destruct()
+        {
+            if (_isDestructed)
+                return;
+
+            _isDestructed = true;
+
+            _smokeParticle = Instantiate(_smokeParticlePrefab, transform);
+            _defeatHandler.OnPlayerDestructed();
+        }
+
+        private void OnProgressRecovery()
+        {
+            Health = MaxHealth;
+            HealthChanged?.Invoke();
+            Destroy(_smokeParticle);
+        }
+
         private void OnAimingStateChanged(bool isAimed, float duration)
         {
             if (_mover != null)
@@ -62,6 +112,9 @@ namespace Assets.Sources.Gameplay.Player
 
         private IEnumerator Mover(bool isAimed, float duration)
         {
+            if (duration == 0)
+                yield break;
+
             float progress;
             float passedTime = 0;
             bool isCompleted = false;

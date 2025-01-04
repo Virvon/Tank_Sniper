@@ -27,16 +27,18 @@ namespace Assets.Sources.Gameplay.Weapons
 
         private Aiming _aiming;
         private IBulletFactory _bulletFactory;
-        private EnemiesSettingsConfig _enemiesSettings;
+        private GameplaySettingsConfig _enemiesSettings;
+        private DefeatHandler _defeatHandler;
 
         private bool _isStartedShoot;
         private uint _bulletsCount;
         private bool _isShooted;
         private Vector3 _currentShootingPosition;
         private Quaternion _shootingRotation;
+        private bool _isPlayerDefeated;
 
         protected PlayerTankWrapper PlayerTankWrapper { get; private set; }
-        protected virtual bool CanShoot => CheckPlayerTankVisibility();
+        protected virtual bool CanShoot => CheckPlayerTankVisibility() && _isPlayerDefeated == false;
         protected abstract Vector3 LookStartPosition { get; }
 
         [Inject]
@@ -44,30 +46,37 @@ namespace Assets.Sources.Gameplay.Weapons
             PlayerTankWrapper playerTankWrapper,
             Aiming aiming,
             IBulletFactory bulletFactory,
-            IStaticDataService staticDataService)
+            IStaticDataService staticDataService,
+            DefeatHandler defeatHandler)
         {
             PlayerTankWrapper = playerTankWrapper;
             _aiming = aiming;
             _bulletFactory = bulletFactory;
-            _enemiesSettings = staticDataService.EnemiesSettingsConfig;
+            _enemiesSettings = staticDataService.GameplaySettingsConfig;
+            _defeatHandler = defeatHandler;
 
             _isStartedShoot = false;
             _bulletsCount = _bulletsCapacity;
             _isShooted = false;
+            _isPlayerDefeated = false;
 
             _aiming.Shooted += OnPlayerTankAttacked;  
             _enemy.Destructed += OnEnemyDestructed;
+            _defeatHandler.Defeated += OnPlayerDefeated;
+            _defeatHandler.ProgressRecovery += OnProgressRecovery;
         }
 
         private void OnDestroy()
         {
             _aiming.Shooted -= OnPlayerTankAttacked;
             _enemy.Destructed -= OnEnemyDestructed;
+            _defeatHandler.Defeated -= OnPlayerDefeated;
+            _defeatHandler.ProgressRecovery -= OnProgressRecovery;
         }
 
         public bool CheckPlayerTankVisibility()
         {
-            return Physics.Raycast(LookStartPosition, (PlayerTankWrapper.transform.position - LookStartPosition).normalized, out RaycastHit hitInfo, RayCastDistance, _enemiesSettings.LayerMask)
+            return Physics.Raycast(LookStartPosition, (PlayerTankWrapper.transform.position - LookStartPosition).normalized, out RaycastHit hitInfo, RayCastDistance, _enemiesSettings.EnemyLayerMask)
                 && hitInfo.transform.TryGetComponent(out PlayerTankWrapper _);
         }
 
@@ -76,6 +85,9 @@ namespace Assets.Sources.Gameplay.Weapons
 
         protected virtual void OnEnemyDestructed() =>
             _isShooted = false;
+
+        private void OnProgressRecovery() =>
+            _isPlayerDefeated = false;
 
         protected void CreateBullet() =>
             _bulletFactory.CreateForwardFlyingBullet(_bulletType, _currentShootingPosition, _shootingRotation);
@@ -87,11 +99,14 @@ namespace Assets.Sources.Gameplay.Weapons
 
         private Quaternion GetShootingRotation()
         {
-            Vector2 randomOffset = Random.insideUnitCircle * _enemiesSettings.Scatter;
+            Vector2 randomOffset = Random.insideUnitCircle * _enemiesSettings.EnemyScatter;
             Vector3 targetPosition = PlayerTankWrapper.transform.position + TargetOffset + new Vector3(randomOffset.x, randomOffset.y, 0);
 
             return Quaternion.LookRotation((targetPosition - _currentShootingPosition).normalized);
         }
+
+        private void OnPlayerDefeated() =>
+            _isPlayerDefeated = true;
 
         private void OnPlayerTankAttacked()
         {

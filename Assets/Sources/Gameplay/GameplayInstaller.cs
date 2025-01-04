@@ -24,7 +24,11 @@ namespace Assets.Sources.Gameplay
             BindPlayerPoint();
             BindAimingCamera();
             BindAiming();
+            BindDefeatHandler();
         }
+
+        private void BindDefeatHandler() =>
+            Container.Bind<DefeatHandler>().AsSingle();
 
         private void BindAiming() =>
             Container.BindInterfacesAndSelfTo<Aiming>().AsSingle();

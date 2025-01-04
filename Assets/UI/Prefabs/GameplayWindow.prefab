@@ -134,6 +134,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a490951e44ce3498e3965557851aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainCanvasGroup: {fileID: 1731267530196227501}
+  _closeDuration: 0
+  _openDuration: 0
+  _isOpenedOnAwake: 1
   _overviewAimCanvasGroup: {fileID: 4854040859817609353}
   _aimButtonCanvasGroup: {fileID: 6539731148997899758}
   _aimingCanvasGroup: {fileID: 6483502991349925584}

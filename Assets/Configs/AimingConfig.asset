@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ccdd4793c9835a49ac88a75844b088a, type: 3}
   m_Name: AimingConfig
   m_EditorClassIdentifier: 
-  AimingDuration: 0.3
-  ShootingAimDuration: 0.2
+  AimingDuration: 0.5
+  ShootingAimDuration: 0.3
   TankTurretRotation: -60
   TankMovingDistanceModifier: 0.7
+  StartRotation: {x: 24, y: 32}
+  MaxRotation: {x: 32, y: 45}
+  MinRotation: {x: -5, y: 0}

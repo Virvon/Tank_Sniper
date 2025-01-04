@@ -21,7 +21,7 @@ namespace Assets.Sources.Gameplay.Enemies
         {
             PlayerTankWrapper = playerTankWrapper;
             Aiming = aiming;
-            LayerMask = staticDataService.EnemiesSettingsConfig.LayerMask;
+            LayerMask = staticDataService.GameplaySettingsConfig.EnemyLayerMask;
         }
 
         protected void OnDestructed() =>

@@ -11,5 +11,7 @@ namespace Assets.Sources.Services.InputService
 
         event Action AimingButtonPressed;
         event Action UndoAimingButtonPressed;
+
+        void SetActive(bool isActive);
     }
 }

@@ -417,10 +417,15 @@ MonoBehaviour:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8b8e3cbca41320047a89ca6c20880377
-    m_Address: Assets/Configs/EnemiesSettingsConfig.asset
+    m_Address: GameplaySettingsConfig
     m_ReadOnly: 0
     m_SerializedLabels:
     - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f52929cf240c7048894eebcc1b849a6
+    m_Address: DefeatWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a44638466bf414438293c9d18a37e72, type: 2}

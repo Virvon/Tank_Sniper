@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6b27a93d94d9954db19af0771e648c5, type: 3}
-  m_Name: EnemiesSettingsConfig
+  m_Script: {fileID: 11500000, guid: 99749e757512cc845b87717ad39947a8, type: 3}
+  m_Name: GameplaySettingsConfig
   m_EditorClassIdentifier: 
-  Scatter: 2.5
-  LayerMask:
+  EnemyScatter: 2
+  EnemyLayerMask:
     serializedVersion: 2
     m_Bits: 1207
+  PlayerHealth: 10
+  DefeatWaitingDelay: 3
+  ProgressRecoveryAvailableTime: 7
