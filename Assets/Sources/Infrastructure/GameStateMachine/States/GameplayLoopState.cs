@@ -35,7 +35,7 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
         {
             _inputService.SetActive(true);
             _currentLevelIndex = _persistentProgressService.Progress.CurrentLevelIndex;
-            _currentLevelType = _persistentProgressService.Progress.CurrentLevelType;
+            _currentLevelType = _persistentProgressService.Progress.CurrentBiomeType;
             await _sceneLoader.Load(_staticDataService.GetLevelsSequence(_currentLevelType).GetLevel(_currentLevelIndex));
         }
 
@@ -47,7 +47,7 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
                 int nextLevelType = (int)_currentLevelType + 1;
 
                 nextLevelType = nextLevelType >= lenght ? 0 : nextLevelType;
-                _persistentProgressService.Progress.CurrentLevelType = (BiomeType)nextLevelType;
+                _persistentProgressService.Progress.CurrentBiomeType = (BiomeType)nextLevelType;
                 _persistentProgressService.Progress.CurrentLevelIndex = 0;
             }
             else

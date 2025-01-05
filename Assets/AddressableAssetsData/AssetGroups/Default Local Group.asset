@@ -48,7 +48,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 354b9ff95f257324799b2941aac1aee4
-    m_Address: TestLevelConfig
+    m_Address: WinterLevleConfig2
     m_ReadOnly: 0
     m_SerializedLabels:
     - Configs

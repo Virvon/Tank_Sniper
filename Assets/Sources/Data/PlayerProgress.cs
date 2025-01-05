@@ -12,7 +12,7 @@ namespace Assets.Sources.Data
         public uint SelectedTankLevel;
         public TankSkinData[] TankSkins;
         public DecalData[] Decals;
-        public BiomeType CurrentLevelType;
+        public BiomeType CurrentBiomeType;
         public uint CurrentLevelIndex;
 
         public PlayerProgress(TankData[] tanks, TankSkinData[] skins, DecalData[] decals, BiomeType startLevelType)
@@ -20,7 +20,7 @@ namespace Assets.Sources.Data
             Tanks = tanks;
             TankSkins = skins;
             Decals = decals;
-            CurrentLevelType = startLevelType;
+            CurrentBiomeType = startLevelType;
 
             SelectedTankLevel = Tanks.Where(tank => tank.IsUnlocked).First().Level;
             CurrentLevelIndex = 0;

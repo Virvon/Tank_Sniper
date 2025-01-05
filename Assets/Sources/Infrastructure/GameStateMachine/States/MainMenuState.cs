@@ -20,7 +20,7 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
         }
 
         public async UniTask Enter() =>
-            await _sceneLoader.Load(_staticDataService.GetLevelsSequence(_persistentProgressService.Progress.CurrentLevelType).MainMenuScene);
+            await _sceneLoader.Load(_staticDataService.GetLevelsSequence(_persistentProgressService.Progress.CurrentBiomeType).MainMenuScene);
 
         public UniTask Exit() =>
             default;

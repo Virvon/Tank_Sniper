@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb80a514ac648a04ab221d04d8bc0189, type: 3}
+  m_Name: WinterLevel1
+  m_EditorClassIdentifier: 
+  LevelKey: Winter1
+  StaticEnemyPoints:
+  - Id: GameplayScene_2dcccad7-efc5-42f8-a728-4f83a2de8bb2
+    StartPosition: {x: 24.487, y: 8.2, z: 68.883}
+    StartRotation: {x: -0, y: 1, z: -0, w: 0}
+    EnemyType: 7
+  - Id: GameplayScene_4d0b8d6e-d3af-4487-9a47-9c1475179c84
+    StartPosition: {x: 23.22, y: 0, z: 25.7}
+    StartRotation: {x: -0, y: 0.9659259, z: -0, w: -0.25881898}
+    EnemyType: 1
+  - Id: GameplayScene_1bd176b9-8980-402a-837a-56ccb35cdbc5
+    StartPosition: {x: 11.64, y: 0, z: 46.56}
+    StartRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+    EnemyType: 4
+  PatrolingEnemyPoints:
+  - Id: GameplayScene_40403f42-4395-4d3d-bd1a-50d0a9f1fa77
+    StartPosition: {x: 21.29, y: 0, z: 30.31}
+    StartRotation: {x: -0, y: 1, z: -0, w: 0}
+    EnemyType: 2
+    Path:
+    - Position: {x: 21.29, y: 0, z: 30.31}
+      RotationAngle: 0
+      RotationDelta: 1
+    - Position: {x: 18.43, y: 0, z: 36.28}
+      RotationAngle: 0
+      RotationDelta: 1
+    - Position: {x: 24.76, y: 0, z: 39.42}
+      RotationAngle: 0
+      RotationDelta: 1
+    - Position: {x: 27.61, y: 0, z: 33.09}
+      RotationAngle: 0
+      RotationDelta: 1
+    Speed: 0
+    MaxRotationAngle: 0
+    StoppingDuration: 0
+  MovementEngineryPoints:
+  - Id: GameplayScene_7cdc3855-e1da-4b98-a828-fd2311b1b400
+    StartPosition: {x: 55.04, y: 0, z: 49.73}
+    StartRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+    EnemyType: 3
+    Path:
+    - Position: {x: 55.04, y: 0, z: 49.73}
+      RotationAngle: 0
+      RotationDelta: 0
+    - Position: {x: 19.98, y: 0, z: 49.73}
+      RotationAngle: 0
+      RotationDelta: 0
+    - Position: {x: 19.760002, y: 0, z: 43.16}
+      RotationAngle: 0
+      RotationDelta: 0
+    - Position: {x: 55.030003, y: 0, z: 43.53}
+      RotationAngle: 0
+      RotationDelta: 0
+    Speed: 0
+    IsWaitedAttack: 0
+    IsPathLooped: 0
+    MaxRotationAngle: 0
+    SpeedAfterAttack: 0
+  HelicopterPoints:
+  - Id: GameplayScene_389b3421-3a55-46cb-9fa9-bd371a904e99
+    StartPosition: {x: 93.5, y: 20.7, z: 15}
+    StartRotation: {x: -0, y: -0, z: -0, w: 1}
+    EnemyType: 5
+    Path:
+    - Position: {x: 53.6, y: 20.7, z: 46.1}
+      RotationAngle: 0
+      RotationDelta: 5
+    - Position: {x: 8.4, y: 20.7, z: 47.8}
+      RotationAngle: 0
+      RotationDelta: 5
+    Speed: 0
+    IsWaitedAttack: 0
+    IsPathLooped: 0

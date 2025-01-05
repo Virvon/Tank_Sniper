@@ -1,6 +1,5 @@
 ﻿using Assets.Sources.Data;
 using Assets.Sources.Gameplay.Cameras;
-using Assets.Sources.Gameplay.Handlers;
 using Assets.Sources.Gameplay.Player;
 using Assets.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.Sources.Infrastructure.Factories.TankFactory;
@@ -9,11 +8,10 @@ using Assets.Sources.Services.PersistentProgress;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints;
 using Assets.Sources.Tanks;
-using Assets.Sources.UI;
+using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using UnityEngine;
 using Zenject;
 
 namespace Assets.Sources.Gameplay
@@ -48,7 +46,9 @@ namespace Assets.Sources.Gameplay
 
         public async void Initialize()
         {
-            LevelConfig levelConfig = _staticDataService.GetLevel("WinterGameplayScene2");
+            uint levelIndex = _persistentProgressService.Progress.CurrentLevelIndex;
+            BiomeType biomeType = _persistentProgressService.Progress.CurrentBiomeType;
+            LevelConfig levelConfig = _staticDataService.GetLevel(_staticDataService.GetLevelsSequence(biomeType).GetLevel(levelIndex));
             TankData tankData = _persistentProgressService.Progress.GetSelectedTank();
 
             await _gameplayFactory.CreateCamera();

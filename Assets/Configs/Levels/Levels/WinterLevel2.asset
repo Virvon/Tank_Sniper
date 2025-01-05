@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb80a514ac648a04ab221d04d8bc0189, type: 3}
-  m_Name: TestLevelConfig
+  m_Name: WinterLevel2
   m_EditorClassIdentifier: 
-  LevelKey: WinterGameplayScene2
+  LevelKey: Winter2
   StaticEnemyPoints:
   - Id: WinterGameplayScene2_40daa493-feb1-49f8-aadb-efd10ba7bb8e
     StartPosition: {x: 5.939, y: 6.565, z: 42.732}
