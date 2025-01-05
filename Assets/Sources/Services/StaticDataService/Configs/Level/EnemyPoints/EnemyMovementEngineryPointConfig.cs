@@ -26,7 +26,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints
 
             EnemyEngineryMovement enemyEngineryMovement = enemy.gameObject.AddComponent<EnemyEngineryMovement>();
             enemyEngineryMovement.Initialize(Path, Speed, MaxRotationAngle);
-            enemyEngineryMovement.Initialize(SpeedAfterAttack);
+            enemyEngineryMovement.Initialize(SpeedAfterAttack, IsWaitedAttack, IsPathLooped);
 
             return enemy;
         }

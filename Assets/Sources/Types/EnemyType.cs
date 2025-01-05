@@ -5,10 +5,11 @@
         MachineGunner,
         Bazooker,
         Patroling,
-        Car,
+        BazookerCar,
         Tank,
         Helicopter,
         BuildingBazooker,
         BuildingMachineGunner,
+        MachineGunnerCar,
     }
 }

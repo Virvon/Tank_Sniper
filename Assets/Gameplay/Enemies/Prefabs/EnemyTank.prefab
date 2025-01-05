@@ -88,9 +88,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosionParticlePrefab: {fileID: 5738518211207305529, guid: e0bc8922ba6683046bebe1ddeb0e687f,
     type: 3}
-  _explosionRadius: 5
-  _damage: 10
-  _explosionForce: 200
   _explosionDuration: 1
 --- !u!114 &6855207742824898318
 MonoBehaviour:
@@ -123,7 +120,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!1 &2303132936969103379
 GameObject:
@@ -569,17 +566,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31448c0083f27664fbce5b21924da168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootPoint: {fileID: 4674096211502171400}
-  _rotationSpeed: 120
   _reloadDuration: 3
   _shootCooldown: 0
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 1079
   _bulletType: 5
   _bulletsCapacity: 1
   _muzzleType: 0
   _enemy: {fileID: 3037199551339997100}
+  _shootPoint: {fileID: 4674096211502171400}
+  _rotationSpeed: 120
   _turret: {fileID: 7920912189318021995}
   _turretRotationSpeed: 20
 --- !u!64 &9106324479249892923

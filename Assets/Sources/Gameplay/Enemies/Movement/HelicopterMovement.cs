@@ -9,7 +9,7 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
 {
     public class HelicopterMovement : MonoBehaviour
     {
-        private const float StartEngineForce = 30;
+        private const float HeightDelta = 2;
 
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private float _waitingTime = 12;
@@ -20,14 +20,16 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
         [SerializeField] private float _effectiveHeight = 30;
         [SerializeField] private uint _rotationSpeed = 60;
         [SerializeField] private Enemy _enemy;
+        [SerializeField] private float _engineEfficiency = 1;
 
         private PlayerTankWrapper _playerTankWrapper;
         private Aiming _aiming;
 
         private PathPointConfig[] _path;
         private bool _isWaitedAttack;
+        private Vector3 _startPoint;
 
-        private float _engineForce;
+        private float _engineForce = 10;
         private Vector2 _horizontalMovement;
         private Vector2 _hotizontalTilt;
 
@@ -47,7 +49,6 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
             _playerTankWrapper = playerTankWrapper;
             _aiming = aiming;
 
-            _engineForce = StartEngineForce;
             _canLookToPlayer = false;
             _needLookToPlayer = false;
             _isPointReached = true;
@@ -80,6 +81,7 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
             _isWaitedAttack = isWaitedAttack;
             _isPathLooped = isPathLooped;
 
+            _startPoint = transform.position;
             _isMoved = _isWaitedAttack == false;
 
             StartCoroutine(Mover());
@@ -117,6 +119,19 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
 
         private void Lift()
         {
+            if (_startPoint == Vector3.zero && _targetPoint == null)
+                return;
+
+            Vector3 targetPoint = _targetPoint == null ? _startPoint : _targetPoint.Position;
+            
+            if (Mathf.Abs(_rigidbody.transform.position.y - targetPoint.y) > HeightDelta)
+            {
+                if (_rigidbody.transform.position.y > targetPoint.y)
+                    _engineForce -= Time.deltaTime * _engineEfficiency;
+                else
+                    _engineForce += Time.deltaTime * _engineEfficiency;
+            }
+
             float upForce = 1 - Mathf.Clamp(_rigidbody.transform.position.y / _effectiveHeight, 0, 1);
             upForce = Mathf.Lerp(0f, _engineForce, upForce) * _rigidbody.mass;
             _rigidbody.AddRelativeForce(Vector3.up * upForce);

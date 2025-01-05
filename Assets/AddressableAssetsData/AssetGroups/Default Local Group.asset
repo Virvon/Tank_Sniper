@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: d163daf7200fc7744a2334b6ec27d19c
   m_SerializeEntries:
   - m_GUID: 99c9720ab356a0642a771bea13969a05
-    m_Address: WinterGameplayScene1
+    m_Address: Winter1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: df2b2eae2822685449f85a9244d557fd
-    m_Address: CarConfig
+    m_Address: BazookerCarConfig
     m_ReadOnly: 0
     m_SerializedLabels:
     - Configs
@@ -374,7 +374,7 @@ MonoBehaviour:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d19153d633c4ae342bec0a756e399a52
-    m_Address: Car
+    m_Address: BazookerCar
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -433,7 +433,7 @@ MonoBehaviour:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 19b241a3b9358b145b6bc7e2bcd518ee
-    m_Address: WinterGameplayScene2
+    m_Address: Winter2
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -450,6 +450,34 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 203603017a072b94abb10565fd90b238
     m_Address: BuildingMachineGunnerConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de82c3382d0ed3b4e95c694989272395
+    m_Address: WinterLevelConfig2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8d868ec84b2612c4ba0ff04a8c71d05d
+    m_Address: WinterLevelConfig3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a63e9d091b05cfc45b6e560c1b01185a
+    m_Address: Winter3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 15f2faf5b2768dd4f8c2dcd6d3899f32
+    m_Address: MachineGunnerCar
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f1a8c9a8ee77c84cb9703131981350d
+    m_Address: MachineGunnerCarConfig
     m_ReadOnly: 0
     m_SerializedLabels:
     - Configs

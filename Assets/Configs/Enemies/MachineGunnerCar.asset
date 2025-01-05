@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 000f73780d52c404db06ccec380199e5, type: 3}
-  m_Name: Car
+  m_Name: MachineGunnerCar
   m_EditorClassIdentifier: 
-  Type: 3
+  Type: 8
   AssetReference:
-    m_AssetGUID: d19153d633c4ae342bec0a756e399a52
+    m_AssetGUID: 15f2faf5b2768dd4f8c2dcd6d3899f32
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

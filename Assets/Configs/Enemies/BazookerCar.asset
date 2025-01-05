@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2af2a2466a564c84b9cd7f785464a879, type: 3}
-  m_Name: WinterLevelsSequenceConfig
+  m_Script: {fileID: 11500000, guid: 000f73780d52c404db06ccec380199e5, type: 3}
+  m_Name: BazookerCar
   m_EditorClassIdentifier: 
-  Type: 0
-  Sequence:
-  - Winter3
-  - Winter1
-  - Winter2
-  MainMenuScene: WinterMainMenuScene
+  Type: 3
+  AssetReference:
+    m_AssetGUID: d19153d633c4ae342bec0a756e399a52
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

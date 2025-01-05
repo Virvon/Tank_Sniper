@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6600648432284071815}
   - component: {fileID: 104847745554779210}
   m_Layer: 0
-  m_Name: CarBazooker
+  m_Name: BazookerCarCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

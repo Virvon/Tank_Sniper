@@ -338,19 +338,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762020fe674962a49979da9cdd393c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heightChangingSpeed: 0.5
   _rigidbody: {fileID: 155716532587871504}
   _waitingTime: 2
   _helicopter: {fileID: 1191362815725077543}
-  _turnForce: 20
   _movingForce: 2
   _tiltForce: 15
   _turnTiltForce: 15
   _effectiveHeight: 30
-  _turnTiltForcePercent: 1.5
-  _turnForcePercent: 0.5
   _rotationSpeed: 30
   _enemy: {fileID: 5201483775939980925}
+  _engineEfficiency: 1
 --- !u!54 &155716532587871504
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -402,9 +399,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosionParticlePrefab: {fileID: 5738518211207305529, guid: e0bc8922ba6683046bebe1ddeb0e687f,
     type: 3}
-  _explosionRadius: 5
-  _damage: 10
-  _explosionForce: 200
   _explosionDuration: 1
 --- !u!114 &8718870012506601473
 MonoBehaviour:
@@ -437,9 +431,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reloadDuration: 2
   _shootCooldown: 0.2
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 1207
   _bulletType: 4
   _bulletsCapacity: 4
   _muzzleType: 0
