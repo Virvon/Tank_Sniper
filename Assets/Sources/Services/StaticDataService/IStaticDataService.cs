@@ -20,6 +20,7 @@ namespace Assets.Sources.Services.StaticDataService
         AimingConfig AimingConfig { get; }
         DestructionConfig DestructionConfig { get; }
         GameplaySettingsConfig GameplaySettingsConfig { get; }
+        EnviromentExplosionsConfig EnviromentExplosionsConfig { get; }
 
         EnemyConfig GetEnemy(EnemyType type);
         LevelConfig GetLevel(string key);
@@ -30,6 +31,6 @@ namespace Assets.Sources.Services.StaticDataService
         TankSkinConfig GetSkin(TankSkinType type);
         DecalConfig GetDecal(DecalType type);
         MuzzleConfig GetMuzzle(MuzzleType type);
-        LevelsSequenceConfig GetLevelsSequence(LevelType type);
+        LevelsSequenceConfig GetLevelsSequence(BiomeType type);
     }
 }

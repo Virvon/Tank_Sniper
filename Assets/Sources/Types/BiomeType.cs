@@ -1,6 +1,6 @@
 ﻿namespace Assets.Sources.Types
 {
-    public enum LevelType
+    public enum BiomeType
     {
         Forest = 0,
         Winter = 1,

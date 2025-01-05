@@ -5,13 +5,15 @@ using UnityEngine;
 namespace Assets.Sources.Gameplay.Destructions.Building
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class DestructionCell : DestructionPart, IDamageable
+    public class DestructionCell : DestructionPart, IDamageable, IDestructablePart
     {
         [SerializeField] private List<DestructionCell> _neighboringCells;
         [SerializeField] private bool _isFoundation = false;
 
         public bool IsBreaked { get; private set; }
         public bool IsFoundation => _isFoundation;
+        public Transform Transform => transform;
+
 
         public event Action<Vector3, uint> Destructed;
 

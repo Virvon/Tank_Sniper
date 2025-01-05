@@ -48,7 +48,7 @@ namespace Assets.Sources.Gameplay
 
         public async void Initialize()
         {
-            LevelConfig levelConfig = _staticDataService.GetLevel("GameplayScene");
+            LevelConfig levelConfig = _staticDataService.GetLevel("WinterGameplayScene2");
             TankData tankData = _persistentProgressService.Progress.GetSelectedTank();
 
             await _gameplayFactory.CreateCamera();

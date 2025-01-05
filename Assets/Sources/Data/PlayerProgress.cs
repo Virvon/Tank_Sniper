@@ -12,10 +12,10 @@ namespace Assets.Sources.Data
         public uint SelectedTankLevel;
         public TankSkinData[] TankSkins;
         public DecalData[] Decals;
-        public LevelType CurrentLevelType;
+        public BiomeType CurrentLevelType;
         public uint CurrentLevelIndex;
 
-        public PlayerProgress(TankData[] tanks, TankSkinData[] skins, DecalData[] decals, LevelType startLevelType)
+        public PlayerProgress(TankData[] tanks, TankSkinData[] skins, DecalData[] decals, BiomeType startLevelType)
         {
             Tanks = tanks;
             TankSkins = skins;

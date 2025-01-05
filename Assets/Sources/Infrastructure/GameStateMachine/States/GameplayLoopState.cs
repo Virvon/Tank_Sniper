@@ -17,7 +17,7 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
         private readonly IPersistentProgressService _persistentProgressService;
 
         private uint _currentLevelIndex;
-        private LevelType _currentLevelType;
+        private BiomeType _currentLevelType;
 
         public GameplayLoopState(
             ISceneLoader sceneLoader,
@@ -43,11 +43,11 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
         {
             if(_currentLevelIndex >= _staticDataService.GetLevelsSequence(_currentLevelType).Sequence.Length - 1)
             {
-                int lenght = Enum.GetValues(typeof(LevelType)).Length;
+                int lenght = Enum.GetValues(typeof(BiomeType)).Length;
                 int nextLevelType = (int)_currentLevelType + 1;
 
                 nextLevelType = nextLevelType >= lenght ? 0 : nextLevelType;
-                _persistentProgressService.Progress.CurrentLevelType = (LevelType)nextLevelType;
+                _persistentProgressService.Progress.CurrentLevelType = (BiomeType)nextLevelType;
                 _persistentProgressService.Progress.CurrentLevelIndex = 0;
             }
             else

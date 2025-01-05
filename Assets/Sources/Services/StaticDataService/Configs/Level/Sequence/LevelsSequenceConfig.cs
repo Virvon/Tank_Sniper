@@ -4,13 +4,13 @@ using UnityEngine;
 namespace Assets.Sources.Services.StaticDataService.Configs.Level.Sequence
 {
     [CreateAssetMenu(fileName = "LevelsSequenceConfig", menuName = "Configs/Create new levels sequence config", order = 51)]
-    public class LevelsSequenceConfig : ScriptableObject, IConfig<LevelType>
+    public class LevelsSequenceConfig : ScriptableObject, IConfig<BiomeType>
     {
-        public LevelType Type;
+        public BiomeType Type;
         public string[] Sequence;
         public string MainMenuScene;
 
-        public LevelType Key => Type;
+        public BiomeType Key => Type;
 
         public string GetLevel(uint index)
         {

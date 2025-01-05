@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: d163daf7200fc7744a2334b6ec27d19c
   m_SerializeEntries:
   - m_GUID: 99c9720ab356a0642a771bea13969a05
-    m_Address: GameplayScene
+    m_Address: WinterGameplayScene1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -429,7 +429,30 @@ MonoBehaviour:
   - m_GUID: 5aee82f498c0d954f9669c2bb5b162cd
     m_Address: WinterLevlesSequenceConfig
     m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 19b241a3b9358b145b6bc7e2bcd518ee
+    m_Address: WinterGameplayScene2
+    m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 44a9e75f29033164788140fb91908a8d
+    m_Address: EnviromentExplosionsConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f08d9fcd534fdf14ab29cfaf31b4cf80
+    m_Address: BuildingMachineGunner
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 203603017a072b94abb10565fd90b238
+    m_Address: BuildingMachineGunnerConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a44638466bf414438293c9d18a37e72, type: 2}

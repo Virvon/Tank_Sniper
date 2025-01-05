@@ -23,7 +23,7 @@ namespace Assets.Sources.Services.StaticDataService
         private Dictionary<TankSkinType, TankSkinConfig> _tankSkinConfigs;
         private Dictionary<DecalType, DecalConfig> _decalConfigs;
         private Dictionary<MuzzleType, MuzzleConfig> _muzzleConfigs;
-        private Dictionary<LevelType, LevelsSequenceConfig> _levelsSequenceCofnfig;
+        private Dictionary<BiomeType, LevelsSequenceConfig> _levelsSequenceCofnfig;
 
         public StaticDataService(IAssetProvider assetsProvider) =>
             _assetsProvider = assetsProvider;
@@ -38,6 +38,7 @@ namespace Assets.Sources.Services.StaticDataService
         public AimingConfig AimingConfig { get; private set; }
         public DestructionConfig DestructionConfig { get; private set; }
         public GameplaySettingsConfig GameplaySettingsConfig { get; private set; }
+        public EnviromentExplosionsConfig EnviromentExplosionsConfig { get; private set; }
 
         public async UniTask InitializeAsync()
         {
@@ -58,13 +59,14 @@ namespace Assets.Sources.Services.StaticDataService
                 UniTask.Create(async () => AimingConfig = await LoadConfig<AimingConfig>()),
                 UniTask.Create(async () => DestructionConfig = await LoadConfig<DestructionConfig>()),
                 UniTask.Create(async () => GameplaySettingsConfig = await LoadConfig<GameplaySettingsConfig>()),
-                UniTask.Create(async () => _levelsSequenceCofnfig = await LoadConfigs<LevelType, LevelsSequenceConfig>()),
+                UniTask.Create(async () => _levelsSequenceCofnfig = await LoadConfigs<BiomeType, LevelsSequenceConfig>()),
+                UniTask.Create(async () => EnviromentExplosionsConfig = await LoadConfig<EnviromentExplosionsConfig>()),
             };
 
             await UniTask.WhenAll(tasks);
         }
 
-        public LevelsSequenceConfig GetLevelsSequence(LevelType type) =>
+        public LevelsSequenceConfig GetLevelsSequence(BiomeType type) =>
             _levelsSequenceCofnfig.TryGetValue(type, out LevelsSequenceConfig config) ? config : null;
 
         public MuzzleConfig GetMuzzle(MuzzleType type) =>

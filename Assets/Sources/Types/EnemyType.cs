@@ -4,10 +4,11 @@
     {
         MachineGunner,
         Bazooker,
-        WalkingMachineGunner,
+        Patroling,
         Car,
         Tank,
         Helicopter,
         BuildingBazooker,
+        BuildingMachineGunner,
     }
 }
