@@ -20,6 +20,7 @@ namespace Assets.Sources.Gameplay.Cameras
         private GameplayCamera _camera;
         private Aiming _aiming;
         private AimingConfig _aimingConfig;
+        private float _startRotation;
 
         private Vector2 _rotation;
         private CinemachineVirtualCamera _currentCamera;
@@ -32,7 +33,8 @@ namespace Assets.Sources.Gameplay.Cameras
             _aiming = aiming;
             _aimingConfig = staticDataService.AimingConfig;
 
-            _rotation = _aimingConfig.StartRotation;
+            _startRotation = transform.rotation.eulerAngles.y;
+            _rotation = _aimingConfig.StartRotation + new Vector2(0, _startRotation);
 
             RotatieCamera();
             SetCameraActive(_overviewCamera, 0);
@@ -40,6 +42,7 @@ namespace Assets.Sources.Gameplay.Cameras
             _aiming.AimShifted += OnAimShifted;
             _aiming.StateChanged += OnAimingStateChanged;
             _aiming.HandlePressed += OnHandlePressed;
+
         }
 
         private void OnDestroy()
@@ -67,7 +70,7 @@ namespace Assets.Sources.Gameplay.Cameras
             _rotation += new Vector2(-delta.y, delta.x) * _sensivity;
             _rotation = new Vector2(
                 Mathf.Clamp(_rotation.x, _aimingConfig.MinRotation.x, _aimingConfig.MaxRotation.x),
-                Mathf.Clamp(_rotation.y, _aimingConfig.MinRotation.y, _aimingConfig.MaxRotation.y));
+                Mathf.Clamp(_rotation.y, _aimingConfig.MinRotation.y + _startRotation, _aimingConfig.MaxRotation.y + _startRotation));
 
             RotatieCamera();
         }
@@ -86,7 +89,7 @@ namespace Assets.Sources.Gameplay.Cameras
             _currentCamera.Priority = EnabledPriority;
         }
 
-        public class Factory : PlaceholderFactory<string, Vector3, UniTask<AimingCamera>>
+        public class Factory : PlaceholderFactory<string, Vector3, Quaternion, UniTask<AimingCamera>>
         {
         }
     }

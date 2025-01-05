@@ -52,7 +52,7 @@ namespace Assets.Sources.Gameplay
             TankData tankData = _persistentProgressService.Progress.GetSelectedTank();
 
             await _gameplayFactory.CreateCamera();
-            await _gameplayFactory.CreateAimingVirtualCamera(_aimingCameraPoint.transform.position);
+            await _gameplayFactory.CreateAimingVirtualCamera(_aimingCameraPoint.transform.position, _aimingCameraPoint.transform.rotation);
 
             await CreateTank(tankData);
 

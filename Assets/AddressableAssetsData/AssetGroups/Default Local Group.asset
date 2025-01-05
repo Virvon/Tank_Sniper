@@ -482,6 +482,17 @@ MonoBehaviour:
     m_SerializedLabels:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c1467c0808d13f46b2807e883265099
+    m_Address: WinterLevelConfig4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77fc43e2b03d70c4f8ef9cfd666a08b0
+    m_Address: Winter4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a44638466bf414438293c9d18a37e72, type: 2}
   m_SchemaSet:

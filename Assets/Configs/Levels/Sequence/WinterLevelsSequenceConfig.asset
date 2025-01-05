@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   Sequence:
+  - Winter4
   - Winter3
   - Winter1
   - Winter2

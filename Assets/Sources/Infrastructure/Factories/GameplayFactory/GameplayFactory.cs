@@ -34,8 +34,8 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             _winHandler = winHandler;
         }
 
-        public async UniTask CreateAimingVirtualCamera(Vector3 position) =>
-            await _aimingFactory.Create(GameplayFactoryAssets.AimingCamera, position);
+        public async UniTask CreateAimingVirtualCamera(Vector3 position, Quaternion rotation) =>
+            await _aimingFactory.Create(GameplayFactoryAssets.AimingCamera, position, rotation);
 
         public async UniTask CreateCamera()
         {
