@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace Assets.Sources.Gameplay.Enemies
 {
-    public class EnemyCharacter : DamagebleEnemy
+    public class EnemyCharacter : Enemy, IDamageable
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private DestructionPart _weapon;
         [SerializeField] private Collider _weaponCollider;
         [SerializeField] private Ragdoll _ragdoll;
 
-        public override void TakeDamage(ExplosionInfo explosionInfo)
+        public void TakeDamage(ExplosionInfo explosionInfo)
         {
             OnDestructed();
 

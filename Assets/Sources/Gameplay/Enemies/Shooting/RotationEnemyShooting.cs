@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Sources.Gameplay.Weapons
 {
-    public class RotationEnemyShooting : EnemyShooting
+    public class RotationEnemyShooting : EnemyForwartFlyingBulletsShooting
     {
         [SerializeField] private Transform _shootPoint;
         [SerializeField] private float _rotationSpeed;

@@ -1516,6 +1516,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 7819226175744261587, guid: f8588346ff2955e49bcc382c2bd07e0c,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8606804525498774799, guid: f8588346ff2955e49bcc382c2bd07e0c,
         type: 3}
       propertyPath: _enemy
@@ -1524,6 +1529,11 @@ PrefabInstance:
     - target: {fileID: 8606804525498774799, guid: f8588346ff2955e49bcc382c2bd07e0c,
         type: 3}
       propertyPath: _enemyEnginery
+      value: 
+      objectReference: {fileID: 2061494330507861794}
+    - target: {fileID: 8606804525498774799, guid: f8588346ff2955e49bcc382c2bd07e0c,
+        type: 3}
+      propertyPath: _healthableBehaviour
       value: 
       objectReference: {fileID: 2061494330507861794}
     m_RemovedComponents: []

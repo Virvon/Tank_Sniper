@@ -2,7 +2,7 @@
 
 namespace Assets.Sources.Gameplay.Weapons
 {
-    public class HelicopterShooting : EnemyShooting
+    public class HelicopterShooting : EnemyForwartFlyingBulletsShooting
     {
         [SerializeField] private Transform[] _bulletPoints;
         [SerializeField] private Transform _helicopter;

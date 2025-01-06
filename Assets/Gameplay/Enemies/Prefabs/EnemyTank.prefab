@@ -566,12 +566,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31448c0083f27664fbce5b21924da168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemy: {fileID: 3037199551339997100}
   _reloadDuration: 3
   _shootCooldown: 0
   _bulletType: 5
   _bulletsCapacity: 1
   _muzzleType: 0
-  _enemy: {fileID: 3037199551339997100}
   _shootPoint: {fileID: 4674096211502171400}
   _rotationSpeed: 120
   _turret: {fileID: 7920912189318021995}
@@ -826,9 +826,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 7819226175744261587, guid: f8588346ff2955e49bcc382c2bd07e0c,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8606804525498774799, guid: f8588346ff2955e49bcc382c2bd07e0c,
         type: 3}
       propertyPath: _enemyEnginery
+      value: 
+      objectReference: {fileID: 3037199551339997100}
+    - target: {fileID: 8606804525498774799, guid: f8588346ff2955e49bcc382c2bd07e0c,
+        type: 3}
+      propertyPath: _healthableBehaviour
       value: 
       objectReference: {fileID: 3037199551339997100}
     m_RemovedComponents: []

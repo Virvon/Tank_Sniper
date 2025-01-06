@@ -11,5 +11,6 @@
         BuildingBazooker,
         BuildingMachineGunner,
         MachineGunnerCar,
+        Robot,
     }
 }

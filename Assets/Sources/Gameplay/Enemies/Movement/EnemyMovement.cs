@@ -20,8 +20,8 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
 
         protected virtual float Speed => _speed;
 
-        protected event Action PointFinished;
-        protected event Action NextPointStarted;
+        public event Action PointFinished;
+        public event Action NextPointStarted;
 
         protected virtual float StoppingDuration => 0;
 

@@ -343,7 +343,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 3.238}
+  m_AnchoredPosition: {x: 0, y: 3.237976}
   m_SizeDelta: {x: 30, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &778436109961541946
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4659338244351516994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,12 +428,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7747549622051765317}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca39bdfd0fd8f3a4eb23d98dfaf933db, type: 3}
+  m_Script: {fileID: 11500000, guid: 591c1987bb22bb643b418997ed312c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 0}
-  _deltaRemoveDuration: 0.5
-  _showDuration: 2
+  _healthableBehaviour: {fileID: 0}
+  _deltaRemoveDuration: 0.2
+  _showDuration: 1
   _canvasGroup: {fileID: 8938535916982379745}
   _healthFill: {fileID: 6582501257382954614}
   _healthDeltaFill: {fileID: 837800506220684680}

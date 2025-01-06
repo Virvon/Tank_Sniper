@@ -10,7 +10,7 @@ namespace Assets.Sources.UI
 {
     public class EnemyHealthbar : MonoBehaviour
     {
-        [SerializeField] private EnemyEnginery _enemyEnginery;
+        [SerializeField] private MonoBehaviour _healthableBehaviour;
         [SerializeField] private float _deltaRemoveDuration;
         [SerializeField] private float _showDuration;
         [SerializeField] private CanvasGroup _canvasGroup;
@@ -18,27 +18,39 @@ namespace Assets.Sources.UI
         [SerializeField] private MPImage _healthDeltaFill;
 
         private PlayerTankWrapper _playerTankWrapper;
+        private IHealthable _healthable;
 
         private Coroutine _barChanger;
 
         [Inject]
         private void Construct(PlayerTankWrapper playerTankWrapper)
         {
+            _healthable = (IHealthable)_healthableBehaviour;
             _playerTankWrapper = playerTankWrapper;
 
-            SetActive(false);
+            if(_showDuration != 0)
+                SetActive(false);
 
             _healthFill.fillAmount = 1;
             _healthDeltaFill.fillAmount = 1;
 
-            _enemyEnginery.Damaged += OnEnemyDamaged;
+            _healthable.Damaged += OnEnemyDamaged;
+        }
+
+        private void OnValidate()
+        {
+            if(_healthableBehaviour != null && _healthableBehaviour is not IHealthable)
+            {
+                Debug.LogError($"{nameof(_healthableBehaviour)} is not {typeof(IHealthable)}");
+                _healthableBehaviour = null;
+            }
         }
 
         private void OnDestroy() =>
-            _enemyEnginery.Damaged -= OnEnemyDamaged;
+            _healthable.Damaged -= OnEnemyDamaged;
 
         private void Update() =>
-            transform.rotation = Quaternion.LookRotation((_playerTankWrapper.transform.position - transform.position).normalized);
+            transform.rotation = Quaternion.LookRotation((transform.position - _playerTankWrapper.transform.position).normalized);
 
         private void OnEnemyDamaged(uint health, uint damage)
         {
@@ -59,7 +71,7 @@ namespace Assets.Sources.UI
             _canvasGroup.alpha = isActive ? 1 : 0;
 
         private float RemapToFillValue(uint value) =>
-            Extensions.Remap(value, 0, _enemyEnginery.MaxHealth, 0, 1);
+            Extensions.Remap(value, 0, _healthable.MaxHealth, 0, 1);
 
         private IEnumerator BarChanger(uint health, uint damage)
         {
@@ -82,6 +94,9 @@ namespace Assets.Sources.UI
 
                 yield return null;
             }
+
+            if (_showDuration == 0)
+                yield break;
 
             yield return new WaitForSeconds(_showDuration);
 

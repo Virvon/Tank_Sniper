@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Sources.Gameplay.Enemies
 {
-    public abstract class EnemyEnginery : DamagebleEnemy
+    public abstract class EnemyEnginery : Enemy, IDamageable, IHealthable
     {
         [SerializeField] private uint _health;
         [SerializeField] private DestructionedMaterialsRenderer _destructionedMaterialRenderer;
@@ -19,7 +19,6 @@ namespace Assets.Sources.Gameplay.Enemies
 
         protected EnemyEngineryExplosion EnemyEngineryExplosion => _enemyEngineryExplosion;
 
-
         public event Action<uint, uint> Damaged;
 
         private void Start()
@@ -28,7 +27,7 @@ namespace Assets.Sources.Gameplay.Enemies
             _isDestructed = false;
         }
 
-        public override void TakeDamage(ExplosionInfo explosionInfo)
+        public void TakeDamage(ExplosionInfo explosionInfo)
         {
             if (_isDestructed)
                 return;

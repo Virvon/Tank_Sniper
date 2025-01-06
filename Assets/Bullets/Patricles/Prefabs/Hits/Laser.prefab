@@ -78,7 +78,10 @@ VisualEffect:
     m_Gradient:
       m_Array: []
     m_NamedObject:
-      m_Array: []
+      m_Array:
+      - m_Value: {fileID: 2800000, guid: 411233071d4da544583b04c6e84bbfe9, type: 3}
+        m_Name: Texture
+        m_Overridden: 1
     m_Bool:
       m_Array:
       - m_Value: 0

@@ -15,5 +15,40 @@ MonoBehaviour:
   LevelKey: Winter4
   StaticEnemyPoints: []
   PatrolingEnemyPoints: []
-  MovementEngineryPoints: []
+  MovementEngineryPoints:
+  - Id: Winter4_9fec0891-fdd9-4560-b261-d790fe7e6120
+    StartPosition: {x: 19.199999, y: 0, z: 38.13}
+    StartRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+    EnemyType: 9
+    Path:
+    - Position: {x: 19.199999, y: 0, z: 38.13}
+      RotationAngle: 0
+      RotationDelta: 2
+    - Position: {x: 2.6399994, y: 0, z: 38.1}
+      RotationAngle: 0
+      RotationDelta: 2
+    - Position: {x: 2.67, y: 0, z: 21.71}
+      RotationAngle: 0
+      RotationDelta: 2
+    - Position: {x: 18.97, y: 0, z: 21.44}
+      RotationAngle: 0
+      RotationDelta: 2
+    - Position: {x: 19.199999, y: 0, z: 38.13}
+      RotationAngle: 0
+      RotationDelta: 2
+    - Position: {x: 36.5, y: 0, z: 39.67}
+      RotationAngle: 0
+      RotationDelta: 2
+    - Position: {x: 35.98, y: 0, z: 21.810001}
+      RotationAngle: 0
+      RotationDelta: 2
+    - Position: {x: 18.97, y: 0, z: 21.44}
+      RotationAngle: 0
+      RotationDelta: 2
+    Speed: 3
+    IsWaitedAttack: 0
+    IsPathLooped: 1
+    MaxRotationAngle: 75
+    SpeedAfterAttack: 3
+    StoppingDuration: 5
   HelicopterPoints: []
