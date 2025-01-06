@@ -14,7 +14,6 @@ namespace Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints
     {
         public uint MaxRotationAngle;
         public float SpeedAfterAttack;
-        public float StoppingDuration;
 
         public EnemyMovementEngineryPointConfig(string id, Vector3 startPosition, Quaternion startRotation, EnemyType enemyType, EnemyPathPoint[] path)
             : base(id, startPosition, startRotation, enemyType, path)
@@ -27,7 +26,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints
 
             EnemyEngineryMovement enemyEngineryMovement = enemy.gameObject.AddComponent<EnemyEngineryMovement>();
             enemyEngineryMovement.Initialize(Path, Speed, MaxRotationAngle);
-            enemyEngineryMovement.Initialize(SpeedAfterAttack, IsWaitedAttack, IsPathLooped, StoppingDuration);
+            enemyEngineryMovement.Initialize(SpeedAfterAttack, IsWaitedAttack, IsPathLooped, WaitingTimeOnPoint);
 
             return enemy;
         }

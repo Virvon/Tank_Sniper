@@ -339,7 +339,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 155716532587871504}
-  _waitingTime: 2
   _helicopter: {fileID: 1191362815725077543}
   _movingForce: 2
   _tiltForce: 15
@@ -362,7 +361,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 32
   m_CollisionDetection: 0
 --- !u!114 &5201483775939980925
 MonoBehaviour:
@@ -429,12 +428,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee7e010c546dbd4088d33e36079bc3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemy: {fileID: 5201483775939980925}
   _reloadDuration: 2
   _shootCooldown: 0.2
   _bulletType: 4
   _bulletsCapacity: 4
   _muzzleType: 0
-  _enemy: {fileID: 5201483775939980925}
   _bulletPoints:
   - {fileID: 1977990116444660383}
   - {fileID: 2116449120938699159}

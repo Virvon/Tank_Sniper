@@ -68,6 +68,7 @@ MonoBehaviour:
     Speed: 0
     IsWaitedAttack: 0
     IsPathLooped: 0
+    WaitingTimeOnPoint: 0
     MaxRotationAngle: 0
     SpeedAfterAttack: 0
   HelicopterPoints:
@@ -85,3 +86,4 @@ MonoBehaviour:
     Speed: 0
     IsWaitedAttack: 0
     IsPathLooped: 0
+    WaitingTimeOnPoint: 0

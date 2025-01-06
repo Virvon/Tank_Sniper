@@ -13,7 +13,19 @@ MonoBehaviour:
   m_Name: WinterLevel4
   m_EditorClassIdentifier: 
   LevelKey: Winter4
-  StaticEnemyPoints: []
+  StaticEnemyPoints:
+  - Id: Winter4_a8a06085-84f3-4169-9262-21d6fbec2b4d
+    StartPosition: {x: 25.95, y: 4.2, z: 29.12}
+    StartRotation: {x: 0, y: 0.70710677, z: 0, w: -0.70710677}
+    EnemyType: 7
+  - Id: WinterGameplayScene2_40daa493-feb1-49f8-aadb-efd10ba7bb8e
+    StartPosition: {x: 8.3, y: 8.26, z: 31.85}
+    StartRotation: {x: 0, y: 0.70710677, z: 0, w: -0.70710677}
+    EnemyType: 6
+  - Id: WinterGameplayScene2_4cd37c9a-6578-4473-bc92-6e7621b137d0
+    StartPosition: {x: 10.44, y: 8.26, z: 28.03}
+    StartRotation: {x: 0, y: 0.70710677, z: 0, w: -0.70710677}
+    EnemyType: 7
   PatrolingEnemyPoints: []
   MovementEngineryPoints:
   - Id: Winter4_9fec0891-fdd9-4560-b261-d790fe7e6120
@@ -36,10 +48,10 @@ MonoBehaviour:
     - Position: {x: 19.199999, y: 0, z: 38.13}
       RotationAngle: 0
       RotationDelta: 2
-    - Position: {x: 36.5, y: 0, z: 39.67}
+    - Position: {x: 38.34, y: 0, z: 39.62}
       RotationAngle: 0
       RotationDelta: 2
-    - Position: {x: 35.98, y: 0, z: 21.810001}
+    - Position: {x: 38.17, y: 0, z: 21.57}
       RotationAngle: 0
       RotationDelta: 2
     - Position: {x: 18.97, y: 0, z: 21.44}
@@ -48,7 +60,31 @@ MonoBehaviour:
     Speed: 3
     IsWaitedAttack: 0
     IsPathLooped: 1
+    WaitingTimeOnPoint: 5
     MaxRotationAngle: 75
     SpeedAfterAttack: 3
-    StoppingDuration: 5
-  HelicopterPoints: []
+  HelicopterPoints:
+  - Id: Winter3_1b9b3538-2f18-44ec-84a7-9972de028c63
+    StartPosition: {x: 28.66, y: 14.71, z: 30.63}
+    StartRotation: {x: -0, y: -0, z: -0, w: 1}
+    EnemyType: 5
+    Path:
+    - Position: {x: 28.66, y: 14.71, z: 30.63}
+      RotationAngle: 0
+      RotationDelta: 5
+    - Position: {x: 19.13, y: 14.71, z: 41.1}
+      RotationAngle: 0
+      RotationDelta: 5
+    - Position: {x: 1.3899994, y: 14.71, z: 38.79}
+      RotationAngle: 0
+      RotationDelta: 5
+    - Position: {x: 2.8899994, y: 14.71, z: 22.39}
+      RotationAngle: 0
+      RotationDelta: 5
+    - Position: {x: 16.989998, y: 14.71, z: 19.59}
+      RotationAngle: 0
+      RotationDelta: 5
+    Speed: 20
+    IsWaitedAttack: 0
+    IsPathLooped: 1
+    WaitingTimeOnPoint: 0

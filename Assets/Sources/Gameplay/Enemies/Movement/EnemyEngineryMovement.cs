@@ -1,4 +1,5 @@
 ﻿using Assets.Sources.Gameplay.Player;
+using UnityEngine;
 using Zenject;
 
 namespace Assets.Sources.Gameplay.Enemies.Movement
@@ -42,10 +43,16 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
 
         private void OnPlayerShooted()
         {
+            if (_isPlayerAttacked)
+                return;
+
             _isPlayerAttacked = true;
 
             if(_isWaitedAttack)
+            {
                 StartMovement();
+                Debug.Log("wait attack" + transform.name + " " + _speedAfterAttack);
+            }
         }
 
         protected override bool CanMoveNextCircle() =>

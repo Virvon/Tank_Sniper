@@ -48,9 +48,9 @@ MonoBehaviour:
     Speed: 4
     IsWaitedAttack: 0
     IsPathLooped: 1
+    WaitingTimeOnPoint: 0
     MaxRotationAngle: 75
     SpeedAfterAttack: 5
-    StoppingDuration: 0
   - Id: Winter3_9f392a09-a6ff-4756-a7e1-89133e62d40f
     StartPosition: {x: 24.34, y: 0, z: 37.85}
     StartRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
@@ -71,9 +71,9 @@ MonoBehaviour:
     Speed: 4
     IsWaitedAttack: 0
     IsPathLooped: 1
+    WaitingTimeOnPoint: 0
     MaxRotationAngle: 75
     SpeedAfterAttack: 5
-    StoppingDuration: 0
   - Id: Winter3_d4cb7520-7dc1-4b36-a940-73dba0c0aa37
     StartPosition: {x: 10.08, y: 0, z: 41.15}
     StartRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
@@ -85,9 +85,9 @@ MonoBehaviour:
     Speed: 0
     IsWaitedAttack: 1
     IsPathLooped: 0
+    WaitingTimeOnPoint: 0
     MaxRotationAngle: 90
     SpeedAfterAttack: 2
-    StoppingDuration: 0
   HelicopterPoints:
   - Id: Winter3_1b9b3538-2f18-44ec-84a7-9972de028c63
     StartPosition: {x: 40.69, y: 6.11, z: 50.39}
@@ -106,6 +106,7 @@ MonoBehaviour:
     - Position: {x: 33.489998, y: 21.11, z: 28.59}
       RotationAngle: 0
       RotationDelta: 5
-    Speed: 0
+    Speed: 12
     IsWaitedAttack: 1
     IsPathLooped: 1
+    WaitingTimeOnPoint: 2

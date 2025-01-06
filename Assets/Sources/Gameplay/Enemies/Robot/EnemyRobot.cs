@@ -22,13 +22,13 @@ namespace Assets.Sources.Gameplay.Enemies
 
         private bool _isDestructed;
         private bool _isEnemyShooted;
-        private bool _isCanRotated;
 
         private Coroutine _rotater;
 
         public event Action<uint, uint> Damaged;
 
         public uint MaxHealth { get; private set; }
+        public bool IsStopped { get; private set; }
 
         private void Start()
         {
@@ -36,7 +36,7 @@ namespace Assets.Sources.Gameplay.Enemies
             MaxHealth = _health;
 
             _isEnemyShooted = false;
-            _isCanRotated = false;
+            IsStopped = _enemyEngineryMovement.IsWaitedAttack;
             _isDestructed = false;
 
             if (_enemyEngineryMovement.IsWaitedAttack == false)
@@ -91,7 +91,7 @@ namespace Assets.Sources.Gameplay.Enemies
 
         private void OnPointFinished()
         {
-            _isCanRotated = true;
+            IsStopped = true;
             _animator.SetBool(AnimationPath.IsWalked, false);
 
             if (_isEnemyShooted)
@@ -105,7 +105,7 @@ namespace Assets.Sources.Gameplay.Enemies
 
         private void OnNexptPointStarted()
         {
-            _isCanRotated = false;
+            IsStopped = false;
             _animator.SetBool(AnimationPath.IsWalked, true);
         }
 
@@ -114,7 +114,7 @@ namespace Assets.Sources.Gameplay.Enemies
 
         private IEnumerator Rotater()
         {
-            while (_isCanRotated)
+            while (IsStopped)
             {
                 Vector3 shootPointForward = _shootPoint.forward;
                 Vector3 targetDirection = (PlayerTankWrapper.transform.position - _shootPoint.position).normalized;

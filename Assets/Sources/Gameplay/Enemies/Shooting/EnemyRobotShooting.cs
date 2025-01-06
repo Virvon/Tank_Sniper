@@ -16,6 +16,7 @@ namespace Assets.Sources.Gameplay.Weapons
         [SerializeField] private float _damageCooldown;
         [SerializeField] private Transform _shootPoint;
         [SerializeField] private uint _explosionForce;
+        [SerializeField] private EnemyRobot _enemyRobot;
 
         private GameObject _laser;
         private Quaternion _targetRotation;
@@ -30,41 +31,44 @@ namespace Assets.Sources.Gameplay.Weapons
 
             while (IsShooted)
             {
-                Vector3 shootPointForward = _shootPoint.forward;
-                Vector3 targetDirection = (PlayerTankWrapper.transform.position - _shootPoint.position).normalized;
-
-                shootPointForward.y = 0;
-                targetDirection.y = 0;
-
-                if(Vector3.Angle(shootPointForward, targetDirection) < AngleDelta)
+               if(_enemyRobot.IsStopped)
                 {
-                    diretionChangingPassedTime += Time.deltaTime;
-                    attackPassedTime += Time.deltaTime;
+                    Vector3 shootPointForward = _shootPoint.forward;
+                    Vector3 targetDirection = (PlayerTankWrapper.transform.position - _shootPoint.position).normalized;
 
-                    if (_laser == null)
-                        _laser = Instantiate(_laserPrefab, _shootPoint.position, GetShootingRotation(), _shootPoint.transform);
-                    else
-                        _laser.transform.rotation = Quaternion.RotateTowards(_laser.transform.rotation, _targetRotation, LaserRotationSpeed * Time.deltaTime);
+                    shootPointForward.y = 0;
+                    targetDirection.y = 0;
 
-                    if (diretionChangingPassedTime >= ChangingRotationDuration)
+                    if (Vector3.Angle(shootPointForward, targetDirection) < AngleDelta)
                     {
-                        diretionChangingPassedTime = 0;
-                        _targetRotation = GetShootingRotation();
-                    }
+                        diretionChangingPassedTime += Time.deltaTime;
+                        attackPassedTime += Time.deltaTime;
 
-                    if (attackPassedTime >= _damageCooldown)
+                        if (_laser == null)
+                            _laser = Instantiate(_laserPrefab, _shootPoint.position, GetShootingRotation(), _shootPoint.transform);
+                        else
+                            _laser.transform.rotation = Quaternion.RotateTowards(_laser.transform.rotation, _targetRotation, LaserRotationSpeed * Time.deltaTime);
+
+                        if (diretionChangingPassedTime >= ChangingRotationDuration)
+                        {
+                            diretionChangingPassedTime = 0;
+                            _targetRotation = GetShootingRotation();
+                        }
+
+                        if (attackPassedTime >= _damageCooldown)
+                        {
+                            attackPassedTime = 0;
+
+                            if (Physics.Raycast(GetCurrentShootingPosition(), _laser.transform.forward, out RaycastHit hitInfo, RaycasDistance)
+                                && hitInfo.transform.TryGetComponent(out IDamageable damageable) && damageable is not EnemyRobot)
+                                damageable.TakeDamage(new ExplosionInfo(hitInfo.point, _explosionForce, true, _damgagePerTime));
+                        }
+                    }
+                    else if (_laser != null)
                     {
-                        attackPassedTime = 0;
-
-                        if (Physics.Raycast(GetCurrentShootingPosition(), _laser.transform.forward, out RaycastHit hitInfo, RaycasDistance)
-                            && hitInfo.transform.TryGetComponent(out IDamageable damageable) && damageable is not EnemyRobot)
-                            damageable.TakeDamage(new ExplosionInfo(hitInfo.point, _explosionForce, true, _damgagePerTime));
+                        Destroy(_laser);
+                        _laser = null;
                     }
-                }
-                else if(_laser != null)
-                {
-                    Destroy(_laser);
-                    _laser = null;
                 }
 
                 yield return null;

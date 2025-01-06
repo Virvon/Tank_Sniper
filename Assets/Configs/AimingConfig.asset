@@ -18,4 +18,4 @@ MonoBehaviour:
   TankMovingDistanceModifier: 0.7
   StartRotation: {x: 24, y: 32}
   MaxRotation: {x: 32, y: 65}
-  MinRotation: {x: -5, y: 0}
+  MinRotation: {x: -12, y: 0}

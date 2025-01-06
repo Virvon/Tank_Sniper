@@ -14,6 +14,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints
     {
         public bool IsWaitedAttack;
         public bool IsPathLooped;
+        public float WaitingTimeOnPoint;
 
         public HelicopterPointConfig(string id, Vector3 startPosition, Quaternion startRotation, EnemyType enemyType, EnemyPathPoint[] path)
             : base(id, startPosition, startRotation, enemyType, path)
@@ -24,7 +25,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints
         {
             Enemy enemy = await gameplayFactory.CreateEnemy(EnemyType, StartPosition, StartRotation);
 
-            enemy.GetComponent<HelicopterMovement>().Initialize(Path, IsWaitedAttack, IsPathLooped);
+            enemy.GetComponent<HelicopterMovement>().Initialize(Path, IsWaitedAttack, IsPathLooped, WaitingTimeOnPoint, Speed);
 
             return enemy;
         }

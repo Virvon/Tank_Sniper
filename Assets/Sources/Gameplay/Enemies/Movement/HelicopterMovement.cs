@@ -12,7 +12,7 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
         private const float HeightDelta = 2;
 
         [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private float _waitingTime = 12;
+        
         [SerializeField] private Transform _helicopter;
         [SerializeField] private float _movingForce = 2;
         [SerializeField] private float _tiltForce = 20;
@@ -28,8 +28,9 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
         private PathPointConfig[] _path;
         private bool _isWaitedAttack;
         private Vector3 _startPoint;
+        private float _waitingTime;
 
-        private float _engineForce = 10;
+        private float _engineForce;
         private Vector2 _horizontalMovement;
         private Vector2 _hotizontalTilt;
 
@@ -75,11 +76,13 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
             Rotate();
         }
 
-        public void Initialize(PathPointConfig[] path, bool isWaitedAttack, bool isPathLooped)
+        public void Initialize(PathPointConfig[] path, bool isWaitedAttack, bool isPathLooped, float waitingTimeOnPoint, float rotorSpeed)
         {
             _path = path;
             _isWaitedAttack = isWaitedAttack;
             _isPathLooped = isPathLooped;
+            _waitingTime = waitingTimeOnPoint;
+            _engineForce = rotorSpeed;
 
             _startPoint = transform.position;
             _isMoved = _isWaitedAttack == false;

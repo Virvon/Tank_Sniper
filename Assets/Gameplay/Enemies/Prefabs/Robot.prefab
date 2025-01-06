@@ -2596,6 +2596,7 @@ MonoBehaviour:
   _damageCooldown: 0.1
   _shootPoint: {fileID: 5410894034052103854}
   _explosionForce: 30
+  _enemyRobot: {fileID: 4856722687955986720}
 --- !u!1 &3279872298397870094
 GameObject:
   m_ObjectHideFlags: 0
