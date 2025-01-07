@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 6819747149506847923}
   - component: {fileID: 6024206615879286349}
   - component: {fileID: 328885646211713662}
+  - component: {fileID: 630481645136039234}
   m_Layer: 0
   m_Name: Top Turret
   m_TagString: Untagged
@@ -206,6 +207,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &630481645136039234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2303132936969103379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a55d79de339c044a456490a0dc8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _infos:
+  - BiomeType: 0
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
+      Index: 0
+  - BiomeType: 1
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: ee10d07641f3ffa4da67902c7f549f8f, type: 2}
+      Index: 0
+  _renderer: {fileID: 328885646211713662}
 --- !u!1 &3128592524461798055
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,6 +468,7 @@ GameObject:
   - component: {fileID: 2464178480726696731}
   - component: {fileID: 7174246724128376366}
   - component: {fileID: 6926532637794231631}
+  - component: {fileID: 104686425930227079}
   m_Layer: 0
   m_Name: LargeTankTracks
   m_TagString: Untagged
@@ -517,6 +541,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &104686425930227079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8141790802688313904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a55d79de339c044a456490a0dc8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _infos:
+  - BiomeType: 0
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
+      Index: 0
+  - BiomeType: 1
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: ee10d07641f3ffa4da67902c7f549f8f, type: 2}
+      Index: 0
+  _renderer: {fileID: 6926532637794231631}
 --- !u!1 &8372887211058736005
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,6 +678,7 @@ GameObject:
   - component: {fileID: 3124760588235481759}
   - component: {fileID: 7427758045075620626}
   - component: {fileID: 124982103826008955}
+  - component: {fileID: 1217731233308864930}
   m_Layer: 0
   m_Name: LargeTrackSet
   m_TagString: Untagged
@@ -709,6 +756,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1217731233308864930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8687630056687901957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a55d79de339c044a456490a0dc8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _infos:
+  - BiomeType: 0
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
+      Index: 1
+  - BiomeType: 1
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: ee10d07641f3ffa4da67902c7f549f8f, type: 2}
+      Index: 1
+  _renderer: {fileID: 124982103826008955}
 --- !u!1001 &4249577621990428200
 PrefabInstance:
   m_ObjectHideFlags: 0

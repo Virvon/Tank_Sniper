@@ -1,7 +1,7 @@
 ﻿using Assets.Sources.Gameplay.Destructions;
 using UnityEngine;
 
-namespace Assets.Sources.Gameplay.Enemies
+namespace Assets.Sources.Gameplay.Enemies.Tank
 {
     public class EnemyTankPart : DestructionPart
     {

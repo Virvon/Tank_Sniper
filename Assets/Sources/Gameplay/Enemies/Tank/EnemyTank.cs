@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.Sources.Gameplay.Enemies
+namespace Assets.Sources.Gameplay.Enemies.Tank
 {
     public class EnemyTank : EnemyEnginery
     {

@@ -49,10 +49,7 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
             _isPlayerAttacked = true;
 
             if(_isWaitedAttack)
-            {
                 StartMovement();
-                Debug.Log("wait attack" + transform.name + " " + _speedAfterAttack);
-            }
         }
 
         protected override bool CanMoveNextCircle() =>

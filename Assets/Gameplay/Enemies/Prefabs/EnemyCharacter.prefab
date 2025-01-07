@@ -810,6 +810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 411349118769962999}
   - component: {fileID: 411349118756261621}
+  - component: {fileID: 8013704879323238800}
   m_Layer: 0
   m_Name: Police_pants
   m_TagString: Untagged
@@ -917,6 +918,40 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0018442124, y: 0.4672444, z: 0.0656122}
     m_Extent: {x: 0.30301887, y: 0.39997387, z: 0.274413}
   m_DirtyAABB: 0
+--- !u!114 &8013704879323238800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411349118769922967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a55d79de339c044a456490a0dc8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _infos:
+  - BiomeType: 0
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
+      Index: 0
+    - Material: {fileID: 2100000, guid: b941861938cf23f42af9fef51ddfa9e6, type: 2}
+      Index: 1
+    - Material: {fileID: 2100000, guid: b941861938cf23f42af9fef51ddfa9e6, type: 2}
+      Index: 2
+    - Material: {fileID: 2100000, guid: b941861938cf23f42af9fef51ddfa9e6, type: 2}
+      Index: 3
+  - BiomeType: 1
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: ee10d07641f3ffa4da67902c7f549f8f, type: 2}
+      Index: 0
+    - Material: {fileID: 2100000, guid: baad19ee10c55d5468ccb5c4733be7a6, type: 2}
+      Index: 1
+    - Material: {fileID: 2100000, guid: baad19ee10c55d5468ccb5c4733be7a6, type: 2}
+      Index: 2
+    - Material: {fileID: 2100000, guid: baad19ee10c55d5468ccb5c4733be7a6, type: 2}
+      Index: 3
+  _renderer: {fileID: 411349118756261621}
 --- !u!1 &411349118769922969
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +994,7 @@ GameObject:
   m_Component:
   - component: {fileID: 411349118769963003}
   - component: {fileID: 411349118756261623}
+  - component: {fileID: 5972611895160790284}
   m_Layer: 0
   m_Name: Shirt
   m_TagString: Untagged
@@ -1067,6 +1103,44 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000035762787, y: 0.9992908, z: -0.022728108}
     m_Extent: {x: 0.5517026, y: 0.31829122, z: 0.24037516}
   m_DirtyAABB: 0
+--- !u!114 &5972611895160790284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411349118769922971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a55d79de339c044a456490a0dc8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _infos:
+  - BiomeType: 0
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
+      Index: 0
+    - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
+      Index: 1
+    - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
+      Index: 2
+    - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
+      Index: 3
+    - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
+      Index: 4
+  - BiomeType: 1
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: ee10d07641f3ffa4da67902c7f549f8f, type: 2}
+      Index: 0
+    - Material: {fileID: 2100000, guid: ee10d07641f3ffa4da67902c7f549f8f, type: 2}
+      Index: 1
+    - Material: {fileID: 2100000, guid: ee10d07641f3ffa4da67902c7f549f8f, type: 2}
+      Index: 2
+    - Material: {fileID: 2100000, guid: ee10d07641f3ffa4da67902c7f549f8f, type: 2}
+      Index: 3
+    - Material: {fileID: 2100000, guid: ee10d07641f3ffa4da67902c7f549f8f, type: 2}
+      Index: 4
+  _renderer: {fileID: 411349118756261623}
 --- !u!1 &411349118769922973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,6 +1151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 411349118769963005}
   - component: {fileID: 411349118756261625}
+  - component: {fileID: 1018875144755559604}
   m_Layer: 0
   m_Name: Shoes_01
   m_TagString: Untagged
@@ -1182,6 +1257,32 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0000013187528, y: 0.037412997, z: 0.047955442}
     m_Extent: {x: 0.2491, y: 0.11002526, z: 0.15418042}
   m_DirtyAABB: 0
+--- !u!114 &1018875144755559604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411349118769922973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a55d79de339c044a456490a0dc8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _infos:
+  - BiomeType: 0
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: b941861938cf23f42af9fef51ddfa9e6, type: 2}
+      Index: 0
+    - Material: {fileID: 2100000, guid: b941861938cf23f42af9fef51ddfa9e6, type: 2}
+      Index: 1
+  - BiomeType: 1
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: baad19ee10c55d5468ccb5c4733be7a6, type: 2}
+      Index: 0
+    - Material: {fileID: 2100000, guid: baad19ee10c55d5468ccb5c4733be7a6, type: 2}
+      Index: 1
+  _renderer: {fileID: 411349118756261625}
 --- !u!1 &411349118769922975
 GameObject:
   m_ObjectHideFlags: 0
@@ -2377,6 +2478,7 @@ GameObject:
   - component: {fileID: 5375610340050388865}
   - component: {fileID: 9022357718095218724}
   - component: {fileID: 6544062049851358446}
+  - component: {fileID: 6256388166001296481}
   m_Layer: 0
   m_Name: blue_helmet
   m_TagString: Untagged
@@ -2449,3 +2551,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6256388166001296481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4742802449783233851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a55d79de339c044a456490a0dc8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _infos:
+  - BiomeType: 0
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: b941861938cf23f42af9fef51ddfa9e6, type: 2}
+      Index: 0
+  - BiomeType: 1
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: baad19ee10c55d5468ccb5c4733be7a6, type: 2}
+      Index: 0
+  _renderer: {fileID: 6544062049851358446}

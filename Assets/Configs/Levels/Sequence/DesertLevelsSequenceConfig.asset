@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2af2a2466a564c84b9cd7f785464a879, type: 3}
-  m_Name: WinterLevelsSequenceConfig
+  m_Name: DesertLevelsSequenceConfig
   m_EditorClassIdentifier: 
-  Type: 1
+  Type: 0
   Sequence:
-  - Winter4
-  - Winter3
-  - Winter1
-  - Winter2
+  - Desert2
+  - Desert1
   MainMenuScene: WinterMainMenuScene
