@@ -9,6 +9,6 @@ namespace Assets.Sources.Gameplay.Root
             Container.BindInterfacesAndSelfTo<TankAiming>().AsSingle();
 
         protected override void BindGameplayBootstrapper() =>
-            Container.BindInterfacesTo<GameplayBootstrapper>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<TankLevelBootstrapper>().AsSingle().NonLazy();
     }
 }

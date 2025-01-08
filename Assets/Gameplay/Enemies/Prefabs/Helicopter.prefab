@@ -300,9 +300,9 @@ GameObject:
   - component: {fileID: 6592207169216949077}
   - component: {fileID: 155716532587871504}
   - component: {fileID: 5201483775939980925}
-  - component: {fileID: 5506380790382762901}
   - component: {fileID: 8718870012506601473}
   - component: {fileID: 8372115020417162634}
+  - component: {fileID: 693458180059786066}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _helicopterPart: {fileID: 7523430705784327834}
-  _explosion: {fileID: 5506380790382762901}
+  _explosion: {fileID: 693458180059786066}
   _destructionParts:
   - {fileID: 8658823636915885126}
   - {fileID: 2515194412190352011}
@@ -384,21 +384,6 @@ MonoBehaviour:
   _destructionMaterialsRenderer: {fileID: 8718870012506601473}
   _firePartilcePosition: {x: 0, y: 2.2, z: 0}
   _firePargiclePrefab: {fileID: 167718, guid: ef184c5ce02b68d4188ce99b4b612bc2, type: 3}
---- !u!114 &5506380790382762901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5734879020999951373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b682ee57d00e12c48aa3d74535d4fbfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _explosionParticlePrefab: {fileID: 5738518211207305529, guid: e0bc8922ba6683046bebe1ddeb0e687f,
-    type: 3}
-  _explosionDuration: 1
 --- !u!114 &8718870012506601473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,6 +423,21 @@ MonoBehaviour:
   - {fileID: 1977990116444660383}
   - {fileID: 2116449120938699159}
   _helicopter: {fileID: 1191362815725077543}
+--- !u!114 &693458180059786066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5734879020999951373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65c539ea54cfb24881b13f67889d81c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionParticlePrefab: {fileID: 5738518211207305529, guid: e0bc8922ba6683046bebe1ddeb0e687f,
+    type: 3}
+  _explosionDuration: 1
 --- !u!1 &6565322586984806766
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 1876060959562720076}
   - component: {fileID: 7437079553869081647}
   - component: {fileID: 5531460324157595178}
+  - component: {fileID: 7375176162054945122}
   m_Layer: 0
   m_Name: HelicopterzModel
   m_TagString: Untagged
@@ -602,6 +603,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestroyedImmediately: 0
+--- !u!114 &7375176162054945122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521344806533752917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a55d79de339c044a456490a0dc8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _infos:
+  - BiomeType: 0
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
+      Index: 0
+  - BiomeType: 1
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: ee10d07641f3ffa4da67902c7f549f8f, type: 2}
+      Index: 0
+  _renderer: {fileID: 8314158591355636096}
 --- !u!1 &8036439468000317883
 GameObject:
   m_ObjectHideFlags: 0

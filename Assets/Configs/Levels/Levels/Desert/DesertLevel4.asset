@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb80a514ac648a04ab221d04d8bc0189, type: 3}
+  m_Name: DesertLevel4
+  m_EditorClassIdentifier: 
+  LevelKey: Desert4
+  StaticEnemyPoints:
+  - Id: Desert4_c670fa20-44a7-4ea5-9b30-b97abab44afb
+    StartPosition: {x: 47.131, y: 10.903, z: 17.892}
+    StartRotation: {x: -0, y: 1, z: -0, w: 0}
+    EnemyType: 6
+  - Id: Desert4_fa09a81e-49b7-44a1-b6cf-e8e24dc21b8a
+    StartPosition: {x: 76.359, y: 16.072, z: 30.22}
+    StartRotation: {x: -0, y: 0.9063079, z: -0, w: -0.42261827}
+    EnemyType: 7
+  - Id: Desert4_3741e89f-5b82-4e80-b298-b88f23dfb015
+    StartPosition: {x: 48.67, y: 14.123, z: 52.534}
+    StartRotation: {x: -0, y: 1, z: -0, w: 0}
+    EnemyType: 7
+  PatrolingEnemyPoints: []
+  MovementEngineryPoints:
+  - Id: Desert4_5350d44a-e991-4d89-bb4b-b886bf43f5b9
+    StartPosition: {x: 39.33, y: 0, z: 46.93}
+    StartRotation: {x: -0, y: 0.9997807, z: -0, w: 0.020942494}
+    EnemyType: 10
+    Path:
+    - Position: {x: 35.42858, y: 0, z: 32.554016}
+      RotationAngle: 30
+      RotationDelta: 1
+    - Position: {x: 33.699524, y: 0, z: 21.271711}
+      RotationAngle: 30
+      RotationDelta: 1
+    - Position: {x: 38.66877, y: 0, z: 10.170063}
+      RotationAngle: 30
+      RotationDelta: 1
+    - Position: {x: 50.0097, y: 0, z: 7.0422287}
+      RotationAngle: 30
+      RotationDelta: 1
+    - Position: {x: 61.577408, y: 0, z: 12.831715}
+      RotationAngle: 30
+      RotationDelta: 1
+    - Position: {x: 64.60173, y: 0, z: 21.866287}
+      RotationAngle: 30
+      RotationDelta: 1
+    - Position: {x: 60.465286, y: 0, z: 32.20214}
+      RotationAngle: 30
+      RotationDelta: 1
+    - Position: {x: 46.034855, y: 0, z: 37.402416}
+      RotationAngle: 30
+      RotationDelta: 1
+    Speed: 3
+    IsWaitedAttack: 0
+    IsPathLooped: 1
+    WaitingTimeOnPoint: 0
+    MaxRotationAngle: 15
+    SpeedAfterAttack: 3
+  - Id: Desert4_5b608816-14ef-4520-a7d1-e4aaa59b2d9f
+    StartPosition: {x: 56.63, y: 0, z: -3.37}
+    StartRotation: {x: -0, y: -0, z: -0, w: 1}
+    EnemyType: 10
+    Path:
+    - Position: {x: 61.130005, y: 0, z: 10.829998}
+      RotationAngle: 30
+      RotationDelta: 1
+    - Position: {x: 63.33, y: 0, z: 22.029999}
+      RotationAngle: 30
+      RotationDelta: 1
+    - Position: {x: 58.83, y: 0, z: 33.329998}
+      RotationAngle: 30
+      RotationDelta: 1
+    - Position: {x: 47.630005, y: 0, z: 36.93}
+      RotationAngle: 30
+      RotationDelta: 1
+    - Position: {x: 35.83, y: 0, z: 31.629997}
+      RotationAngle: 30
+      RotationDelta: 1
+    - Position: {x: 32.430004, y: 0, z: 22.73}
+      RotationAngle: 30
+      RotationDelta: 1
+    - Position: {x: 36.130005, y: 0, z: 12.229998}
+      RotationAngle: 30
+      RotationDelta: 1
+    - Position: {x: 50.33, y: 0, z: 6.4299974}
+      RotationAngle: 30
+      RotationDelta: 1
+    Speed: 3
+    IsWaitedAttack: 0
+    IsPathLooped: 1
+    WaitingTimeOnPoint: 0
+    MaxRotationAngle: 15
+    SpeedAfterAttack: 3
+  HelicopterPoints:
+  - Id: Desert4_90ee8934-8c39-44f7-ae6b-b7468e0eb2f4
+    StartPosition: {x: 95.47, y: 6.24, z: 17.16}
+    StartRotation: {x: -0, y: -0, z: -0, w: 1}
+    EnemyType: 5
+    Path:
+    - Position: {x: 63.670002, y: 15.44, z: 21.36}
+      RotationAngle: 0
+      RotationDelta: 2
+    - Position: {x: 58.870003, y: 15.44, z: 33.059998}
+      RotationAngle: 0
+      RotationDelta: 2
+    - Position: {x: 45.870003, y: 15.44, z: 37.559998}
+      RotationAngle: 0
+      RotationDelta: 2
+    - Position: {x: 35.370003, y: 15.44, z: 31.66}
+      RotationAngle: 0
+      RotationDelta: 2
+    - Position: {x: 32.670002, y: 15.44, z: 22.96}
+      RotationAngle: 0
+      RotationDelta: 2
+    - Position: {x: 37.97, y: 15.44, z: 9.96}
+      RotationAngle: 0
+      RotationDelta: 2
+    - Position: {x: 50.27, y: 15.44, z: 6.8599997}
+      RotationAngle: 0
+      RotationDelta: 2
+    - Position: {x: 61.370003, y: 15.44, z: 11.559999}
+      RotationAngle: 0
+      RotationDelta: 2
+    Speed: 10
+    IsWaitedAttack: 1
+    IsPathLooped: 1
+    WaitingTimeOnPoint: 0

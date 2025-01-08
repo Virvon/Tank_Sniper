@@ -56,6 +56,7 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
         {
             PlayerTankWrapper wrapper = await _playerTankWrapperFactory.Create(_staticDataService.GetTank(tankLevel).GameplayWrapperAssetReference, position, rotation);
 
+            _container.BindInstance(wrapper).AsSingle();
             _container.BindInstance(wrapper as PlayerWrapper).AsSingle();
 
             return wrapper;

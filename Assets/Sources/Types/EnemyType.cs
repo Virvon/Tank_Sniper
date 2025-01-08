@@ -12,5 +12,6 @@
         BuildingMachineGunner,
         MachineGunnerCar,
         Robot,
+        Boot,
     }
 }
