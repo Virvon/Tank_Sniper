@@ -142,3 +142,37 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   DecalScalingDuration: 0.2
+  DroneDefeatRecoveryProgressButtonAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.0010631863
+      outSlope: 0.0010631863
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.433025
+    - serializedVersion: 3
+      time: 0.5
+      value: 1.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.0008209788
+      outSlope: -0.0008209788
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.5607773
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DroneDefeateRecoveryProgressButtonAnimationDuration: 1.5

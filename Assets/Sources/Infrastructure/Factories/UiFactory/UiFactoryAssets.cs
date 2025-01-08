@@ -2,12 +2,14 @@
 {
     public class UiFactoryAssets
     {
-        public const string GameplayWindow = "Window";
+        public const string TankGameplayWindow = "TankGameplayWindow";
+        public const string DroneGameplayWindow = "DroneGameplayWindow";
         public const string MainMenuWindow = "MainMenuWindow";
         public const string TankPanel = "TankPanel";
         public const string UnlockingPanel = "TankSkinPanel";
-        public const string DefeatWindow = "DefeatWindow";
+        public const string TankDefeatWindow = "TankDefeatWindow";
         public const string WictoryWindow = "WictoryWindow";
         public const string LoadingCurtain = "LoadingCurtain";
+        public const string DroneDefeatWindow = "DroneDefeatWindow";
     }
 }

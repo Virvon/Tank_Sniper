@@ -1,5 +1,5 @@
 ﻿using Assets.Sources.Gameplay.Enemies;
-using Assets.Sources.Gameplay.Player;
+using Assets.Sources.Gameplay.Player.Wrappers;
 using Assets.Sources.Utils;
 using MPUIKIT;
 using System.Collections;
@@ -17,16 +17,16 @@ namespace Assets.Sources.UI
         [SerializeField] private MPImage _healthFill;
         [SerializeField] private MPImage _healthDeltaFill;
 
-        private PlayerTankWrapper _playerTankWrapper;
+        private PlayerWrapper _playerWrapper;
         private IHealthable _healthable;
 
         private Coroutine _barChanger;
 
         [Inject]
-        private void Construct(PlayerTankWrapper playerTankWrapper)
+        private void Construct(PlayerWrapper playerWrapper)
         {
             _healthable = (IHealthable)_healthableBehaviour;
-            _playerTankWrapper = playerTankWrapper;
+            _playerWrapper = playerWrapper;
 
             if(_showDuration != 0)
                 SetActive(false);
@@ -50,7 +50,7 @@ namespace Assets.Sources.UI
             _healthable.Damaged -= OnEnemyDamaged;
 
         private void Update() =>
-            transform.rotation = Quaternion.LookRotation((transform.position - _playerTankWrapper.transform.position).normalized);
+            transform.rotation = Quaternion.LookRotation((transform.position - _playerWrapper.transform.position).normalized);
 
         private void OnEnemyDamaged(uint health, uint damage)
         {

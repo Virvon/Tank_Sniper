@@ -1,4 +1,5 @@
-﻿using Assets.Sources.Gameplay.Player;
+﻿using Assets.Sources.Gameplay.Player.Aiming;
+using Assets.Sources.Gameplay.Player.Wrappers;
 using Assets.Sources.Services.StaticDataService;
 using Cysharp.Threading.Tasks;
 using System;
@@ -12,14 +13,14 @@ namespace Assets.Sources.Gameplay.Enemies
     {
         public event Action Destructed;
 
-        public PlayerTankWrapper PlayerTankWrapper { get; private set; }
-        public Aiming Aiming { get; private set; }
+        public PlayerWrapper PlayerWrapper { get; private set; }
+        public IShootedAiming Aiming { get; private set; }
         public LayerMask LayerMask { get; private set; }
 
         [Inject]
-        private void Construct(PlayerTankWrapper playerTankWrapper, Aiming aiming, IStaticDataService staticDataService)
+        private void Construct(PlayerWrapper playerWrapper, IShootedAiming aiming, IStaticDataService staticDataService)
         {
-            PlayerTankWrapper = playerTankWrapper;
+            PlayerWrapper = playerWrapper;
             Aiming = aiming;
             LayerMask = staticDataService.GameplaySettingsConfig.EnemyLayerMask;
         }

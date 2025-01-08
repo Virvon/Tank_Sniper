@@ -1,6 +1,7 @@
 ﻿using Assets.Sources.Gameplay.Enemies;
 using Assets.Sources.Gameplay.Handlers;
-using Assets.Sources.Gameplay.Player;
+using Assets.Sources.Gameplay.Player.Aiming;
+using Assets.Sources.Gameplay.Player.Wrappers;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Services.StaticDataService.Configs;
 using System.Collections;
@@ -16,23 +17,26 @@ namespace Assets.Sources.Gameplay.Weapons
         [SerializeField] private Enemy _enemy;
 
         private GameplaySettingsConfig _gameplaySettings;
-        private Aiming _aiming;
+        private IShootedAiming _aiming;
         private DefeatHandler _defeatHandler;
 
         private bool _isShootingStarted;
         private bool _isPlayerDefeated;
 
-        public PlayerTankWrapper PlayerTankWrapper { get; private set; }
+        public PlayerWrapper PlayerWrapper { get; private set; }
 
         protected bool IsShooted { get; private set; }
         protected virtual bool CanShoot => _isPlayerDefeated == false;
 
-
         [Inject]
-        private void Construct(IStaticDataService staticDataService, PlayerTankWrapper playerTankWrapper, Aiming aiming, DefeatHandler defeatHandler)
+        private void Construct(
+            IStaticDataService staticDataService,
+            PlayerWrapper playerWrapper,
+            IShootedAiming aiming,
+            DefeatHandler defeatHandler)
         {
             _gameplaySettings = staticDataService.GameplaySettingsConfig;
-            PlayerTankWrapper = playerTankWrapper;
+            PlayerWrapper = playerWrapper;
             _aiming = aiming;
             _defeatHandler = defeatHandler;
 
@@ -42,7 +46,7 @@ namespace Assets.Sources.Gameplay.Weapons
 
             _aiming.Shooted += OnPlayerTankAttacked;
             _defeatHandler.Defeated += OnPlayerDefeated;
-            _defeatHandler.ProgressRecovery += OnProgressRecovery;
+            _defeatHandler.ProgressRecovered += OnProgressRecovery;
             _enemy.Destructed += OnEnemyDestructed;
         }
 
@@ -50,14 +54,14 @@ namespace Assets.Sources.Gameplay.Weapons
         {
             _aiming.Shooted -= OnPlayerTankAttacked;
             _defeatHandler.Defeated -= OnPlayerDefeated;
-            _defeatHandler.ProgressRecovery -= OnProgressRecovery;
+            _defeatHandler.ProgressRecovered -= OnProgressRecovery;
             _enemy.Destructed -= OnEnemyDestructed;
         }
 
         protected Quaternion GetShootingRotation()
         {
             Vector2 randomOffset = Random.insideUnitCircle * _gameplaySettings.EnemyScatter;
-            Vector3 targetPosition = PlayerTankWrapper.transform.position + TargetOffset + new Vector3(randomOffset.x, randomOffset.y, 0);
+            Vector3 targetPosition = PlayerWrapper.transform.position + TargetOffset + new Vector3(randomOffset.x, randomOffset.y, 0);
 
             return Quaternion.LookRotation((targetPosition - GetCurrentShootingPosition()).normalized);
         }

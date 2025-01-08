@@ -1,4 +1,4 @@
-﻿using Assets.Sources.Gameplay.Player;
+﻿using Assets.Sources.Gameplay.Player.Wrappers;
 using Assets.Sources.Utils;
 using MPUIKIT;
 using System;

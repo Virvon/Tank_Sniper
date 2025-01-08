@@ -1,5 +1,5 @@
 ﻿using Assets.Sources.Gameplay.Cameras;
-using Assets.Sources.Gameplay.Player;
+using Assets.Sources.Gameplay.Player.Aiming;
 using Assets.Sources.Infrastructure.Factories.BulletFactory;
 using UnityEngine;
 using Zenject;
@@ -12,7 +12,7 @@ namespace Assets.Sources.Gameplay.Weapons
         [SerializeField] private uint _requireShotsNumberToSuperShot;
 
         private GameplayCamera _gameplayCamera;
-        private Aiming _aiming;
+        private TankAiming _aiming;
 
         private Transform[] _bulletPoints;
 
@@ -23,7 +23,7 @@ namespace Assets.Sources.Gameplay.Weapons
         protected Quaternion BulletRotation => _gameplayCamera.transform.rotation;
 
         [Inject]
-        private void Construct(IBulletFactory bulletFactory, GameplayCamera gameplayCamera, Aiming aiming)
+        private void Construct(IBulletFactory bulletFactory, GameplayCamera gameplayCamera, TankAiming aiming)
         {
             BulletFactory = bulletFactory;
             _gameplayCamera = gameplayCamera;

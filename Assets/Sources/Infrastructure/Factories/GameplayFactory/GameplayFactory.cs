@@ -15,7 +15,7 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         private readonly DiContainer _container;
         private readonly GameplayCamera.Factory _gameplayCameraFactory;
         private readonly Enemy.Factory _enemyFactory;
-        private readonly AimingCamera.Factory _aimingFactory;
+        private readonly RotationCamera.Factory _rotationCameraFactory;
         private readonly WictoryHandler _winHandler;
 
         public GameplayFactory(
@@ -23,19 +23,25 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             DiContainer container,
             GameplayCamera.Factory gameplayCameraFactory,
             Enemy.Factory enemyFactory,
-            AimingCamera.Factory aimingFactory,
+            RotationCamera.Factory aimingFactory,
             WictoryHandler winHandler)
         {
             _staticDataService = staticDataService;
             _container = container;
             _gameplayCameraFactory = gameplayCameraFactory;
             _enemyFactory = enemyFactory;
-            _aimingFactory = aimingFactory;
+            _rotationCameraFactory = aimingFactory;
             _winHandler = winHandler;
         }
 
+        public async UniTask CreateRotationVirtualCamera(Vector3 position, Quaternion rotation)
+        {
+            RotationCamera rotationCamera = await _rotationCameraFactory.Create(GameplayFactoryAssets.RotationCamera, position, rotation);
+            _container.BindInstance(rotationCamera).AsSingle();
+        }
+
         public async UniTask CreateAimingVirtualCamera(Vector3 position, Quaternion rotation) =>
-            await _aimingFactory.Create(GameplayFactoryAssets.AimingCamera, position, rotation);
+            await _rotationCameraFactory.Create(GameplayFactoryAssets.AimingCamera, position, rotation);
 
         public async UniTask CreateCamera()
         {

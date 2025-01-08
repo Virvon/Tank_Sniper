@@ -12,5 +12,6 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public Vector2 StartRotation;
         public Vector2 MaxRotation;
         public Vector2 MinRotation;
+
     }
 }

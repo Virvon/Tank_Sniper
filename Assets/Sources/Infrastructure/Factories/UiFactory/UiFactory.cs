@@ -1,5 +1,6 @@
 ﻿using Assets.Sources.UI;
 using Assets.Sources.UI.Gameplay;
+using Assets.Sources.UI.Gameplay.GameplayWindows;
 using Assets.Sources.UI.MainMenu;
 using Assets.Sources.UI.MainMenu.Store;
 using Cysharp.Threading.Tasks;
@@ -30,8 +31,11 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         public async UniTask CreateWictroyWindow() =>
             await _windowFactory.Create(UiFactoryAssets.WictoryWindow);
 
-        public async UniTask CreateDefeatWindow() =>
-            await _windowFactory.Create(UiFactoryAssets.DefeatWindow);
+        public async UniTask CreateTankDefeatWindow() =>
+            await _windowFactory.Create(UiFactoryAssets.TankDefeatWindow);
+
+        public async UniTask CreateDroneDefeatWindow() =>
+            await _windowFactory.Create(UiFactoryAssets.DroneDefeatWindow);
 
         public async UniTask<SelectingPanelElement> CreateUnlockingPanel(Transform parent) =>
             await _selectingPanelElementFactory.Create(UiFactoryAssets.UnlockingPanel, parent);
@@ -39,12 +43,11 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         public async UniTask<SelectingPanelElement> CreateTankPanel(Transform parent) =>
             await _selectingPanelElementFactory.Create(UiFactoryAssets.TankPanel, parent);
 
-        public async UniTask CreateGameplayWindow()
-        {
-            GameplayWindow gameplayWindow = await _windowFactory.Create(UiFactoryAssets.GameplayWindow) as GameplayWindow;
+        public async UniTask CreateTankGameplayWindow() =>
+            await CreateGameplayWindow(UiFactoryAssets.TankGameplayWindow);
 
-            _container.BindInstance(gameplayWindow).AsSingle();
-        }
+        public async UniTask CreateDroneGameplayWindow() =>
+            await CreateGameplayWindow(UiFactoryAssets.DroneGameplayWindow);
 
         public async UniTask<MainMenuWindow> CreateMainMenu()
         {
@@ -53,6 +56,13 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
             _container.BindInstance(mainMenuWindow).AsSingle();
 
             return mainMenuWindow;
+        }
+
+        private async UniTask CreateGameplayWindow(string assetPath)
+        {
+            GameplayWindow gameplayWindow = await _windowFactory.Create(assetPath) as GameplayWindow;
+
+            _container.BindInstance(gameplayWindow).AsSingle();
         }
     }
 }

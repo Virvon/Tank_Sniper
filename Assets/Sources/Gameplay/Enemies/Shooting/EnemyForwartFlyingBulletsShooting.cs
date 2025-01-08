@@ -1,4 +1,4 @@
-﻿using Assets.Sources.Gameplay.Player;
+﻿using Assets.Sources.Gameplay.Player.Wrappers;
 using Assets.Sources.Infrastructure.Factories.BulletFactory;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Types;
@@ -41,8 +41,8 @@ namespace Assets.Sources.Gameplay.Weapons
 
         public bool CheckPlayerTankVisibility()
         {
-            return Physics.Raycast(LookStartPosition, (PlayerTankWrapper.transform.position - LookStartPosition).normalized, out RaycastHit hitInfo, RayCastDistance, _layerMask)
-                && hitInfo.transform.TryGetComponent(out PlayerTankWrapper _);
+            return Physics.Raycast(LookStartPosition, (PlayerWrapper.transform.position - LookStartPosition).normalized, out RaycastHit hitInfo, RayCastDistance, _layerMask)
+                && hitInfo.transform.TryGetComponent(out PlayerWrapper _);
         }
 
         protected override Vector3 GetCurrentShootingPosition() =>

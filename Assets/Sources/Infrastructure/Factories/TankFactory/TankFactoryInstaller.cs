@@ -1,4 +1,5 @@
 ﻿using Assets.Sources.Gameplay.Player;
+using Assets.Sources.Gameplay.Player.Wrappers;
 using Assets.Sources.MainMenu;
 using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.Tanks;
@@ -26,6 +27,14 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
             Container
                 .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<PlayerTankWrapper>, PlayerTankWrapper.Factory>()
                 .FromFactory<ReferencePrefabFactoryAsync<PlayerTankWrapper>>();
+            
+            Container
+                .BindFactory<string, Vector3, Quaternion, UniTask<PlayerWrapper>, PlayerDroneWrapper.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<PlayerWrapper>>();
+            
+            Container
+                .BindFactory<string, Vector3, Quaternion, UniTask<Drone>, Drone.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<Drone>>();
         }
     }
 }

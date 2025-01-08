@@ -1,5 +1,5 @@
 ﻿using Assets.Sources.Gameplay.Enemies.Animation;
-using Assets.Sources.Gameplay.Player;
+using Assets.Sources.Gameplay.Player.Aiming;
 using Assets.Sources.Gameplay.Weapons;
 using System.Collections;
 using UnityEngine;
@@ -12,7 +12,7 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
         private Animator _animator;
         private PatrolingEnemyShooting _enemyShooting;
 
-        private Aiming _aiming;
+        private IShootedAiming _aiming;
 
         private bool _isStartedStopping;
 

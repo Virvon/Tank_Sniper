@@ -83,7 +83,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 146128696800333351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b682ee57d00e12c48aa3d74535d4fbfe, type: 3}
+  m_Script: {fileID: 11500000, guid: f65c539ea54cfb24881b13f67889d81c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionParticlePrefab: {fileID: 5738518211207305529, guid: e0bc8922ba6683046bebe1ddeb0e687f,

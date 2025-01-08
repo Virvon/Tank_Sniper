@@ -23,7 +23,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 181b453b2a331204fa3a4cf93cc3e981
-    m_Address: Window
+    m_Address: TankGameplayWindow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -412,7 +412,7 @@ MonoBehaviour:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8f52929cf240c7048894eebcc1b849a6
-    m_Address: DefeatWindow
+    m_Address: DroneDefeatWindow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -529,6 +529,42 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 08ee4e96bb044c243a661b89a3eb7f47
     m_Address: Desert2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d6b415c415bfe44fbb45d8b821d5ab3
+    m_Address: Desert3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8dc863075a31fd84fa5b29ca9dc36445
+    m_Address: DesertLevelConfig3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 046c8eac92586e542b4fb9fc0706ca83
+    m_Address: PlayerDroneWrapper
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4eff263382dff2442a2a792c5659fc97
+    m_Address: DroneGameplayWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: daa3927034569704ea68f0bc1dc5e465
+    m_Address: RotationCamera
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 22fdcba94e383a647aaa04eae93e2fba
+    m_Address: Drone
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8cd141d9d6d311d44a6410620222d284
+    m_Address: TankDefeatWindow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

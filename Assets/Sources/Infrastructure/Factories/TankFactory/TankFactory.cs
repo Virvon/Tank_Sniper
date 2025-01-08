@@ -1,4 +1,5 @@
 ﻿using Assets.Sources.Gameplay.Player;
+using Assets.Sources.Gameplay.Player.Wrappers;
 using Assets.Sources.MainMenu;
 using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.Services.StaticDataService;
@@ -18,6 +19,8 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
         private readonly Tank.Factory _tankFactory;
         private readonly TankShootingWrapper.Factory _tankShootingWrapperFactory;
         private readonly PlayerTankWrapper.Factory _playerTankWrapperFactory;
+        private readonly PlayerDroneWrapper.Factory _playerDronFactory;
+        private readonly Drone.Factory _droneFactory;
 
         public TankFactory(
             IAssetProvider assetProvider,
@@ -25,7 +28,9 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
             DiContainer container,
             Tank.Factory tankFactory,
             TankShootingWrapper.Factory tankShootingWrapperFactory,
-            PlayerTankWrapper.Factory playerTankWrapperFactory)
+            PlayerTankWrapper.Factory playerTankWrapperFactory,
+            PlayerDroneWrapper.Factory playerDronFactory,
+            Drone.Factory droneFactory)
         {
             _assetProvider = assetProvider;
             _staticDataService = staticDataService;
@@ -33,13 +38,25 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
             _tankFactory = tankFactory;
             _tankShootingWrapperFactory = tankShootingWrapperFactory;
             _playerTankWrapperFactory = playerTankWrapperFactory;
+            _playerDronFactory = playerDronFactory;
+            _droneFactory = droneFactory;
+        }
+
+        public async UniTask<Drone> CreateDrone(Vector3 position, Quaternion rotation) =>
+            await _droneFactory.Create(TankFactoryAssets.Drone, position, rotation);
+
+        public async UniTask CreatePlayerDroneWrapper(Vector3 position, Quaternion rotation)
+        {
+            PlayerWrapper wrapper = await _playerDronFactory.Create(TankFactoryAssets.PlayerDroneWrapper, position, rotation);
+            _container.BindInstance(wrapper).AsSingle();
+            _container.BindInstance((PlayerDroneWrapper)wrapper).AsSingle();
         }
 
         public async UniTask<PlayerTankWrapper> CreatePlayerTankWrapper(uint tankLevel, Vector3 position, Quaternion rotation)
         {
             PlayerTankWrapper wrapper = await _playerTankWrapperFactory.Create(_staticDataService.GetTank(tankLevel).GameplayWrapperAssetReference, position, rotation);
 
-            _container.BindInstance(wrapper).AsSingle();
+            _container.BindInstance(wrapper as PlayerWrapper).AsSingle();
 
             return wrapper;
         }

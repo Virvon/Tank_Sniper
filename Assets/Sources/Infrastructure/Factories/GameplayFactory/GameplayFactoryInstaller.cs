@@ -26,8 +26,8 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
                 .FromFactory<ReferencePrefabFactoryAsync<Enemy>>();
             
             Container
-                .BindFactory<string, Vector3, Quaternion, UniTask<AimingCamera>, AimingCamera.Factory>()
-                .FromFactory<KeyPrefabFactoryAsync<AimingCamera>>();
+                .BindFactory<string, Vector3, Quaternion, UniTask<RotationCamera>, RotationCamera.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<RotationCamera>>();
         }
     }
 }

@@ -26,6 +26,7 @@ namespace Assets.Sources.Gameplay.Handlers
         public event Action WindowsSwithed;
 
         public int MaxEnemiesCount { get; private set; }
+        public bool IsWoned => _destructedEnemiesCount >= MaxEnemiesCount;
 
         public void AddEnemy(Enemy enemy)
         {
@@ -46,7 +47,7 @@ namespace Assets.Sources.Gameplay.Handlers
             _destructedEnemiesCount++;
             DestructedEnemiesCountChanger?.Invoke(_destructedEnemiesCount);
 
-            if(_destructedEnemiesCount >= MaxEnemiesCount)
+            if(IsWoned)
             {
                 Woned?.Invoke();
                 _inputService.SetActive(false);

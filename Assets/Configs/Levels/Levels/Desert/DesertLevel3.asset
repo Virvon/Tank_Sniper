@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb80a514ac648a04ab221d04d8bc0189, type: 3}
+  m_Name: DesertLevel3
+  m_EditorClassIdentifier: 
+  LevelKey: Desert3
+  StaticEnemyPoints:
+  - Id: Desert3_722adbed-8fa3-4f3c-853b-3114ee0bf4f8
+    StartPosition: {x: 25.16, y: 0, z: 37.3}
+    StartRotation: {x: -0, y: 1, z: -0, w: 0}
+    EnemyType: 4
+  - Id: Desert1_6a4a20a0-06bd-4915-9721-b7c7e0cf172b
+    StartPosition: {x: 31.01, y: 6.3, z: 38.83}
+    StartRotation: {x: -0, y: 0.9848078, z: -0, w: -0.17364809}
+    EnemyType: 7
+  - Id: Desert3_e0612a4a-60e9-4d07-83c3-b42236608af1
+    StartPosition: {x: 41.59, y: 0, z: 1.3600006}
+    StartRotation: {x: -0, y: 0.6755903, z: -0, w: -0.73727727}
+    EnemyType: 4
+  - Id: Desert1_7ad211c2-a969-4c77-bdb3-f0c558e75092
+    StartPosition: {x: 47.71, y: 4.2, z: 32.109}
+    StartRotation: {x: -0, y: 0.9396927, z: -0, w: -0.3420201}
+    EnemyType: 7
+  PatrolingEnemyPoints: []
+  MovementEngineryPoints:
+  - Id: Desert3_b80a7a57-5444-4657-b2c9-9f4ccde7ef87
+    StartPosition: {x: 40.079998, y: 0, z: 4.7299995}
+    StartRotation: {x: -0, y: -0, z: -0, w: 1}
+    EnemyType: 8
+    Path:
+    - Position: {x: 40.079998, y: 0, z: 4.7299995}
+      RotationAngle: 80
+      RotationDelta: 1
+    - Position: {x: 35.57, y: 0, z: 19.560001}
+      RotationAngle: 90
+      RotationDelta: 1
+    - Position: {x: 18.140001, y: 0, z: 13.280003}
+      RotationAngle: 60
+      RotationDelta: 1
+    - Position: {x: 16.93, y: 0, z: 3.3500023}
+      RotationAngle: 60
+      RotationDelta: 1
+    - Position: {x: 26.500002, y: 0, z: -5.709999}
+      RotationAngle: 120
+      RotationDelta: 1
+    Speed: 4
+    IsWaitedAttack: 0
+    IsPathLooped: 1
+    WaitingTimeOnPoint: 0
+    MaxRotationAngle: 75
+    SpeedAfterAttack: 4
+  HelicopterPoints: []

@@ -39,23 +39,7 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
             await _sceneLoader.Load(_staticDataService.GetLevelsSequence(_currentLevelType).GetLevel(_currentLevelIndex));
         }
 
-        public UniTask Exit()
-        {
-            if(_currentLevelIndex >= _staticDataService.GetLevelsSequence(_currentLevelType).Sequence.Length - 1)
-            {
-                int lenght = Enum.GetValues(typeof(BiomeType)).Length;
-                int nextLevelType = (int)_currentLevelType + 1;
-
-                nextLevelType = nextLevelType >= lenght ? 0 : nextLevelType;
-                _persistentProgressService.Progress.CurrentBiomeType = (BiomeType)nextLevelType;
-                _persistentProgressService.Progress.CurrentLevelIndex = 0;
-            }
-            else
-            {
-                _persistentProgressService.Progress.CurrentLevelIndex++;
-            }
-
-            return default;
-        }
+        public UniTask Exit() =>
+            default;
     }
 }

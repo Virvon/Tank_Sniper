@@ -8,7 +8,7 @@ namespace Assets.Sources.Gameplay.Weapons
         [SerializeField] private Transform _helicopter;
 
         private int _currentShootPointIndex;
-        protected override bool CanShoot => base.CanShoot && Vector2.Angle(new Vector2(PlayerTankWrapper.transform.position.x - LookStartPosition.x, PlayerTankWrapper.transform.position.z - LookStartPosition.z), new Vector2(_helicopter.transform.forward.x, _helicopter.transform.forward.z)) < AngleDelta;
+        protected override bool CanShoot => base.CanShoot && Vector2.Angle(new Vector2(PlayerWrapper.transform.position.x - LookStartPosition.x, PlayerWrapper.transform.position.z - LookStartPosition.z), new Vector2(_helicopter.transform.forward.x, _helicopter.transform.forward.z)) < AngleDelta;
         protected override Vector3 LookStartPosition => transform.position;
 
         protected override Vector3 GetCurrentShootPointPosition()

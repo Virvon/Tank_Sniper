@@ -1,4 +1,5 @@
 ﻿using Assets.Sources.Gameplay.Player;
+using Assets.Sources.Gameplay.Player.Wrappers;
 using Assets.Sources.MainMenu;
 using Assets.Sources.Tanks;
 using Assets.Sources.Types;
@@ -9,6 +10,8 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
 {
     public interface ITankFactory
     {
+        UniTask<Drone> CreateDrone(Vector3 position, Quaternion rotation);
+        UniTask CreatePlayerDroneWrapper(Vector3 position, Quaternion rotation);
         UniTask<PlayerTankWrapper> CreatePlayerTankWrapper(uint tankLevel, Vector3 position, Quaternion rotation);
         UniTask<Tank> CreateTank(
             uint level,

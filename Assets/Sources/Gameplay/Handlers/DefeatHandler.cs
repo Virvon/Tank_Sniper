@@ -15,15 +15,15 @@ namespace Assets.Sources.Gameplay.Handlers
 
         public event Action Defeated;
         public event Action WindowsSwitched;
-        public event Action ProgressRecovery;
+        public event Action ProgressRecovered;
 
         public void TryRecoveryProgress()
         {
             _inputService.SetActive(true);
-            ProgressRecovery?.Invoke();
+            ProgressRecovered?.Invoke();
         }
 
-        public void OnPlayerDestructed()
+        public void OnDefeat()
         {
             Defeated?.Invoke();
             _inputService.SetActive(false);

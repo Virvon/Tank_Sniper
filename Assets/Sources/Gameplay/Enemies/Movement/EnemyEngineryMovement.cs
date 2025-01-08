@@ -1,4 +1,4 @@
-﻿using Assets.Sources.Gameplay.Player;
+﻿using Assets.Sources.Gameplay.Player.Aiming;
 using UnityEngine;
 using Zenject;
 
@@ -11,7 +11,7 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
         private float _speedAfterAttack;
         private float _stoppingDuration;
 
-        private Aiming _aiming;
+        private IShootedAiming _aiming;
 
         private bool _isPlayerAttacked;
 

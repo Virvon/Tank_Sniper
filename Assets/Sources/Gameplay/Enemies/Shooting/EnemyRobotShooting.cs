@@ -34,7 +34,7 @@ namespace Assets.Sources.Gameplay.Weapons
                if(_enemyRobot.IsStopped)
                 {
                     Vector3 shootPointForward = _shootPoint.forward;
-                    Vector3 targetDirection = (PlayerTankWrapper.transform.position - _shootPoint.position).normalized;
+                    Vector3 targetDirection = (PlayerWrapper.transform.position - _shootPoint.position).normalized;
 
                     shootPointForward.y = 0;
                     targetDirection.y = 0;

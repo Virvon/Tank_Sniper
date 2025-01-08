@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 6956843612443155878}
   - component: {fileID: 8876230439691178699}
   - component: {fileID: 7746802956500550300}
+  - component: {fileID: 4948009187892261393}
   m_Layer: 0
   m_Name: Jeep
   m_TagString: Untagged
@@ -262,6 +263,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestroyedImmediately: 0
+--- !u!114 &4948009187892261393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768186178355879825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a55d79de339c044a456490a0dc8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _infos:
+  - BiomeType: 0
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
+      Index: 0
+  - BiomeType: 1
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: ee10d07641f3ffa4da67902c7f549f8f, type: 2}
+      Index: 0
+  _renderer: {fileID: 3006233461390804745}
 --- !u!1 &1832743649795716626
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,7 +575,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3656148261941506998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b682ee57d00e12c48aa3d74535d4fbfe, type: 3}
+  m_Script: {fileID: 11500000, guid: f65c539ea54cfb24881b13f67889d81c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionParticlePrefab: {fileID: 5738518211207305529, guid: e0bc8922ba6683046bebe1ddeb0e687f,

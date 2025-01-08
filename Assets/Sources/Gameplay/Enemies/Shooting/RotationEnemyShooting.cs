@@ -44,7 +44,7 @@ namespace Assets.Sources.Gameplay.Weapons
             while (_isRotated)
             {
                 Vector3 shootPointForward = _shootPoint.forward;
-                Vector3 targetDirection = (PlayerTankWrapper.transform.position - _shootPoint.position).normalized;
+                Vector3 targetDirection = (PlayerWrapper.transform.position - _shootPoint.position).normalized;
 
                 Quaternion targetRotation = Quaternion.Euler(
                 0,

@@ -1,4 +1,5 @@
-﻿using Assets.Sources.Gameplay.Player;
+﻿using Assets.Sources.Gameplay.Player.Aiming;
+using Assets.Sources.Gameplay.Player.Wrappers;
 using Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints;
 using System;
 using System.Collections;
@@ -23,7 +24,7 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
         [SerializeField] private float _engineEfficiency = 1;
 
         private PlayerTankWrapper _playerTankWrapper;
-        private Aiming _aiming;
+        private TankAiming _aiming;
 
         private PathPointConfig[] _path;
         private bool _isWaitedAttack;
@@ -45,7 +46,7 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
         private bool _isDestructed;
 
         [Inject]
-        private void Construct(PlayerTankWrapper playerTankWrapper, Aiming aiming)
+        private void Construct(PlayerTankWrapper playerTankWrapper, TankAiming aiming)
         {
             _playerTankWrapper = playerTankWrapper;
             _aiming = aiming;

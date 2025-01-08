@@ -14,5 +14,8 @@ namespace Assets.Sources.Services.StaticDataService.Configs
 
         public AnimationCurve DecalScalingAnimationCurve;
         public float DecalScalingDuration;
+
+        public AnimationCurve DroneDefeatRecoveryProgressButtonAnimationCurve;
+        public float DroneDefeateRecoveryProgressButtonAnimationDuration;
     }
 }

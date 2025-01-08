@@ -38,7 +38,7 @@ namespace Assets.Sources.Gameplay.Weapons
 
             while (_isTurretRotated)
             {
-                Vector3 targetDiretion = (PlayerTankWrapper.transform.position - _turret.transform.position).normalized;
+                Vector3 targetDiretion = (PlayerWrapper.transform.position - _turret.transform.position).normalized;
 
                 Quaternion targetRotation = _turret.transform.rotation * Quaternion.AngleAxis(Quaternion.LookRotation(targetDiretion).eulerAngles.x, Vector3.right);
 

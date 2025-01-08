@@ -8,13 +8,19 @@ namespace Assets.Sources.Gameplay.Enemies.Helicopter
         [SerializeField] private RotationAxis _axis;
 
         private float _rotateDegree;
+        private Vector3 _startRotation;
+
+        private void Start()
+        {
+            _startRotation = new Vector3(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, transform.localRotation.eulerAngles.z);
+        }
 
         private void Update()
         {
             _rotateDegree += _speed * Time.deltaTime;
             _rotateDegree = _rotateDegree % 360;
 
-            transform.localRotation = Quaternion.Euler(GetAxis() * _rotateDegree);
+            transform.localRotation = Quaternion.Euler((GetAxis() * _rotateDegree) + _startRotation);
         }
 
         private Vector3 GetAxis()
