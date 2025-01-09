@@ -77,7 +77,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -864259460963330315, guid: 7c76ca17ea4ad57458336808e9de83ef, type: 3}
 --- !u!1 &3153690583524925852
@@ -377,6 +377,7 @@ GameObject:
   - component: {fileID: 2932116303050542471}
   - component: {fileID: 2327579139414406934}
   - component: {fileID: 5479091057637816983}
+  - component: {fileID: 8128606710022098660}
   m_Layer: 0
   m_Name: Object_4
   m_TagString: Untagged
@@ -449,6 +450,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8128606710022098660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6833821972115884316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a55d79de339c044a456490a0dc8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _infos:
+  - BiomeType: 0
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: 15caf34f90b885b49b5dd24c8ab94434, type: 2}
+      Index: 0
+  - BiomeType: 2
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
+      Index: 0
+  _renderer: {fileID: 5479091057637816983}
 --- !u!1001 &3975299164334674863
 PrefabInstance:
   m_ObjectHideFlags: 0

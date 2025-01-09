@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb80a514ac648a04ab221d04d8bc0189, type: 3}
+  m_Name: ForestLevel1
+  m_EditorClassIdentifier: 
+  LevelKey: Forest1
+  StaticEnemyPoints:
+  - Id: WinterGameplayScene2_40daa493-feb1-49f8-aadb-efd10ba7bb8e
+    StartPosition: {x: -3.62, y: 6.35, z: 41.45}
+    StartRotation: {x: -0, y: 0.9848078, z: -0, w: 0.17364825}
+    EnemyType: 7
+  - Id: WinterGameplayScene2_4cd37c9a-6578-4473-bc92-6e7621b137d0
+    StartPosition: {x: 31.26, y: 14.61, z: 60.17}
+    StartRotation: {x: -0, y: 0.9848078, z: -0, w: -0.17364809}
+    EnemyType: 7
+  - Id: Forest1_5bc41b4b-225b-4993-a90f-b8bda64118ec
+    StartPosition: {x: 12.09, y: 6.35, z: 29.449}
+    StartRotation: {x: -0, y: 1, z: -0, w: 0}
+    EnemyType: 6
+  PatrolingEnemyPoints: []
+  MovementEngineryPoints:
+  - Id: Forest1_45107382-4cbb-4f50-88c8-2b2a28f61618
+    StartPosition: {x: -15.76, y: 0, z: 55.559998}
+    StartRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+    EnemyType: 3
+    Path:
+    - Position: {x: -15.76, y: 0, z: 55.559998}
+      RotationAngle: 90
+      RotationDelta: 1
+    - Position: {x: 6.9299984, y: 0, z: 56.03}
+      RotationAngle: 90
+      RotationDelta: 1
+    - Position: {x: 33.589996, y: 0, z: 37.96}
+      RotationAngle: 90
+      RotationDelta: 1
+    - Position: {x: 31.37, y: 0, z: 24.759998}
+      RotationAngle: 90
+      RotationDelta: 1
+    - Position: {x: 13.15, y: 0, z: 18.25}
+      RotationAngle: 90
+      RotationDelta: 1
+    Speed: 0
+    IsWaitedAttack: 1
+    IsPathLooped: 0
+    WaitingTimeOnPoint: 0
+    MaxRotationAngle: 80
+    SpeedAfterAttack: 9
+  - Id: Forest1_e9471e3f-c63e-499c-ae24-d3c024720d25
+    StartPosition: {x: 17.36, y: 0, z: 35.35}
+    StartRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+    EnemyType: 4
+    Path:
+    - Position: {x: 17.36, y: 0, z: 35.35}
+      RotationAngle: 90
+      RotationDelta: 1
+    - Position: {x: 7.41, y: 0, z: 35.11}
+      RotationAngle: 90
+      RotationDelta: 1
+    - Position: {x: 7.41, y: 0, z: 24.18}
+      RotationAngle: 90
+      RotationDelta: 1
+    - Position: {x: 17.05, y: 0, z: 24.36}
+      RotationAngle: 90
+      RotationDelta: 1
+    Speed: 2
+    IsWaitedAttack: 0
+    IsPathLooped: 1
+    WaitingTimeOnPoint: 0
+    MaxRotationAngle: 75
+    SpeedAfterAttack: 2
+  HelicopterPoints: []

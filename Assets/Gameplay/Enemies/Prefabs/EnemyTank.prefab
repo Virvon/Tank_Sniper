@@ -220,13 +220,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _infos:
-  - BiomeType: 0
+  - BiomeType: 2
     MaterialInfos:
     - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
       Index: 0
   - BiomeType: 1
     MaterialInfos:
     - Material: {fileID: 2100000, guid: ee10d07641f3ffa4da67902c7f549f8f, type: 2}
+      Index: 0
+  - BiomeType: 0
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: 15caf34f90b885b49b5dd24c8ab94434, type: 2}
       Index: 0
   _renderer: {fileID: 328885646211713662}
 --- !u!1 &3128592524461798055
@@ -554,13 +558,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _infos:
-  - BiomeType: 0
+  - BiomeType: 2
     MaterialInfos:
     - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
       Index: 0
   - BiomeType: 1
     MaterialInfos:
     - Material: {fileID: 2100000, guid: ee10d07641f3ffa4da67902c7f549f8f, type: 2}
+      Index: 0
+  - BiomeType: 0
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: 15caf34f90b885b49b5dd24c8ab94434, type: 2}
       Index: 0
   _renderer: {fileID: 6926532637794231631}
 --- !u!1 &8372887211058736005
@@ -769,13 +777,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _infos:
-  - BiomeType: 0
+  - BiomeType: 2
     MaterialInfos:
     - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
       Index: 1
   - BiomeType: 1
     MaterialInfos:
     - Material: {fileID: 2100000, guid: ee10d07641f3ffa4da67902c7f549f8f, type: 2}
+      Index: 1
+  - BiomeType: 0
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: 15caf34f90b885b49b5dd24c8ab94434, type: 2}
       Index: 1
   _renderer: {fileID: 124982103826008955}
 --- !u!1001 &4249577621990428200

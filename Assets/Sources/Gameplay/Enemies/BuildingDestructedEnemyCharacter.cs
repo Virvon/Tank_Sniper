@@ -6,7 +6,7 @@ namespace Assets.Sources.Gameplay.Enemies
 {
     public class BuildingDestructedEnemyCharacter : DestructedEnemy
     {
-        private const float Radius = 3;
+        private const float Radius = 4;
 
         private readonly Collider[] _overlapColliders = new Collider[32];
 

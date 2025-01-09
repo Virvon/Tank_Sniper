@@ -931,7 +931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _infos:
-  - BiomeType: 0
+  - BiomeType: 2
     MaterialInfos:
     - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
       Index: 0
@@ -950,6 +950,16 @@ MonoBehaviour:
     - Material: {fileID: 2100000, guid: baad19ee10c55d5468ccb5c4733be7a6, type: 2}
       Index: 2
     - Material: {fileID: 2100000, guid: baad19ee10c55d5468ccb5c4733be7a6, type: 2}
+      Index: 3
+  - BiomeType: 0
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: 15caf34f90b885b49b5dd24c8ab94434, type: 2}
+      Index: 0
+    - Material: {fileID: 2100000, guid: 4943d175787dd4249bc1fc84ff85daab, type: 2}
+      Index: 1
+    - Material: {fileID: 2100000, guid: 4943d175787dd4249bc1fc84ff85daab, type: 2}
+      Index: 2
+    - Material: {fileID: 2100000, guid: 4943d175787dd4249bc1fc84ff85daab, type: 2}
       Index: 3
   _renderer: {fileID: 411349118756261621}
 --- !u!1 &411349118769922969
@@ -1116,7 +1126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _infos:
-  - BiomeType: 0
+  - BiomeType: 2
     MaterialInfos:
     - Material: {fileID: 2100000, guid: 4d366e93d4e86454ea6879d0456415f7, type: 2}
       Index: 0
@@ -1139,6 +1149,18 @@ MonoBehaviour:
     - Material: {fileID: 2100000, guid: ee10d07641f3ffa4da67902c7f549f8f, type: 2}
       Index: 3
     - Material: {fileID: 2100000, guid: ee10d07641f3ffa4da67902c7f549f8f, type: 2}
+      Index: 4
+  - BiomeType: 0
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: 15caf34f90b885b49b5dd24c8ab94434, type: 2}
+      Index: 0
+    - Material: {fileID: 2100000, guid: 15caf34f90b885b49b5dd24c8ab94434, type: 2}
+      Index: 1
+    - Material: {fileID: 2100000, guid: 15caf34f90b885b49b5dd24c8ab94434, type: 2}
+      Index: 2
+    - Material: {fileID: 2100000, guid: 15caf34f90b885b49b5dd24c8ab94434, type: 2}
+      Index: 3
+    - Material: {fileID: 2100000, guid: 15caf34f90b885b49b5dd24c8ab94434, type: 2}
       Index: 4
   _renderer: {fileID: 411349118756261623}
 --- !u!1 &411349118769922973
@@ -2564,12 +2586,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _infos:
-  - BiomeType: 0
+  - BiomeType: 2
     MaterialInfos:
     - Material: {fileID: 2100000, guid: b941861938cf23f42af9fef51ddfa9e6, type: 2}
       Index: 0
   - BiomeType: 1
     MaterialInfos:
     - Material: {fileID: 2100000, guid: baad19ee10c55d5468ccb5c4733be7a6, type: 2}
+      Index: 0
+  - BiomeType: 0
+    MaterialInfos:
+    - Material: {fileID: 2100000, guid: 4943d175787dd4249bc1fc84ff85daab, type: 2}
       Index: 0
   _renderer: {fileID: 6544062049851358446}
