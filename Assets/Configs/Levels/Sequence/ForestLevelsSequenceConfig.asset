@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   Sequence:
+  - Forest4
+  - Forest3
   - Forest2
   - Forest1
   MainMenuScene: WinterMainMenuScene

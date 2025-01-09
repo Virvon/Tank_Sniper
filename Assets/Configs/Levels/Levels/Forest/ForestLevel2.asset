@@ -21,7 +21,7 @@ MonoBehaviour:
   - Id: WinterGameplayScene2_4cd37c9a-6578-4473-bc92-6e7621b137d0
     StartPosition: {x: 29.65, y: 8.2, z: 72.85}
     StartRotation: {x: -0, y: 0.9848078, z: -0, w: -0.17364809}
-    EnemyType: 6
+    EnemyType: 7
   - Id: Forest1_5bc41b4b-225b-4993-a90f-b8bda64118ec
     StartPosition: {x: -2.27, y: 8.2, z: 74.15}
     StartRotation: {x: -0, y: 1, z: -0, w: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
     IsWaitedAttack: 0
     IsPathLooped: 1
     WaitingTimeOnPoint: 0
-    MaxRotationAngle: 0
+    MaxRotationAngle: 90
     SpeedAfterAttack: 6
   - Id: Forest1_45107382-4cbb-4f50-88c8-2b2a28f61618
     StartPosition: {x: 15.289999, y: 0, z: 92.46999}
