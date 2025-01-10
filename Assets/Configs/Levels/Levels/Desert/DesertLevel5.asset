@@ -47,8 +47,8 @@ MonoBehaviour:
     IsWaitedAttack: 1
     IsPathLooped: 0
     WaitingTimeOnPoint: 0
-    MaxRotationAngle: 90
-    SpeedAfterAttack: 4
+    MaxRotationAngle: 20
+    SpeedAfterAttack: 5
   - Id: Desert5_c3968a00-ce80-477e-859b-b2bf4ab88f87
     StartPosition: {x: 36.8, y: 0, z: 15.730001}
     StartRotation: {x: -0, y: 1, z: -0, w: 0}
@@ -70,8 +70,8 @@ MonoBehaviour:
     IsWaitedAttack: 1
     IsPathLooped: 0
     WaitingTimeOnPoint: 0
-    MaxRotationAngle: 45
-    SpeedAfterAttack: 2
+    MaxRotationAngle: 60
+    SpeedAfterAttack: 3
   HelicopterPoints:
   - Id: Desert2_4421e8e2-d48d-4c15-b501-b5b7247ee907
     StartPosition: {x: 31.59, y: 5.55, z: 40.65}
@@ -87,4 +87,4 @@ MonoBehaviour:
     Speed: 8
     IsWaitedAttack: 1
     IsPathLooped: 1
-    WaitingTimeOnPoint: 5
+    WaitingTimeOnPoint: 4

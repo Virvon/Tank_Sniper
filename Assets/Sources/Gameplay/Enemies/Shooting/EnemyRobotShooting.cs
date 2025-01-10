@@ -1,4 +1,4 @@
-﻿using Assets.Sources.Gameplay.Enemies;
+﻿using Assets.Sources.Gameplay.Enemies.Robot;
 using System.Collections;
 using UnityEngine;
 

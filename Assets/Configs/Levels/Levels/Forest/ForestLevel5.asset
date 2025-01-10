@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb80a514ac648a04ab221d04d8bc0189, type: 3}
+  m_Name: ForestLevel5
+  m_EditorClassIdentifier: 
+  LevelKey: Forest5
+  StaticEnemyPoints:
+  - Id: Forest5_67a7fd5b-c4ea-4497-88c2-099d0d8e852f
+    StartPosition: {x: 4.955, y: 12.2, z: 49.82}
+    StartRotation: {x: -0, y: -0.6691307, z: -0, w: 0.7431448}
+    EnemyType: 6
+  - Id: WinterGameplayScene2_40daa493-feb1-49f8-aadb-efd10ba7bb8e
+    StartPosition: {x: -0.84, y: 8.2, z: 23.52}
+    StartRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+    EnemyType: 6
+  - Id: WinterGameplayScene2_4cd37c9a-6578-4473-bc92-6e7621b137d0
+    StartPosition: {x: -0.61, y: 8.2, z: 33.65}
+    StartRotation: {x: -0, y: 0.47715867, z: -0, w: 0.8788172}
+    EnemyType: 6
+  PatrolingEnemyPoints: []
+  MovementEngineryPoints:
+  - Id: Forest5_552178c6-1869-4b58-9f64-b580d554e952
+    StartPosition: {x: -8.570001, y: 0, z: 23.37}
+    StartRotation: {x: -0, y: -0, z: -0, w: 1}
+    EnemyType: 4
+    Path:
+    - Position: {x: -8.570001, y: 0, z: 23.37}
+      RotationAngle: 180
+      RotationDelta: 1
+    - Position: {x: -8.400001, y: 0, z: 32.93}
+      RotationAngle: 180
+      RotationDelta: 1
+    Speed: 2
+    IsWaitedAttack: 0
+    IsPathLooped: 1
+    WaitingTimeOnPoint: 0
+    MaxRotationAngle: 90
+    SpeedAfterAttack: 2
+  - Id: Forest5_1f6169b3-60c7-40de-98f0-425a518c4d65
+    StartPosition: {x: -2.9499998, y: 0, z: 41.94}
+    StartRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+    EnemyType: 4
+    Path:
+    - Position: {x: -2.9499998, y: 0, z: 41.94}
+      RotationAngle: 180
+      RotationDelta: 1
+    - Position: {x: -8.2, y: 0, z: 42.1}
+      RotationAngle: 180
+      RotationDelta: 1
+    Speed: 2
+    IsWaitedAttack: 0
+    IsPathLooped: 1
+    WaitingTimeOnPoint: 0
+    MaxRotationAngle: 90
+    SpeedAfterAttack: 2
+  HelicopterPoints: []

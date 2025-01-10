@@ -13,5 +13,6 @@
         MachineGunnerCar,
         Robot,
         Boot,
+        BossHelicopter,
     }
 }

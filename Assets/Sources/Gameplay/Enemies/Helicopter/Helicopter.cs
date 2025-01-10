@@ -14,14 +14,15 @@ namespace Assets.Sources.Gameplay.Enemies.Helicopter
         [SerializeField] private Vector3 _firePartilcePosition;
         [SerializeField] private GameObject _firePargiclePrefab;
 
-        private bool _isDestructed;
         private bool _isRotated;
 
         private GameObject _fireParticle;
 
-        private void Start()
+        protected bool IsDestructed { get; private set; }
+
+        protected virtual void Start()
         {
-            _isDestructed = false;
+            IsDestructed = false;
 
             _helicopterPart.Damaged += OnDamaged;
         }
@@ -29,27 +30,18 @@ namespace Assets.Sources.Gameplay.Enemies.Helicopter
         private void OnDestroy() =>
             _helicopterPart.Damaged -= OnDamaged;
 
-        private void OnDamaged(ExplosionInfo explosionInfo)
-        {
-            if (_isDestructed)
-                return;
-
-            OnDestructed();
-            StartCoroutine(Rotater());
-            _isDestructed = true;
-            _destructionMaterialsRenderer.Render();
-            _fireParticle = Instantiate(_firePargiclePrefab, transform.position + _firePartilcePosition, Quaternion.identity, transform);
-        }      
-
         private void OnCollisionEnter(Collision collision)
         {
-            if (_isDestructed == false || collision.transform.TryGetComponent(out CollidingBullet _))
+            if (IsDestructed == false || collision.transform.TryGetComponent(out CollidingBullet _))
                 return;
 
             _isRotated = false;
 
             foreach (DestructionPart destructionPart in _destructionParts)
             {
+                if (destructionPart == null)
+                    continue;
+
                 destructionPart.transform.parent = null;
                 destructionPart.Destruct(transform.position, _explosion.ExplosionForce);
             }
@@ -58,6 +50,20 @@ namespace Assets.Sources.Gameplay.Enemies.Helicopter
             Destroy(_fireParticle);
         }
 
+
+        protected virtual void OnDamaged(ExplosionInfo explosionInfo)
+        {
+            if (IsDestructed)
+                return;
+
+            OnDestructed();
+            StartCoroutine(Rotater());
+            IsDestructed = true;
+            _destructionMaterialsRenderer.Render();
+            _fireParticle = Instantiate(_firePargiclePrefab, transform.position + _firePartilcePosition, Quaternion.identity, transform);
+        }      
+
+        
         private IEnumerator Rotater()
         {
             _isRotated = true;

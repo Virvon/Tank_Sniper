@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6243900419653978226}
   - component: {fileID: 743497700485716651}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 9096548459747395796}
   - component: {fileID: 8501281430397907508}
   - component: {fileID: 1986987749265108393}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 4090399808016510120}
   - component: {fileID: 3717835296626206797}
   - component: {fileID: 6419305925108188650}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MachineGunBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

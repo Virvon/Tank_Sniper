@@ -1,7 +1,7 @@
 ﻿using Assets.Sources.Gameplay.Destructions;
 using UnityEngine;
 
-namespace Assets.Sources.Gameplay.Enemies
+namespace Assets.Sources.Gameplay.Enemies.Robot
 {
     public class ArmorPart : MonoBehaviour
     {
@@ -16,11 +16,11 @@ namespace Assets.Sources.Gameplay.Enemies
         {
             IsDestructed = true;
 
-            foreach(DestructionPart destructionPart in _destructionParts)
+            foreach (DestructionPart destructionPart in _destructionParts)
             {
                 destructionPart.transform.parent = null;
                 destructionPart.Destruct(explosionPosition, explosionForce);
-            }    
+            }
         }
     }
 }

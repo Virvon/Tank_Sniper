@@ -651,6 +651,39 @@ MonoBehaviour:
     m_SerializedLabels:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ddca13bf350de2346b0539b9fbb41dba
+    m_Address: Forest5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9521b348ab56d234cb91b6f54b87a864
+    m_Address: ForestLevelConfig5
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 969190be35322ee4b82644dfcbe03683
+    m_Address: Forest6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 68a9aecdf53d48f4581217ed21ef2cfc
+    m_Address: ForestLevelConfig6
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f272ed048d68fc47b316107798e1a59
+    m_Address: BossHelicopter
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f6e01457319a454b9bc2c7c8a3f3e9f
+    m_Address: Assets/Configs/Enemies/BossHelicopter.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a44638466bf414438293c9d18a37e72, type: 2}
   m_SchemaSet:

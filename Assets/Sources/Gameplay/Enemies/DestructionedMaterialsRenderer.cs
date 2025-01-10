@@ -21,6 +21,9 @@ namespace Assets.Sources.Gameplay.Enemies
         {
             foreach (MeshRenderer meshRenderer in _renderers)
             {
+                if (meshRenderer == null)
+                    continue;
+
                 foreach (Material material in meshRenderer.materials)
                     material.SetColor(ColorValue, material.GetColor(ColorValue) * _destructionConfig.DestructionColor);
             }

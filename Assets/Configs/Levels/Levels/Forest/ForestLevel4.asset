@@ -103,13 +103,13 @@ MonoBehaviour:
     - Position: {x: 19.09, y: 9.280001, z: 58.12}
       RotationAngle: 0
       RotationDelta: 3
-    - Position: {x: 22.56, y: 12.74, z: 42.75}
+    - Position: {x: 22.56, y: 7.3800015, z: 42.75}
       RotationAngle: 0
       RotationDelta: 3
-    - Position: {x: -7.62, y: 15.469999, z: 40.75}
+    - Position: {x: -7.62, y: 10.110001, z: 40.75}
       RotationAngle: 0
       RotationDelta: 3
-    - Position: {x: -14.070001, y: 17.58, z: 57.04}
+    - Position: {x: -14.070001, y: 15.040001, z: 57.04}
       RotationAngle: 0
       RotationDelta: 3
     Speed: 12

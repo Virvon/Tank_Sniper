@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Sources.Gameplay.Enemies
+namespace Assets.Sources.Gameplay.Enemies.Robot
 {
     public class EnemyRobot : Enemy, IDamageable, IHealthable
     {
@@ -59,7 +59,7 @@ namespace Assets.Sources.Gameplay.Enemies
             if (_isDestructed)
                 return;
 
-            foreach(ArmorPart armorPart in _armorParts)
+            foreach (ArmorPart armorPart in _armorParts)
             {
                 if (Vector3.Distance(armorPart.transform.position, explosionInfo.ExplosionPosition) <= Delta
                     && armorPart.IsDestructed == false)
