@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Sources.Gameplay.Destructions;
+using System;
 using UnityEngine;
 
 namespace Assets.Sources.Gameplay.Enemies.Helicopter.BossHelicopter
@@ -8,7 +9,7 @@ namespace Assets.Sources.Gameplay.Enemies.Helicopter.BossHelicopter
         private const float Delta = 1.5f;
 
         [SerializeField] private uint _health;
-        [SerializeField] BossHelicopterWeaponPart[] _weaponParts;
+        [SerializeField] BossDestructionPart[] _weaponParts;
 
         public uint MaxHealth { get; private set; }
 
@@ -27,7 +28,7 @@ namespace Assets.Sources.Gameplay.Enemies.Helicopter.BossHelicopter
 
             TakeDamage(explosionInfo.Damage);
 
-            foreach(BossHelicopterWeaponPart weaponPart in _weaponParts)
+            foreach(BossDestructionPart weaponPart in _weaponParts)
             {
                 if (weaponPart == null)
                     continue;

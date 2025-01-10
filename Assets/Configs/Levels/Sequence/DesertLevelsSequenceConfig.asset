@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af2a2466a564c84b9cd7f785464a879, type: 3}
   m_Name: DesertLevelsSequenceConfig
   m_EditorClassIdentifier: 
-  Type: 2
+  Type: 0
   Sequence:
+  - Desert6
   - Desert5
   - Desert4
   - Desert3

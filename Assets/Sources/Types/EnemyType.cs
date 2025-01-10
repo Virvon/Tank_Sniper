@@ -14,5 +14,6 @@
         Robot,
         Boot,
         BossHelicopter,
+        Submarine,
     }
 }

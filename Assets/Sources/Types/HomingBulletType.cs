@@ -4,5 +4,6 @@
     {
         Rocket,
         Laser,
+        SubmarineRocket,
     }
 }

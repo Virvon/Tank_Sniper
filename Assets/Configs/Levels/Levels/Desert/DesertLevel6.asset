@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb80a514ac648a04ab221d04d8bc0189, type: 3}
+  m_Name: DesertLevel6
+  m_EditorClassIdentifier: 
+  LevelKey: Desert6
+  StaticEnemyPoints: []
+  PatrolingEnemyPoints: []
+  MovementEngineryPoints:
+  - Id: Desert6_37cdd5de-d887-47e2-a99a-83645ff1ecb7
+    StartPosition: {x: -17.5, y: -8.68, z: 35.3}
+    StartRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+    EnemyType: 12
+    Path:
+    - Position: {x: 34.100002, y: 0, z: 46.3}
+      RotationAngle: 30
+      RotationDelta: 5
+    - Position: {x: 40.7, y: 0, z: 57.2}
+      RotationAngle: 30
+      RotationDelta: 5
+    - Position: {x: 54.699997, y: 0, z: 62.5}
+      RotationAngle: 30
+      RotationDelta: 5
+    - Position: {x: 68.5, y: 0, z: 58.9}
+      RotationAngle: 30
+      RotationDelta: 5
+    - Position: {x: 76.90001, y: 0, z: 48.1}
+      RotationAngle: 30
+      RotationDelta: 5
+    - Position: {x: 72.3, y: 0, z: 33}
+      RotationAngle: 30
+      RotationDelta: 5
+    - Position: {x: 52.699997, y: 0, z: 28.400002}
+      RotationAngle: 30
+      RotationDelta: 5
+    - Position: {x: 37.9, y: 0, z: 35.7}
+      RotationAngle: 30
+      RotationDelta: 5
+    Speed: 0
+    IsWaitedAttack: 1
+    IsPathLooped: 1
+    WaitingTimeOnPoint: 0
+    MaxRotationAngle: 10
+    SpeedAfterAttack: 3
+  HelicopterPoints:
+  - Id: Desert6_a380d407-ef00-4179-8103-641a4f61d8e2
+    StartPosition: {x: 53.41, y: 9.8, z: 55.26}
+    StartRotation: {x: -0, y: -0, z: -0, w: 1}
+    EnemyType: 5
+    Path:
+    - Position: {x: 53.41, y: 9.8, z: 55.26}
+      RotationAngle: 0
+      RotationDelta: 3
+    - Position: {x: 80.69, y: 9.8, z: 55.26}
+      RotationAngle: 0
+      RotationDelta: 3
+    Speed: 12
+    IsWaitedAttack: 0
+    IsPathLooped: 1
+    WaitingTimeOnPoint: 0

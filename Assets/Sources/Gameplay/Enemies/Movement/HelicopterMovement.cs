@@ -23,8 +23,8 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
         [SerializeField] private Enemy _enemy;
         [SerializeField] private float _engineEfficiency = 1;
 
-        private PlayerTankWrapper _playerTankWrapper;
-        private TankAiming _aiming;
+        private PlayerWrapper _playerWrapper;
+        private IShootedAiming _aiming;
 
         private PathPointConfig[] _path;
         private bool _isWaitedAttack;
@@ -46,9 +46,9 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
         private bool _isDestructed;
 
         [Inject]
-        private void Construct(PlayerTankWrapper playerTankWrapper, TankAiming aiming)
+        private void Construct(PlayerWrapper playerWrapper, IShootedAiming aiming)
         {
-            _playerTankWrapper = playerTankWrapper;
+            _playerWrapper = playerWrapper;
             _aiming = aiming;
 
             _canLookToPlayer = false;
@@ -96,7 +96,7 @@ namespace Assets.Sources.Gameplay.Enemies.Movement
             if (_isPointReached && (_canLookToPlayer == false || _needLookToPlayer == false))
                 return;
 
-            Vector2 lookDiretion = _canLookToPlayer && _needLookToPlayer ? (new Vector2(_playerTankWrapper.transform.position.x, _playerTankWrapper.transform.position.z) - new Vector2(transform.position.x, transform.position.z)).normalized : _horizontalMovement;
+            Vector2 lookDiretion = _canLookToPlayer && _needLookToPlayer ? (new Vector2(_playerWrapper.transform.position.x, _playerWrapper.transform.position.z) - new Vector2(transform.position.x, transform.position.z)).normalized : _horizontalMovement;
 
             if (lookDiretion == Vector2.zero)
                 return;

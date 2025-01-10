@@ -14,42 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelKey: Winter2
   StaticEnemyPoints:
-  - Id: WinterGameplayScene2_40daa493-feb1-49f8-aadb-efd10ba7bb8e
-    StartPosition: {x: 5.939, y: 6.565, z: 42.732}
-    StartRotation: {x: -0, y: 0.9848078, z: -0, w: 0.17364825}
-    EnemyType: 6
-  - Id: WinterGameplayScene2_4cd37c9a-6578-4473-bc92-6e7621b137d0
-    StartPosition: {x: 31.26, y: 14.61, z: 60.17}
-    StartRotation: {x: -0, y: 0.9848078, z: -0, w: -0.17364809}
+  - Id: Winter2_004885ed-d9b6-415d-a36b-444787f2ef29
+    StartPosition: {x: 10.12, y: 6.3, z: 44.26}
+    StartRotation: {x: -0, y: 0.96455747, z: -0, w: -0.26387298}
     EnemyType: 7
+  - Id: Winter2_aa688f6d-e119-47e3-9acc-00b49aef455d
+    StartPosition: {x: 24.06, y: 6.3, z: 43.67}
+    StartRotation: {x: -0, y: 0.95956, z: -0, w: 0.2815043}
+    EnemyType: 7
+  - Id: WinterGameplayScene2_40daa493-feb1-49f8-aadb-efd10ba7bb8e
+    StartPosition: {x: 32.363, y: 6.3, z: 18.529}
+    StartRotation: {x: -0, y: 0.8660254, z: -0, w: -0.5}
+    EnemyType: 6
   - Id: GameplayScene_1bd176b9-8980-402a-837a-56ccb35cdbc5
-    StartPosition: {x: -0.83, y: 0, z: 18.98}
+    StartPosition: {x: 0.57, y: 0, z: 29.23}
     StartRotation: {x: -0, y: 0.92387956, z: -0, w: 0.38268343}
     EnemyType: 4
   - Id: WinterGameplayScene2_e0c963d1-18dd-4d4a-8e1d-edc5cff88cea
-    StartPosition: {x: 32.59, y: 0, z: 46.8}
-    StartRotation: {x: -0, y: 0.9961947, z: -0, w: 0.08715588}
+    StartPosition: {x: 29.69, y: 0, z: 32.87}
+    StartRotation: {x: -0, y: 0.9848078, z: -0, w: -0.17364809}
     EnemyType: 4
-  PatrolingEnemyPoints:
-  - Id: GameplayScene_40403f42-4395-4d3d-bd1a-50d0a9f1fa77
-    StartPosition: {x: 11.740001, y: 0, z: 37.1}
-    StartRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
-    EnemyType: 2
-    Path:
-    - Position: {x: 11.740001, y: 0, z: 37.1}
-      RotationAngle: 0
-      RotationDelta: 1
-    - Position: {x: 8.57, y: 0, z: 40.46}
-      RotationAngle: 0
-      RotationDelta: 1
-    - Position: {x: 12.200001, y: 0, z: 43.06}
-      RotationAngle: 0
-      RotationDelta: 1
-    - Position: {x: 14.860001, y: 0, z: 39.61}
-      RotationAngle: 0
-      RotationDelta: 1
-    Speed: 1
-    MaxRotationAngle: 60
-    StoppingDuration: 1
+  PatrolingEnemyPoints: []
   MovementEngineryPoints: []
   HelicopterPoints: []

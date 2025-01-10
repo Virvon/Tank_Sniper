@@ -26,12 +26,14 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
             IStaticDataService staticDataService,
             Factory<CollidingBullet> forwardFlyingBulletFactory,
             Factory<Laser> directionalLaserFactory,
-            Muzzle.Factory muzzleFactory)
+            Muzzle.Factory muzzleFactory,
+            Factory<HomingBullet> homingBulletFactory)
         {
             _staticDataService = staticDataService;
             _forwardFlyingBulletFactory = forwardFlyingBulletFactory;
             _directionalLaserFactory = directionalLaserFactory;
             _muzzleFactory = muzzleFactory;
+            _homingBulletFactory = homingBulletFactory;
         }
 
         public async UniTask CreateMuzzle(MuzzleType type, Vector3 position, Quaternion rotation)

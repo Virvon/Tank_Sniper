@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   Sequence:
-  - Winter4
-  - Winter3
-  - Winter1
   - Winter2
+  - Winter3
+  - Winter4
+  - Winter1
   MainMenuScene: WinterMainMenuScene

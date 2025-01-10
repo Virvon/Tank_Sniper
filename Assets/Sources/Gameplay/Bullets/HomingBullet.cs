@@ -1,37 +1,39 @@
 ﻿using Assets.Sources.Gameplay.Cameras;
 using Assets.Sources.Gameplay.Enemies;
-using Cysharp.Threading.Tasks;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace Assets.Sources.Gameplay.Bullets
 {
     public class HomingBullet : CollidingBullet
     {
+        private const float Offset = 1;
+
         private GameplayCamera _gameplayCamera;
 
         private uint _rotationSpeed;
         private float _targetingDelay;
+        private uint _searchRadius;
 
-        private Enemy _target;
+        protected Transform Target;
         private bool _isFollowed;
 
         [Inject]
         private void Construct(GameplayCamera gameplayCamera) =>
             _gameplayCamera = gameplayCamera;
 
+        private void Start() =>
+            SearchTarget(_searchRadius);
+
         public HomingBullet BindHomingSettings(uint searchRadius, uint rotationSpeed, float targetingDelay)
         {
             _rotationSpeed = rotationSpeed;
             _targetingDelay = targetingDelay;
+            _searchRadius = searchRadius;
 
             _isFollowed = false;
-
-            SearchTarget(searchRadius);
 
             return this;
         }
@@ -42,7 +44,7 @@ namespace Assets.Sources.Gameplay.Bullets
             _isFollowed = false;
         }
 
-        private void SearchTarget(uint searchRadius)
+        protected virtual void SearchTarget(uint searchRadius)
         {
             Enemy[] enemies = FindObjectsOfType<Enemy>();
 
@@ -52,13 +54,13 @@ namespace Assets.Sources.Gameplay.Bullets
 
             if (enemies.Length > 0)
             {
-                _target = enemies[Random.Range(0, enemies.Length)];
+                Target = enemies[Random.Range(0, enemies.Length)].transform;
 
                 StartCoroutine(Follower());
             }
         }
 
-        private IEnumerator Follower()
+        protected IEnumerator Follower()
         {
             _isFollowed = true;
 
@@ -66,8 +68,7 @@ namespace Assets.Sources.Gameplay.Bullets
 
             while (_isFollowed)
             {
-                Quaternion targetRotation = transform.rotation * Quaternion.FromToRotation(transform.forward, (_target.transform.position - transform.position).normalized);
-
+                Quaternion targetRotation = Quaternion.LookRotation((Target.transform.position + (Vector3.up * Offset)  - transform.position).normalized);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
                 ChangeTrajectory();
 

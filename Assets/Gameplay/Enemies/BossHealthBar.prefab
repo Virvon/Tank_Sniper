@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 8938535916982379745}
   - component: {fileID: 8606804525498774799}
   m_Layer: 0
-  m_Name: BosHealthBar
+  m_Name: BossHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -466,7 +466,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &4659338244351516994
 MonoBehaviour:
   m_ObjectHideFlags: 0

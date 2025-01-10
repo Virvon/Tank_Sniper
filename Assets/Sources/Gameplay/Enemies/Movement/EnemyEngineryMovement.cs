@@ -1,6 +1,4 @@
 ﻿using Assets.Sources.Gameplay.Player.Aiming;
-using UnityEngine;
-using Zenject;
 
 namespace Assets.Sources.Gameplay.Enemies.Movement
 {

@@ -48,7 +48,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 354b9ff95f257324799b2941aac1aee4
-    m_Address: WinterLevleConfig2
+    m_Address: WinterLevleConfig4
     m_ReadOnly: 0
     m_SerializedLabels:
     - Configs
@@ -461,13 +461,13 @@ MonoBehaviour:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8d868ec84b2612c4ba0ff04a8c71d05d
-    m_Address: WinterLevelConfig3
+    m_Address: WinterLevelConfig5
     m_ReadOnly: 0
     m_SerializedLabels:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a63e9d091b05cfc45b6e560c1b01185a
-    m_Address: Winter3
+    m_Address: Winter5
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -483,13 +483,13 @@ MonoBehaviour:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0c1467c0808d13f46b2807e883265099
-    m_Address: WinterLevelConfig4
+    m_Address: WinterLevelConfig6
     m_ReadOnly: 0
     m_SerializedLabels:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 77fc43e2b03d70c4f8ef9cfd666a08b0
-    m_Address: Winter4
+    m_Address: Winter6
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -615,8 +615,7 @@ MonoBehaviour:
   - m_GUID: c9f63e81b83482046a861ba37ee9edbd
     m_Address: ForestLevelsSequenceConfig
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Configs
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bd8aa84ddfe99ac43945f60ef2fdb02e
     m_Address: ForestLevelConfig2
@@ -683,6 +682,61 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a919e8bc48a3e3c499ccfcb03845c0ad
+    m_Address: Winter3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0064406249067c64289b298b68cdddfc
+    m_Address: WinterLevelConfig3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c43aaff785335604dbd49a277cd41e49
+    m_Address: WinterLevelConfig4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5335aa62a868b7643b814599d5255148
+    m_Address: Winter4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d91869a81f43d084f8f89b4861c112cd
+    m_Address: DesertLevelConfig6
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f3e97d4f8a3262949b069d50e1a6c5b5
+    m_Address: Desert6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4509b5718398c494a8a761b63d141b75
+    m_Address: Submarine
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76ebe08622b62084b85d2c808df6b819
+    m_Address: SubmarineConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e60612a76d180ab479231d9662610b0c
+    m_Address: PlayerHomingRocketConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abd25578db1df2943823186743a0a614
+    m_Address: PlayerHomingRocket
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a44638466bf414438293c9d18a37e72, type: 2}
