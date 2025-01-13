@@ -18,6 +18,9 @@ namespace Assets.Sources.MainMenu.Animations
 
         public void Play()
         {
+            if (enabled == false)
+                return;
+
             if (_animator != null)
                 StopCoroutine(_animator);
 

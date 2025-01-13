@@ -1,6 +1,7 @@
 ﻿using Assets.Sources.Infrastructure.Factories.UiFactory;
 using Assets.Sources.Services.PersistentProgress;
 using Cysharp.Threading.Tasks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace Assets.Sources.UI.MainMenu.Store
         private IPersistentProgressService _persistentProgressService;
 
         private Dictionary<TKey, SelectingPanelElement> _panels;
+        private SelectingPanelElement _currentSelectingElement;
 
         public IPersistentProgressService PersistentProgressService => _persistentProgressService;
 
@@ -25,7 +27,13 @@ namespace Assets.Sources.UI.MainMenu.Store
 
             Subscribe(_persistentProgressService);
             _panels = await FillContent(uiFactory, _persistentProgressService, _content);
+
+            ActiveSelectionFrame(GetCurrentSelectedPanel(persistentProgressService));
+
+            _persistentProgressService.Progress.SelectedTankChanged += OnSelectedTankChanged;
         }
+
+        
 
         private void OnDestroy()
         {
@@ -33,6 +41,8 @@ namespace Assets.Sources.UI.MainMenu.Store
 
             foreach (SelectingPanelElement panel in _panels.Values)
                 panel.Clicked -= OnPanelClicked;
+
+            _persistentProgressService.Progress.SelectedTankChanged -= OnSelectedTankChanged;
         }
 
         protected void Unlock(TKey key) =>
@@ -49,11 +59,24 @@ namespace Assets.Sources.UI.MainMenu.Store
 
         protected abstract void Select(TKey key, IPersistentProgressService persistentProgressService);
 
+        protected abstract TKey GetCurrentSelectedPanel(IPersistentProgressService persistentProgressService);
+
+        protected void ActiveSelectionFrame(TKey key)
+        {
+            _currentSelectingElement?.SetSelectionFrameActive(false);
+            
+            if(_panels.TryGetValue(key, out _currentSelectingElement))
+                _currentSelectingElement.SetSelectionFrameActive(true);
+        }
+
         protected void OnPanelClicked(SelectingPanelElement panel)
         {
             TKey key = _panels.Keys.First(key => _panels[key] == panel);
 
             Select(key, _persistentProgressService);
         }
+
+        private void OnSelectedTankChanged(uint level) =>
+            ActiveSelectionFrame(GetCurrentSelectedPanel(_persistentProgressService));
     }
 }

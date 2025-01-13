@@ -43,5 +43,8 @@ namespace Assets.Sources.UI.MainMenu.Store
 
         protected override void Select(uint key, IPersistentProgressService persistentProgressService) =>
             persistentProgressService.Progress.TrySelectTank(key);
+
+        protected override uint GetCurrentSelectedPanel(IPersistentProgressService persistentProgressService) =>
+            persistentProgressService.Progress.GetSelectedTank().Level;
     }
 }

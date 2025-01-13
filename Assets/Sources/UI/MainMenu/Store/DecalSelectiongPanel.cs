@@ -62,6 +62,8 @@ namespace Assets.Sources.UI.MainMenu.Store
             {
                 persistentProgressService.Progress.SelectDecal(key);
             }
+
+            ActiveSelectionFrame(key);
         }
 
         protected override void Subscribe(IPersistentProgressService persistentProgressService) =>
@@ -69,5 +71,8 @@ namespace Assets.Sources.UI.MainMenu.Store
 
         protected override void Unsubscribe(IPersistentProgressService persistentProgressService) =>
             persistentProgressService.Progress.DecalUnlocked -= Unlock;
+
+        protected override DecalType GetCurrentSelectedPanel(IPersistentProgressService persistentProgressService) =>
+            persistentProgressService.Progress.GetSelectedTank().DecalType;
     }
 }

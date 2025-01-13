@@ -11,6 +11,7 @@ namespace Assets.Sources.UI.MainMenu.Store
     {
         [SerializeField] private TMP_Text _text;
         [SerializeField] private Button _button;
+        [SerializeField] private CanvasGroup _selectionFrame;
 
         public event Action<SelectingPanelElement> Clicked;
 
@@ -29,6 +30,9 @@ namespace Assets.Sources.UI.MainMenu.Store
 
         private void OnButtonClicked() =>
             Clicked?.Invoke(this);
+
+        public void SetSelectionFrameActive(bool isActive) =>
+            _selectionFrame.alpha = isActive ? 1 : 0;
 
         public class Factory : PlaceholderFactory<string, Transform, UniTask<SelectingPanelElement>>
         {

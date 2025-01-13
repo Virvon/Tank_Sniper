@@ -3,7 +3,6 @@ using Assets.Sources.Infrastructure.Factories.UiFactory;
 using Assets.Sources.Services.PersistentProgress;
 using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,6 +36,9 @@ namespace Assets.Sources.UI.MainMenu.Store
 
             return panels;
         }
+
+        protected override TankSkinType GetCurrentSelectedPanel(IPersistentProgressService persistentProgressService) =>
+            persistentProgressService.Progress.GetSelectedTank().SkinType;
 
         protected override void Select(TankSkinType key, IPersistentProgressService persistentProgressService)
         {
