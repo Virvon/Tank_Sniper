@@ -1,4 +1,5 @@
 ﻿using Assets.Sources.Gameplay.Player;
+using Assets.Sources.Gameplay.Player.Weapons;
 using Assets.Sources.Gameplay.Player.Wrappers;
 using Assets.Sources.MainMenu;
 using Assets.Sources.Services.AssetManagement;
@@ -64,6 +65,7 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
 
             _container.BindInstance(wrapper).AsSingle();
             _container.BindInstance(wrapper as PlayerWrapper).AsSingle();
+            _container.BindInterfacesAndSelfTo<PlayerTankWeapon>().FromInstance(wrapper.GetComponent<PlayerTankWeapon>()).AsSingle();
 
             return wrapper;
         }

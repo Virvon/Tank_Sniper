@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Sources.Gameplay.Weapons
+namespace Assets.Sources.Gameplay.Player.Weapons
 {
     public class PlayerWeapon6 : PlayerTankWeapon
     {

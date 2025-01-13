@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Sources.Gameplay.Weapons
+namespace Assets.Sources.Gameplay.Player.Weapons
 {
     public class ForwardFlyingBulletsPlayerTankWeapon : PlayerTankWeapon
     {
@@ -24,7 +24,7 @@ namespace Assets.Sources.Gameplay.Weapons
         {
             WaitForSeconds duration = new WaitForSeconds(shootsDuration);
 
-            for(int i = 0; i < shootsCount; i++)
+            for (int i = 0; i < shootsCount; i++)
             {
                 BulletFactory.CreateForwardFlyingBullet(bulletType, GetBulletPoint(i).position, BulletRotation);
 

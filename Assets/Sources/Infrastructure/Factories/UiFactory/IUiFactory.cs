@@ -1,4 +1,6 @@
 ﻿using Assets.Sources.UI;
+using Assets.Sources.UI.Gameplay.Aim;
+using Assets.Sources.UI.Gameplay.BulletsPanel;
 using Assets.Sources.UI.MainMenu;
 using Assets.Sources.UI.MainMenu.Store;
 using Cysharp.Threading.Tasks;
@@ -20,5 +22,7 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         UniTask<SelectingPanelElement> CreateCharacterSkinPanel(Transform parent);
         UniTask CreateOptionsWindow();
         UniTask<ProgressBarElement> CreateProgressBarElement(Transform parent);
+        UniTask<BulletIcon> CreateTankBulletIcon(Transform parent);
+        UniTask<SuperBulletIcon> CreateSuperBulletIcon(Transform parent);
     }
 }

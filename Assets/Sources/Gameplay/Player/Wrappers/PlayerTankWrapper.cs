@@ -1,7 +1,7 @@
 ﻿using Assets.Sources.Gameplay.Cameras;
 using Assets.Sources.Gameplay.Handlers;
 using Assets.Sources.Gameplay.Player.Aiming;
-using Assets.Sources.Gameplay.Weapons;
+using Assets.Sources.Gameplay.Player.Weapons;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Services.StaticDataService.Configs;
 using Cysharp.Threading.Tasks;

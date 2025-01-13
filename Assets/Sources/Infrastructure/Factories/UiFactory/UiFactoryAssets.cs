@@ -14,5 +14,7 @@
         public const string CharacterSkinPanel = "CharacterSkinPanel";
         public const string OptionsWindow = "OptionsWindow";
         public const string ProgressBarElement = "ProgressBarElement";
+        public const string TankBulletIcon = "TankBulletIcon";
+        public const string SuperBulletIcon = "SuperBulletIcon";
     }
 }

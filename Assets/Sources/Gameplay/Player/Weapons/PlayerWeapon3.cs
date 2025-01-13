@@ -2,18 +2,18 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Sources.Gameplay.Weapons
+namespace Assets.Sources.Gameplay.Player.Weapons
 {
-    public class PlayerWeapon4 : PlayerTankWeapon
+    public class PlayerWeapon3 : PlayerTankWeapon
     {
-        [SerializeField] private uint _bulletShootsCount;
+        [SerializeField] private uint _bulletsShootsCount;
         [SerializeField] private float _bulletShootsDuration;
         [SerializeField] private uint _superBulletShootsCount;
         [SerializeField] private float _supperBulletShootsDuration;
 
         protected override void Shoot()
         {
-            StartCoroutine(Shooter(_bulletShootsCount, _bulletShootsDuration));
+            StartCoroutine(Shooter(_bulletsShootsCount, _bulletShootsDuration));
         }
 
         protected override void SuperShoot()
@@ -21,13 +21,13 @@ namespace Assets.Sources.Gameplay.Weapons
             StartCoroutine(Shooter(_superBulletShootsCount, _supperBulletShootsDuration));
         }
 
-        private IEnumerator Shooter(uint shootsCount, float shootsDuration)
+        private IEnumerator Shooter(uint bulletsCount, float shootsDuration)
         {
             WaitForSeconds duration = new WaitForSeconds(shootsDuration);
 
-            for(int i = 0; i < shootsCount; i++)
+            for (int i = 0; i < bulletsCount; i++)
             {
-                //GameplayFactory.CreateTankRocked(bulletType, ShootPoint, BulletRotation);
+                //GameplayFactory.CreateHomingBullet(bulletType, ShootPoint, BulletRotation);
 
                 yield return duration;
             }

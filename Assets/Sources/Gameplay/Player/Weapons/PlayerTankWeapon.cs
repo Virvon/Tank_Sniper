@@ -1,12 +1,13 @@
 ﻿using Assets.Sources.Gameplay.Cameras;
 using Assets.Sources.Gameplay.Player.Aiming;
 using Assets.Sources.Infrastructure.Factories.BulletFactory;
+using System;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Sources.Gameplay.Weapons
+namespace Assets.Sources.Gameplay.Player.Weapons
 {
-    public abstract class PlayerTankWeapon : MonoBehaviour
+    public abstract class PlayerTankWeapon : MonoBehaviour, IShootable
     {
         [SerializeField] private uint _bulletsCapacity;
         [SerializeField] private uint _requireShotsNumberToSuperShot;
@@ -19,8 +20,13 @@ namespace Assets.Sources.Gameplay.Weapons
         private uint _shootsNumberToSuperShot;
         private uint _bulletsCount;
 
+        public event Action BulletsCountChanged;
+
         protected IBulletFactory BulletFactory { get; private set; }
         protected Quaternion BulletRotation => _gameplayCamera.transform.rotation;
+        public uint BulletsCount => _bulletsCount;
+        public uint RequireShotsNumberToSuperShot => _requireShotsNumberToSuperShot;
+        public uint ShootsNumberToSuperShot => _shootsNumberToSuperShot;
 
         [Inject]
         private void Construct(IBulletFactory bulletFactory, GameplayCamera gameplayCamera, TankAiming aiming)
@@ -48,7 +54,7 @@ namespace Assets.Sources.Gameplay.Weapons
 
             _bulletsCount--;
 
-            if(_shootsNumberToSuperShot == 0)
+            if (_shootsNumberToSuperShot == 0)
             {
                 _shootsNumberToSuperShot = _requireShotsNumberToSuperShot;
 
@@ -60,6 +66,8 @@ namespace Assets.Sources.Gameplay.Weapons
 
                 Shoot();
             }
+
+            BulletsCountChanged?.Invoke();
         }
 
         protected Transform GetBulletPoint(int index)

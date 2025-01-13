@@ -1,5 +1,7 @@
 ﻿using Assets.Sources.UI;
 using Assets.Sources.UI.Gameplay;
+using Assets.Sources.UI.Gameplay.Aim;
+using Assets.Sources.UI.Gameplay.BulletsPanel;
 using Assets.Sources.UI.Gameplay.GameplayWindows;
 using Assets.Sources.UI.MainMenu;
 using Assets.Sources.UI.MainMenu.Store;
@@ -15,17 +17,30 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         private readonly DiContainer _container;
         private readonly SelectingPanelElement.Factory _selectingPanelElementFactory;
         private readonly ProgressBarElement.Factory _progressBarElementFactory;
+        private readonly BulletIcon.Factory _bulletIconFactory;
+        private readonly SuperBulletIcon.Factory _superBulletIconFactory;
 
         public UiFactory(
-            Window.Factory windowFactory, DiContainer container,
+            Window.Factory windowFactory,
+            DiContainer container,
             SelectingPanelElement.Factory selectingPanelElementFactory,
-            ProgressBarElement.Factory progressBarElementFactory)
+            ProgressBarElement.Factory progressBarElementFactory,
+            BulletIcon.Factory bulletIconFactory,
+            SuperBulletIcon.Factory superBulletIconFactory)
         {
             _windowFactory = windowFactory;
             _container = container;
             _selectingPanelElementFactory = selectingPanelElementFactory;
             _progressBarElementFactory = progressBarElementFactory;
+            _bulletIconFactory = bulletIconFactory;
+            _superBulletIconFactory = superBulletIconFactory;
         }
+
+        public async UniTask<SuperBulletIcon> CreateSuperBulletIcon(Transform parent) =>
+            await _superBulletIconFactory.Create(UiFactoryAssets.SuperBulletIcon, parent);
+
+        public async UniTask<BulletIcon> CreateTankBulletIcon(Transform parent) =>
+            await _bulletIconFactory.Create(UiFactoryAssets.TankBulletIcon, parent);
 
         public async UniTask<ProgressBarElement> CreateProgressBarElement(Transform parent) =>
             await _progressBarElementFactory.Create(UiFactoryAssets.ProgressBarElement, parent);

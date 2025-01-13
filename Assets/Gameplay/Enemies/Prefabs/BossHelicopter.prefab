@@ -241,6 +241,7 @@ MonoBehaviour:
   _shootDuration: 0.1
   _bulletPoint: {fileID: 3854906222176311977}
   _helicopter: {fileID: 5839955110556970388}
+  _weaponPart: {fileID: 7526723435861980404}
 --- !u!65 &6131305566428359081
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -267,7 +268,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestroyedImmediately: 0
-  _shooting: {fileID: 148933802975401919}
 --- !u!54 &4149866057797487915
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -629,6 +629,7 @@ MonoBehaviour:
   _shootDuration: 0
   _bulletPoint: {fileID: 5502036772174146972}
   _helicopter: {fileID: 5839955110556970388}
+  _weaponPart: {fileID: 5978336515715017654}
 --- !u!114 &5978336515715017654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,7 +643,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestroyedImmediately: 0
-  _shooting: {fileID: 4423543792429797762}
 --- !u!65 &2215560625534981814
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -858,6 +858,7 @@ MonoBehaviour:
   _shootDuration: 0.1
   _bulletPoint: {fileID: 417368379007887645}
   _helicopter: {fileID: 5839955110556970388}
+  _weaponPart: {fileID: 3618250026512261418}
 --- !u!65 &3056498504690723110
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -884,7 +885,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestroyedImmediately: 0
-  _shooting: {fileID: 8349716601615816586}
 --- !u!54 &9080111895722439008
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1380,6 +1380,7 @@ MonoBehaviour:
   _shootDuration: 0
   _bulletPoint: {fileID: 8539262824142963291}
   _helicopter: {fileID: 5839955110556970388}
+  _weaponPart: {fileID: 537588392566405997}
 --- !u!65 &7665854754482454308
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1406,7 +1407,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestroyedImmediately: 0
-  _shooting: {fileID: 671266886348563103}
 --- !u!54 &6626933679347214579
 Rigidbody:
   m_ObjectHideFlags: 0
