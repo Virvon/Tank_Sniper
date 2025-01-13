@@ -23,6 +23,10 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
             Container
                 .BindFactory<string, Transform, UniTask<SelectingPanelElement>, SelectingPanelElement.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<SelectingPanelElement>>();
+            
+            Container
+                .BindFactory<string, Transform, UniTask<ProgressBarElement>, ProgressBarElement.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<ProgressBarElement>>();
         }
     }
 }

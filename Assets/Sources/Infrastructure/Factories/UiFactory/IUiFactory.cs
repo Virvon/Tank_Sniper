@@ -1,4 +1,5 @@
-﻿using Assets.Sources.UI.MainMenu;
+﻿using Assets.Sources.UI;
+using Assets.Sources.UI.MainMenu;
 using Assets.Sources.UI.MainMenu.Store;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -18,5 +19,6 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         UniTask CreateDroneDefeatWindow();
         UniTask<SelectingPanelElement> CreateCharacterSkinPanel(Transform parent);
         UniTask CreateOptionsWindow();
+        UniTask<ProgressBarElement> CreateProgressBarElement(Transform parent);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Assets.Sources.Types;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Assets.Sources.Services.StaticDataService.Configs.Level.Sequence
 {
@@ -9,6 +10,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs.Level.Sequence
         public BiomeType Type;
         public string[] Sequence;
         public string MainMenuScene;
+        public AssetReference IconReference;
 
         public BiomeType Key => Type;
 

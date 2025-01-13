@@ -13,5 +13,6 @@
         public const string DroneDefeatWindow = "DroneDefeatWindow";
         public const string CharacterSkinPanel = "CharacterSkinPanel";
         public const string OptionsWindow = "OptionsWindow";
+        public const string ProgressBarElement = "ProgressBarElement";
     }
 }

@@ -14,13 +14,21 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         private readonly Window.Factory _windowFactory;
         private readonly DiContainer _container;
         private readonly SelectingPanelElement.Factory _selectingPanelElementFactory;
+        private readonly ProgressBarElement.Factory _progressBarElementFactory;
 
-        public UiFactory(Window.Factory windowFactory, DiContainer container, SelectingPanelElement.Factory selectingPanelElementFactory)
+        public UiFactory(
+            Window.Factory windowFactory, DiContainer container,
+            SelectingPanelElement.Factory selectingPanelElementFactory,
+            ProgressBarElement.Factory progressBarElementFactory)
         {
             _windowFactory = windowFactory;
             _container = container;
             _selectingPanelElementFactory = selectingPanelElementFactory;
+            _progressBarElementFactory = progressBarElementFactory;
         }
+
+        public async UniTask<ProgressBarElement> CreateProgressBarElement(Transform parent) =>
+            await _progressBarElementFactory.Create(UiFactoryAssets.ProgressBarElement, parent);
 
         public async UniTask CreateOptionsWindow()
         {
