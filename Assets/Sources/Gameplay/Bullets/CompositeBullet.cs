@@ -1,7 +1,6 @@
-﻿using Assets.Sources.Infrastructure.Factories.GameplayFactory;
-using Cysharp.Threading.Tasks;
+﻿using Assets.Sources.Infrastructure.Factories.BulletFactory;
+using Assets.Sources.Types;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace Assets.Sources.Gameplay.Bullets
@@ -10,12 +9,12 @@ namespace Assets.Sources.Gameplay.Bullets
     {
         private readonly Vector3 BombDiretionOffset = new Vector3(0, 2, 0);
 
-        private IGameplayFactory _gameplayFactory;
+        private IBulletFactory _bulletFactory;
         private uint _bombsCount;
 
         [Inject]
-        private void Construct(IGameplayFactory gameplayFactory) =>
-            _gameplayFactory = gameplayFactory;
+        private void Construct(IBulletFactory bulletFactory) =>
+            _bulletFactory = bulletFactory;
 
         public CompositeBullet BindBombsCount(uint bombsCount)
         {
@@ -36,7 +35,7 @@ namespace Assets.Sources.Gameplay.Bullets
             {
                 Vector3 bombDirection = (Random.onUnitSphere + BombDiretionOffset).normalized;
 
-                //_gameplayFactory.CreateBomb(Types.BulletType.Bomb, transform.position, Quaternion.LookRotation(bombDirection));
+                _bulletFactory.CreateForwardFlyingBullet(ForwardFlyingBulletType.Bomb, transform.position, Quaternion.LookRotation(bombDirection));
             }
         }
     }

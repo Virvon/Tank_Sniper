@@ -1,4 +1,5 @@
-﻿using Assets.Sources.Services.InputService;
+﻿using Assets.Sources.MainMenu.Weapons;
+using Assets.Sources.Services.InputService;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;

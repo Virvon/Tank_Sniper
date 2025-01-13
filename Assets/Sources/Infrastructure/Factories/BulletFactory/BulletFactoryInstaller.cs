@@ -35,6 +35,10 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
                .FromFactory<ReferencePrefabFactoryAsync<TransmittingLaser>>();
             
             Container
+               .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<CompositeBullet>, BulletFactory.Factory<CompositeBullet>>()
+               .FromFactory<ReferencePrefabFactoryAsync<CompositeBullet>>();
+            
+            Container
                .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<Muzzle>, Muzzle.Factory>()
                .FromFactory<ReferencePrefabFactoryAsync<Muzzle>>();
         }

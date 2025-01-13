@@ -20,6 +20,7 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
         private readonly Factory<Laser> _directionalLaserFactory;
         private readonly Factory<TargetingLaser> _targetingLaserFactory;
         private readonly Factory<TransmittingLaser> _transmittedLaserFactory;
+        private readonly Factory<CompositeBullet> _compositeBulletFactory;
         private readonly Muzzle.Factory _muzzleFactory;
 
         public BulletFactory(
@@ -27,13 +28,15 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
             Factory<CollidingBullet> forwardFlyingBulletFactory,
             Factory<Laser> directionalLaserFactory,
             Muzzle.Factory muzzleFactory,
-            Factory<HomingBullet> homingBulletFactory)
+            Factory<HomingBullet> homingBulletFactory,
+            Factory<CompositeBullet> compositeBulletFactory)
         {
             _staticDataService = staticDataService;
             _forwardFlyingBulletFactory = forwardFlyingBulletFactory;
             _directionalLaserFactory = directionalLaserFactory;
             _muzzleFactory = muzzleFactory;
             _homingBulletFactory = homingBulletFactory;
+            _compositeBulletFactory = compositeBulletFactory;
         }
 
         public async UniTask CreateMuzzle(MuzzleType type, Vector3 position, Quaternion rotation)
@@ -93,6 +96,17 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
 
             bullet
                 .BindHomingSettings(config.SearchRadius, config.RotationSpeed, config.TargetingDelay)
+                .BindSettings(config.ExplosionLifeTime, config.FlightSpeed, config.LifeTimeLimit)
+                .BindExplosionSettings(config.ExplosionRadius, config.ExplosionForce, config.Damage);
+        }
+
+        public async UniTask CreateCompositeBullet(Vector3 position, Quaternion rotation)
+        {
+            CompositeBulletConfig config = _staticDataService.CompositeBulletConfig;
+            CompositeBullet bullet = await _compositeBulletFactory.Create(config.AssetReference, position, rotation);
+
+            bullet
+                .BindBombsCount(config.BombsCount)
                 .BindSettings(config.ExplosionLifeTime, config.FlightSpeed, config.LifeTimeLimit)
                 .BindExplosionSettings(config.ExplosionRadius, config.ExplosionForce, config.Damage);
         }

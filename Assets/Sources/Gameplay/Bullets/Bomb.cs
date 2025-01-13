@@ -1,8 +1,6 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using Zenject;
 
 namespace Assets.Sources.Gameplay.Bullets
 {
@@ -14,7 +12,16 @@ namespace Assets.Sources.Gameplay.Bullets
                 Explode();
         }
 
-        protected override void DestroyAfterLifeTimeLimit(float lifeTimeLimt) =>
-            Explode();
+        protected override void DestroyAfterLifeTimeLimit(float lifeTimeLimt)
+        {
+            StartCoroutine(Waiter(lifeTimeLimt, () => Explode()));
+        }
+
+        private IEnumerator Waiter(float delay, Action callback)
+        {
+            yield return new WaitForSeconds(delay);
+
+            callback?.Invoke();
+        }
     }
 }

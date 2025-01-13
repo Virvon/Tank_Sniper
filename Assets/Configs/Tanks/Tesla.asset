@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad477fbe053aa4d4c84a8414cf6c9a82, type: 3}
+  m_Name: Tesla
+  m_EditorClassIdentifier: 
+  Level: 4
+  AssetReference:
+    m_AssetGUID: af0b5f84d14d0a041b3bfb760a1d4af3
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  IsUnlockOnStart: 0
+  BaseMaterialAssetReference:
+    m_AssetGUID: b73fe1bd9548ce145a85245453556b15
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  MainMenuWrapperAssetReference:
+    m_AssetGUID: a03f1af8c7cc8244a91c91da672a3bce
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  GameplayWrapperAssetReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

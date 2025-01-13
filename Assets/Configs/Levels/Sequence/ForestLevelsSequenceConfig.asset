@@ -20,4 +20,4 @@ MonoBehaviour:
   - Forest3
   - Forest2
   - Forest1
-  MainMenuScene: WinterMainMenuScene
+  MainMenuScene: DesertMainMenuScene

@@ -4,5 +4,6 @@
     {
         Fire,
         FireFlash,
+        LaserFlash,
     }
 }

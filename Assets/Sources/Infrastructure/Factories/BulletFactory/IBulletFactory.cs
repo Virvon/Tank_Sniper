@@ -12,5 +12,6 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
         UniTask CreateMuzzle(MuzzleType type, Vector3 position, Quaternion rotation);
         UniTask CreateTargetingLaser(Vector3 position, Vector3 targetPosition);
         UniTask CreateTransmittingLaser(Vector3 positoin, Quaternion rotation);
+        UniTask CreateCompositeBullet(Vector3 position, Quaternion rotation);
     }
 }

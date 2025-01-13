@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2460356773891562753}
   - component: {fileID: 6316810444079903667}
   - component: {fileID: 1006243020046913624}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 928422715872475701}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 265899765862836568}
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 44ca95d612d408d4291641a54fdea833, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3010728338934734121}
   - component: {fileID: 8414725328577390284}
   - component: {fileID: 7281804503305430752}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CompositeBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7281804503305430752
 MonoBehaviour:
@@ -159,8 +159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c34f11a2b843448b93b5dea24751a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionParticlePrefab: {fileID: 0}
+  _explosionParticlePrefab: {fileID: 5738518211207305529, guid: a8b24348ed718974cafed3ee7e4bc783,
+    type: 3}
   _projectile: {fileID: 928422715872475701}
-  _rigidbody: {fileID: 0}
+  _rigidbody: {fileID: 3010728338934734121}
   _collider: {fileID: 8414725328577390284}
   _isExplosionAlongMoveDiretion: 0

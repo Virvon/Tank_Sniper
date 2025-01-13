@@ -39,6 +39,7 @@ namespace Assets.Sources.Services.StaticDataService
         public DestructionConfig DestructionConfig { get; private set; }
         public GameplaySettingsConfig GameplaySettingsConfig { get; private set; }
         public EnviromentExplosionsConfig EnviromentExplosionsConfig { get; private set; }
+        public CompositeBulletConfig CompositeBulletConfig { get; private set; }
 
         public async UniTask InitializeAsync()
         {
@@ -61,6 +62,7 @@ namespace Assets.Sources.Services.StaticDataService
                 UniTask.Create(async () => GameplaySettingsConfig = await LoadConfig<GameplaySettingsConfig>()),
                 UniTask.Create(async () => _levelsSequenceCofnfig = await LoadConfigs<BiomeType, LevelsSequenceConfig>()),
                 UniTask.Create(async () => EnviromentExplosionsConfig = await LoadConfig<EnviromentExplosionsConfig>()),
+                UniTask.Create(async () => CompositeBulletConfig = await LoadConfig<CompositeBulletConfig>()),
             };
 
             await UniTask.WhenAll(tasks);

@@ -21,6 +21,7 @@ namespace Assets.Sources.Services.StaticDataService
         DestructionConfig DestructionConfig { get; }
         GameplaySettingsConfig GameplaySettingsConfig { get; }
         EnviromentExplosionsConfig EnviromentExplosionsConfig { get; }
+        CompositeBulletConfig CompositeBulletConfig { get; }
 
         EnemyConfig GetEnemy(EnemyType type);
         LevelConfig GetLevel(string key);

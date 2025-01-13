@@ -25,7 +25,12 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 1
   MainMenuWrapperAssetReference:
-    m_AssetGUID: 1f4ad4a06ec122b47ac1638238cb8d0b
+    m_AssetGUID: c30262cfdd5cab4449447f84ac3a9ea6
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  GameplayWrapperAssetReference:
+    m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

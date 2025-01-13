@@ -8,5 +8,7 @@
         BazookaRocket,
         MachineGunBullet,
         EnemyTankRocket,
+        LaserBullet,
+        Bomb,
     }
 }
