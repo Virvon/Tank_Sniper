@@ -22,6 +22,12 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
             _selectingPanelElementFactory = selectingPanelElementFactory;
         }
 
+        public async UniTask CreateOptionsWindow()
+        {
+            Window window = await _windowFactory.Create(UiFactoryAssets.OptionsWindow);
+            _container.BindInstance(window as OptionsWindow).AsSingle();
+        }
+
         public async UniTask<SelectingPanelElement> CreateCharacterSkinPanel(Transform parent) =>
             await _selectingPanelElementFactory.Create(UiFactoryAssets.CharacterSkinPanel, parent);
 

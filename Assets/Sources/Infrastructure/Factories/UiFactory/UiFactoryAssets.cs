@@ -12,5 +12,6 @@
         public const string LoadingCurtain = "LoadingCurtain";
         public const string DroneDefeatWindow = "DroneDefeatWindow";
         public const string CharacterSkinPanel = "CharacterSkinPanel";
+        public const string OptionsWindow = "OptionsWindow";
     }
 }

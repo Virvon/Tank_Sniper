@@ -31,6 +31,7 @@ namespace Assets.Sources.MainMenu
         public async void Initialize()
         {
             await _mainMenuFactory.CreateDesk();
+            await _uiFactory.CreateOptionsWindow();
             _mainMenuWindow = await _uiFactory.CreateMainMenu();
 
             _mainMenuWindow.FightButtonClicked += OnFightButtonClicked;

@@ -14,6 +14,7 @@ namespace Assets.Sources.UI.MainMenu
         [SerializeField] private Button _buyTankButton;
         [SerializeField] private Button _openStoreButton;
         [SerializeField] private Button _closeStoreButton;
+        [SerializeField] private Button _optionsWindowButton;
 
         [SerializeField] private CanvasGroup _mainCanvasGroup;
         [SerializeField] private CanvasGroup _storeCanvasGroup;
@@ -23,13 +24,15 @@ namespace Assets.Sources.UI.MainMenu
         [SerializeField] private UiSelectedTankPoint _selectedTankPoint;
 
         private Desk _desk;
+        private OptionsWindow _optionsWindow;
 
         public event Action FightButtonClicked;
 
         [Inject]
-        public void Construct(Desk desk, MainMenuCamera mainMenuCamera)
+        public void Construct(Desk desk, MainMenuCamera mainMenuCamera, OptionsWindow optionsWindow)
         {
             _desk = desk;
+            _optionsWindow = optionsWindow;
 
             _canvas.worldCamera = mainMenuCamera.UiCamera;
 
@@ -38,6 +41,7 @@ namespace Assets.Sources.UI.MainMenu
             _buyTankButton.onClick.AddListener(OnBuyTankButtonClicked);
             _openStoreButton.onClick.AddListener(OnOpenStoreButtonClicked);
             _closeStoreButton.onClick.AddListener(OnCloseStoreButtonClicked);
+            _optionsWindowButton.onClick.AddListener(OnOptionsWindowButtonClicked);
         }
 
         private void OnDestroy()
@@ -47,6 +51,7 @@ namespace Assets.Sources.UI.MainMenu
             _buyTankButton.onClick.RemoveListener(OnBuyTankButtonClicked);
             _openStoreButton.onClick.RemoveListener(OnOpenStoreButtonClicked);
             _closeStoreButton.onClick.RemoveListener(OnCloseStoreButtonClicked);
+            _optionsWindowButton.onClick.RemoveListener(OnOptionsWindowButtonClicked);
         }
 
         private void OnDeskEmploymentChanged(bool hasEmptyCells) =>
@@ -80,5 +85,8 @@ namespace Assets.Sources.UI.MainMenu
             canvasGroup.interactable = isActive;
             canvasGroup.blocksRaycasts = isActive;
         }
+
+        private void OnOptionsWindowButtonClicked() =>
+            _optionsWindow.Show();
     }
 }

@@ -17,5 +17,6 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         UniTask CreateDroneGameplayWindow();
         UniTask CreateDroneDefeatWindow();
         UniTask<SelectingPanelElement> CreateCharacterSkinPanel(Transform parent);
+        UniTask CreateOptionsWindow();
     }
 }
