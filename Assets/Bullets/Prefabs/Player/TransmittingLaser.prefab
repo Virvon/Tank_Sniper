@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosionParticlePrefab: {fileID: 19864098, guid: 2335422975efaa34f9ecb61a50654b34,
     type: 3}
-  _projetile: {fileID: 6860547370076713428}
+  _projectile: {fileID: 6860547370076713428}
 --- !u!1001 &6788998421041101392
 PrefabInstance:
   m_ObjectHideFlags: 0

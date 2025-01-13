@@ -4,19 +4,16 @@ using UnityEngine;
 
 namespace Assets.Sources.Gameplay.Player.Weapons
 {
-    public class PlayerWeapon5 : PlayerTankWeapon
+    public class DirectionalLaserWeapon : PlayerTankWeapon
     {
-        [SerializeField] private uint _bulletShootsCount;
-        [SerializeField] private float _bulletShootsDuration;
-
         protected override void Shoot()
         {
-            StartCoroutine(Shooter(_bulletShootsCount, _bulletShootsDuration));
+            BulletFactory.CreateDirectionalLaser(GetBulletPoint(0).position, BulletRotation);
         }
 
         protected override void SuperShoot()
         {
-            //GameplayFactory.CreateTransmittingLaser(BulletType.TransmittingLaser, ShootPoint, BulletRotation);
+            StartCoroutine(Shooter(SuperBulletShootsCount, SuperBulletShootsDuration));
         }
 
         private IEnumerator Shooter(uint shootsCount, float shootsDuration)
@@ -25,7 +22,7 @@ namespace Assets.Sources.Gameplay.Player.Weapons
 
             for (int i = 0; i < shootsCount; i++)
             {
-                //GameplayFactory.CreateLaser(bulletType, ShootPoint, BulletRotation);
+                BulletFactory.CreateHomingBullet(HomingBulletType.Laser, GetBulletPoint(i).position, BulletRotation);
 
                 yield return duration;
             }

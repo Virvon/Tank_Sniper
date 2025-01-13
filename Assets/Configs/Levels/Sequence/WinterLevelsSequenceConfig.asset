@@ -19,3 +19,9 @@ MonoBehaviour:
   - Winter4
   - Winter1
   MainMenuScene: WinterMainMenuScene
+  IconReference:
+    m_AssetGUID: 03f36f564c9594c4e8735c420f2660e1
+    m_SubObjectName: SnowBiomeIcon
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1

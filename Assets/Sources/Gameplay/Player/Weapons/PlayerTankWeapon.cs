@@ -11,6 +11,10 @@ namespace Assets.Sources.Gameplay.Player.Weapons
     {
         [SerializeField] private uint _bulletsCapacity;
         [SerializeField] private uint _requireShotsNumberToSuperShot;
+        [SerializeField] private uint _bulletShootsCount;
+        [SerializeField] private float _bulletShootsDuration;
+        [SerializeField] private uint _superBulletShootsCount;
+        [SerializeField] private float _supperBulletShootsDuration;
 
         private GameplayCamera _gameplayCamera;
         private TankAiming _aiming;
@@ -27,6 +31,11 @@ namespace Assets.Sources.Gameplay.Player.Weapons
         public uint BulletsCount => _bulletsCount;
         public uint RequireShotsNumberToSuperShot => _requireShotsNumberToSuperShot;
         public uint ShootsNumberToSuperShot => _shootsNumberToSuperShot;
+
+        protected uint BulletShootsCount => _bulletShootsCount;
+        protected float BulletShootsDuration => _bulletShootsDuration;
+        protected uint SuperBulletShootsCount => _superBulletShootsCount;
+        protected float SuperBulletShootsDuration => _supperBulletShootsDuration;
 
         [Inject]
         private void Construct(IBulletFactory bulletFactory, GameplayCamera gameplayCamera, TankAiming aiming)
@@ -72,7 +81,7 @@ namespace Assets.Sources.Gameplay.Player.Weapons
 
         protected Transform GetBulletPoint(int index)
         {
-            int bulletPointIndex = index >= _bulletPoints.Length ? _bulletPoints.Length % index : index;
+            int bulletPointIndex = index >= _bulletPoints.Length ? index - ((int)(index / _bulletPoints.Length) * _bulletPoints.Length) : index;
 
             return _bulletPoints[bulletPointIndex];
         }

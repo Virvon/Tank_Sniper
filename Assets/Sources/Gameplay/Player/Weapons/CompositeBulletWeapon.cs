@@ -4,16 +4,17 @@ using UnityEngine;
 
 namespace Assets.Sources.Gameplay.Player.Weapons
 {
-    public class ForwardFlyingBulletsPlayerTankWeapon : PlayerTankWeapon
-    {       
-        [SerializeField] private ForwardFlyingBulletType _bulletType;
-        [SerializeField] private ForwardFlyingBulletType _supperBulletType;
+    public class CompositeBulletWeapon : PlayerTankWeapon
+    {
+        protected override void Shoot()
+        {
+            StartCoroutine(Shooter(BulletsCount, BulletShootsDuration, ForwardFlyingBulletType.Bullet));
+        }
 
-        protected override void Shoot() =>
-            StartCoroutine(Shooter(BulletShootsCount, BulletShootsDuration, _bulletType));
-
-        protected override void SuperShoot() =>
-            StartCoroutine(Shooter(SuperBulletShootsCount, SuperBulletShootsDuration, _supperBulletType));
+        protected override void SuperShoot()
+        {
+            BulletFactory.CreateCompositeBullet(GetBulletPoint(0).position, BulletRotation);
+        }
 
         private IEnumerator Shooter(uint shootsCount, float shootsDuration, ForwardFlyingBulletType bulletType)
         {

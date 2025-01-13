@@ -18,7 +18,7 @@ namespace Assets.Sources.MainMenu.Animations
 
         public void Play()
         {
-            if (enabled == false)
+            if (isActiveAndEnabled == false)
                 return;
 
             if (_animator != null)

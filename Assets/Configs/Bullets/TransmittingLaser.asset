@@ -9,21 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 434f843cdf9396241b5d9125d97d9a33, type: 3}
-  m_Name: HomingLaser
+  m_Script: {fileID: 11500000, guid: d24426d9e26825141b881c5368b2250c, type: 3}
+  m_Name: TransmittingLaser
   m_EditorClassIdentifier: 
   AssetReference:
-    m_AssetGUID: 51416fe2087c8824fbb28281357e929e
+    m_AssetGUID: 6f1ce352ec51e9041b7690420c37ae36
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  ExplosionLifeTime: 0
-  ExplosionForce: 0
-  ExplosionRadius: 0
-  Damage: 0
-  FlightSpeed: 90
-  LifeTimeLimit: 5
-  Type: 1
-  SearchRadius: 20
-  RotationSpeed: 60
-  TargetingDelay: 0.1
+  ExplosionLifeTime: 1
+  ExplosionForce: 200
+  ExplosionRadius: 3
+  Damage: 10
+  ProjectileLifeTime: 0.15
+  TargetsCount: 3

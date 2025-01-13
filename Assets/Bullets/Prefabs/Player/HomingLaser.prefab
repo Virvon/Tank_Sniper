@@ -78,9 +78,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosionParticlePrefab: {fileID: 19864098, guid: 2335422975efaa34f9ecb61a50654b34,
     type: 3}
-  _projectile: {fileID: 0}
+  _projectile: {fileID: 548683186581744336}
   _rigidbody: {fileID: 3010728338934734121}
-  _collider: {fileID: 0}
+  _collider: {fileID: 8414725328577390284}
   _isExplosionAlongMoveDiretion: 0
 --- !u!1001 &4006841419587836547
 PrefabInstance:
@@ -151,6 +151,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f65bd7033797434f8f8308255933af0, type: 3}
+--- !u!1 &548683186581744336 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3460586927562289235, guid: 6f65bd7033797434f8f8308255933af0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4006841419587836547}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4151148336464341289 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1009086011935028138, guid: 6f65bd7033797434f8f8308255933af0,

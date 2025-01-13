@@ -324,11 +324,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 605391bb16fae904c98fc0e88c530451
-    m_Address: RangerGameplayWrapper
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0d7d0d98dc73bf0449adc389c990eb76
     m_Address: AimingCamera
     m_ReadOnly: 0
@@ -915,6 +910,81 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 26f75793a7a44f24782712718ffb0eb1
     m_Address: PlayerCharacter
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 91e310eaea3d5e84992e84ba01852bb4
+    m_Address: OptionsWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3aae5f3d64ae47a44b89ce1264ff6cfd
+    m_Address: ProgressBarElement
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4af3f9e03a8131c4482974984e0ac7ee
+    m_Address: DesertBiomeIcon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0a0ea6f579e6ce74ea83a323e48cb59f
+    m_Address: ForestBiomeIcon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 03f36f564c9594c4e8735c420f2660e1
+    m_Address: SnowBiomeIcon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 49339c30033733f42ba7ac6eb32f91e4
+    m_Address: TankBulletIcon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3da9f2d0682a2e14093fa38819fed177
+    m_Address: SuperBulletIcon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e01e802e6082f254781e0741f6734dfd
+    m_Address: RangerGameplayWrapper
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 62f20867419760745bfe15bf0c718bd7
+    m_Address: CrusherGameplayWrapper
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9305dd6e272825840828f4408668e1c3
+    m_Address: ArcherGameplayWrapper
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bbeaf578cdbbd594c8c0831c91cbf5d2
+    m_Address: TeslaGameplayWrapper
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a637a6ce0bec5243909f26ace2b103b
+    m_Address: ThunderGameplayWrapper
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ccf2539bf7f6c9542a812b903341806b
+    m_Address: ChaosGameplayWrapper
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc80d5cc3268cfc46a95f7b7e00b1f76
+    m_Address: AvengerGameplyaWrapper
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc406d9045b66644eaf9882992b05f70
+    m_Address: AnihilatorGameplayWrapper
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

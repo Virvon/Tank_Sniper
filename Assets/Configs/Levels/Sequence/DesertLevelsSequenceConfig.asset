@@ -21,3 +21,9 @@ MonoBehaviour:
   - Desert2
   - Desert1
   MainMenuScene: WinterMainMenuScene
+  IconReference:
+    m_AssetGUID: 4af3f9e03a8131c4482974984e0ac7ee
+    m_SubObjectName: DesertBiomeIcon
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1

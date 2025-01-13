@@ -21,3 +21,9 @@ MonoBehaviour:
   - Forest2
   - Forest1
   MainMenuScene: DesertMainMenuScene
+  IconReference:
+    m_AssetGUID: 0a0ea6f579e6ce74ea83a323e48cb59f
+    m_SubObjectName: ForestBiomeIcon
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1

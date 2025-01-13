@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4311f2c12fefeb5479ac4125cdcc0484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectileVisualEffect: {fileID: 3488193166267544549}
   _explosionParticlePrefab: {fileID: 19864098, guid: 2335422975efaa34f9ecb61a50654b34,
     type: 3}
+  _projectile: {fileID: 1551303453634210423}
+  _projectileVisualEffect: {fileID: 3488193166267544549}
 --- !u!1001 &1478736651018183155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117,6 +118,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f8cab9af8346da4fa3cc4a07c6c05f9, type: 3}
+--- !u!1 &1551303453634210423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 72850770830953348, guid: 5f8cab9af8346da4fa3cc4a07c6c05f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1478736651018183155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3373733929231629620 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4203105315748748487, guid: 5f8cab9af8346da4fa3cc4a07c6c05f9,
