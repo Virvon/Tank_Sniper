@@ -8,7 +8,7 @@ using Zenject;
 
 namespace Assets.Sources.UI.MainMenu.Store
 {
-    public abstract class SelectingPanel<TKey> : StorePanelTab
+    public abstract class SelectionPanel<TKey> : StorePanelTab
     {
         [SerializeField] private Transform _content;
 

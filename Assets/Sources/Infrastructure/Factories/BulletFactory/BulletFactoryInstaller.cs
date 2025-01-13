@@ -1,5 +1,4 @@
 ﻿using Assets.Sources.Gameplay.Bullets;
-using Assets.Sources.MainMenu;
 using Assets.Sources.Services.AssetManagement;
 using Cysharp.Threading.Tasks;
 using UnityEngine;

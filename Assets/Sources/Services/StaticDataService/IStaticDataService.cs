@@ -22,6 +22,7 @@ namespace Assets.Sources.Services.StaticDataService
         GameplaySettingsConfig GameplaySettingsConfig { get; }
         EnviromentExplosionsConfig EnviromentExplosionsConfig { get; }
         CompositeBulletConfig CompositeBulletConfig { get; }
+        PlayerCharacterConfig[] PlayerCharacterCofigs { get; }
 
         EnemyConfig GetEnemy(EnemyType type);
         LevelConfig GetLevel(string key);
@@ -33,5 +34,6 @@ namespace Assets.Sources.Services.StaticDataService
         DecalConfig GetDecal(DecalType type);
         MuzzleConfig GetMuzzle(MuzzleType type);
         LevelsSequenceConfig GetLevelsSequence(BiomeType type);
+        PlayerCharacterConfig GetPlayerCharacter(PlayerCharacterType type);
     }
 }

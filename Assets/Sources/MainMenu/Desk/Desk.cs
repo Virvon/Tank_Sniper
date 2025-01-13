@@ -5,7 +5,7 @@ using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
-namespace Assets.Sources.MainMenu
+namespace Assets.Sources.MainMenu.Desk
 {
     public class Desk : MonoBehaviour
     {
@@ -39,7 +39,7 @@ namespace Assets.Sources.MainMenu
         private void OnDeskCellEmploymentChanged() =>
             EmploymentChanged?.Invoke(_cells.Any(cell => cell.IsEmpty));
 
-        
+
 
         public class Factory : PlaceholderFactory<string, UniTask<Desk>>
         {

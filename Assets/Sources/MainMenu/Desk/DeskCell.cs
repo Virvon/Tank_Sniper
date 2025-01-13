@@ -7,7 +7,7 @@ using System;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Sources.MainMenu
+namespace Assets.Sources.MainMenu.Desk
 {
     public class DeskCell : MonoBehaviour
     {

@@ -1,13 +1,13 @@
 ﻿using Assets.Sources.Data;
-using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
 using Assets.Sources.Infrastructure.Factories.TankFactory;
+using Assets.Sources.MainMenu.Animations;
 using Assets.Sources.Services.PersistentProgress;
 using Cysharp.Threading.Tasks;
-using System.Threading.Tasks;
+using System;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Sources.MainMenu
+namespace Assets.Sources.MainMenu.CharacterPoints
 {
     public abstract class SelectedTankPoint : MonoBehaviour
     {
@@ -27,7 +27,7 @@ namespace Assets.Sources.MainMenu
             _persistentProgressService = persistentProgressService;
             _tankFactory = tankFactory;
 
-            _persistentProgressService.Progress.SelectedTankChanged += OnSelectedTankChanged;          
+            _persistentProgressService.Progress.SelectedTankChanged += OnSelectedTankChanged;
         }
 
         private async void Start() =>

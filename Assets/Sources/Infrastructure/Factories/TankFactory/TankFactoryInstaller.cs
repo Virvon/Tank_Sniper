@@ -29,6 +29,10 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
                 .FromFactory<ReferencePrefabFactoryAsync<PlayerTankWrapper>>();
             
             Container
+                .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, Transform, UniTask<PlayerCharacter>, PlayerCharacter.Factory>()
+                .FromFactory<ReferencePrefabFactoryAsync<PlayerCharacter>>();
+            
+            Container
                 .BindFactory<string, Vector3, Quaternion, UniTask<PlayerWrapper>, PlayerDroneWrapper.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<PlayerWrapper>>();
             

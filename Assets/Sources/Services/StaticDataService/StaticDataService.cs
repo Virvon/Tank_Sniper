@@ -23,7 +23,8 @@ namespace Assets.Sources.Services.StaticDataService
         private Dictionary<TankSkinType, TankSkinConfig> _tankSkinConfigs;
         private Dictionary<DecalType, DecalConfig> _decalConfigs;
         private Dictionary<MuzzleType, MuzzleConfig> _muzzleConfigs;
-        private Dictionary<BiomeType, LevelsSequenceConfig> _levelsSequenceCofnfig;
+        private Dictionary<BiomeType, LevelsSequenceConfig> _levelsSequenceConfigs;
+        private Dictionary<PlayerCharacterType, PlayerCharacterConfig> _playerCharacterConfigs;
 
         public StaticDataService(IAssetProvider assetsProvider) =>
             _assetsProvider = assetsProvider;
@@ -40,6 +41,7 @@ namespace Assets.Sources.Services.StaticDataService
         public GameplaySettingsConfig GameplaySettingsConfig { get; private set; }
         public EnviromentExplosionsConfig EnviromentExplosionsConfig { get; private set; }
         public CompositeBulletConfig CompositeBulletConfig { get; private set; }
+        public PlayerCharacterConfig[] PlayerCharacterCofigs => _playerCharacterConfigs.Values.ToArray();
 
         public async UniTask InitializeAsync()
         {
@@ -60,16 +62,20 @@ namespace Assets.Sources.Services.StaticDataService
                 UniTask.Create(async () => AimingConfig = await LoadConfig<AimingConfig>()),
                 UniTask.Create(async () => DestructionConfig = await LoadConfig<DestructionConfig>()),
                 UniTask.Create(async () => GameplaySettingsConfig = await LoadConfig<GameplaySettingsConfig>()),
-                UniTask.Create(async () => _levelsSequenceCofnfig = await LoadConfigs<BiomeType, LevelsSequenceConfig>()),
+                UniTask.Create(async () => _levelsSequenceConfigs = await LoadConfigs<BiomeType, LevelsSequenceConfig>()),
                 UniTask.Create(async () => EnviromentExplosionsConfig = await LoadConfig<EnviromentExplosionsConfig>()),
                 UniTask.Create(async () => CompositeBulletConfig = await LoadConfig<CompositeBulletConfig>()),
+                UniTask.Create(async () => _playerCharacterConfigs = await LoadConfigs<PlayerCharacterType, PlayerCharacterConfig>()),
             };
 
             await UniTask.WhenAll(tasks);
         }
 
+        public PlayerCharacterConfig GetPlayerCharacter(PlayerCharacterType type) =>
+            _playerCharacterConfigs.TryGetValue(type, out PlayerCharacterConfig config) ? config : null;
+
         public LevelsSequenceConfig GetLevelsSequence(BiomeType type) =>
-            _levelsSequenceCofnfig.TryGetValue(type, out LevelsSequenceConfig config) ? config : null;
+            _levelsSequenceConfigs.TryGetValue(type, out LevelsSequenceConfig config) ? config : null;
 
         public MuzzleConfig GetMuzzle(MuzzleType type) =>
             _muzzleConfigs.TryGetValue(type, out MuzzleConfig config) ? config : null;

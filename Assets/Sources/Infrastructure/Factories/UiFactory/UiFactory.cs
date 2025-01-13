@@ -22,6 +22,9 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
             _selectingPanelElementFactory = selectingPanelElementFactory;
         }
 
+        public async UniTask<SelectingPanelElement> CreateCharacterSkinPanel(Transform parent) =>
+            await _selectingPanelElementFactory.Create(UiFactoryAssets.CharacterSkinPanel, parent);
+
         public async UniTask CreateLoadingCurtain()
         {
             LoadingCurtain loadingCurtain = await _windowFactory.Create(UiFactoryAssets.LoadingCurtain) as LoadingCurtain;

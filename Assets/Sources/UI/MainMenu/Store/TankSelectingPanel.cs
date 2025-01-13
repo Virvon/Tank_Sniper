@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Sources.UI.MainMenu.Store
 {
-    public class TankSelectingPanel : SelectingPanel<uint>
+    public class TankSelectingPanel : SelectionPanel<uint>
     {
         protected override void Unsubscribe(IPersistentProgressService persistentProgressService) =>
             persistentProgressService.Progress.TankUnlocked -= Unlock;

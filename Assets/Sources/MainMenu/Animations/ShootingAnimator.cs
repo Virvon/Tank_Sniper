@@ -1,19 +1,13 @@
-﻿using Assets.Sources.Services.StaticDataService;
-using Assets.Sources.Services.StaticDataService.Configs;
+﻿using Assets.Sources.Services.StaticDataService.Configs;
 using System.Collections;
 using UnityEngine;
-using Zenject;
 
-namespace Assets.Sources.MainMenu
+namespace Assets.Sources.MainMenu.Animations
 {
     public class ShootingAnimator : TankAnimator
     {
-        
-
         private Quaternion _startRotation;
         private Quaternion _shootingRotation;
-
-        
 
         private void Start()
         {
@@ -26,7 +20,7 @@ namespace Assets.Sources.MainMenu
             float progress = 0;
             float passedTime = 0;
 
-            while(progress < 1)
+            while (progress < 1)
             {
                 passedTime += Time.deltaTime;
                 progress = passedTime / AnimationsConfig.TankShootingDuration;
@@ -36,26 +30,5 @@ namespace Assets.Sources.MainMenu
                 yield return null;
             }
         }
-    }
-
-    public abstract class TankAnimator : MonoBehaviour
-    {
-        private Coroutine _animator;
-
-        public AnimationsConfig AnimationsConfig { get; private set; }
-
-        [Inject]
-        private void Construct(IStaticDataService staticDataService) =>
-            AnimationsConfig = staticDataService.AnimationsConfig;
-
-        public void Play()
-        {
-            if (_animator != null)
-                StopCoroutine(_animator);
-
-            _animator = StartCoroutine(Animator());
-        }
-
-        protected abstract IEnumerator Animator();
     }
 }

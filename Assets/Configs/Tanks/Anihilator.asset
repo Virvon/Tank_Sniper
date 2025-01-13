@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad477fbe053aa4d4c84a8414cf6c9a82, type: 3}
   m_Name: Anihilator
   m_EditorClassIdentifier: 
-  Level: 2
+  Level: 7
   AssetReference:
     m_AssetGUID: de6a33d499d07db40bf3b6e029bf10b6
     m_SubObjectName: 

@@ -209,7 +209,8 @@ MonoBehaviour:
   - m_GUID: 109e01f8d5476de40a54069ee4cefdbe
     m_Address: CrusherConfig
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Configs
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7003a0c28ed131a478b0f72c7c26bd39
     m_Address: Ranger
@@ -853,7 +854,8 @@ MonoBehaviour:
   - m_GUID: 36b1271b09b9f634687ee95e59c07563
     m_Address: AnihilatorConfig
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Configs
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 20406271af5c1b44fb1a4bcfcbccd242
     m_Address: BaseTankMaterial6
@@ -891,6 +893,23 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 40919be2b51d0944dabc0f970f0447b1
     m_Address: Assets/Tanks/Wrappers/MainMenu/AvengerMainMenuWrapper.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f13353666dcaf954f86ad25490778e77
+    m_Address: Assets/Configs/CharacterSkins/PlayerCharacterConfig1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 22a721332e2dfe54c8363a1a36a8d977
+    m_Address: Assets/Configs/CharacterSkins/PlayerCharacterConfig2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 11a7d50106c58a34e9b859623bb0dcc0
+    m_Address: CharacterSkinPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -2,6 +2,7 @@
 using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
 using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Assets.Sources.Infrastructure.Factories.UiFactory;
+using Assets.Sources.MainMenu.Desk;
 using UnityEngine;
 using Zenject;
 

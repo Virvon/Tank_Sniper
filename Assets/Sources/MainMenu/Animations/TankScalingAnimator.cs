@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Sources.MainMenu
+namespace Assets.Sources.MainMenu.Animations
 {
     public class TankScalingAnimator : TankAnimator
     {

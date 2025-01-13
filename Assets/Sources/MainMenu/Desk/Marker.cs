@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Sources.MainMenu
+namespace Assets.Sources.MainMenu.Desk
 {
     public class Marker : MonoBehaviour
     {

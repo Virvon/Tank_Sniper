@@ -1,4 +1,5 @@
 ﻿using Assets.Sources.MainMenu;
+using Assets.Sources.MainMenu.Desk;
 using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Tanks;

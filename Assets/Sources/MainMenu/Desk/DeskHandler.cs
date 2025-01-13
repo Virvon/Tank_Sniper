@@ -3,7 +3,7 @@ using Assets.Sources.Tanks;
 using System;
 using UnityEngine;
 
-namespace Assets.Sources.MainMenu
+namespace Assets.Sources.MainMenu.Desk
 {
     public class DeskHandler : IDisposable
     {
@@ -38,7 +38,7 @@ namespace Assets.Sources.MainMenu
 
         private void OnHandlePressed(Vector2 handlePosition)
         {
-            if(CheckDeskCellIntersection(handlePosition, out DeskCell deskCell))
+            if (CheckDeskCellIntersection(handlePosition, out DeskCell deskCell))
             {
                 _tank = deskCell.GetTank();
                 _currentTankParentCell = deskCell;
@@ -59,16 +59,16 @@ namespace Assets.Sources.MainMenu
                     _tank.transform.position = new Vector3(worldPosition.x, ReplacedTankBuildingHeight, worldPosition.z);
                 }
 
-                if(CheckDeskCellIntersection(handlePosition, out DeskCell deskCell))
+                if (CheckDeskCellIntersection(handlePosition, out DeskCell deskCell))
                 {
-                    if(deskCell != _lastMarkedCell)
+                    if (deskCell != _lastMarkedCell)
                     {
                         _lastMarkedCell?.HideMark();
                         _lastMarkedCell = deskCell;
                         _lastMarkedCell.Mark(_tank.Level);
                     }
                 }
-                else if(_lastMarkedCell != null)
+                else if (_lastMarkedCell != null)
                 {
                     _lastMarkedCell.HideMark();
                     _lastMarkedCell = null;
@@ -85,7 +85,7 @@ namespace Assets.Sources.MainMenu
 
             if (CheckDeskCellIntersection(_lastHandlePosition, out DeskCell deskCell) && deskCell.CanPlace(_tank.Level))
             {
-                if(deskCell.IsEmpty)
+                if (deskCell.IsEmpty)
                 {
                     deskCell.PlaceTank(_tank);
                 }
@@ -100,7 +100,7 @@ namespace Assets.Sources.MainMenu
                 _currentTankParentCell.PlaceTank(_tank);
             }
 
-            if(_lastMarkedCell != null)
+            if (_lastMarkedCell != null)
             {
                 _lastMarkedCell.HideMark();
                 _lastMarkedCell = null;

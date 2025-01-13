@@ -1,4 +1,4 @@
-﻿using Assets.Sources.MainMenu;
+﻿using Assets.Sources.MainMenu.Animations;
 using Assets.Sources.Services.StaticDataService.Configs;
 using System.Collections;
 using UnityEngine;

@@ -1,4 +1,4 @@
-﻿using Assets.Sources.MainMenu;
+﻿using Assets.Sources.MainMenu.Desk;
 using Assets.Sources.Services.AssetManagement;
 using Cysharp.Threading.Tasks;
 using Zenject;

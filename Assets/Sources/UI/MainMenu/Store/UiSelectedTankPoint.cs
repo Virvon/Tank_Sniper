@@ -2,6 +2,7 @@
 using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
 using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Assets.Sources.MainMenu;
+using Assets.Sources.MainMenu.CharacterPoints;
 using Assets.Sources.Services.InputService;
 using Assets.Sources.Tanks;
 using Cysharp.Threading.Tasks;
@@ -29,7 +30,6 @@ namespace Assets.Sources.UI.MainMenu.Store
         private bool _isRotatedToTarget;
         private Quaternion _startRotation;
         private bool _startHandledRotation;
-        private bool _isHided;
         private Quaternion _targetRotation;
         private Coroutine _rotater;
 
@@ -54,17 +54,11 @@ namespace Assets.Sources.UI.MainMenu.Store
             _inputService.HandleMoveCompleted -= OnHandleMoveCompleted;
         }
 
-        public void Show()
-        {
-            SelectedTank.gameObject.SetActive(true);
-            _isHided = false;
-        }
+        public void Show() =>
+            TankPoint.gameObject.SetActive(true);
 
-        public void Hide()
-        {
-            SelectedTank.gameObject.SetActive(false);
-            _isHided = true;
-        }
+        public void Hide() =>
+            TankPoint.gameObject.SetActive(false);
 
         public void SetTargetRotation(int angle)
         {
@@ -88,9 +82,6 @@ namespace Assets.Sources.UI.MainMenu.Store
                 transform.gameObject.layer = LayerMask.NameToLayer(Layer);
 
             SelectedTank.transform.localScale = Vector3.one * _scale;
-
-            if (_isHided)
-                Hide();
         }
 
         protected override Quaternion GetRotation() =>

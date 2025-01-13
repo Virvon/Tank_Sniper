@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
 
-namespace Assets.Sources.MainMenu
+namespace Assets.Sources.Gameplay.Bullets
 {
     public class Muzzle : MonoBehaviour
     {

@@ -14,16 +14,20 @@ namespace Assets.Sources.Data
         public DecalData[] Decals;
         public BiomeType CurrentBiomeType;
         public uint CurrentLevelIndex;
+        public CharacterSkinData[] CharacterSkins;
+        public PlayerCharacterType SelectedPlayerCharacter;
 
-        public PlayerProgress(TankData[] tanks, TankSkinData[] skins, DecalData[] decals, BiomeType startLevelType)
+        public PlayerProgress(TankData[] tanks, TankSkinData[] skins, DecalData[] decals, BiomeType startLevelType, CharacterSkinData[] characterSkins)
         {
             Tanks = tanks;
             TankSkins = skins;
             Decals = decals;
             CurrentBiomeType = startLevelType;
+            CharacterSkins = characterSkins;
 
             SelectedTankLevel = Tanks.Where(tank => tank.IsUnlocked).First().Level;
             CurrentLevelIndex = 0;
+            SelectedPlayerCharacter = CharacterSkins.First(skin => skin.IsUnlocked).Type;
         }
 
         public event Action<uint> TankUnlocked;
@@ -31,6 +35,8 @@ namespace Assets.Sources.Data
         public event Action<TankSkinType> TankSkinUnlocked;
         public event Action<DecalType> DecalUnlocked;
         public event Action<DecalType> DecalChanged;
+        public event Action<PlayerCharacterType> CharacterSkinUnlocked;
+        public event Action<PlayerCharacterType> CharacterSkinChanged;
 
         public void TryUnlockTank(uint level)
         {
@@ -101,6 +107,23 @@ namespace Assets.Sources.Data
         {
             GetTank(SelectedTankLevel).DecalType = type;
             DecalChanged?.Invoke(type);
+        }
+
+        public CharacterSkinData GetCharacterSkin(PlayerCharacterType type) =>
+            CharacterSkins.First(skin => skin.Type == type);
+
+        public void UnlockCharacterSkin(PlayerCharacterType type)
+        {
+            GetCharacterSkin(type).IsUnlocked = true;
+
+            CharacterSkinUnlocked?.Invoke(type);
+            SelectCharacterSkin(type);
+        }
+
+        public void SelectCharacterSkin(PlayerCharacterType type)
+        {
+            SelectedPlayerCharacter = type;
+            CharacterSkinChanged?.Invoke(type);
         }
     }
 }

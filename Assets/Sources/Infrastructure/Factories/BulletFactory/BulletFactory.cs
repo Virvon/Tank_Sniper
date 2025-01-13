@@ -1,5 +1,4 @@
 ﻿using Assets.Sources.Gameplay.Bullets;
-using Assets.Sources.MainMenu;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Services.StaticDataService.Configs;
 using Assets.Sources.Services.StaticDataService.Configs.Bullets.Colliding;

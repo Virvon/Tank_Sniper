@@ -21,6 +21,7 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
         private readonly PlayerTankWrapper.Factory _playerTankWrapperFactory;
         private readonly PlayerDroneWrapper.Factory _playerDronFactory;
         private readonly Drone.Factory _droneFactory;
+        private readonly PlayerCharacter.Factory _playerCharacterFactory;
 
         public TankFactory(
             IAssetProvider assetProvider,
@@ -30,7 +31,8 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
             TankShootingWrapper.Factory tankShootingWrapperFactory,
             PlayerTankWrapper.Factory playerTankWrapperFactory,
             PlayerDroneWrapper.Factory playerDronFactory,
-            Drone.Factory droneFactory)
+            Drone.Factory droneFactory,
+            PlayerCharacter.Factory playerCharacterFactory)
         {
             _assetProvider = assetProvider;
             _staticDataService = staticDataService;
@@ -40,7 +42,11 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
             _playerTankWrapperFactory = playerTankWrapperFactory;
             _playerDronFactory = playerDronFactory;
             _droneFactory = droneFactory;
+            _playerCharacterFactory = playerCharacterFactory;
         }
+
+        public async UniTask<PlayerCharacter> CreatePlayerCharacter(PlayerCharacterType type, Vector3 position, Quaternion rotation, Transform parent) =>
+            await _playerCharacterFactory.Create(_staticDataService.GetPlayerCharacter(type).AssetReference, position, rotation, parent);
 
         public async UniTask<Drone> CreateDrone(Vector3 position, Quaternion rotation) =>
             await _droneFactory.Create(TankFactoryAssets.Drone, position, rotation);

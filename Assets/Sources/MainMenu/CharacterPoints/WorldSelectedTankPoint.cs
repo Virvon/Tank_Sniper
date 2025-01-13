@@ -5,7 +5,7 @@ using Assets.Sources.Tanks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Sources.MainMenu
+namespace Assets.Sources.MainMenu.CharacterPoints
 {
     public class WorldSelectedTankPoint : SelectedTankPoint
     {

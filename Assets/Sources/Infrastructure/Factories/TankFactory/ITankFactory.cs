@@ -11,6 +11,7 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
     public interface ITankFactory
     {
         UniTask<Drone> CreateDrone(Vector3 position, Quaternion rotation);
+        UniTask<PlayerCharacter> CreatePlayerCharacter(PlayerCharacterType type, Vector3 position, Quaternion rotation, Transform parent);
         UniTask CreatePlayerDroneWrapper(Vector3 position, Quaternion rotation);
         UniTask<PlayerTankWrapper> CreatePlayerTankWrapper(uint tankLevel, Vector3 position, Quaternion rotation);
         UniTask<Tank> CreateTank(

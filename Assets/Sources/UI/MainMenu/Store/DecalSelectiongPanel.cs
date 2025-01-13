@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Sources.UI.MainMenu.Store
 {
-    public class DecalSelectiongPanel : SelectingPanel<DecalType>
+    public class DecalSelectiongPanel : SelectionPanel<DecalType>
     {
         [SerializeField] private int _tankRotationAngle;
         [SerializeField] private UiSelectedTankPoint _tankPoint;

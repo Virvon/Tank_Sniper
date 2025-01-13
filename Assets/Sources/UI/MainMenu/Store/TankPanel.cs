@@ -1,7 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace Assets.Sources.UI.MainMenu.Store
 {

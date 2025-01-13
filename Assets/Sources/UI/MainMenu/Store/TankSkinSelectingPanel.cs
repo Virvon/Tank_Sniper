@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace Assets.Sources.UI.MainMenu.Store
 {
-    public class TankSkinSelectingPanel : SelectingPanel<TankSkinType>
+    public class TankSkinSelectingPanel : SelectionPanel<TankSkinType>
     {
         [SerializeField] private Button _baseSkinButton;
 
