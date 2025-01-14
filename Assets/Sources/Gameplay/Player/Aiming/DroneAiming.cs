@@ -4,13 +4,14 @@ using UnityEngine;
 
 namespace Assets.Sources.Gameplay.Player.Aiming
 {
-    public class DroneAiming : IDisposable, IRotationAiming, IShootedAiming
+    public class DroneAiming : IDisposable, IRotationAiming, IShootedAiming, IAiming
     {
         private readonly IInputService _inputService;
 
         public event Action Shooted;
         public event Action<Vector2> AimShifted;
         public event Action<Vector2> HandlePressed;
+        public event Action Aimed;
 
         protected DroneAiming(IInputService inputService)
         {
@@ -28,8 +29,11 @@ namespace Assets.Sources.Gameplay.Player.Aiming
             _inputService.AimingButtonPressed -= OnAimingButtonPressed;
         }
 
-        private void OnAimingButtonPressed() =>
+        private void OnAimingButtonPressed()
+        {
+            Aimed?.Invoke();
             Shooted?.Invoke();
+        }
 
         private void OnHandleMoved(Vector2 handlePosition) =>
             AimShifted?.Invoke(handlePosition);

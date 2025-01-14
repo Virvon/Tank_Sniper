@@ -7,7 +7,7 @@ namespace Assets.Sources.UI.Gameplay.GameplayWindows
 {
     public class DroneGameplayWindow : GameplayWindow
     {
-        [SerializeField] private CanvasGroup _gameplayInfoCanvasGroup;
+        [SerializeField] private CanvasGroup _enemiesCounterCanvasGroup;
 
         private PlayerDroneWrapper _playerDroneWrapper;
         private DroneAiming _droneAiming;
@@ -33,7 +33,7 @@ namespace Assets.Sources.UI.Gameplay.GameplayWindows
             SetAimButtonActive(false);
             OverviewAimCanvasGroup.alpha = 0;
             AimingCanvasGroup.alpha = 1;
-            _gameplayInfoCanvasGroup.alpha = 0;
+            _enemiesCounterCanvasGroup.alpha = 0;
         }
 
         private void OnDroneExploided()
@@ -41,7 +41,7 @@ namespace Assets.Sources.UI.Gameplay.GameplayWindows
             SetAimButtonActive(true);
             OverviewAimCanvasGroup.alpha = 1;
             AimingCanvasGroup.alpha = 0;
-            _gameplayInfoCanvasGroup.alpha = 1;
+            _enemiesCounterCanvasGroup.alpha = 1;
         }
     }
 }

@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Assets.Sources.Gameplay.Player.Aiming
 {
-    public class TankAiming : IDisposable, IRotationAiming, IShootedAiming
+    public class TankAiming : IDisposable, IRotationAiming, IShootedAiming, IAiming
     {
         private const int AimedProgress = 1;
         private const int UnaimedProgress = 0;
@@ -31,6 +31,7 @@ namespace Assets.Sources.Gameplay.Player.Aiming
         public event Action<bool, float> StateChanged;
         public event Action<Vector2> HandlePressed;
         public event Action<bool> StateChangingFinished;
+        public event Action Aimed;
 
         public TankAiming(
             IInputService inputService,
@@ -79,6 +80,8 @@ namespace Assets.Sources.Gameplay.Player.Aiming
 
         private void OnAimingButtonPressed()
         {
+            Aimed?.Invoke();
+
             if (_aimingProgress == UnaimedProgress)
                 OnAiming();
         }

@@ -56,6 +56,7 @@ namespace Assets.Sources.Gameplay.Root
             await CreatePlayerWrapper(_tankFactory, _playerPoint);
             await CreateEnemies(levelConfig);
             await _uiFactory.CreateRestartWindow();
+            await _uiFactory.CreateOptionsWindow();
             await CreateGameplayWindow(_uiFactory);
             await CreateDefeatWndow(_uiFactory);
             await _uiFactory.CreateLoadingCurtain();
