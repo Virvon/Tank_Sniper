@@ -3,6 +3,7 @@ using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
 using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Assets.Sources.Infrastructure.Factories.UiFactory;
 using Assets.Sources.MainMenu.Desk;
+using Assets.Sources.MainMenu.TanksBuying;
 using UnityEngine;
 using Zenject;
 
@@ -21,7 +22,11 @@ namespace Assets.Sources.MainMenu
             BindDeskHandler();
             BindBulletFactory();
             BindTankFactoryInstaller();
+            BindTankBuyer();
         }
+
+        private void BindTankBuyer() =>
+            Container.Bind<TankBuyer>().AsSingle();
 
         private void BindTankFactoryInstaller() =>
             TankFactoryInstaller.Install(Container);

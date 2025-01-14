@@ -13,6 +13,8 @@ namespace Assets.Sources.MainMenu.Desk
 
         public event Action<bool> EmploymentChanged;
 
+        public bool HasEmptyCells => _cells.Any(cell => cell.IsEmpty);
+
         private void Start()
         {
             foreach (DeskCell deskCell in _cells)
@@ -27,17 +29,17 @@ namespace Assets.Sources.MainMenu.Desk
                 deskCell.EmploymentChanged -= OnDeskCellEmploymentChanged;
         }
 
-        public async UniTask CreateTank()
+        public async UniTask CreateTank(uint level)
         {
             DeskCell[] emptyCells = _cells.Where(cell => cell.IsEmpty).ToArray();
 
             DeskCell cell = emptyCells[Random.Range(0, emptyCells.Length)];
 
-            await cell.CreateTank(1);
+            await cell.CreateTank(level);
         }
 
         private void OnDeskCellEmploymentChanged() =>
-            EmploymentChanged?.Invoke(_cells.Any(cell => cell.IsEmpty));
+            EmploymentChanged?.Invoke(HasEmptyCells);
 
 
 

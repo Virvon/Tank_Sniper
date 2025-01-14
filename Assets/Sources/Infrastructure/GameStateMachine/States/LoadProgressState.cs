@@ -50,7 +50,7 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
             TankSkinData[] tankSkinDatas = _staticDataService.TankSkinConfigs.Select(config => new TankSkinData(config.Type)).ToArray();
             CharacterSkinData[] characterSkinDatas = _staticDataService.PlayerCharacterCofigs.Select(config => new CharacterSkinData(config.Type, config.IsUnlockedOnStart)).ToArray();
 
-            PlayerProgress progress = new(tankDatas, tankSkinDatas, decalDatas, 0, characterSkinDatas);
+            PlayerProgress progress = new(tankDatas, tankSkinDatas, decalDatas, 0, characterSkinDatas, _staticDataService.MainMenuSettingsConfig.StartPrice);
 
             return progress;
         }

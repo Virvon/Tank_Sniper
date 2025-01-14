@@ -16,8 +16,16 @@ namespace Assets.Sources.Data
         public uint CurrentLevelIndex;
         public CharacterSkinData[] CharacterSkins;
         public PlayerCharacterType SelectedPlayerCharacter;
+        public Wallet Wallet;
+        public TankBuyingData TankBuyingData;
 
-        public PlayerProgress(TankData[] tanks, TankSkinData[] skins, DecalData[] decals, BiomeType startLevelType, CharacterSkinData[] characterSkins)
+        public PlayerProgress(
+            TankData[] tanks,
+            TankSkinData[] skins,
+            DecalData[] decals,
+            BiomeType startLevelType,
+            CharacterSkinData[] characterSkins,
+            uint startTankBuyingCost)
         {
             Tanks = tanks;
             TankSkins = skins;
@@ -28,6 +36,8 @@ namespace Assets.Sources.Data
             SelectedTankLevel = Tanks.Where(tank => tank.IsUnlocked).First().Level;
             CurrentLevelIndex = 0;
             SelectedPlayerCharacter = CharacterSkins.First(skin => skin.IsUnlocked).Type;
+            Wallet = new();
+            TankBuyingData = new(startTankBuyingCost);
         }
 
         public event Action<uint> TankUnlocked;

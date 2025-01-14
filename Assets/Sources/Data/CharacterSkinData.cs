@@ -1,7 +1,9 @@
 ﻿using Assets.Sources.Types;
+using System;
 
 namespace Assets.Sources.Data
 {
+    [Serializable]
     public class CharacterSkinData
     {
         public PlayerCharacterType Type;

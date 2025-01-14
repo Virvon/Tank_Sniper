@@ -23,6 +23,7 @@ namespace Assets.Sources.Services.StaticDataService
         EnviromentExplosionsConfig EnviromentExplosionsConfig { get; }
         CompositeBulletConfig CompositeBulletConfig { get; }
         PlayerCharacterConfig[] PlayerCharacterCofigs { get; }
+        MainMenuSettingsConfig MainMenuSettingsConfig { get; }
 
         EnemyConfig GetEnemy(EnemyType type);
         LevelConfig GetLevel(string key);

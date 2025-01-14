@@ -1,9 +1,11 @@
 ﻿using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
 using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Assets.Sources.Services.PersistentProgress;
+using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Tanks;
 using Cysharp.Threading.Tasks;
 using System;
+using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -18,6 +20,7 @@ namespace Assets.Sources.MainMenu.Desk
 
         private ITankFactory _tankFactory;
         private IPersistentProgressService _persistentProgressService;
+        private IStaticDataService _staicDataService;
 
         private Tank _tank;
 
@@ -26,10 +29,11 @@ namespace Assets.Sources.MainMenu.Desk
         public event Action EmploymentChanged;
 
         [Inject]
-        private void Construct(ITankFactory tankFactory, IPersistentProgressService persistentProgressService)
+        private void Construct(ITankFactory tankFactory, IPersistentProgressService persistentProgressService, IStaticDataService staticDataService)
         {
             _tankFactory = tankFactory;
             _persistentProgressService = persistentProgressService;
+            _staicDataService = staticDataService;
         }
 
         public async UniTask CreateTank(uint level)
@@ -68,8 +72,13 @@ namespace Assets.Sources.MainMenu.Desk
             return tank;
         }
 
-        public bool CanPlace(uint tankLevel) =>
-            (IsEmpty == false && _tank.Level != tankLevel) == false;
+        public bool CanPlace(uint tankLevel)
+        {
+            if (IsEmpty == false && _staicDataService.TankConfigs.Any(config => config.Level == _tank.Level + 1) == false)
+                return false;
+
+            return (IsEmpty == false && _tank.Level != tankLevel) == false;
+        }
 
         public void Mark(uint tankLevel) =>
             _marker.Mark(CanPlace(tankLevel));

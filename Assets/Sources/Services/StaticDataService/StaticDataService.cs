@@ -42,6 +42,7 @@ namespace Assets.Sources.Services.StaticDataService
         public EnviromentExplosionsConfig EnviromentExplosionsConfig { get; private set; }
         public CompositeBulletConfig CompositeBulletConfig { get; private set; }
         public PlayerCharacterConfig[] PlayerCharacterCofigs => _playerCharacterConfigs.Values.ToArray();
+        public MainMenuSettingsConfig MainMenuSettingsConfig { get; private set; }
 
         public async UniTask InitializeAsync()
         {
@@ -66,6 +67,7 @@ namespace Assets.Sources.Services.StaticDataService
                 UniTask.Create(async () => EnviromentExplosionsConfig = await LoadConfig<EnviromentExplosionsConfig>()),
                 UniTask.Create(async () => CompositeBulletConfig = await LoadConfig<CompositeBulletConfig>()),
                 UniTask.Create(async () => _playerCharacterConfigs = await LoadConfigs<PlayerCharacterType, PlayerCharacterConfig>()),
+                UniTask.Create(async () => MainMenuSettingsConfig = await LoadConfig<MainMenuSettingsConfig>()),
             };
 
             await UniTask.WhenAll(tasks);
