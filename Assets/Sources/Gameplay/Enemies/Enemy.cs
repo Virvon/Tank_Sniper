@@ -16,6 +16,7 @@ namespace Assets.Sources.Gameplay.Enemies
         public PlayerWrapper PlayerWrapper { get; private set; }
         public IShootedAiming Aiming { get; private set; }
         public LayerMask LayerMask { get; private set; }
+        public bool IsDestructed { get; private set; }
 
         [Inject]
         private void Construct(PlayerWrapper playerWrapper, IShootedAiming aiming, IStaticDataService staticDataService)
@@ -23,10 +24,15 @@ namespace Assets.Sources.Gameplay.Enemies
             PlayerWrapper = playerWrapper;
             Aiming = aiming;
             LayerMask = staticDataService.GameplaySettingsConfig.EnemyLayerMask;
+
+            IsDestructed = false;
         }
 
-        protected void OnDestructed() =>
+        protected void OnDestructed()
+        {
+            IsDestructed = true;
             Destructed?.Invoke();
+        }
 
         public class Factory : PlaceholderFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<Enemy>>
         {

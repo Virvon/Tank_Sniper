@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2460356773891562753}
   - component: {fileID: 6316810444079903667}
   - component: {fileID: 1006243020046913624}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3010728338934734121}
   - component: {fileID: 8414725328577390284}
   - component: {fileID: 7281804503305430752}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: CompositeBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

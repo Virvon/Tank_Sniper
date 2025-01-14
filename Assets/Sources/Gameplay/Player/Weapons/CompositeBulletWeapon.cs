@@ -6,10 +6,8 @@ namespace Assets.Sources.Gameplay.Player.Weapons
 {
     public class CompositeBulletWeapon : PlayerTankWeapon
     {
-        protected override void Shoot()
-        {
-            StartCoroutine(Shooter(BulletsCount, BulletShootsDuration, ForwardFlyingBulletType.Bullet));
-        }
+        protected override void Shoot() =>
+            StartCoroutine(Shooter(BulletShootsCount, BulletShootsDuration, ForwardFlyingBulletType.Bullet));
 
         protected override void SuperShoot()
         {

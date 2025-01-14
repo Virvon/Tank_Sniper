@@ -6,9 +6,18 @@ namespace Assets.Sources.Gameplay.Bullets
 {
     public class Bomb : CollidingBullet
     {
+        private bool _canCollide;
+
+        private void Start()
+        {
+            _canCollide = false;
+
+            StartCoroutine(Waiter(0.1f, () => _canCollide = true));
+        }
+
         protected override void OnCollisionEnter(Collision collision)
         {
-            if (collision.transform.TryGetComponent(out IDamageable _))
+            if (collision.transform.TryGetComponent(out IDamageable _) && _canCollide)
                 Explode();
         }
 

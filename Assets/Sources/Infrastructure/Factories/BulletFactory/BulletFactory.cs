@@ -28,7 +28,9 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
             Factory<Laser> directionalLaserFactory,
             Muzzle.Factory muzzleFactory,
             Factory<HomingBullet> homingBulletFactory,
-            Factory<CompositeBullet> compositeBulletFactory)
+            Factory<CompositeBullet> compositeBulletFactory,
+            Factory<TransmittingLaser> transmittedLaserFactory,
+            Factory<TargetingLaser> targetingLaserFactory)
         {
             _staticDataService = staticDataService;
             _forwardFlyingBulletFactory = forwardFlyingBulletFactory;
@@ -36,6 +38,8 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
             _muzzleFactory = muzzleFactory;
             _homingBulletFactory = homingBulletFactory;
             _compositeBulletFactory = compositeBulletFactory;
+            _transmittedLaserFactory = transmittedLaserFactory;
+            _targetingLaserFactory = targetingLaserFactory;
         }
 
         public async UniTask CreateMuzzle(MuzzleType type, Vector3 position, Quaternion rotation)

@@ -61,6 +61,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransmittingLaser
       objectReference: {fileID: 0}
+    - target: {fileID: 2660794028732731926, guid: 5f8cab9af8346da4fa3cc4a07c6c05f9,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660794028732731926, guid: 5f8cab9af8346da4fa3cc4a07c6c05f9,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4203105315748748487, guid: 5f8cab9af8346da4fa3cc4a07c6c05f9,
         type: 3}
       propertyPath: m_RootOrder

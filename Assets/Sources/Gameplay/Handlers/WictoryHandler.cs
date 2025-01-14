@@ -27,6 +27,7 @@ namespace Assets.Sources.Gameplay.Handlers
 
         public int MaxEnemiesCount { get; private set; }
         public bool IsWoned => _destructedEnemiesCount >= MaxEnemiesCount;
+        public IReadOnlyList<Enemy> Enemies => _enemies;
 
         public void AddEnemy(Enemy enemy)
         {
