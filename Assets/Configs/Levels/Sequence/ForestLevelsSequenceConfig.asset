@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   Sequence:
-  - Forest3
   - Forest6
+  - Forest3
   - Forest5
   - Forest4
   - Forest2

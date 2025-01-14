@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6598920551030704745}
   - component: {fileID: 9135385277988025106}
+  - component: {fileID: 834004728242368376}
   m_Layer: 0
   m_Name: AimingCamera
   m_TagString: Untagged
@@ -71,6 +72,20 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 965211802416179736}
+--- !u!114 &834004728242368376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3058143950621335078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a1c5f1595dd4e547803a34afb60aba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _virtualCamera: {fileID: 9135385277988025106}
+  _shakeDuration: 0.3
 --- !u!1 &3125732261806650254
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,6 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 965211802416179736}
   - component: {fileID: 6891932225286077810}
+  - component: {fileID: 8360608696760740709}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -230,6 +246,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8360608696760740709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3979528298951863787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 554b0ed52734c154eab51f6cedd3a7d7, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0.6
+  m_FrequencyGain: 5
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &6295523216517667783
 GameObject:
   m_ObjectHideFlags: 0

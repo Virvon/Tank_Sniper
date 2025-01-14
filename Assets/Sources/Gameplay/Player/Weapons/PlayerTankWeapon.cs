@@ -18,6 +18,7 @@ namespace Assets.Sources.Gameplay.Player.Weapons
 
         private GameplayCamera _gameplayCamera;
         private TankAiming _aiming;
+        private CameraShaking _cameraShaking;
 
         private Transform[] _bulletPoints;
 
@@ -38,11 +39,12 @@ namespace Assets.Sources.Gameplay.Player.Weapons
         protected float SuperBulletShootsDuration => _supperBulletShootsDuration;
 
         [Inject]
-        private void Construct(IBulletFactory bulletFactory, GameplayCamera gameplayCamera, TankAiming aiming)
+        private void Construct(IBulletFactory bulletFactory, GameplayCamera gameplayCamera, TankAiming aiming, CameraShaking cameraShaking)
         {
             BulletFactory = bulletFactory;
             _gameplayCamera = gameplayCamera;
             _aiming = aiming;
+            _cameraShaking = cameraShaking;
 
             _shootsNumberToSuperShot = _requireShotsNumberToSuperShot;
             _bulletsCount = _bulletsCapacity;
@@ -75,6 +77,8 @@ namespace Assets.Sources.Gameplay.Player.Weapons
 
                 Shoot();
             }
+
+            _cameraShaking.Shake();
 
             BulletsCountChanged?.Invoke();
         }

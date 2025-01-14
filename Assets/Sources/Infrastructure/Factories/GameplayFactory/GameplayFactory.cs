@@ -40,8 +40,11 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             _container.BindInstance(rotationCamera).AsSingle();
         }
 
-        public async UniTask CreateAimingVirtualCamera(Vector3 position, Quaternion rotation) =>
-            await _rotationCameraFactory.Create(GameplayFactoryAssets.AimingCamera, position, rotation);
+        public async UniTask CreateAimingVirtualCamera(Vector3 position, Quaternion rotation)
+        {
+            RotationCamera rotationCamera = await _rotationCameraFactory.Create(GameplayFactoryAssets.AimingCamera, position, rotation);
+            _container.BindInstance(rotationCamera.GetComponentInChildren<CameraShaking>()).AsSingle();
+        }
 
         public async UniTask CreateCamera()
         {
