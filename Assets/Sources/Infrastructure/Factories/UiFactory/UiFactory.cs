@@ -36,6 +36,12 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
             _superBulletIconFactory = superBulletIconFactory;
         }
 
+        public async UniTask CreateRestartWindow()
+        {
+            Window window = await _windowFactory.Create(UiFactoryAssets.RestartWindow);
+            _container.BindInstance(window as RestartWindow).AsSingle();
+        }
+
         public async UniTask<BulletIcon> CreateDroneBulletIcon(Transform parent) =>
             await _bulletIconFactory.Create(UiFactoryAssets.DroneBulletIcon, parent);
 

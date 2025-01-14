@@ -1,6 +1,7 @@
 ﻿using Assets.Sources.Gameplay.Handlers;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Assets.Sources.UI.Gameplay.GameplayWindows
@@ -10,9 +11,11 @@ namespace Assets.Sources.UI.Gameplay.GameplayWindows
         [SerializeField] private CanvasGroup _overviewAimCanvasGroup;
         [SerializeField] private CanvasGroup _aimButtonCanvasGroup;
         [SerializeField] private CanvasGroup _aimingCanvasGroup;
+        [SerializeField] private Button _restartWindowButton;
 
         private DefeatHandler _defeatHandler;
         private WictoryHandler _wictoryHangler;
+        private RestartWindow _restartWindow;
 
         private bool _isAimButtonHided;
 
@@ -20,10 +23,11 @@ namespace Assets.Sources.UI.Gameplay.GameplayWindows
         protected CanvasGroup AimingCanvasGroup => _aimingCanvasGroup;
 
         [Inject]
-        private void Construct(DefeatHandler defeatHandler, WictoryHandler wictoryHandler)
+        private void Construct(DefeatHandler defeatHandler, WictoryHandler wictoryHandler, RestartWindow restartWindow)
         {
             _defeatHandler = defeatHandler;
             _wictoryHangler = wictoryHandler;
+            _restartWindow = restartWindow;
 
             _isAimButtonHided = false;
 
@@ -32,6 +36,7 @@ namespace Assets.Sources.UI.Gameplay.GameplayWindows
             _defeatHandler.ProgressRecovered += OnProgressRecovery;
             _wictoryHangler.WindowsSwithed += OnWindowsSwithced;
             _wictoryHangler.Woned += HideAimButton;
+            _restartWindowButton.onClick.AddListener(OnRestartWindowButtonClicked);
         }
 
         protected virtual void OnDestroy()
@@ -41,6 +46,7 @@ namespace Assets.Sources.UI.Gameplay.GameplayWindows
             _defeatHandler.ProgressRecovered -= OnProgressRecovery;
             _wictoryHangler.WindowsSwithed -= OnWindowsSwithced;
             _wictoryHangler.Woned -= HideAimButton;
+            _restartWindowButton.onClick.RemoveListener(OnRestartWindowButtonClicked);
         }
 
         private void OnProgressRecovery()
@@ -55,6 +61,9 @@ namespace Assets.Sources.UI.Gameplay.GameplayWindows
 
         private void OnWindowsSwithced() =>
             Hide();
+
+        private void OnRestartWindowButtonClicked() =>
+            _restartWindow.Show();
 
         protected void SetAimButtonActive(bool isActive)
         {
