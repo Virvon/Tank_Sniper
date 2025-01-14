@@ -1,12 +1,8 @@
-﻿using Cysharp.Threading.Tasks;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
-using Zenject;
+﻿using UnityEngine;
 
 namespace Assets.Sources.Gameplay.Player.Wrappers
 {
     public class PlayerWrapper : MonoBehaviour
     {
-
     }
 }

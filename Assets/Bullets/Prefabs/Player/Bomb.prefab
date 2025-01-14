@@ -116,6 +116,7 @@ Transform:
   m_Children:
   - {fileID: 2460356773891562753}
   - {fileID: 6237350768933596200}
+  - {fileID: 526411088075269463}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4927,3 +4928,88 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1001 &1115971625533473678
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 265899765862836568}
+    m_Modifications:
+    - target: {fileID: 590686644615194329, guid: a48c9e6d44cf1284f921926c242ed57c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 590686644615194329, guid: a48c9e6d44cf1284f921926c242ed57c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 590686644615194329, guid: a48c9e6d44cf1284f921926c242ed57c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 590686644615194329, guid: a48c9e6d44cf1284f921926c242ed57c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 590686644615194329, guid: a48c9e6d44cf1284f921926c242ed57c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 590686644615194329, guid: a48c9e6d44cf1284f921926c242ed57c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 590686644615194329, guid: a48c9e6d44cf1284f921926c242ed57c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 590686644615194329, guid: a48c9e6d44cf1284f921926c242ed57c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 590686644615194329, guid: a48c9e6d44cf1284f921926c242ed57c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 590686644615194329, guid: a48c9e6d44cf1284f921926c242ed57c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 590686644615194329, guid: a48c9e6d44cf1284f921926c242ed57c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903918987362148492, guid: a48c9e6d44cf1284f921926c242ed57c,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 37c2d708f15507f4b892abd750abcba2, type: 3}
+    - target: {fileID: 6573911508369418559, guid: a48c9e6d44cf1284f921926c242ed57c,
+        type: 3}
+      propertyPath: _explosion
+      value: 
+      objectReference: {fileID: 3216757264434835564}
+    - target: {fileID: 8552061788338064407, guid: a48c9e6d44cf1284f921926c242ed57c,
+        type: 3}
+      propertyPath: m_Name
+      value: ExplosionSound
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a48c9e6d44cf1284f921926c242ed57c, type: 3}
+--- !u!4 &526411088075269463 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 590686644615194329, guid: a48c9e6d44cf1284f921926c242ed57c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1115971625533473678}
+  m_PrefabAsset: {fileID: 0}

@@ -26,6 +26,7 @@ namespace Assets.Sources.Gameplay.Player.Weapons
         private uint _bulletsCount;
 
         public event Action BulletsCountChanged;
+        public event Action BulletCreated;
 
         protected IBulletFactory BulletFactory { get; private set; }
         protected Quaternion BulletRotation => _gameplayCamera.transform.rotation;
@@ -78,9 +79,15 @@ namespace Assets.Sources.Gameplay.Player.Weapons
                 Shoot();
             }
 
-            _cameraShaking.Shake();
+            
 
             BulletsCountChanged?.Invoke();
+        }
+
+        protected void OnBulletCreated()
+        {
+            _cameraShaking.Shake();
+            BulletCreated?.Invoke();
         }
 
         protected Transform GetBulletPoint(int index)

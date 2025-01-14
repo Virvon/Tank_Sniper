@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   Sequence:
-  - Forest6
+  - Forest4
   - Forest3
   - Forest5
-  - Forest4
+  - Forest6
   - Forest2
   - Forest1
   MainMenuScene: ForestMainMenuScene

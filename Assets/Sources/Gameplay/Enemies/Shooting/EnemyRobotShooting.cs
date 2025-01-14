@@ -1,4 +1,5 @@
 ﻿using Assets.Sources.Gameplay.Enemies.Robot;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -21,6 +22,9 @@ namespace Assets.Sources.Gameplay.Weapons
         private GameObject _laser;
         private Quaternion _targetRotation;
 
+        public event Action ShootingStarted;
+        public event Action ShootingFinished;
+
         protected override Vector3 GetCurrentShootingPosition() =>
             _shootPoint.position;
 
@@ -31,7 +35,7 @@ namespace Assets.Sources.Gameplay.Weapons
 
             while (IsShooted)
             {
-               if(_enemyRobot.IsStopped)
+                if(_enemyRobot.IsStopped)
                 {
                     Vector3 shootPointForward = _shootPoint.forward;
                     Vector3 targetDirection = (PlayerWrapper.transform.position - _shootPoint.position).normalized;
@@ -45,9 +49,15 @@ namespace Assets.Sources.Gameplay.Weapons
                         attackPassedTime += Time.deltaTime;
 
                         if (_laser == null)
+                        {
                             _laser = Instantiate(_laserPrefab, _shootPoint.position, GetShootingRotation(), _shootPoint.transform);
+                            ShootingStarted?.Invoke();
+                        }
                         else
+                        {
                             _laser.transform.rotation = Quaternion.RotateTowards(_laser.transform.rotation, _targetRotation, LaserRotationSpeed * Time.deltaTime);
+
+                        }
 
                         if (diretionChangingPassedTime >= ChangingRotationDuration)
                         {
@@ -66,9 +76,16 @@ namespace Assets.Sources.Gameplay.Weapons
                     }
                     else if (_laser != null)
                     {
+                        ShootingFinished?.Invoke();
                         Destroy(_laser);
                         _laser = null;
                     }
+                }
+                else if (_laser != null)
+                {
+                    ShootingFinished?.Invoke();
+                    Destroy(_laser);
+                    _laser = null;
                 }
 
                 yield return null;

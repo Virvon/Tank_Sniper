@@ -17,6 +17,8 @@ namespace Assets.Sources.MainMenu.Weapons
 
         private IBulletFactory _bulletFactory;
 
+        public event Action BulletCreated;
+
         public bool IsShooted { get; private set; }
 
         [Inject]
@@ -51,6 +53,7 @@ namespace Assets.Sources.MainMenu.Weapons
 
                 _bulletFactory.CreateMuzzle(_muzzleType, bulletPoint.position, bulletPoint.rotation);
                 CreateBullet(_bulletFactory, bulletPoint.position, bulletPoint.rotation);
+                BulletCreated?.Invoke();
 
                 bulletPointIndex++;
 

@@ -12,12 +12,11 @@ namespace Assets.Sources.Gameplay.Player.Weapons
         {
             BulletFactory.CreateForwardFlyingBullet(ForwardFlyingBulletType.TankRocket, GetBulletPoint(_bulletNumber).position, BulletRotation);
             _bulletNumber++;
+            OnBulletCreated();
         }
 
-        protected override void SuperShoot()
-        {
+        protected override void SuperShoot() =>
             StartCoroutine(Shooter(SuperBulletShootsCount, SuperBulletShootsDuration, HomingBulletType.Rocket));
-        }
 
         private IEnumerator Shooter(uint shootsCount, float shootsDuration, HomingBulletType bulletType)
         {
@@ -26,6 +25,7 @@ namespace Assets.Sources.Gameplay.Player.Weapons
             for (int i = 0; i < shootsCount; i++)
             {
                 BulletFactory.CreateHomingBullet(bulletType, GetBulletPoint(i).position, BulletRotation);
+                OnBulletCreated();
 
                 yield return duration;
             }

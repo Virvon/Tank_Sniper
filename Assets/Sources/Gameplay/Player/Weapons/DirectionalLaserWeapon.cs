@@ -9,6 +9,7 @@ namespace Assets.Sources.Gameplay.Player.Weapons
         protected override void Shoot()
         {
             BulletFactory.CreateDirectionalLaser(GetBulletPoint(0).position, BulletRotation);
+            OnBulletCreated();
         }
 
         protected override void SuperShoot()
@@ -23,6 +24,7 @@ namespace Assets.Sources.Gameplay.Player.Weapons
             for (int i = 0; i < shootsCount; i++)
             {
                 BulletFactory.CreateHomingBullet(HomingBulletType.Laser, GetBulletPoint(i).position, BulletRotation);
+                OnBulletCreated();
 
                 yield return duration;
             }

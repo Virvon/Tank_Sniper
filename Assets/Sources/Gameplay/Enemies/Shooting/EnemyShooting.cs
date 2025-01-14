@@ -4,9 +4,11 @@ using Assets.Sources.Gameplay.Player.Aiming;
 using Assets.Sources.Gameplay.Player.Wrappers;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Services.StaticDataService.Configs;
+using System;
 using System.Collections;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Assets.Sources.Gameplay.Weapons
 {
@@ -22,6 +24,8 @@ namespace Assets.Sources.Gameplay.Weapons
 
         private bool _isShootingStarted;
         private bool _isPlayerDefeated;
+
+        public event Action Shooted;
 
         public PlayerWrapper PlayerWrapper { get; private set; }
 
@@ -73,6 +77,9 @@ namespace Assets.Sources.Gameplay.Weapons
 
         protected virtual void OnEnemyDestructed() =>
             IsShooted = false;
+
+        protected void OnShooted() =>
+            Shooted?.Invoke();
 
         private void OnPlayerTankAttacked()
         {

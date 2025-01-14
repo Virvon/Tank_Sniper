@@ -22,6 +22,7 @@ namespace Assets.Sources.Gameplay.Player.Weapons
             for (int i = 0; i < shootsCount; i++)
             {
                 BulletFactory.CreateForwardFlyingBullet(bulletType, GetBulletPoint(i).position, BulletRotation);
+                OnBulletCreated();
 
                 yield return duration;
             }

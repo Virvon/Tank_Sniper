@@ -67,6 +67,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5873532357439405360, guid: 605391bb16fae904c98fc0e88c530451,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873532357439405360, guid: 605391bb16fae904c98fc0e88c530451,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5aede00c1ac5c244a8e22834a19d97d9, type: 3}
+    - target: {fileID: 7781927987846206745, guid: 605391bb16fae904c98fc0e88c530451,
+        type: 3}
+      propertyPath: _playerTankWeapon
+      value: 
+      objectReference: {fileID: 4483883126972397508}
     - target: {fileID: 8102308152371460489, guid: 605391bb16fae904c98fc0e88c530451,
         type: 3}
       propertyPath: m_Name
@@ -96,7 +111,7 @@ MonoBehaviour:
   _requireShotsNumberToSuperShot: 3
   _bulletShootsCount: 1
   _bulletShootsDuration: 0
-  _bulletType: 1
   _superBulletShootsCount: 3
   _supperBulletShootsDuration: 0.25
+  _bulletType: 1
   _supperBulletType: 1

@@ -48,8 +48,11 @@ namespace Assets.Sources.Gameplay.Weapons
         protected override Vector3 GetCurrentShootingPosition() =>
             _currentShootingPosition;
 
-        protected void CreateBullet() =>
+        protected void CreateBullet()
+        {
+            OnShooted();
             _bulletFactory.CreateForwardFlyingBullet(_bulletType, _currentShootingPosition, _shootingRotation);
+        }
 
         protected virtual void Shoot() =>
             CreateBullet();

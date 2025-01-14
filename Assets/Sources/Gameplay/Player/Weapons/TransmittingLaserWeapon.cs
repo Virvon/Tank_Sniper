@@ -5,11 +5,13 @@
         protected override void Shoot()
         {
             BulletFactory.CreateDirectionalLaser(GetBulletPoint(0).position, BulletRotation);
+            OnBulletCreated();
         }
 
         protected override void SuperShoot()
         {
             BulletFactory.CreateTransmittingLaser(GetBulletPoint(0).position, BulletRotation);
+            OnBulletCreated();
         }
     }
 }

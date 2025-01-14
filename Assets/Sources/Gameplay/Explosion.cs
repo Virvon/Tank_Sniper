@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.Sources.Gameplay
 {
@@ -9,6 +10,8 @@ namespace Assets.Sources.Gameplay
         private readonly Collider[] _overlapColliders = new Collider[32];
 
         [SerializeField] private ParticleSystem _explosionParticlePrefab;
+
+        public event Action Exploded;
 
         protected void CreateExplosionParticle(Vector3 position, Quaternion rotation)
         {
@@ -28,6 +31,8 @@ namespace Assets.Sources.Gameplay
                     damageable.TakeDamage(new ExplosionInfo(position, explosionForce, isDamageableCollided, damage));
                 }
             }
+
+            Exploded?.Invoke();
         }
     }
 }

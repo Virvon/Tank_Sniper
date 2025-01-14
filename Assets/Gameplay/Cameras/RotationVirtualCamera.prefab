@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2585837596568361922}
   - component: {fileID: 5991167672842994792}
+  - component: {fileID: 6289175574399562068}
   m_Layer: 0
   m_Name: OverviewCamera
   m_TagString: Untagged
@@ -71,6 +72,14 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 5284029053731866155}
+--- !u!81 &6289175574399562068
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3125732261806650254}
+  m_Enabled: 1
 --- !u!1 &3973406091315659364
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ namespace Assets.Sources.Gameplay.Player.Weapons
         protected override void SuperShoot()
         {
             BulletFactory.CreateCompositeBullet(GetBulletPoint(0).position, BulletRotation);
+            OnBulletCreated();
         }
 
         private IEnumerator Shooter(uint shootsCount, float shootsDuration, ForwardFlyingBulletType bulletType)
@@ -21,6 +22,7 @@ namespace Assets.Sources.Gameplay.Player.Weapons
             for (int i = 0; i < shootsCount; i++)
             {
                 BulletFactory.CreateForwardFlyingBullet(bulletType, GetBulletPoint(i).position, BulletRotation);
+                OnBulletCreated();
 
                 yield return duration;
             }
