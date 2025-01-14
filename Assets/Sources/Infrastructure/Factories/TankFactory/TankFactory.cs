@@ -56,7 +56,7 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
         {
             PlayerWrapper wrapper = await _playerDronFactory.Create(TankFactoryAssets.PlayerDroneWrapper, position, rotation);
             _container.BindInstance(wrapper).AsSingle();
-            _container.BindInstance((PlayerDroneWrapper)wrapper).AsSingle();
+            _container.BindInterfacesAndSelfTo<PlayerDroneWrapper>().FromInstance((PlayerDroneWrapper)wrapper).AsSingle();
         }
 
         public async UniTask<PlayerTankWrapper> CreatePlayerTankWrapper(uint tankLevel, Vector3 position, Quaternion rotation)

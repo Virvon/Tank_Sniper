@@ -16,5 +16,6 @@
         public const string ProgressBarElement = "ProgressBarElement";
         public const string TankBulletIcon = "TankBulletIcon";
         public const string SuperBulletIcon = "SuperBulletIcon";
+        public const string DroneBulletIcon = "DroneBulletIcon";
     }
 }

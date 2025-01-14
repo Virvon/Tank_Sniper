@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: TargetingLaser
   m_EditorClassIdentifier: 
   AssetReference:
-    m_AssetGUID: 
+    m_AssetGUID: 0b6c953f9a49bee4bb03200a78d0412f
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  ExplosionLifeTime: 0
-  ExplosionForce: 0
-  ExplosionRadius: 0
-  Damage: 0
-  ProjectileLifeTime: 0
+  ExplosionLifeTime: 1
+  ExplosionForce: 200
+  ExplosionRadius: 3
+  Damage: 10
+  ProjectileLifeTime: 0.15

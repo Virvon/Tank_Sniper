@@ -1,7 +1,9 @@
 ﻿using Assets.Sources.Gameplay.Cameras;
 using Assets.Sources.Gameplay.Handlers;
 using Assets.Sources.Gameplay.Player.Aiming;
+using Assets.Sources.Gameplay.Player.Weapons;
 using Assets.Sources.Infrastructure.Factories.TankFactory;
+using Assets.Sources.Services.PersistentProgress;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
@@ -10,9 +12,10 @@ using Zenject;
 
 namespace Assets.Sources.Gameplay.Player.Wrappers
 {
-    public class PlayerDroneWrapper : PlayerWrapper
+    public class PlayerDroneWrapper : PlayerWrapper, IShootable
     {
-        [SerializeField] public float _dronRotationSpeed;
+        [SerializeField] private float _dronRotationSpeed;
+        [SerializeField] private float _playerCharacterRotation;
 
         private AimingCameraPoint _aimingCameraPoint;
         private ITankFactory _tankFactory;
@@ -28,7 +31,10 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
         private Coroutine _rotatiter;
         private bool _isDronAimed;
 
+        public uint BulletsCount => _dronesCount;
+
         public event Action DroneExploided;
+        public event Action BulletsCountChanged;
 
         [Inject]
         private void Construct(
@@ -38,7 +44,8 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
             DroneAiming droneAiming,
             DefeatHandler defeatHandler,
             uint dronesCount,
-            WictoryHandler wictoryHandler)
+            WictoryHandler wictoryHandler,
+            IPersistentProgressService persistentProgressService)
         {
             _aimingCameraPoint = aimingCameraPoint;
             _tankFactory = tankFactory;
@@ -49,6 +56,12 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
             _wictoryHangler = wictoryHandler;
 
             _dronesCount = _maxDronesCount;
+
+            tankFactory.CreatePlayerCharacter(
+                persistentProgressService.Progress.SelectedPlayerCharacter,
+                transform.position,
+                Quaternion.Euler(0, transform.rotation.eulerAngles.y + _playerCharacterRotation, 0),
+                transform);
 
             _aiming.Shooted += OnPlayerShooted;
             _defeatHandler.ProgressRecovered += OnProgressRecovered;
@@ -110,7 +123,9 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
 
             _dronesCount--;
             
-            await CreateDrone();            
+            await CreateDrone();
+
+            BulletsCountChanged?.Invoke();
         }
 
         private IEnumerator Rotater()

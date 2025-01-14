@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   Sequence:
+  - Forest3
   - Forest6
   - Forest5
   - Forest4
-  - Forest3
   - Forest2
   - Forest1
-  MainMenuScene: DesertMainMenuScene
+  MainMenuScene: ForestMainMenuScene
   IconReference:
     m_AssetGUID: 0a0ea6f579e6ce74ea83a323e48cb59f
     m_SubObjectName: ForestBiomeIcon

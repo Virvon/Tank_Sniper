@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: HomingRocket
   m_EditorClassIdentifier: 
   AssetReference:
-    m_AssetGUID: 
+    m_AssetGUID: 722e296a5a1c85b408cc698a57c8985b
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  ExplosionLifeTime: 0
-  ExplosionForce: 0
-  ExplosionRadius: 0
-  Damage: 0
-  FlightSpeed: 0
-  LifeTimeLimit: 0
+  ExplosionLifeTime: 1
+  ExplosionForce: 200
+  ExplosionRadius: 3
+  Damage: 10
+  FlightSpeed: 90
+  LifeTimeLimit: 5
   Type: 0
-  SearchRadius: 0
-  RotationSpeed: 0
-  TargetingDelay: 0
+  SearchRadius: 10
+  RotationSpeed: 60
+  TargetingDelay: 0.05

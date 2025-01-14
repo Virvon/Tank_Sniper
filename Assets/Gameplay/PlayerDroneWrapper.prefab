@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dronRotationSpeed: 90
+  _playerCharacterRotation: 82
 --- !u!65 &2496772218695695422
 BoxCollider:
   m_ObjectHideFlags: 0

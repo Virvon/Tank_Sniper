@@ -18,7 +18,7 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  IsUnlockOnStart: 0
+  IsUnlockOnStart: 1
   BaseMaterialAssetReference:
     m_AssetGUID: b73fe1bd9548ce145a85245453556b15
     m_SubObjectName: 

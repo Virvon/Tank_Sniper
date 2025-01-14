@@ -16,14 +16,14 @@ namespace Assets.Sources.UI.Gameplay.BulletsPanel
         private List<BulletIcon> _icons;
 
         [Inject]
-        private void Construct(IShootable shootable, IUiFactory uiFactory)
+        private async void Construct(IShootable shootable, IUiFactory uiFactory)
         {
             _shootable = shootable;
             _uiFactory = uiFactory;
 
             _icons = new();
 
-            CreateIcons((int)_shootable.BulletsCount);
+            await CreateIcons((int)_shootable.BulletsCount);
 
             _shootable.BulletsCountChanged += OnBulletCountChanged;
         }

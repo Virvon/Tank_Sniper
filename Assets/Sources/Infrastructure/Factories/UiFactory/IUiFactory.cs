@@ -24,5 +24,6 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         UniTask<ProgressBarElement> CreateProgressBarElement(Transform parent);
         UniTask<BulletIcon> CreateTankBulletIcon(Transform parent);
         UniTask<SuperBulletIcon> CreateSuperBulletIcon(Transform parent);
+        UniTask<BulletIcon> CreateDroneBulletIcon(Transform parent);
     }
 }
