@@ -40,7 +40,7 @@ namespace Assets.Sources.Gameplay.Weapons
             {
                 Vector3 targetDiretion = (PlayerWrapper.transform.position - _turret.transform.position).normalized;
 
-                Quaternion targetRotation = _turret.transform.rotation * Quaternion.AngleAxis(Quaternion.LookRotation(targetDiretion).eulerAngles.x, Vector3.right);
+                Quaternion targetRotation = Quaternion.LookRotation(targetDiretion, Vector3.right);
 
                 if(Vector3.Angle(_turret.transform.forward, targetDiretion) > AngleDelta)
                 {
