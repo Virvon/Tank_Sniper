@@ -9,10 +9,10 @@ namespace Assets.Sources.Services.AssetManagement
 {
     public class AssetProvider : IAssetProvider
     {
-        private readonly Dictionary<string, AsyncOperationHandle> _assetRequest;
+        private readonly Dictionary<string, AsyncOperationHandle> _assetRequests;
 
         public AssetProvider() =>
-            _assetRequest = new ();
+            _assetRequests = new ();
 
         public async UniTask InitializeAsync()
         {
@@ -21,20 +21,20 @@ namespace Assets.Sources.Services.AssetManagement
 
         public void CleanUp()
         {
-            foreach (AsyncOperationHandle handle in _assetRequest.Values)
+            foreach (AsyncOperationHandle handle in _assetRequests.Values)
                 Addressables.Release(handle);
 
-            _assetRequest.Clear();
+            _assetRequests.Clear();
         }
 
         public async UniTask<TAsset> Load<TAsset>(AssetReference reference)
         {
             AsyncOperationHandle handle;
 
-            if (_assetRequest.TryGetValue(reference.AssetGUID, out handle) == false)
+            if (_assetRequests.TryGetValue(reference.AssetGUID, out handle) == false)
             {
                 handle = reference.LoadAssetAsync<TAsset>();
-                _assetRequest.Add(reference.AssetGUID, handle);
+                _assetRequests.Add(reference.AssetGUID, handle);
             }
 
             await handle.ToUniTask();
@@ -47,10 +47,10 @@ namespace Assets.Sources.Services.AssetManagement
         {
             AsyncOperationHandle handle;
 
-            if (_assetRequest.TryGetValue(reference.AssetGUID, out handle) == false)
+            if (_assetRequests.TryGetValue(reference.AssetGUID, out handle) == false)
             {
                 handle = Addressables.LoadAssetAsync<TAsset>(reference);
-                _assetRequest.Add(reference.AssetGUID, handle);
+                _assetRequests.Add(reference.AssetGUID, handle);
             }
 
             await handle.ToUniTask();
@@ -63,10 +63,10 @@ namespace Assets.Sources.Services.AssetManagement
         {
             AsyncOperationHandle handle;
 
-            if (_assetRequest.TryGetValue(key, out handle) == false)
+            if (_assetRequests.TryGetValue(key, out handle) == false)
             {
                 handle = Addressables.LoadAssetAsync<TAsset>(key);
-                _assetRequest.Add(key, handle);
+                _assetRequests.Add(key, handle);
             }
 
             await handle.ToUniTask();
@@ -78,6 +78,20 @@ namespace Assets.Sources.Services.AssetManagement
         {
             List<string> assetsList = await GetAssetsListByLabel(label);
             await LoadAll<object>(assetsList);
+        }
+
+        public async UniTask ReleaseAssetsByLabel(string label)
+        {
+            var assetsList = await GetAssetsListByLabel(label);
+
+            foreach (var assetKey in assetsList)
+            {
+                if (_assetRequests.TryGetValue(assetKey, out var handler))
+                {
+                    Addressables.Release(handler);
+                    _assetRequests.Remove(assetKey);
+                }
+            }
         }
 
         public async UniTask<TAsset[]> LoadAll<TAsset>(List<string> keys)

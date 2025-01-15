@@ -8,11 +8,6 @@ namespace Assets.Sources.Data
         public uint Value;
 
         public event Action ValueChanged;
-
-        public Wallet()
-        {
-            Value = 9999990;
-        }
         
         public bool TryTake(uint value)
         {

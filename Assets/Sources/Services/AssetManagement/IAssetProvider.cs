@@ -17,5 +17,6 @@ namespace Assets.Sources.Services.AssetManagement
         UniTask<List<string>> GetAssetsListByLabel<TAsset>(string label);
         void CleanUp();
         UniTask<TAsset> Load<TAsset>(AssetReference reference);
+        UniTask ReleaseAssetsByLabel(string label);
     }
 }
