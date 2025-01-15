@@ -1,4 +1,7 @@
 ﻿using Assets.Sources.Gameplay.Player.Aiming;
+using Assets.Sources.Gameplay.Player.Weapons;
+using Assets.Sources.Gameplay.Player.Wrappers;
+using System;
 using System.Collections;
 using UnityEngine;
 using Zenject;
@@ -7,23 +10,32 @@ namespace Assets.Sources.UI.Gameplay.GameplayWindows
 {
     public class TankGameplayWindow : GameplayWindow
     {
+        [SerializeField] private ReloadPanel _reloadProgressBar;
+
         private TankAiming _aiming;
+        private PlayerTankWeapon _playerTankWeapon;
 
         private Coroutine _aimChanger;
+        private bool _isReloaded;
 
         [Inject]
-        private void Construct(TankAiming tankAiming)
+        private void Construct(TankAiming tankAiming, PlayerTankWeapon playerTankWeapon)
         {
             _aiming = tankAiming;
+            _playerTankWeapon = playerTankWeapon;
+
+            _isReloaded = false;
 
             _aiming.StateChanged += OnAimingStateChanged;
             _aiming.StateChangingFinished += OnAimingStageChangingFinished;
+            _playerTankWeapon.Reloaded += OnReloaded;
         }
 
         protected override void OnDestroy()
         {
             _aiming.StateChanged -= OnAimingStateChanged;
             _aiming.StateChangingFinished -= OnAimingStageChangingFinished;
+            _playerTankWeapon.Reloaded -= OnReloaded;
             base.OnDestroy();
         }
 
@@ -47,8 +59,20 @@ namespace Assets.Sources.UI.Gameplay.GameplayWindows
 
         private void OnAimingStageChangingFinished(bool isAimed)
         {
-            if (isAimed == false)
+            if (isAimed == false && _isReloaded == false)
                 SetAimButtonActive(true);
+        }
+
+        private void OnReloaded(float duration)
+        {
+            SetAimButtonActive(false);
+            _isReloaded = true;
+
+            _reloadProgressBar.StartReload(duration, callback: () =>
+            {
+                _isReloaded = false;
+                SetAimButtonActive(true);
+            });
         }
 
         private IEnumerator AimChanger(bool isAimed, float duration)

@@ -19,3 +19,4 @@ MonoBehaviour:
   PlayerHealth: 1000
   WindowsSwitchDeley: 2
   ProgressRecoveryAvailableTime: 7
+  ReloadDuration: 10

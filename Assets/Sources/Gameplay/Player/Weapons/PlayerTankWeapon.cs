@@ -1,7 +1,10 @@
 ﻿using Assets.Sources.Gameplay.Cameras;
 using Assets.Sources.Gameplay.Player.Aiming;
 using Assets.Sources.Infrastructure.Factories.BulletFactory;
+using Assets.Sources.Services.StaticDataService;
+using Assets.Sources.Services.StaticDataService.Configs;
 using System;
+using System.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -19,6 +22,7 @@ namespace Assets.Sources.Gameplay.Player.Weapons
         private GameplayCamera _gameplayCamera;
         private TankAiming _aiming;
         private CameraShaking _cameraShaking;
+        private GameplaySettingsConfig _gameplaySettings;
 
         private Transform[] _bulletPoints;
 
@@ -27,6 +31,7 @@ namespace Assets.Sources.Gameplay.Player.Weapons
 
         public event Action BulletsCountChanged;
         public event Action BulletCreated;
+        public event Action<float> Reloaded;
 
         protected IBulletFactory BulletFactory { get; private set; }
         protected Quaternion BulletRotation => _gameplayCamera.transform.rotation;
@@ -40,12 +45,18 @@ namespace Assets.Sources.Gameplay.Player.Weapons
         protected float SuperBulletShootsDuration => _supperBulletShootsDuration;
 
         [Inject]
-        private void Construct(IBulletFactory bulletFactory, GameplayCamera gameplayCamera, TankAiming aiming, CameraShaking cameraShaking)
+        private void Construct(
+            IBulletFactory bulletFactory,
+            GameplayCamera gameplayCamera,
+            TankAiming aiming,
+            CameraShaking cameraShaking,
+            IStaticDataService staticDataService)
         {
             BulletFactory = bulletFactory;
             _gameplayCamera = gameplayCamera;
             _aiming = aiming;
             _cameraShaking = cameraShaking;
+            _gameplaySettings = staticDataService.GameplaySettingsConfig;
 
             _shootsNumberToSuperShot = _requireShotsNumberToSuperShot;
             _bulletsCount = _bulletsCapacity;
@@ -62,7 +73,7 @@ namespace Assets.Sources.Gameplay.Player.Weapons
         private void OnShoted()
         {
             if (_bulletsCount == 0)
-                _bulletsCount = _bulletsCapacity;
+                return;
 
             _bulletsCount--;
 
@@ -79,9 +90,10 @@ namespace Assets.Sources.Gameplay.Player.Weapons
                 Shoot();
             }
 
-            
-
             BulletsCountChanged?.Invoke();
+
+            if(_bulletsCount == 0)
+                StartCoroutine(Reloader());
         }
 
         protected void OnBulletCreated()
@@ -100,5 +112,17 @@ namespace Assets.Sources.Gameplay.Player.Weapons
         protected abstract void Shoot();
 
         protected abstract void SuperShoot();
+
+        private IEnumerator Reloader()
+        {
+            _aiming.Reload();
+            Reloaded?.Invoke(_gameplaySettings.ReloadDuration);
+
+            yield return new WaitForSeconds(_gameplaySettings.ReloadDuration);
+
+            _bulletsCount = _bulletsCapacity;
+            _aiming.FinishReload();
+            BulletsCountChanged.Invoke();
+        }
     }
 }

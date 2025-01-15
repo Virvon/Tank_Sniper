@@ -18,7 +18,6 @@ namespace Assets.Sources.UI.Gameplay.GameplayWindows
         [SerializeField] private Button _optionsWindowButton;
         [SerializeField] private CanvasGroup _currengGameInfoCanvasGroup;
 
-
         private DefeatHandler _defeatHandler;
         private WictoryHandler _wictoryHangler;
         private RestartWindow _restartWindow;

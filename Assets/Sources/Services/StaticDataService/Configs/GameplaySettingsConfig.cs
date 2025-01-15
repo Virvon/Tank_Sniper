@@ -10,5 +10,6 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public uint PlayerHealth;
         public float WindowsSwitchDeley;
         public float ProgressRecoveryAvailableTime;
+        public float ReloadDuration;
     }
 }

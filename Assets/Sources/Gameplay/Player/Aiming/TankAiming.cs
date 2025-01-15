@@ -72,6 +72,19 @@ namespace Assets.Sources.Gameplay.Player.Aiming
             _wictoryHandler.Woned -= ProhibitShoot;
         }
 
+        public void Reload()
+        {
+            _canShoot = false;
+            _canAim = false;
+
+            OnHandleMoveCompleted();
+        }
+
+        public void FinishReload()
+        {
+            _canShoot = true;
+        }
+
         private void ProhibitShoot() =>
             _canShoot = false;
 

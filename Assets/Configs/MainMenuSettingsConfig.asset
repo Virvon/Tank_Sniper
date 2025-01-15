@@ -15,4 +15,4 @@ MonoBehaviour:
   RequiredTanksNumberToPriceUpdate: 10
   StartPrice: 1000
   PriceIncrease: 1000
-  RequiredTanksNumberToSpawnUpdate: 15
+  RequiredTanksNumberToSpawnUpdate: 16
