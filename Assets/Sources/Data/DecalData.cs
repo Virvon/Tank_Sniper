@@ -6,12 +6,12 @@ namespace Assets.Sources.Data
     [Serializable]
     public class DecalData
     {
-        public DecalType Type;
+        public string Id;
         public bool IsUnlocked;
 
-        public DecalData(DecalType type, bool isUnlocked)
+        public DecalData(string id, bool isUnlocked)
         {
-            Type = type;
+            Id = id;
             IsUnlocked = isUnlocked;
         }
     }

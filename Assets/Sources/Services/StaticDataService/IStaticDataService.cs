@@ -31,8 +31,8 @@ namespace Assets.Sources.Services.StaticDataService
         ForwardFlyingBulletConfig GetBullet(ForwardFlyingBulletType type);
         HomingBulletConfig GetBullet(HomingBulletType type);
         TankConfig GetTank(uint level);
-        TankSkinConfig GetSkin(string type);
-        DecalConfig GetDecal(DecalType type);
+        TankSkinConfig GetSkin(string id);
+        DecalConfig GetDecal(string id);
         MuzzleConfig GetMuzzle(MuzzleType type);
         LevelsSequenceConfig GetLevelsSequence(BiomeType type);
         PlayerCharacterConfig GetPlayerCharacter(PlayerCharacterType type);

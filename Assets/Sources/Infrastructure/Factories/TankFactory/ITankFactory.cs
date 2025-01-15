@@ -20,7 +20,7 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
             Quaternion rotation,
             Transform parent,
             string skinId,
-            DecalType decalType = DecalType.Decal1,
+            string decalId,
             bool isDecalsChangable = false);
         UniTask<TankShootingWrapper> CreateTankShootingWrapper(uint tankLevel, Vector3 position, Quaternion rotation, Transform parent);
     }

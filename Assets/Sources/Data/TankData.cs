@@ -9,13 +9,13 @@ namespace Assets.Sources.Data
         public uint Level;
         public bool IsUnlocked;
         public string SkinId;
-        public DecalType DecalType;
+        public string DecalId;
 
-        public TankData(uint level, bool isUnlocked, DecalType decalType)
+        public TankData(uint level, bool isUnlocked, string decalId)
         {
             Level = level;
             IsUnlocked = isUnlocked;
-            DecalType = decalType;
+            DecalId = decalId;
 
             SkinId = string.Empty;
         }

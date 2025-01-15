@@ -24,7 +24,7 @@ namespace Assets.Sources.MainMenu.CharacterPoints
                 tankWrapper.transform.rotation,
                 tankWrapper.transform,
                 tankData.SkinId,
-                tankData.DecalType,
+                tankData.DecalId,
                 true);
 
             tankWrapper.SetBulletPoints(tank.BulletPoints);

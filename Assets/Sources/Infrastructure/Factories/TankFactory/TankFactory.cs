@@ -76,7 +76,7 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
             Quaternion rotation,
             Transform parent,
             string skinId,
-            DecalType decalType = DecalType.Decal1,
+            string decalId,
             bool isDecalsChangable = false)
         {
             Material skinMaterial;
@@ -88,7 +88,7 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
 
             Tank tank = await _tankFactory.Create(_staticDataService.GetTank(level).AssetReference, position, rotation, parent);
 
-            tank.Initialize(level, skinMaterial, decalType, isDecalsChangable);
+            tank.Initialize(level, skinMaterial, decalId, isDecalsChangable);
 
             return tank;
         }

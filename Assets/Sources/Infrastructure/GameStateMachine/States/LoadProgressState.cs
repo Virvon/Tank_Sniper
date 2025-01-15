@@ -44,8 +44,8 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
 
         private PlayerProgress CreateNewProgress()
         {
-            DecalData[] decalDatas = _staticDataService.DecalConfigs.Select(config => new DecalData(config.Type, config.IsUnlockedOnStart)).ToArray();
-            DecalType startDecal = decalDatas.First(decal => decal.IsUnlocked).Type;
+            DecalData[] decalDatas = _staticDataService.DecalConfigs.Select(config => new DecalData(config.Id, config.IsUnlockedOnStart)).ToArray();
+            string startDecal = decalDatas.First(decal => decal.IsUnlocked).Id;
             TankData[] tankDatas = _staticDataService.TankConfigs.Select(config => new TankData(config.Level, config.IsUnlockOnStart, startDecal)).ToArray();
             TankSkinData[] tankSkinDatas = _staticDataService.TankSkinConfigs.Select(config => new TankSkinData(config.Id)).ToArray();
             CharacterSkinData[] characterSkinDatas = _staticDataService.PlayerCharacterCofigs.Select(config => new CharacterSkinData(config.Type, config.IsUnlockedOnStart)).ToArray();

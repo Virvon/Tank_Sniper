@@ -17,11 +17,11 @@ namespace Assets.Sources.Tanks
         public Transform[] BulletPoints => _bulletPoints;
         public Transform Turret => _turret;
 
-        public void Initialize(uint level, Material skinMaterial, DecalType decalType, bool isDecalsChangable)
+        public void Initialize(uint level, Material skinMaterial, string decalId, bool isDecalsChangable)
         {
             Level = level;
             _tankSkin.SetMaterial(skinMaterial);
-            _decals.Initialize(decalType, isDecalsChangable);
+            _decals.Initialize(decalId, isDecalsChangable);
         }
 
         public void Destroy() =>

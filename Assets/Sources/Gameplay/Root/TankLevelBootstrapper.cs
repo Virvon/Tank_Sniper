@@ -51,7 +51,7 @@ namespace Assets.Sources.Gameplay.Root
                 playerTankWrapper.transform.rotation,
                 playerTankWrapper.transform,
                 tankData.SkinId,
-                tankData.DecalType,
+                tankData.DecalId,
                 false);
 
             playerTankWrapper.Initialize(tank.BulletPoints, tank.Turret);

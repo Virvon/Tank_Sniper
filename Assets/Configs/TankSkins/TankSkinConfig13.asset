@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6a18f8decdd21408c4b7e95072dbfb, type: 3}
   m_Name: TankSkinConfig13
   m_EditorClassIdentifier: 
-  Id: Skin2
+  Id: Skin13
   MaterialAssetReference:
-    m_AssetGUID: 
+    m_AssetGUID: 8e91b085d97c79a4d84ec214be7a5527
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

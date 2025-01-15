@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: Skin2
   MaterialAssetReference:
-    m_AssetGUID: 
+    m_AssetGUID: c3c76d38922bc044da8d7f3c921ec3ca
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

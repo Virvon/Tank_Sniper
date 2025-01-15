@@ -12,6 +12,8 @@ namespace Assets.Sources.MainMenu.Desk
 {
     public class DeskCell : MonoBehaviour
     {
+        private const string Decal = "Decal1";
+
         [SerializeField] private Transform _tankPoint;
         [SerializeField] private Marker _marker;
         [SerializeField] private Quaternion _tankRotation;
@@ -43,7 +45,7 @@ namespace Assets.Sources.MainMenu.Desk
 
         public async UniTask CreateTank(uint level)
         {
-            _tank = await _tankFactory.CreateTank(level, _tankPoint.position, _tankRotation, transform, string.Empty);
+            _tank = await _tankFactory.CreateTank(level, _tankPoint.position, _tankRotation, transform, string.Empty, Decal);
             _tank.transform.localScale = Vector3.one * _tankScale;
             _persistentProgressService.Progress.DeskData.UpdateCellInfo(_id, _tank.Level);
 

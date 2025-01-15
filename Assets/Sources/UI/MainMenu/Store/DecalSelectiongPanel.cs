@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Sources.UI.MainMenu.Store
 {
-    public class DecalSelectiongPanel : SelectionPanel<DecalType>
+    public class DecalSelectiongPanel : SelectionPanel<string>
     {
         [SerializeField] private int _tankRotationAngle;
         [SerializeField] private UiSelectedTankPoint _tankPoint;
@@ -25,31 +25,31 @@ namespace Assets.Sources.UI.MainMenu.Store
             _tankPoint.ResetTargetRotation();
         }
 
-        protected override async UniTask<Dictionary<DecalType, SelectingPanelElement>> FillContent(
+        protected override async UniTask<Dictionary<string, SelectingPanelElement>> FillContent(
             IUiFactory uiFactory,
             IPersistentProgressService persistentProgressService,
             Transform content)
         {
-            Dictionary<DecalType, SelectingPanelElement> panels = new();
+            Dictionary<string, SelectingPanelElement> panels = new();
 
             foreach (DecalData decalData in persistentProgressService.Progress.Decals)
             {
                 SelectingPanelElement panel = await uiFactory.CreateUnlockingPanel(content);
 
-                panel.Initialize(decalData.Type.ToString());
+                panel.Initialize(decalData.Id.ToString());
 
                 if (decalData.IsUnlocked)
                     panel.Unlock();
 
                 panel.Clicked += OnPanelClicked;
 
-                panels.Add(decalData.Type, panel);
+                panels.Add(decalData.Id, panel);
             }
 
             return panels;
         }
 
-        protected override void Select(DecalType key, IPersistentProgressService persistentProgressService)
+        protected override void Select(string key, IPersistentProgressService persistentProgressService)
         {
             DecalData decalData = persistentProgressService.Progress.GetDecal(key);
 
@@ -72,7 +72,7 @@ namespace Assets.Sources.UI.MainMenu.Store
         protected override void Unsubscribe(IPersistentProgressService persistentProgressService) =>
             persistentProgressService.Progress.DecalUnlocked -= Unlock;
 
-        protected override DecalType GetCurrentSelectedPanel(IPersistentProgressService persistentProgressService) =>
-            persistentProgressService.Progress.GetSelectedTank().DecalType;
+        protected override string GetCurrentSelectedPanel(IPersistentProgressService persistentProgressService) =>
+            persistentProgressService.Progress.GetSelectedTank().DecalId;
     }
 }

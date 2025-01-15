@@ -1106,6 +1106,227 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f8c21c22c5f19824ca1c984f671800ec
+    m_Address: TankSkinConfig3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee5be6cb17a4ef14f8049dabe9dc5f60
+    m_Address: TankSkinConfig4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5635f714fa5b2d14fbc7c9b872733f12
+    m_Address: TankSkinConfig5
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b21a13e62a2901419c9e8adcb5289df
+    m_Address: TankSkinConfig6
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a1257529337f4147ac4dbb630c0bb9a
+    m_Address: TankSkinConfig7
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e72358d111d3402439ebe8da2b4333d3
+    m_Address: TankSkinConfig8
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29d9f586b43693842a665abe97aa3aaf
+    m_Address: TankSkinConfig9
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 73cf3c0984328c642a7bfa9bb72fdc60
+    m_Address: TankSkinConfig10
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 389f21645ec405d4cb004dde46e42de5
+    m_Address: TankSkinConfig11
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 16f48421c2b90d148a447cd5427a981f
+    m_Address: TankSkinConfig12
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b7bfc9f622bef34b8f80e9007d83ac3
+    m_Address: TankSkinConfig13
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf53d2cfcb6eebb42b76f1f0bdd1ff9d
+    m_Address: TankSkinConfig14
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 876ae204629d96246b72745c9b68c6fd
+    m_Address: TankSkinConfig15
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9b1d2b74a972d044927977bf0b57588
+    m_Address: Decal3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da67a6a8525f4ac42917892cb7bb3496
+    m_Address: Decal4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f07dd46792c92b48a0dbd4ab2e56091
+    m_Address: Decal5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 081c8f2085c7993488fdf9a0a5d3f9bc
+    m_Address: Decal6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8bdbda7af52edb44ab2e3d0f98cf2db9
+    m_Address: Decal7
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e20e2e39377d5c41bcc7b1702c010b8
+    m_Address: Decal8
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f8bd9d155ae4ae14cbaaa83477a2f48f
+    m_Address: Decal9
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f893566cf2d89a547830c9fb75c723c0
+    m_Address: Decal10
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 18e4b96ee9d37364f96eb1029f78138f
+    m_Address: Decal11
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef0a4a3f27b01444fac138f9fad87599
+    m_Address: Decal12
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f52770b07c6ce4d40a0e7146f4907db2
+    m_Address: Decal13
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: afbb0177e9e0a0140ab622cd749aff72
+    m_Address: Decal14
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a553d665e57eb14883f59d0f6915247
+    m_Address: Decal15
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0b2414a547724c34eae74179a043744c
+    m_Address: DecalConfig3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b3e56124bd1d3274797370a65a7396df
+    m_Address: DecalConfig4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a4b4cfb8e199b4341bfa27d43b9c76cc
+    m_Address: DecalConfig5
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa144c3df42906f43b61363f42dbbb28
+    m_Address: DecalConfig6
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e7ddb0c182f8ed74d8ad349959082720
+    m_Address: DecalConfig7
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e152bd4d35c4bc4ba419c3806fce009
+    m_Address: DecalConfig8
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d3a95be9114e7a488ec06d29cd3a12e
+    m_Address: DecalConfig9
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e545ab5b0548174ea7165d6c2d0c19e
+    m_Address: DecalConfig10
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a02039580801224e80d28b7a712b36d
+    m_Address: DecalConfig11
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 663c795376761544e9905f1b0d3cc1b7
+    m_Address: DecalConfig12
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af56121afbf2d81448c6381100dce9fd
+    m_Address: DecalConfig13
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1fb0d682f49e3194a87365650b89f6ab
+    m_Address: DecalConfig14
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e5a13fc8e79e82498fb9d93884c80bf
+    m_Address: DecalConfig15
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a44638466bf414438293c9d18a37e72, type: 2}
   m_SchemaSet:

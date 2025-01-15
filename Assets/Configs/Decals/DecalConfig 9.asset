@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65d634749f973a34fa3af8e67f71b44b, type: 3}
-  m_Name: DecalConfig1
+  m_Name: DecalConfig 9
   m_EditorClassIdentifier: 
-  Type: 1
+  Id: Decal9
   MaterialAssetReference:
-    m_AssetGUID: 91a0ff561abc25640b2be38303bd618d
+    m_AssetGUID: f8bd9d155ae4ae14cbaaa83477a2f48f
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

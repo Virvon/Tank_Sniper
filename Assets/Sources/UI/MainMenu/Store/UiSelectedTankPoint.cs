@@ -105,7 +105,7 @@ namespace Assets.Sources.UI.MainMenu.Store
             Transform parent,
             ITankFactory tankFactory)
         {
-            Tank tank = await tankFactory.CreateTank(tankData.Level, position, rotation, parent, tankData.SkinId, tankData.DecalType, true);
+            Tank tank = await tankFactory.CreateTank(tankData.Level, position, rotation, parent, tankData.SkinId, tankData.DecalId, true);
 
             return tank.gameObject;
         }

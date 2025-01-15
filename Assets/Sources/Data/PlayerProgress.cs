@@ -49,8 +49,8 @@ namespace Assets.Sources.Data
         public event Action<uint> TankUnlocked;
         public event Action<uint> SelectedTankChanged;
         public event Action<string> TankSkinUnlocked;
-        public event Action<DecalType> DecalUnlocked;
-        public event Action<DecalType> DecalChanged;
+        public event Action<string> DecalUnlocked;
+        public event Action<string> DecalChanged;
         public event Action<PlayerCharacterType> CharacterSkinUnlocked;
         public event Action<PlayerCharacterType> CharacterSkinChanged;
 
@@ -108,21 +108,21 @@ namespace Assets.Sources.Data
             SelectedTankChanged?.Invoke(SelectedTankLevel);
         }
 
-        public DecalData GetDecal(DecalType type) =>
-            Decals.First(decal => decal.Type == type);
+        public DecalData GetDecal(string id) =>
+            Decals.First(decal => decal.Id == id);
 
-        public void UnlockDecal(DecalType type)
+        public void UnlockDecal(string id)
         {
-            GetDecal(type).IsUnlocked = true;
-            DecalUnlocked?.Invoke(type);
+            GetDecal(id).IsUnlocked = true;
+            DecalUnlocked?.Invoke(id);
 
-            SelectDecal(type);
+            SelectDecal(id);
         }
 
-        public void SelectDecal(DecalType type)
+        public void SelectDecal(string id)
         {
-            GetTank(SelectedTankLevel).DecalType = type;
-            DecalChanged?.Invoke(type);
+            GetTank(SelectedTankLevel).DecalId = id;
+            DecalChanged?.Invoke(id);
         }
 
         public CharacterSkinData GetCharacterSkin(PlayerCharacterType type) =>
