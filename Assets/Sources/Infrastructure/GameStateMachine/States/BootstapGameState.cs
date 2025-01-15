@@ -2,6 +2,12 @@
 using Assets.Sources.Services.StateMachine;
 using Assets.Sources.Services.StaticDataService;
 using Cysharp.Threading.Tasks;
+using System.Collections;
+using System;
+using Assets.Sources.Services.CoroutineRunner;
+#if !UNITY_WEBGL || UNITY_EDITOR
+using Agava.YandexGames;
+#endif
 
 namespace Assets.Sources.Infrastructure.GameStateMachine.States
 {
@@ -10,22 +16,25 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
         private readonly IAssetProvider _assetProvider;
         private readonly GameStateMachine _gameStateMachine;
         private readonly IStaticDataService _staticDataService;
+        private readonly ICoroutineRunner _coroutineRunner;
 
         public BootstapGameState(
             IAssetProvider assetProvider,
             GameStateMachine gameStateMachine,
-            IStaticDataService staticDataService)
+            IStaticDataService staticDataService,
+            ICoroutineRunner coroutineRunner)
         {
             _assetProvider = assetProvider;
             _gameStateMachine = gameStateMachine;
             _staticDataService = staticDataService;
+            _coroutineRunner = coroutineRunner;
         }
 
         public async UniTask Enter()
         {
             await Initialize();
 
-            _gameStateMachine.Enter<LoadProgressState>().Forget();
+            _coroutineRunner.StartCoroutine(InitializeYandexSdk(callback: () => _gameStateMachine.Enter<LoadProgressState>().Forget()));
         }
 
         public UniTask Exit() =>
@@ -35,6 +44,23 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
         {
             await _assetProvider.InitializeAsync();
             await _staticDataService.InitializeAsync();
+        }
+
+        private IEnumerator InitializeYandexSdk(Action callback)
+        {
+#if !UNITY_WEBGL || UNITY_EDITOR
+            callback?.Invoke();
+            yield break;
+#else
+            yield return YandexGamesSdk.Initialize();
+
+            if (YandexGamesSdk.IsInitialized == false)
+                throw new ArgumentNullException(nameof(YandexGamesSdk), "Yandex SDK didn't initialized correctly");
+
+            YandexGamesSdk.CallbackLogging = true;
+            StickyAd.Show();
+            callback?.Invoke();
+#endif
         }
     }
 }
