@@ -18,6 +18,7 @@ namespace Assets.Sources.Gameplay.Player.Aiming
         private readonly IInputService _inputService;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly AimingConfig _aimingConfig;
+        private readonly GameplaySettingsConfig _gameplaySettings;
         private readonly DefeatHandler _defeatHandler;
         private readonly WictoryHandler _wictoryHandler;
 
@@ -25,6 +26,7 @@ namespace Assets.Sources.Gameplay.Player.Aiming
         private float _aimingProgress;
         private bool _canAim;
         private bool _canShoot;
+        private bool _shootCooldownFinished;
 
         public event Action Shooted;
         public event Action<Vector2> AimShifted;
@@ -43,12 +45,14 @@ namespace Assets.Sources.Gameplay.Player.Aiming
             _inputService = inputService;
             _coroutineRunner = coroutineRunner;
             _aimingConfig = staticDataService.AimingConfig;
+            _gameplaySettings = staticDataService.GameplaySettingsConfig;
             _defeatHandler = defeatHandler;
             _wictoryHandler = wictoryHandler;
 
             _aimingProgress = 0;
             _canAim = true;
             _canShoot = true;
+            _shootCooldownFinished = true;
 
             _inputService.HandlePressed += OnHandlePressed;
             _inputService.HandleMoved += OnHandleMoved;
@@ -116,8 +120,11 @@ namespace Assets.Sources.Gameplay.Player.Aiming
             {
                 TryStopTimer();
 
-                if (_canShoot)
+                if (_canShoot && _shootCooldownFinished)
+                {
                     Shooted?.Invoke();
+                    _coroutineRunner.StartCoroutine(ShootCooldownWaiter());
+                }
 
                 _timer = _coroutineRunner.StartCoroutine(Timer(_aimingConfig.ShootingAimDuration, callback: () =>
                 {
@@ -191,6 +198,15 @@ namespace Assets.Sources.Gameplay.Player.Aiming
 
             callback?.Invoke();
             StateChangingFinished?.Invoke(isAimed);
+        }
+
+        private IEnumerator ShootCooldownWaiter()
+        {
+            _shootCooldownFinished = false;
+
+            yield return new WaitForSeconds(_gameplaySettings.PlayerShootCooldown);
+
+            _shootCooldownFinished = true;
         }
     }
 }

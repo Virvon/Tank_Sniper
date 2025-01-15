@@ -11,5 +11,6 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public float WindowsSwitchDeley;
         public float ProgressRecoveryAvailableTime;
         public float ReloadDuration;
+        public float PlayerShootCooldown;
     }
 }
