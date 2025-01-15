@@ -49,8 +49,6 @@ namespace Assets.Sources.MainMenu.Desk
         private void OnDeskCellEmploymentChanged() =>
             EmploymentChanged?.Invoke(HasEmptyCells);
 
-
-
         public class Factory : PlaceholderFactory<string, UniTask<Desk>>
         {
         }

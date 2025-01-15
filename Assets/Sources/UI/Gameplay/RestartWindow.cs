@@ -33,7 +33,22 @@ namespace Assets.Sources.UI.Gameplay
                 button.onClick.RemoveListener(Hide);
         }
 
-        private void OnRestartButtonClicked() =>
+        public override void Show()
+        {
+            base.Show();
+            Time.timeScale = 0;
+        }
+
+        public override void Hide()
+        {
+            base.Hide();
+            Time.timeScale = 1;
+        }
+
+        private void OnRestartButtonClicked()
+        {
+            Time.timeScale = 1;
             _gameStateMachine.Enter<GameplayLoopState>().Forget();
+        }
     }
 }

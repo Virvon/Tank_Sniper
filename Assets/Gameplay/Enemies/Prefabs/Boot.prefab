@@ -837,6 +837,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 936601575409640357}
     m_Modifications:
+    - target: {fileID: 2284558642171620455, guid: 7073707a4d893034f861234c769edff3,
+        type: 3}
+      propertyPath: _infos.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284558642171620455, guid: 7073707a4d893034f861234c769edff3,
+        type: 3}
+      propertyPath: _infos.Array.data[2].BiomeType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284558642171620455, guid: 7073707a4d893034f861234c769edff3,
+        type: 3}
+      propertyPath: _infos.Array.data[2].MaterialInfos.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284558642171620455, guid: 7073707a4d893034f861234c769edff3,
+        type: 3}
+      propertyPath: _infos.Array.data[2].MaterialInfos.Array.data[1].Index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284558642171620455, guid: 7073707a4d893034f861234c769edff3,
+        type: 3}
+      propertyPath: _infos.Array.data[2].MaterialInfos.Array.data[0].Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 4943d175787dd4249bc1fc84ff85daab, type: 2}
+    - target: {fileID: 2284558642171620455, guid: 7073707a4d893034f861234c769edff3,
+        type: 3}
+      propertyPath: _infos.Array.data[2].MaterialInfos.Array.data[1].Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 4943d175787dd4249bc1fc84ff85daab, type: 2}
     - target: {fileID: 3232716617254278474, guid: 7073707a4d893034f861234c769edff3,
         type: 3}
       propertyPath: m_RootOrder

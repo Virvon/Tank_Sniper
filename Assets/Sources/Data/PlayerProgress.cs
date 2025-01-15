@@ -19,6 +19,8 @@ namespace Assets.Sources.Data
         public Wallet Wallet;
         public TankBuyingData TankBuyingData;
         public uint CompletedLevelsCount;
+        public DeskData DeskData;
+        public bool IsSoundOn;
 
         public PlayerProgress(
             TankData[] tanks,
@@ -40,6 +42,8 @@ namespace Assets.Sources.Data
             Wallet = new();
             TankBuyingData = new(startTankBuyingCost);
             CompletedLevelsCount = 0;
+            DeskData = new();
+            IsSoundOn = true;
         }
 
         public event Action<uint> TankUnlocked;

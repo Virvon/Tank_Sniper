@@ -19,7 +19,7 @@ namespace Assets.Sources.UI
             _mainCanvasGroup.alpha = _isOpenedOnAwake ? 1 : 0;
         }
 
-        public void Show()
+        public virtual void Show()
         {
             _mainCanvasGroup.blocksRaycasts = true;
             _mainCanvasGroup.interactable = true;
@@ -27,7 +27,7 @@ namespace Assets.Sources.UI
             Switch(1, _openDuration);
         }
 
-        public void Hide()
+        public virtual void Hide()
         {
             _mainCanvasGroup.blocksRaycasts = false;
             _mainCanvasGroup.interactable = false;
