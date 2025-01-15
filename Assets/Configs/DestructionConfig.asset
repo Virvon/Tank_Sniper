@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AdditionalDestructionDirection: {x: 0, y: 0.5, z: 0}
   RotationForce: 10
-  DestroyDelay: 3
-  DestroyDuration: 2
+  DestroyDelay: 4
+  DestroyDuration: 1.5
   DestructionColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}

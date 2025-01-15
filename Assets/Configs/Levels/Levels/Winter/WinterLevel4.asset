@@ -15,7 +15,7 @@ MonoBehaviour:
   LevelKey: Winter4
   StaticEnemyPoints:
   - Id: WinterGameplayScene2_40daa493-feb1-49f8-aadb-efd10ba7bb8e
-    StartPosition: {x: 5.939, y: 6.565, z: 42.732}
+    StartPosition: {x: 5.939, y: 6.35, z: 42.732}
     StartRotation: {x: -0, y: 0.9848078, z: -0, w: 0.17364825}
     EnemyType: 6
   - Id: WinterGameplayScene2_4cd37c9a-6578-4473-bc92-6e7621b137d0

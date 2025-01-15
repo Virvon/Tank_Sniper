@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Assets.Sources.Services.SaveLoadProgress;
+using Cysharp.Threading.Tasks;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -11,12 +12,17 @@ namespace Assets.Sources.MainMenu.Desk
     {
         [SerializeField] private DeskCell[] _cells;
 
+        private ISaveLoadService _saveLoadService;
+
         public event Action<bool> EmploymentChanged;
 
         public bool HasEmptyCells => _cells.Any(cell => cell.IsEmpty);
 
-        private void Start()
+        [Inject]
+        private void Construct(ISaveLoadService saveLoadService)
         {
+            _saveLoadService = saveLoadService;
+
             foreach (DeskCell deskCell in _cells)
                 deskCell.EmploymentChanged += OnDeskCellEmploymentChanged;
 
@@ -36,6 +42,8 @@ namespace Assets.Sources.MainMenu.Desk
             DeskCell cell = emptyCells[Random.Range(0, emptyCells.Length)];
 
             await cell.CreateTank(level);
+
+            _saveLoadService.SaveProgress();
         }
 
         private void OnDeskCellEmploymentChanged() =>

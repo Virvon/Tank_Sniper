@@ -234,12 +234,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 8840643775221683411}
-  _reloadDuration: 0.5
-  _shootCooldown: 0.1
+  _reloadDuration: 2
+  _shootCooldown: 0.25
   _bulletType: 4
   _bulletsCapacity: 4
   _muzzleType: 0
-  _shootDuration: 0.1
+  _shootDuration: 0.125
   _bulletPoint: {fileID: 3854906222176311977}
   _helicopter: {fileID: 5839955110556970388}
   _weaponPart: {fileID: 7526723435861980404}
@@ -625,8 +625,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 8840643775221683411}
-  _reloadDuration: 1
-  _shootCooldown: 0.2
+  _reloadDuration: 3
+  _shootCooldown: 0.4
   _bulletType: 3
   _bulletsCapacity: 2
   _muzzleType: 0
@@ -855,12 +855,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 8840643775221683411}
-  _reloadDuration: 1
-  _shootCooldown: 0.2
+  _reloadDuration: 3
+  _shootCooldown: 0.4
   _bulletType: 3
   _bulletsCapacity: 2
   _muzzleType: 0
-  _shootDuration: 0.1
+  _shootDuration: 0.2
   _bulletPoint: {fileID: 417368379007887645}
   _helicopter: {fileID: 5839955110556970388}
   _weaponPart: {fileID: 3618250026512261418}
@@ -1378,8 +1378,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 8840643775221683411}
-  _reloadDuration: 0.5
-  _shootCooldown: 0.1
+  _reloadDuration: 2
+  _shootCooldown: 0.25
   _bulletType: 4
   _bulletsCapacity: 4
   _muzzleType: 0

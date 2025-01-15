@@ -3,6 +3,7 @@ using Assets.Sources.Gameplay.Handlers;
 using Assets.Sources.Infrastructure.GameStateMachine;
 using Assets.Sources.Infrastructure.GameStateMachine.States;
 using Assets.Sources.Services.PersistentProgress;
+using Assets.Sources.Services.SaveLoadProgress;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
@@ -28,6 +29,7 @@ namespace Assets.Sources.UI.Gameplay
         private IStaticDataService _staticDataService;
         private IPersistentProgressService _persistentProgressService;
         private RewardCounter _rewardCounter;
+        private ISaveLoadService _saveLoadService;
 
         private uint _reward;
 
@@ -38,7 +40,8 @@ namespace Assets.Sources.UI.Gameplay
             LoadingCurtain loadingCurtain,
             IStaticDataService staticDataService,
             IPersistentProgressService persistentProgressService,
-            RewardCounter rewardCounter)
+            RewardCounter rewardCounter,
+            ISaveLoadService saveLoadService)
         {
             _wictoryHandler = wictoryHandler;
             _gameStateMachine = gameStateMachine;
@@ -46,6 +49,7 @@ namespace Assets.Sources.UI.Gameplay
             _staticDataService = staticDataService;
             _persistentProgressService = persistentProgressService;
             _rewardCounter = rewardCounter;
+            _saveLoadService = saveLoadService;
 
             _currentLevelValue.text = $"{LevelInfo} {(_persistentProgressService.Progress.CurrentLevelIndex + 1)}";
 
@@ -87,6 +91,7 @@ namespace Assets.Sources.UI.Gameplay
             }
 
             _persistentProgressService.Progress.CompletedLevelsCount++;
+            _saveLoadService.SaveProgress();
         }
 
         private void OnWindowsSwitched()

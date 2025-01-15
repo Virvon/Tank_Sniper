@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: AimingConfig
   m_EditorClassIdentifier: 
   AimingDuration: 0.5
-  ShootingAimDuration: 0.3
-  TankTurretRotation: -60
-  TankMovingDistanceModifier: 0.7
+  ShootingAimDuration: 0.4
+  TankTurretRotation: -75
+  TankMovingDistanceModifier: 0.9
   StartRotation: {x: 24, y: 32}
   MaxRotation: {x: 32, y: 65}
   MinRotation: {x: -12, y: 0}

@@ -16,8 +16,10 @@ MonoBehaviour:
   EnemyLayerMask:
     serializedVersion: 2
     m_Bits: 5303
-  PlayerHealth: 1000
+  PlayerHealth: 200
   WindowsSwitchDeley: 2
   ProgressRecoveryAvailableTime: 7
   ReloadDuration: 2
-  PlayerShootCooldown: 0.1
+  PlayerShootCooldown: 0.3
+  RewardPerEnemy: 100
+  RewardLevelModifier: 0.5

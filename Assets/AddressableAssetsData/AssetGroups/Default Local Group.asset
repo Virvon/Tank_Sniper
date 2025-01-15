@@ -40,7 +40,8 @@ MonoBehaviour:
   - m_GUID: b1da95860e5261f4f9c623cbcb1a60d6
     m_Address: MainMenuWindow
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a9175c06094f556408a162bfe06a8136
     m_Address: WinterMainMenuScene
@@ -192,7 +193,8 @@ MonoBehaviour:
   - m_GUID: 6cb2467197125344f9823f925641a7a2
     m_Address: Desk
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 40f3c24d6f165814f93f06e55cf74e6b
     m_Address: RangerConfig
@@ -215,27 +217,32 @@ MonoBehaviour:
   - m_GUID: 7003a0c28ed131a478b0f72c7c26bd39
     m_Address: Ranger
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 64bdfd1708b53a541a21ebad7aca690e
     m_Address: Crusher
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 69015384c6a9b1e4db636bb8e7a5d2ba
     m_Address: Archer
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f3baf25037d684543b1e76819940da5b
     m_Address: TankPanel
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1b70de2f0c5782f4393d592775557ad1
     m_Address: TankSkinPanel
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 598213e956ce54e418e12f4be18625c7
     m_Address: TankSkinConfig1
@@ -252,27 +259,32 @@ MonoBehaviour:
   - m_GUID: 0deffc1048f90064eaf77b143079aff9
     m_Address: BaseTankMaterial1
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 239d2e3eaf7689b4bb3c4865a16f2631
     m_Address: "\u0421amouflage1"
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c3c76d38922bc044da8d7f3c921ec3ca
     m_Address: "\u0421amouflage2"
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 75f645f17e9aea64989a4478351f9b41
     m_Address: BaseTankMaterial2
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0aca6c47b59bc6e499b54e4487672f92
     m_Address: BaseTankMaterial3
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f5023b30de1ac2c428ce2a18cfb22c7a
     m_Address: DecalConfig2
@@ -289,12 +301,14 @@ MonoBehaviour:
   - m_GUID: 9e462443e3f67804caa6844804302018
     m_Address: Decal2
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 91a0ff561abc25640b2be38303bd618d
     m_Address: Decal1
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9154219dd0ddf1e48a45ebb5a6a37e99
     m_Address: FireMuzzleConfig
@@ -737,17 +751,20 @@ MonoBehaviour:
   - m_GUID: c076b476fdf9ff9438f17fdc08a406cd
     m_Address: RangerMainMenuWrapper
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c30262cfdd5cab4449447f84ac3a9ea6
     m_Address: CrusherMainMenuWrapper
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0d4bd9e991845bb45b70d452ebf4d75d
     m_Address: ArcherMainMenuWrapper
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ce29a1cf47399404a9c0c8676ee8ff1b
     m_Address: TeslaConfig
@@ -758,17 +775,20 @@ MonoBehaviour:
   - m_GUID: af0b5f84d14d0a041b3bfb760a1d4af3
     m_Address: Tesla
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b73fe1bd9548ce145a85245453556b15
     m_Address: BaseTankMaterial4
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a03f1af8c7cc8244a91c91da672a3bce
     m_Address: TeslaMainMenuWrapper
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1be9e84e187efef48806372e5c0d74ff
     m_Address: Assets/Configs/Bullets/HomingLaser.asset
@@ -808,22 +828,26 @@ MonoBehaviour:
   - m_GUID: 4603ef3b9d024fa4bbcb00ba278571a4
     m_Address: Thunder
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 11a6c747b54f7834faf990ac783af307
     m_Address: Assets/Tanks/Materials/BaseTankMaterial5.mat
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4c2b3e97d3605c0498234972a02beefd
     m_Address: ThunderMainMenuWrapper
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1e2ce1735af75e14ba7fcf207f096bea
     m_Address: Chaos
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d413b643bc453d44ba7af728626d6289
     m_Address: ChaosConfig
@@ -834,17 +858,20 @@ MonoBehaviour:
   - m_GUID: 054b451ec03d5eb4cb9757cd7d092760
     m_Address: ChaosMainMenuWrapper
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: de6a33d499d07db40bf3b6e029bf10b6
     m_Address: Anihilator
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0729cc1145dc1ce4394716c3311bb9a9
     m_Address: AnihilatorMainMenuWrapper
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 36b1271b09b9f634687ee95e59c07563
     m_Address: AnihilatorConfig
@@ -855,7 +882,8 @@ MonoBehaviour:
   - m_GUID: 20406271af5c1b44fb1a4bcfcbccd242
     m_Address: BaseTankMaterial6
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: adbf5b48a29979a4ab9b515eb8975ab3
     m_Address: DirectionalLaserConfig
@@ -866,7 +894,8 @@ MonoBehaviour:
   - m_GUID: 4b7ca2b18becc7040aa3c035822b59ac
     m_Address: Avenger
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: caaf06d3fd2c99646bbeba67c336960a
     m_Address: CompositeBulletConfig
@@ -889,7 +918,8 @@ MonoBehaviour:
   - m_GUID: 40919be2b51d0944dabc0f970f0447b1
     m_Address: Assets/Tanks/Wrappers/MainMenu/AvengerMainMenuWrapper.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f13353666dcaf954f86ad25490778e77
     m_Address: Assets/Configs/CharacterSkins/PlayerCharacterConfig1.asset
@@ -906,7 +936,8 @@ MonoBehaviour:
   - m_GUID: 11a7d50106c58a34e9b859623bb0dcc0
     m_Address: CharacterSkinPanel
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 26f75793a7a44f24782712718ffb0eb1
     m_Address: PlayerCharacter
@@ -921,22 +952,30 @@ MonoBehaviour:
   - m_GUID: 3aae5f3d64ae47a44b89ce1264ff6cfd
     m_Address: ProgressBarElement
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
+    - Gameplay
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4af3f9e03a8131c4482974984e0ac7ee
     m_Address: DesertBiomeIcon
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
+    - Gameplay
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0a0ea6f579e6ce74ea83a323e48cb59f
     m_Address: ForestBiomeIcon
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
+    - Gameplay
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 03f36f564c9594c4e8735c420f2660e1
     m_Address: SnowBiomeIcon
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - MainMenu
+    - Gameplay
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 49339c30033733f42ba7ac6eb32f91e4
     m_Address: TankBulletIcon

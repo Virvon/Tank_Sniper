@@ -2593,7 +2593,7 @@ MonoBehaviour:
   _enemy: {fileID: 4856722687955986720}
   _laserPrefab: {fileID: 72850770830953348, guid: 01c4e74f268b63c4fb6dcbc90bed848a,
     type: 3}
-  _damgagePerTime: 10
+  _damgagePerTime: 5
   _damageCooldown: 0.1
   _shootPoint: {fileID: 5410894034052103854}
   _explosionForce: 30

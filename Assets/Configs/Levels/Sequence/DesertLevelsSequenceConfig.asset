@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 2
   Sequence:
-  - Desert6
-  - Desert5
-  - Desert4
-  - Desert3
-  - Desert2
   - Desert1
-  MainMenuScene: WinterMainMenuScene
+  - Desert2
+  - Desert3
+  - Desert4
+  - Desert5
+  - Desert6
+  MainMenuScene: DesertMainMenuScene
   IconReference:
     m_AssetGUID: 4af3f9e03a8131c4482974984e0ac7ee
     m_SubObjectName: DesertBiomeIcon

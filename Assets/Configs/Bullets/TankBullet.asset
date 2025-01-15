@@ -19,7 +19,7 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   ExplosionLifeTime: 1
   ExplosionForce: 200
-  ExplosionRadius: 2
+  ExplosionRadius: 4
   Damage: 10
   FlightSpeed: 125
   LifeTimeLimit: 5
