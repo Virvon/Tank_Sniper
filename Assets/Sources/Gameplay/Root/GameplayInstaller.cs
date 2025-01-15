@@ -27,11 +27,15 @@ namespace Assets.Sources.Gameplay.Root
             BindAiming();
             BindDefeatHandler();
             BindWinHandler();
+            BindRewardCounter();
         }
 
         protected abstract void BindGameplayBootstrapper();
 
         protected abstract void BindAiming();
+
+        private void BindRewardCounter() =>
+            Container.Bind<RewardCounter>().AsSingle();
 
         private void BindDefeatHandler() =>
             Container.Bind<DefeatHandler>().AsSingle();

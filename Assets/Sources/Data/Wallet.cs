@@ -20,8 +20,14 @@ namespace Assets.Sources.Data
                 return false;
 
             Value -= value;
+            ValueChanged?.Invoke();
 
             return true;
+        }
+
+        public void Give(uint value)
+        {
+            Value += value;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Assets.Sources.Gameplay.Handlers;
+﻿using Assets.Sources.Gameplay;
+using Assets.Sources.Gameplay.Handlers;
 using Assets.Sources.Infrastructure.GameStateMachine;
 using Assets.Sources.Infrastructure.GameStateMachine.States;
 using Assets.Sources.Services.PersistentProgress;
@@ -6,6 +7,7 @@ using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -14,13 +16,20 @@ namespace Assets.Sources.UI.Gameplay
 {
     public class WicotoryWindow : OpenableWindow
     {
+        private const string LevelInfo = "УРОВЕНЬ";
+
         [SerializeField] private Button _continueButton;
+        [SerializeField] private TMP_Text _rewardValue;
+        [SerializeField] private TMP_Text _currentLevelValue;
 
         private WictoryHandler _wictoryHandler;
         private GameStateMachine _gameStateMachine;
         private LoadingCurtain _loadingCurtain;
         private IStaticDataService _staticDataService;
         private IPersistentProgressService _persistentProgressService;
+        private RewardCounter _rewardCounter;
+
+        private uint _reward;
 
         [Inject]
         private void Construct(
@@ -28,13 +37,17 @@ namespace Assets.Sources.UI.Gameplay
             GameStateMachine gameStateMachine,
             LoadingCurtain loadingCurtain,
             IStaticDataService staticDataService,
-            IPersistentProgressService persistentProgressService)
+            IPersistentProgressService persistentProgressService,
+            RewardCounter rewardCounter)
         {
             _wictoryHandler = wictoryHandler;
             _gameStateMachine = gameStateMachine;
             _loadingCurtain = loadingCurtain;
             _staticDataService = staticDataService;
             _persistentProgressService = persistentProgressService;
+            _rewardCounter = rewardCounter;
+
+            _currentLevelValue.text = $"{LevelInfo} {(_persistentProgressService.Progress.CurrentLevelIndex + 1)}";
 
             _wictoryHandler.WindowsSwithed += OnWindowsSwitched;
             _continueButton.onClick.AddListener(OnContinueButtonClicked);
@@ -48,6 +61,7 @@ namespace Assets.Sources.UI.Gameplay
 
         private void OnContinueButtonClicked()
         {
+            _persistentProgressService.Progress.Wallet.Give(_reward);
             SetNextLevel();
             _loadingCurtain.Show();
             _gameStateMachine.Enter<MainMenuState>().Forget();
@@ -71,9 +85,16 @@ namespace Assets.Sources.UI.Gameplay
             {
                 _persistentProgressService.Progress.CurrentLevelIndex++;
             }
+
+            _persistentProgressService.Progress.CompletedLevelsCount++;
         }
 
-        private void OnWindowsSwitched() =>
+        private void OnWindowsSwitched()
+        {
+            _reward = _rewardCounter.GetReward();
+            _rewardValue.text = $"{_reward}";
+
             Show();
+        }
     }
 }

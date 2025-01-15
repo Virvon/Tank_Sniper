@@ -28,7 +28,6 @@ namespace Assets.Sources.Gameplay.Enemies.Submarine
         public event Action<uint, uint> Damaged;
 
         public bool IsSurfaced { get; private set; }
-        public bool IsDestructed { get; private set; }
 
         public uint MaxHealth { get; private set; }
 
@@ -39,7 +38,6 @@ namespace Assets.Sources.Gameplay.Enemies.Submarine
 
             _isPlayerShooted = false;
             IsSurfaced = false;
-            IsDestructed = false;
             MaxHealth = _health;
 
             _aiming.Shooted += OnPlayerShooted;
@@ -67,7 +65,6 @@ namespace Assets.Sources.Gameplay.Enemies.Submarine
 
             if (_health == 0)
             {
-                IsDestructed = true;
                 OnDestructed();
 
                 foreach(BossDestructionPart part in _parts)

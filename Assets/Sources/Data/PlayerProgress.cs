@@ -18,6 +18,7 @@ namespace Assets.Sources.Data
         public PlayerCharacterType SelectedPlayerCharacter;
         public Wallet Wallet;
         public TankBuyingData TankBuyingData;
+        public uint CompletedLevelsCount;
 
         public PlayerProgress(
             TankData[] tanks,
@@ -38,6 +39,7 @@ namespace Assets.Sources.Data
             SelectedPlayerCharacter = CharacterSkins.First(skin => skin.IsUnlocked).Type;
             Wallet = new();
             TankBuyingData = new(startTankBuyingCost);
+            CompletedLevelsCount = 0;
         }
 
         public event Action<uint> TankUnlocked;

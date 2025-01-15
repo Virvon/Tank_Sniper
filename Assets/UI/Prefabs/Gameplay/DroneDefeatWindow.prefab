@@ -138,6 +138,7 @@ MonoBehaviour:
   _isOpenedOnAwake: 0
   _restartButton: {fileID: 2591907717478181631}
   _progressRecoveryButton: {fileID: 2345606926115772792}
+  _rewardValue: {fileID: 4706544580693617436}
   _progressRecoveryRewarValue: {fileID: 5658409523383902008}
 --- !u!1 &618502839727087926
 GameObject:

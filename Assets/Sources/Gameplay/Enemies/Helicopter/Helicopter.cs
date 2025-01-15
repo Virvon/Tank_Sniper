@@ -18,11 +18,11 @@ namespace Assets.Sources.Gameplay.Enemies.Helicopter
 
         private GameObject _fireParticle;
 
-        protected bool IsDestructed { get; private set; }
+        private bool _isDamaged;
 
         protected virtual void Start()
         {
-            IsDestructed = false;
+            _isDamaged = false;
 
             _helicopterPart.Damaged += OnDamaged;
         }
@@ -53,12 +53,12 @@ namespace Assets.Sources.Gameplay.Enemies.Helicopter
 
         protected virtual void OnDamaged(ExplosionInfo explosionInfo)
         {
-            if (IsDestructed)
+            if (_isDamaged)
                 return;
 
             OnDestructed();
             StartCoroutine(Rotater());
-            IsDestructed = true;
+            _isDamaged = true;
             _destructionMaterialsRenderer.Render();
             _fireParticle = Instantiate(_firePargiclePrefab, transform.position + _firePartilcePosition, Quaternion.identity, transform);
         }      

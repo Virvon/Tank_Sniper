@@ -273,10 +273,11 @@ MonoBehaviour:
   _closeDuration: 0
   _openDuration: 1
   _isOpenedOnAwake: 0
-  _timerValue: {fileID: 2280640979633855824}
-  _timerFill: {fileID: 5646341003113073777}
   _restartButton: {fileID: 2591907717478181631}
   _progressRecoveryButton: {fileID: 2345606926115772792}
+  _rewardValue: {fileID: 4706544580693617436}
+  _timerValue: {fileID: 2280640979633855824}
+  _timerFill: {fileID: 5646341003113073777}
 --- !u!1 &2163766252766758441
 GameObject:
   m_ObjectHideFlags: 0

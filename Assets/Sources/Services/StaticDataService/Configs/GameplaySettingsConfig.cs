@@ -12,5 +12,7 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public float ProgressRecoveryAvailableTime;
         public float ReloadDuration;
         public float PlayerShootCooldown;
+        public uint RewardPerEnemy;
+        public float RewardLevelModifier;
     }
 }
