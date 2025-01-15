@@ -20,7 +20,7 @@ namespace Assets.Sources.Services.StaticDataService
         private Dictionary<ForwardFlyingBulletType, ForwardFlyingBulletConfig> _forwardFlyingBulletConfigs;
         private Dictionary<HomingBulletType, HomingBulletConfig> _homingBulletConfigs;
         private Dictionary<uint, TankConfig> _tankConfigs;
-        private Dictionary<TankSkinType, TankSkinConfig> _tankSkinConfigs;
+        private Dictionary<string, TankSkinConfig> _tankSkinConfigs;
         private Dictionary<DecalType, DecalConfig> _decalConfigs;
         private Dictionary<MuzzleType, MuzzleConfig> _muzzleConfigs;
         private Dictionary<BiomeType, LevelsSequenceConfig> _levelsSequenceConfigs;
@@ -56,7 +56,7 @@ namespace Assets.Sources.Services.StaticDataService
                 UniTask.Create(async () => TargetingLaserConfig = await LoadConfig<TargetingLaserConfig>()),
                 UniTask.Create(async () => TransmittedLaserConfig = await LoadConfig<TransmittingLaserConfig>()),
                 UniTask.Create(async () => _tankConfigs = await LoadConfigs<uint, TankConfig>()),
-                UniTask.Create(async () => _tankSkinConfigs = await LoadConfigs<TankSkinType, TankSkinConfig>()),
+                UniTask.Create(async () => _tankSkinConfigs = await LoadConfigs<string, TankSkinConfig>()),
                 UniTask.Create(async () => _decalConfigs = await LoadConfigs<DecalType, DecalConfig>()),
                 UniTask.Create(async () => _muzzleConfigs = await LoadConfigs<MuzzleType, MuzzleConfig>()),
                 UniTask.Create(async () => AnimationsConfig = await LoadConfig<AnimationsConfig>()),
@@ -85,8 +85,8 @@ namespace Assets.Sources.Services.StaticDataService
         public DecalConfig GetDecal(DecalType type) =>
             _decalConfigs.TryGetValue(type, out DecalConfig config) ? config : null;
 
-        public TankSkinConfig GetSkin(TankSkinType type) =>
-            _tankSkinConfigs.TryGetValue(type, out TankSkinConfig config) ? config : null;
+        public TankSkinConfig GetSkin(string id) =>
+            _tankSkinConfigs.TryGetValue(id, out TankSkinConfig config) ? config : null;
 
         public TankConfig GetTank(uint level) =>
             _tankConfigs.TryGetValue(level, out TankConfig config) ? config : null;

@@ -19,7 +19,7 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
             Vector3 position,
             Quaternion rotation,
             Transform parent,
-            TankSkinType skinType = TankSkinType.Base,
+            string skinId,
             DecalType decalType = DecalType.Decal1,
             bool isDecalsChangable = false);
         UniTask<TankShootingWrapper> CreateTankShootingWrapper(uint tankLevel, Vector3 position, Quaternion rotation, Transform parent);

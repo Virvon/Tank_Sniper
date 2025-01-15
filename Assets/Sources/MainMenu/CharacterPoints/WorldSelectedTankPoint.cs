@@ -23,7 +23,7 @@ namespace Assets.Sources.MainMenu.CharacterPoints
                 position,
                 tankWrapper.transform.rotation,
                 tankWrapper.transform,
-                tankData.SkinType,
+                tankData.SkinId,
                 tankData.DecalType,
                 true);
 

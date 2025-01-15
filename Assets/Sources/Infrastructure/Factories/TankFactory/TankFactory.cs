@@ -75,16 +75,16 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
             Vector3 position,
             Quaternion rotation,
             Transform parent,
-            TankSkinType skinType = TankSkinType.Base,
+            string skinId,
             DecalType decalType = DecalType.Decal1,
             bool isDecalsChangable = false)
         {
             Material skinMaterial;
 
-            if (skinType == TankSkinType.Base)
+            if (skinId == string.Empty)
                 skinMaterial = await _assetProvider.Load<Material>(_staticDataService.GetTank(level).BaseMaterialAssetReference);
             else
-                skinMaterial = await _assetProvider.Load<Material>(_staticDataService.GetSkin(skinType).MaterialAssetReference);
+                skinMaterial = await _assetProvider.Load<Material>(_staticDataService.GetSkin(skinId).MaterialAssetReference);
 
             Tank tank = await _tankFactory.Create(_staticDataService.GetTank(level).AssetReference, position, rotation, parent);
 

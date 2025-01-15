@@ -6,12 +6,12 @@ namespace Assets.Sources.Data
     [Serializable]
     public class TankSkinData
     {
-        public TankSkinType Type;
+        public string Id;
         public bool IsUnlocked;
 
-        public TankSkinData(TankSkinType type)
+        public TankSkinData(string id)
         {
-            Type = type;
+            Id = id;
 
             IsUnlocked = false;
         }

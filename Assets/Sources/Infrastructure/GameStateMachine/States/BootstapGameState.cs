@@ -5,9 +5,7 @@ using Cysharp.Threading.Tasks;
 using System.Collections;
 using System;
 using Assets.Sources.Services.CoroutineRunner;
-#if !UNITY_WEBGL || UNITY_EDITOR
 using Agava.YandexGames;
-#endif
 
 namespace Assets.Sources.Infrastructure.GameStateMachine.States
 {

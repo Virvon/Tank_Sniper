@@ -19,6 +19,6 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   ExplosionLifeTime: 1
   ExplosionForce: 200
-  ExplosionRadius: 3
+  ExplosionRadius: 4
   Damage: 10
   ProjectileLifeTime: 0.15

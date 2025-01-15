@@ -8,7 +8,7 @@ namespace Assets.Sources.Data
     {
         public uint Level;
         public bool IsUnlocked;
-        public TankSkinType SkinType;
+        public string SkinId;
         public DecalType DecalType;
 
         public TankData(uint level, bool isUnlocked, DecalType decalType)
@@ -17,7 +17,7 @@ namespace Assets.Sources.Data
             IsUnlocked = isUnlocked;
             DecalType = decalType;
 
-            SkinType = TankSkinType.Base;
+            SkinId = string.Empty;
         }
     }
 }

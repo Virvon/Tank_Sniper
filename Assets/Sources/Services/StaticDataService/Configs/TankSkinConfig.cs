@@ -1,16 +1,14 @@
-﻿using Assets.Sources.Types;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace Assets.Sources.Services.StaticDataService.Configs
 {
     [CreateAssetMenu(fileName = "TankSkinConfig", menuName = "Configs/Create new tank skin config", order = 51)]
-    public class TankSkinConfig : ScriptableObject, IConfig<TankSkinType>
+    public class TankSkinConfig : ScriptableObject, IConfig<string>
     {
-        public TankSkinType Type;
+        public string Id;
         public AssetReference MaterialAssetReference;
 
-        public TankSkinType Key => Type;
+        public string Key => Id;
     }
 }

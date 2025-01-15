@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   MaterialAssetReference:
-    m_AssetGUID: 91a0ff561abc25640b2be38303bd618d
+    m_AssetGUID: 9e462443e3f67804caa6844804302018
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

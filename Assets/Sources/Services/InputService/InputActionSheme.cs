@@ -123,7 +123,7 @@ public partial class @InputActionSheme: IInputActionCollection2, IDisposable
                     ""name"": ""One Modifier"",
                     ""id"": ""473c2751-68a7-409f-ada3-75c9f3ae92d6"",
                     ""path"": ""OneModifier"",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""HandleMove"",

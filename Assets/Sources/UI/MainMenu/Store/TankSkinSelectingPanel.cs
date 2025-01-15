@@ -9,38 +9,38 @@ using UnityEngine.UI;
 
 namespace Assets.Sources.UI.MainMenu.Store
 {
-    public class TankSkinSelectingPanel : SelectionPanel<TankSkinType>
+    public class TankSkinSelectingPanel : SelectionPanel<string>
     {
         [SerializeField] private Button _baseSkinButton;
 
-        protected override async UniTask<Dictionary<TankSkinType, SelectingPanelElement>> FillContent(
+        protected override async UniTask<Dictionary<string, SelectingPanelElement>> FillContent(
             IUiFactory uiFactory,
             IPersistentProgressService persistentProgressService,
             Transform content)
         {
-            Dictionary<TankSkinType, SelectingPanelElement> panels = new();
+            Dictionary<string, SelectingPanelElement> panels = new();
 
             foreach(TankSkinData tankSkinData in persistentProgressService.Progress.TankSkins)
             {
                 SelectingPanelElement panel = await uiFactory.CreateUnlockingPanel(content);
 
-                panel.Initialize(tankSkinData.Type.ToString());
+                panel.Initialize(tankSkinData.Id.ToString());
 
                 if(tankSkinData.IsUnlocked)
                     panel.Unlock();
 
                 panel.Clicked += OnPanelClicked;
 
-                panels.Add(tankSkinData.Type, panel);
+                panels.Add(tankSkinData.Id, panel);
             }
 
             return panels;
         }
 
-        protected override TankSkinType GetCurrentSelectedPanel(IPersistentProgressService persistentProgressService) =>
-            persistentProgressService.Progress.GetSelectedTank().SkinType;
+        protected override string GetCurrentSelectedPanel(IPersistentProgressService persistentProgressService) =>
+            persistentProgressService.Progress.GetSelectedTank().SkinId;
 
-        protected override void Select(TankSkinType key, IPersistentProgressService persistentProgressService)
+        protected override void Select(string key, IPersistentProgressService persistentProgressService)
         {
             TankSkinData tankSkinData = persistentProgressService.Progress.GetSkin(key);
 
@@ -68,6 +68,6 @@ namespace Assets.Sources.UI.MainMenu.Store
         }
 
         private void OnBaseSkinButtonClicked() =>
-            PersistentProgressService.Progress.SelectTankSkin(TankSkinType.Base);
+            PersistentProgressService.Progress.SelectTankSkin(string.Empty);
     }
 }

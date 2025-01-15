@@ -43,7 +43,7 @@ namespace Assets.Sources.MainMenu.Desk
 
         public async UniTask CreateTank(uint level)
         {
-            _tank = await _tankFactory.CreateTank(level, _tankPoint.position, _tankRotation, transform);
+            _tank = await _tankFactory.CreateTank(level, _tankPoint.position, _tankRotation, transform, string.Empty);
             _tank.transform.localScale = Vector3.one * _tankScale;
             _persistentProgressService.Progress.DeskData.UpdateCellInfo(_id, _tank.Level);
 

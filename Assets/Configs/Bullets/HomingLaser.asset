@@ -17,10 +17,10 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  ExplosionLifeTime: 0
-  ExplosionForce: 0
-  ExplosionRadius: 0
-  Damage: 0
+  ExplosionLifeTime: 1
+  ExplosionForce: 200
+  ExplosionRadius: 4
+  Damage: 5
   FlightSpeed: 90
   LifeTimeLimit: 5
   Type: 1

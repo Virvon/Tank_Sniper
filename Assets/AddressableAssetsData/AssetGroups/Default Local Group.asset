@@ -93,25 +93,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 48078d6769745d1478fa96658ace382b
-    m_Address: MachineGunConfig
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Configs
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e2d01332121a84443bb0c063aebb41b9
-    m_Address: TeastWeaponConfig
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bc6d38a1f2f6fff4eae98637e2af8eb1
     m_Address: TankConfig
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Configs
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 725b338e8a6f1c14786a61fee5ac57ba
-    m_Address: BazookaCofnig
     m_ReadOnly: 0
     m_SerializedLabels:
     - Configs
@@ -262,17 +245,15 @@ MonoBehaviour:
     m_SerializedLabels:
     - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 239d2e3eaf7689b4bb3c4865a16f2631
-    m_Address: "\u0421amouflage1"
+  - m_GUID: fd561b1bb74bc81469959b9134750843
+    m_Address: SkinMaterial15
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - MainMenu
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c3c76d38922bc044da8d7f3c921ec3ca
-    m_Address: "\u0421amouflage2"
+  - m_GUID: ca42b517561035241a80dd873464ecf5
+    m_Address: SkinMaterial14
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - MainMenu
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 75f645f17e9aea64989a4478351f9b41
     m_Address: BaseTankMaterial2
@@ -927,12 +908,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 22a721332e2dfe54c8363a1a36a8d977
-    m_Address: Assets/Configs/CharacterSkins/PlayerCharacterConfig2.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Configs
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 11a7d50106c58a34e9b859623bb0dcc0
     m_Address: CharacterSkinPanel
     m_ReadOnly: 0
@@ -1065,6 +1040,71 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8e91b085d97c79a4d84ec214be7a5527
+    m_Address: SkinMaterial13
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66c2a7c56e5a60b428f8fe3c06ad716c
+    m_Address: SkinMaterial12
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7ddfd9932eb6f074581180b018943b71
+    m_Address: SkinMaterial11
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a59ee6d47007c644b2c80f843364825
+    m_Address: SkinMaterial10
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2c484ded6b61be47a5e7a844d28fe0c
+    m_Address: SkinMaterial9
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 172dca5e869b41b4d9572eebfeb64c96
+    m_Address: SkinMaterial8
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f6563e98bef46841adabd7c81f36d9e
+    m_Address: SkinMaterial7
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b8c6697e60e32ad428d2019f345d39f6
+    m_Address: SkinMaterial6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9b1ec9a6d99453e4ebf0759dad4da223
+    m_Address: SkinMaterial5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71d0e55d4a61f494b84f344c5b736403
+    m_Address: SkinMaterial4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3613a41bed9458648ab328ffe927b43d
+    m_Address: SkinMaterial3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c3c76d38922bc044da8d7f3c921ec3ca
+    m_Address: SkinMaterial2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 239d2e3eaf7689b4bb3c4865a16f2631
+    m_Address: SkinMaterial1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a44638466bf414438293c9d18a37e72, type: 2}

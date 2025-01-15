@@ -82,6 +82,9 @@ namespace Assets.Sources.UI.Gameplay.GameplayWindows
             float targetAlpha = isAimed ? 1 : 0;
             float startAlpha = AimingCanvasGroup.alpha;
 
+            AimingCanvasGroup.interactable = isAimed;
+            AimingCanvasGroup.blocksRaycasts = isAimed;
+
             while (AimingCanvasGroup.alpha != targetAlpha)
             {
                 progress = passedTime / duration;

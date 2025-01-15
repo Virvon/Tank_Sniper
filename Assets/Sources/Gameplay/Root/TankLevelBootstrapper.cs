@@ -50,7 +50,7 @@ namespace Assets.Sources.Gameplay.Root
                 playerTankWrapper.transform.position,
                 playerTankWrapper.transform.rotation,
                 playerTankWrapper.transform,
-                tankData.SkinType,
+                tankData.SkinId,
                 tankData.DecalType,
                 false);
 

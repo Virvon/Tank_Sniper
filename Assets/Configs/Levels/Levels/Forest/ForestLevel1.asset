@@ -15,15 +15,15 @@ MonoBehaviour:
   LevelKey: Forest1
   StaticEnemyPoints:
   - Id: WinterGameplayScene2_40daa493-feb1-49f8-aadb-efd10ba7bb8e
-    StartPosition: {x: -3.62, y: 6.35, z: 41.45}
+    StartPosition: {x: -3.62, y: 6.3, z: 41.45}
     StartRotation: {x: -0, y: 0.9848078, z: -0, w: 0.17364825}
     EnemyType: 7
   - Id: WinterGameplayScene2_4cd37c9a-6578-4473-bc92-6e7621b137d0
-    StartPosition: {x: 31.26, y: 14.61, z: 60.17}
+    StartPosition: {x: 31.26, y: 14.5, z: 60.17}
     StartRotation: {x: -0, y: 0.9848078, z: -0, w: -0.17364809}
     EnemyType: 7
   - Id: Forest1_5bc41b4b-225b-4993-a90f-b8bda64118ec
-    StartPosition: {x: 12.09, y: 6.35, z: 29.449}
+    StartPosition: {x: 12.09, y: 6.3, z: 29.449}
     StartRotation: {x: -0, y: 1, z: -0, w: 0}
     EnemyType: 6
   PatrolingEnemyPoints: []
