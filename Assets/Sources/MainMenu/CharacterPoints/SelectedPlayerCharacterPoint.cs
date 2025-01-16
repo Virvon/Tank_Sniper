@@ -32,20 +32,20 @@ namespace Assets.Sources.MainMenu.CharacterPoints
         }
 
         private async void Start() =>
-            await CreatePlayerCharacter(_persistentPorgressService.Progress.SelectedPlayerCharacter, false);
+            await CreatePlayerCharacter(_persistentPorgressService.Progress.SelectedPlayerCharacterId, false);
 
         private void OnDestroy() =>
             _persistentPorgressService.Progress.CharacterSkinChanged -= OnCharacterSkinChanged;
 
-        private async void OnCharacterSkinChanged(PlayerCharacterType type) =>
-            await CreatePlayerCharacter(type, true);
+        private async void OnCharacterSkinChanged(string id) =>
+            await CreatePlayerCharacter(id, true);
 
-        private async UniTask CreatePlayerCharacter(PlayerCharacterType type, bool needToAnimate)
+        private async UniTask CreatePlayerCharacter(string id, bool needToAnimate)
         {
             if (_playerCharacter != null)
                 Destroy(_playerCharacter.gameObject);
 
-            _playerCharacter = await _tankFactory.CreatePlayerCharacter(type, _characterPoint.position, _characterPoint.rotation, _characterPoint);
+            _playerCharacter = await _tankFactory.CreatePlayerCharacter(id, _characterPoint.position, _characterPoint.rotation, _characterPoint);
 
             foreach (Transform transform in _playerCharacter.GetComponentsInChildren<Transform>())
                 transform.gameObject.layer = LayerMask.NameToLayer(Layer);

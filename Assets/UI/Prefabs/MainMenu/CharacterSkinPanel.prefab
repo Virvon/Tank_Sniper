@@ -969,7 +969,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 6, y: 6}
+  m_SizeDelta: {x: 12, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4930402305262251458
 CanvasRenderer:
@@ -1012,7 +1012,7 @@ MonoBehaviour:
   m_DrawShape: 3
   m_ImageType: 0
   m_MaterialMode: 0
-  m_StrokeWidth: 2
+  m_StrokeWidth: 5
   m_OutlineWidth: 0
   m_OutlineColor: {r: 0, g: 0, b: 0, a: 1}
   m_FalloffDistance: 0.5
@@ -1024,7 +1024,7 @@ MonoBehaviour:
     m_CornerRadius: {x: 0, y: 0, z: 0}
     m_UniformCornerRadius: 0
   m_Rectangle:
-    m_CornerRadius: {x: 20, y: 20, z: 20, w: 20}
+    m_CornerRadius: {x: 24, y: 24, z: 24, w: 24}
     m_UniformCornerRadius: 1
   m_Circle:
     m_Radius: 0
@@ -1356,9 +1356,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e4f7e660291194eaeab8844357682b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 3819037826870671627}
   _button: {fileID: 8540745828142557919}
   _selectionFrame: {fileID: 2524729041087058978}
+  _icon: {fileID: 0}
   _adButton: {fileID: 1099880215119748307}
 --- !u!1 &9128744706427286124
 GameObject:

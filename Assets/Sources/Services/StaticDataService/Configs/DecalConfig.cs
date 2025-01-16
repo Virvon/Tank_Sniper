@@ -10,7 +10,10 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public string Id;
         public AssetReference MaterialAssetReference;
         public bool IsUnlockedOnStart;
+        public AssetReference SpriteAssetReference;
+        public int SerialNumber;
 
         public string Key => Id;
+
     }
 }

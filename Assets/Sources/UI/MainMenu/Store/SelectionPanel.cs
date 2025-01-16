@@ -14,6 +14,7 @@ namespace Assets.Sources.UI.MainMenu.Store
         [SerializeField] private Transform _content;
 
         private IPersistentProgressService _persistentProgressService;
+        private IUiFactory _uiFactory;
 
         private Dictionary<TKey, SelectingPanelElement> _panels;
         private SelectingPanelElement _currentSelectingElement;
@@ -21,19 +22,22 @@ namespace Assets.Sources.UI.MainMenu.Store
         public IPersistentProgressService PersistentProgressService => _persistentProgressService;
 
         [Inject]
-        private async void Construct(IPersistentProgressService persistentProgressService, IUiFactory uiFactory)
+        private void Construct(IPersistentProgressService persistentProgressService, IUiFactory uiFactory)
         {
             _persistentProgressService = persistentProgressService;
+            _uiFactory = uiFactory;
 
             Subscribe(_persistentProgressService);
-            _panels = await FillContent(uiFactory, _persistentProgressService, _content);
-
-            ActiveSelectionFrame(GetCurrentSelectedPanel(persistentProgressService));
 
             _persistentProgressService.Progress.SelectedTankChanged += OnSelectedTankChanged;
         }
 
-        
+        private async void Start()
+        {
+            _panels = await FillContent(_uiFactory, _persistentProgressService, _content);
+
+            ActiveSelectionFrame(GetCurrentSelectedPanel(_persistentProgressService));
+        }
 
         private void OnDestroy()
         {

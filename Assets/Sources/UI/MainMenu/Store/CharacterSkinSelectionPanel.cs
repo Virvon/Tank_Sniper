@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Sources.UI.MainMenu.Store
 {
-    public class CharacterSkinSelectionPanel : SelectionPanel<PlayerCharacterType>
+    public class CharacterSkinSelectionPanel : SelectionPanel<string>
     {
         [SerializeField] private int _tankRotationAngle;
         [SerializeField] private UiSelectedTankPoint _tankPoint;
@@ -25,31 +25,31 @@ namespace Assets.Sources.UI.MainMenu.Store
             _tankPoint.ResetTargetRotation();
         }
 
-        protected override async UniTask<Dictionary<PlayerCharacterType, SelectingPanelElement>> FillContent(
+        protected override async UniTask<Dictionary<string, SelectingPanelElement>> FillContent(
             IUiFactory uiFactory,
             IPersistentProgressService persistentProgressService,
             Transform content)
         {
-            Dictionary<PlayerCharacterType, SelectingPanelElement> panels = new();
+            Dictionary<string, SelectingPanelElement> panels = new();
 
             foreach(CharacterSkinData skinData in persistentProgressService.Progress.CharacterSkins)
             {
                 SelectingPanelElement panel = await uiFactory.CreateCharacterSkinPanel(content);
 
-                panel.Initialize(skinData.Type.ToString());
+                //panel.Initialize(skinData.Type.ToString());
 
                 if (skinData.IsUnlocked)
                     panel.Unlock();
 
                 panel.Clicked += OnPanelClicked;
 
-                panels.Add(skinData.Type, panel);
+                panels.Add(skinData.Id, panel);
             }
 
             return panels;
         }
 
-        protected override void Select(PlayerCharacterType key, IPersistentProgressService persistentProgressService)
+        protected override void Select(string key, IPersistentProgressService persistentProgressService)
         {
             CharacterSkinData skinData = persistentProgressService.Progress.GetCharacterSkin(key);
 
@@ -72,7 +72,7 @@ namespace Assets.Sources.UI.MainMenu.Store
         protected override void Unsubscribe(IPersistentProgressService persistentProgressService) =>
             persistentProgressService.Progress.CharacterSkinUnlocked -= Unlock;
 
-        protected override PlayerCharacterType GetCurrentSelectedPanel(IPersistentProgressService persistentProgressService) =>
-            persistentProgressService.Progress.SelectedPlayerCharacter;
+        protected override string GetCurrentSelectedPanel(IPersistentProgressService persistentProgressService) =>
+            persistentProgressService.Progress.SelectedPlayerCharacterId;
     }
 }

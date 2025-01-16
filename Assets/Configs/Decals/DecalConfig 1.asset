@@ -19,3 +19,10 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   IsUnlockedOnStart: 1
+  SpriteAssetReference:
+    m_AssetGUID: 7adae1484b04a594c8c42cdb2c0506ac
+    m_SubObjectName: StarIcon1
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  SerialNumber: 1

@@ -19,3 +19,10 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   IsUnlockedOnStart: 0
+  SpriteAssetReference:
+    m_AssetGUID: 39f5092e10f4dc546affe7f71b3fcfcf
+    m_SubObjectName: HeartIcon2
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  SerialNumber: 2

@@ -914,8 +914,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 26f75793a7a44f24782712718ffb0eb1
-    m_Address: PlayerCharacter
+  - m_GUID: cf3aa203fdef41148868a857f4c27bfa
+    m_Address: Assets/Tanks/PlayerCharacers/Prefabs/Character 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -1326,6 +1326,86 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f631383a21795d4db46c03fbec9c92d
+    m_Address: DecalPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d3118d24b078cf948b7738d4aecacad3
+    m_Address: Assets/Tanks/Textures/Decals/Decal3.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 22bf9c4756158c041a4eb20432ba01c8
+    m_Address: Assets/Tanks/Textures/Decals/Decal4.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 55ec4eba14fbf1a4a984d21b46946d1a
+    m_Address: Assets/Tanks/Textures/Decals/Decal5.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8175aab9a102639449ce34f74fafb914
+    m_Address: Assets/Tanks/Textures/Decals/Decal6.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a14e742979481f46a4a02ed93be4970
+    m_Address: Assets/Tanks/Textures/Decals/Decal7.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e39cd04a174a4384aac07d814cfbdf64
+    m_Address: Assets/Tanks/Textures/Decals/Decal8.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5cfc7badb8703e9419e7737b36001eba
+    m_Address: Assets/Tanks/Textures/Decals/Decal9.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c41769732d6f17646913cf6571f3fdc3
+    m_Address: Assets/Tanks/Textures/Decals/Decal10.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a8fd0f01c4533940869ac927de679ee
+    m_Address: Assets/Tanks/Textures/Decals/Decal11.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a96a13ed5a5e382468e695da3f6aa902
+    m_Address: Assets/Tanks/Textures/Decals/Decal12.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c1708c6bc17115b43bf891129ce33741
+    m_Address: Assets/Tanks/Textures/Decals/Decal13.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8548b00cbb1812b44a8a2e8da1a05615
+    m_Address: Assets/Tanks/Textures/Decals/Decal14.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4f70057de4ccbbf4fb6c9cbae6e5697e
+    m_Address: Assets/Tanks/Textures/Decals/Decal15.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7adae1484b04a594c8c42cdb2c0506ac
+    m_Address: Assets/UI/Icons/StarIcon1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 39f5092e10f4dc546affe7f71b3fcfcf
+    m_Address: Assets/UI/Icons/HeartIcon2.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a44638466bf414438293c9d18a37e72, type: 2}

@@ -26,5 +26,6 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         UniTask<SuperBulletIcon> CreateSuperBulletIcon(Transform parent);
         UniTask<BulletIcon> CreateDroneBulletIcon(Transform parent);
         UniTask CreateRestartWindow();
+        UniTask<SelectingPanelElement> CreateDecalPanel(Transform parent);
     }
 }

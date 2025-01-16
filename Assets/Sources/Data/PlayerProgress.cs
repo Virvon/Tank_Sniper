@@ -15,7 +15,7 @@ namespace Assets.Sources.Data
         public BiomeType CurrentBiomeType;
         public uint CurrentLevelIndex;
         public CharacterSkinData[] CharacterSkins;
-        public PlayerCharacterType SelectedPlayerCharacter;
+        public string SelectedPlayerCharacterId;
         public Wallet Wallet;
         public TankBuyingData TankBuyingData;
         public uint CompletedLevelsCount;
@@ -38,7 +38,7 @@ namespace Assets.Sources.Data
 
             SelectedTankLevel = Tanks.Where(tank => tank.IsUnlocked).First().Level;
             CurrentLevelIndex = 0;
-            SelectedPlayerCharacter = CharacterSkins.First(skin => skin.IsUnlocked).Type;
+            SelectedPlayerCharacterId = CharacterSkins.First(skin => skin.IsUnlocked).Id;
             Wallet = new();
             TankBuyingData = new(startTankBuyingCost);
             CompletedLevelsCount = 0;
@@ -51,8 +51,8 @@ namespace Assets.Sources.Data
         public event Action<string> TankSkinUnlocked;
         public event Action<string> DecalUnlocked;
         public event Action<string> DecalChanged;
-        public event Action<PlayerCharacterType> CharacterSkinUnlocked;
-        public event Action<PlayerCharacterType> CharacterSkinChanged;
+        public event Action<string> CharacterSkinUnlocked;
+        public event Action<string> CharacterSkinChanged;
 
         public void TryUnlockTank(uint level)
         {
@@ -125,21 +125,21 @@ namespace Assets.Sources.Data
             DecalChanged?.Invoke(id);
         }
 
-        public CharacterSkinData GetCharacterSkin(PlayerCharacterType type) =>
-            CharacterSkins.First(skin => skin.Type == type);
+        public CharacterSkinData GetCharacterSkin(string id) =>
+            CharacterSkins.First(skin => skin.Id == id);
 
-        public void UnlockCharacterSkin(PlayerCharacterType type)
+        public void UnlockCharacterSkin(string id)
         {
-            GetCharacterSkin(type).IsUnlocked = true;
+            GetCharacterSkin(id).IsUnlocked = true;
 
-            CharacterSkinUnlocked?.Invoke(type);
-            SelectCharacterSkin(type);
+            CharacterSkinUnlocked?.Invoke(id);
+            SelectCharacterSkin(id);
         }
 
-        public void SelectCharacterSkin(PlayerCharacterType type)
+        public void SelectCharacterSkin(string id)
         {
-            SelectedPlayerCharacter = type;
-            CharacterSkinChanged?.Invoke(type);
+            SelectedPlayerCharacterId = id;
+            CharacterSkinChanged?.Invoke(id);
         }
     }
 }

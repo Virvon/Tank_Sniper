@@ -1,17 +1,33 @@
 ﻿using Assets.Sources.Data;
 using Assets.Sources.Infrastructure.Factories.UiFactory;
+using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.Services.PersistentProgress;
+using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Sources.UI.MainMenu.Store
 {
     public class DecalSelectiongPanel : SelectionPanel<string>
     {
+        private const string Texture = "_Texture";
+
         [SerializeField] private int _tankRotationAngle;
         [SerializeField] private UiSelectedTankPoint _tankPoint;
+
+        private IStaticDataService _staticDataService;
+        private IAssetProvider _assetProvider;
+
+        [Inject]
+        private void Construct(IStaticDataService staticDataService, IAssetProvider assetProvider)
+        {
+            _staticDataService = staticDataService;
+            _assetProvider = assetProvider;
+        }
 
         public override void Open()
         {
@@ -31,12 +47,17 @@ namespace Assets.Sources.UI.MainMenu.Store
             Transform content)
         {
             Dictionary<string, SelectingPanelElement> panels = new();
+            DecalData[] decalDatas = persistentProgressService.Progress.Decals;
 
-            foreach (DecalData decalData in persistentProgressService.Progress.Decals)
+            decalDatas = decalDatas.OrderBy(data => _staticDataService.GetDecal(data.Id).SerialNumber).ToArray();
+
+            foreach (DecalData decalData in decalDatas)
             {
-                SelectingPanelElement panel = await uiFactory.CreateUnlockingPanel(content);
+                SelectingPanelElement panel = await uiFactory.CreateDecalPanel(content);
 
-                panel.Initialize(decalData.Id.ToString());
+                Sprite sprite = await _assetProvider.Load<Sprite>(_staticDataService.GetDecal(decalData.Id).SpriteAssetReference);
+
+                panel.Initialize(sprite);
 
                 if (decalData.IsUnlocked)
                     panel.Unlock();

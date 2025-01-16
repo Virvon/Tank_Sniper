@@ -28,7 +28,7 @@ namespace Assets.Sources.UI.MainMenu.Store
             {
                 SelectingPanelElement tankPanel = await uiFactory.CreateTankPanel(content);
 
-                tankPanel.Initialize(tankData.Level.ToString());
+                //tankPanel.Initialize(tankData.Level.ToString());
 
                 if (tankData.IsUnlocked)
                     tankPanel.Unlock();

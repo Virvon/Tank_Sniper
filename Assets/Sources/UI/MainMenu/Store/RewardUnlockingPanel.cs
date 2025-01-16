@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Sources.UI.MainMenu.Store
 {
-    public class UnlokingPanel : SelectingPanelElement
+    public class RewardUnlockingPanel : SelectingPanelElement
     {
         [SerializeField] private CanvasGroup _adButton;
 

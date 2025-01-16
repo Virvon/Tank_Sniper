@@ -1,17 +1,16 @@
-﻿using Assets.Sources.Types;
-using System;
+﻿using System;
 
 namespace Assets.Sources.Data
 {
     [Serializable]
     public class CharacterSkinData
     {
-        public PlayerCharacterType Type;
+        public string Id;
         public bool IsUnlocked;
 
-        public CharacterSkinData(PlayerCharacterType type, bool isUnlocked)
+        public CharacterSkinData(string id, bool isUnlocked)
         {
-            Type = type;
+            Id = id;
             IsUnlocked = isUnlocked;
         }
     }

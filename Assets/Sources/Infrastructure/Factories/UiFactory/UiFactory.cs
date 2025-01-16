@@ -36,6 +36,9 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
             _superBulletIconFactory = superBulletIconFactory;
         }
 
+        public UniTask<SelectingPanelElement> CreateDecalPanel(Transform parent) =>
+            _selectingPanelElementFactory.Create(UiFactoryAssets.DecalPanel, parent);
+
         public async UniTask CreateRestartWindow()
         {
             Window window = await _windowFactory.Create(UiFactoryAssets.RestartWindow);

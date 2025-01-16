@@ -58,7 +58,7 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
             _dronesCount = _maxDronesCount;
 
             tankFactory.CreatePlayerCharacter(
-                persistentProgressService.Progress.SelectedPlayerCharacter,
+                persistentProgressService.Progress.SelectedPlayerCharacterId,
                 transform.position,
                 Quaternion.Euler(0, transform.rotation.eulerAngles.y + _playerCharacterRotation, 0),
                 transform);

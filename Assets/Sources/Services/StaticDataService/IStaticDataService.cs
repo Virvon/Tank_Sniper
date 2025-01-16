@@ -35,6 +35,6 @@ namespace Assets.Sources.Services.StaticDataService
         DecalConfig GetDecal(string id);
         MuzzleConfig GetMuzzle(MuzzleType type);
         LevelsSequenceConfig GetLevelsSequence(BiomeType type);
-        PlayerCharacterConfig GetPlayerCharacter(PlayerCharacterType type);
+        PlayerCharacterConfig GetPlayerCharacter(string id);
     }
 }

@@ -18,5 +18,6 @@
         public const string SuperBulletIcon = "SuperBulletIcon";
         public const string DroneBulletIcon = "DroneBulletIcon";
         public const string RestartWindow = "RestartWindow";
+        public const string DecalPanel = "DecalPanel";
     }
 }

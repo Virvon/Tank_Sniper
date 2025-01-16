@@ -46,8 +46,8 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
             _playerCharacterFactory = playerCharacterFactory;
         }
 
-        public async UniTask<PlayerCharacter> CreatePlayerCharacter(PlayerCharacterType type, Vector3 position, Quaternion rotation, Transform parent) =>
-            await _playerCharacterFactory.Create(_staticDataService.GetPlayerCharacter(type).AssetReference, position, rotation, parent);
+        public async UniTask<PlayerCharacter> CreatePlayerCharacter(string id, Vector3 position, Quaternion rotation, Transform parent) =>
+            await _playerCharacterFactory.Create(_staticDataService.GetPlayerCharacter(id).AssetReference, position, rotation, parent);
 
         public async UniTask<Drone> CreateDrone(Vector3 position, Quaternion rotation) =>
             await _droneFactory.Create(TankFactoryAssets.Drone, position, rotation);

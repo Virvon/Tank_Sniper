@@ -24,7 +24,7 @@ namespace Assets.Sources.Services.StaticDataService
         private Dictionary<string, DecalConfig> _decalConfigs;
         private Dictionary<MuzzleType, MuzzleConfig> _muzzleConfigs;
         private Dictionary<BiomeType, LevelsSequenceConfig> _levelsSequenceConfigs;
-        private Dictionary<PlayerCharacterType, PlayerCharacterConfig> _playerCharacterConfigs;
+        private Dictionary<string, PlayerCharacterConfig> _playerCharacterConfigs;
 
         public StaticDataService(IAssetProvider assetsProvider) =>
             _assetsProvider = assetsProvider;
@@ -66,15 +66,15 @@ namespace Assets.Sources.Services.StaticDataService
                 UniTask.Create(async () => _levelsSequenceConfigs = await LoadConfigs<BiomeType, LevelsSequenceConfig>()),
                 UniTask.Create(async () => EnviromentExplosionsConfig = await LoadConfig<EnviromentExplosionsConfig>()),
                 UniTask.Create(async () => CompositeBulletConfig = await LoadConfig<CompositeBulletConfig>()),
-                UniTask.Create(async () => _playerCharacterConfigs = await LoadConfigs<PlayerCharacterType, PlayerCharacterConfig>()),
+                UniTask.Create(async () => _playerCharacterConfigs = await LoadConfigs<string, PlayerCharacterConfig>()),
                 UniTask.Create(async () => MainMenuSettingsConfig = await LoadConfig<MainMenuSettingsConfig>()),
             };
 
             await UniTask.WhenAll(tasks);
         }
 
-        public PlayerCharacterConfig GetPlayerCharacter(PlayerCharacterType type) =>
-            _playerCharacterConfigs.TryGetValue(type, out PlayerCharacterConfig config) ? config : null;
+        public PlayerCharacterConfig GetPlayerCharacter(string id) =>
+            _playerCharacterConfigs.TryGetValue(id, out PlayerCharacterConfig config) ? config : null;
 
         public LevelsSequenceConfig GetLevelsSequence(BiomeType type) =>
             _levelsSequenceConfigs.TryGetValue(type, out LevelsSequenceConfig config) ? config : null;

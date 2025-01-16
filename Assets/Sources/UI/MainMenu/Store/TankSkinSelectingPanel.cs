@@ -1,17 +1,30 @@
 ﻿using Assets.Sources.Data;
 using Assets.Sources.Infrastructure.Factories.UiFactory;
+using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.Services.PersistentProgress;
-using Assets.Sources.Types;
+using Assets.Sources.Services.StaticDataService;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Assets.Sources.UI.MainMenu.Store
 {
     public class TankSkinSelectingPanel : SelectionPanel<string>
     {
+        private const string Texture = "_Texture";
         [SerializeField] private Button _baseSkinButton;
+
+        private IStaticDataService _staticDataServcie;
+        private IAssetProvider _assetProvider;
+
+        [Inject]
+        private void Construct(IStaticDataService staticDataService, IAssetProvider assetProvider)
+        {
+            _staticDataServcie = staticDataService;
+            _assetProvider = assetProvider;
+        }
 
         protected override async UniTask<Dictionary<string, SelectingPanelElement>> FillContent(
             IUiFactory uiFactory,
@@ -24,9 +37,13 @@ namespace Assets.Sources.UI.MainMenu.Store
             {
                 SelectingPanelElement panel = await uiFactory.CreateUnlockingPanel(content);
 
-                panel.Initialize(tankSkinData.Id.ToString());
+                Material material = await _assetProvider.Load<Material>(_staticDataServcie.GetSkin(tankSkinData.Id).MaterialAssetReference);
+                Texture2D texture = material.GetTexture(Texture) as Texture2D;
+                Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(texture.width / 2, texture.height / 2));
 
-                if(tankSkinData.IsUnlocked)
+                panel.Initialize(sprite);
+
+                if (tankSkinData.IsUnlocked)
                     panel.Unlock();
 
                 panel.Clicked += OnPanelClicked;
