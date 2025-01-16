@@ -39,9 +39,9 @@ namespace Assets.Sources.Tanks
         private void OnDestroy() =>
             _persistentProgressService.Progress.DecalChanged -= OnDecalChanged;
 
-        public async void Initialize(string id, bool isChangable)
+        public async void Initialize(Material decalMaterial, bool isChangable)
         {
-            await ChangeDecal(id, false);
+            ChangeDecalMaterial(decalMaterial);
             _isChangable = isChangable;
         }
 
@@ -52,14 +52,19 @@ namespace Assets.Sources.Tanks
 
             Material material = await _assetProvider.Load<Material>(_staticDataService.GetDecal(id).MaterialAssetReference);
 
-            foreach (DecalProjector decalProjector in _decalProjectors)
-                decalProjector.material = material;
+            ChangeDecalMaterial(material);
 
             if (needToAnimate)
             {
                 foreach (DecalScalingAnimator decalScalingAnimator in _decalAnimators)
                     decalScalingAnimator.Play();
             }
+        }
+
+        private void ChangeDecalMaterial(Material material)
+        {
+            foreach (DecalProjector decalProjector in _decalProjectors)
+                decalProjector.material = material;
         }
 
         private async void OnDecalChanged(string id) =>

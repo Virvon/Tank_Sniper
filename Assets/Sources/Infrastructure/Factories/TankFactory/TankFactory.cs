@@ -86,9 +86,11 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
             else
                 skinMaterial = await _assetProvider.Load<Material>(_staticDataService.GetSkin(skinId).MaterialAssetReference);
 
+            Material decalMaterial = await _assetProvider.Load<Material>(_staticDataService.GetDecal(decalId).MaterialAssetReference);
+
             Tank tank = await _tankFactory.Create(_staticDataService.GetTank(level).AssetReference, position, rotation, parent);
 
-            tank.Initialize(level, skinMaterial, decalId, isDecalsChangable);
+            tank.Initialize(level, skinMaterial, decalMaterial, isDecalsChangable);
 
             return tank;
         }
