@@ -1,6 +1,7 @@
 ﻿using Assets.Sources.MainMenu.Animations;
 using Assets.Sources.MainMenu.Weapons;
 using Assets.Sources.Services.InputService;
+using Assets.Sources.UI.MainMenu;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;

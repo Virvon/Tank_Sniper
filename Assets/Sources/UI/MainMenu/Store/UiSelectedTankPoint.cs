@@ -4,10 +4,12 @@ using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Assets.Sources.MainMenu;
 using Assets.Sources.MainMenu.CharacterPoints;
 using Assets.Sources.Services.InputService;
+using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Tanks;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -16,15 +18,19 @@ namespace Assets.Sources.UI.MainMenu.Store
     public class UiSelectedTankPoint : SelectedTankPoint
     {
         private const string Layer = "UI";
+        private const string Level = "УРОВЕНЬ";
 
         [SerializeField] private float _scale;
         [SerializeField] private float _rotationSensivity;
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private RectTransform _rotationArea;
         [SerializeField] private Transform _tankParentPoint;
+        [SerializeField] private TMP_Text _selectedTankName;
+        [SerializeField] private TMP_Text _selectedTankLevel;
 
         private IInputService _inputService;
         private MainMenuCamera _camera;
+        private IStaticDataService _staticDataService;
 
         private Vector2 _lastHandlePosition;
         private bool _isRotatedToTarget;
@@ -34,10 +40,11 @@ namespace Assets.Sources.UI.MainMenu.Store
         private Coroutine _rotater;
 
         [Inject]
-        private void Construct(IInputService inputService, MainMenuCamera camera)
+        private void Construct(IInputService inputService, MainMenuCamera camera, IStaticDataService staticDataService)
         {
             _inputService = inputService;
             _camera = camera;
+            _staticDataService = staticDataService;
 
             _inputService.HandlePressed += OnHandlePressed;
             _inputService.HandleMoved += OnHandleMoved;
@@ -82,6 +89,9 @@ namespace Assets.Sources.UI.MainMenu.Store
                 transform.gameObject.layer = LayerMask.NameToLayer(Layer);
 
             SelectedTank.transform.localScale = Vector3.one * _scale;
+
+            _selectedTankLevel.text = $"{Level} {level}";
+            _selectedTankName.text = _staticDataService.GetTank(level).Name;
         }
 
         protected override Quaternion GetRotation() =>

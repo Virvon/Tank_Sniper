@@ -12,10 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e129d23160a14245959afb58fe30b8e, type: 3}
   m_Name: PlayerCharacterConfig 4
   m_EditorClassIdentifier: 
-  Id: 
-  IsUnlockedOnStart: 1
+  Id: PlayerCharacter4
+  IsUnlockedOnStart: 0
   AssetReference:
-    m_AssetGUID: 
+    m_AssetGUID: 0e3527bff62490e4f9e60651dc6c7f58
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  Icon:
+    m_AssetGUID: a1df18bc73c8ebc47b3c409e2cdc24fa
+    m_SubObjectName: CharacterIcon4
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1

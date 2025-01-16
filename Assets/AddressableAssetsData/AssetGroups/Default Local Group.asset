@@ -915,7 +915,7 @@ MonoBehaviour:
     - MainMenu
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cf3aa203fdef41148868a857f4c27bfa
-    m_Address: Assets/Tanks/PlayerCharacers/Prefabs/Character 1.prefab
+    m_Address: Character1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -1404,6 +1404,107 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 39f5092e10f4dc546affe7f71b3fcfcf
     m_Address: Assets/UI/Icons/HeartIcon2.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a3748f17e4488694db054faf75c5d828
+    m_Address: Assets/Configs/PlayerCharacters/PlayerCharacterConfig 2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e88e89b6c5755e4fb7586e733133609
+    m_Address: Assets/Configs/PlayerCharacters/PlayerCharacterConfig 3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a866784214f110b4abf98f0df0f4c481
+    m_Address: Assets/Configs/PlayerCharacters/PlayerCharacterConfig 4.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e85806a25ac431a49bf1d5f4455bc437
+    m_Address: Assets/Configs/PlayerCharacters/PlayerCharacterConfig 5.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f0852163e47ea9c45a2d3d06aa604bb4
+    m_Address: Assets/Configs/PlayerCharacters/PlayerCharacterConfig 6.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 80c9efae5bf695243974b7d38bbe9509
+    m_Address: Assets/Configs/PlayerCharacters/PlayerCharacterConfig 7.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8003853d00b47254ba6e141c73784c16
+    m_Address: Character2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b531fa33598f7c245b41c3a4ef383841
+    m_Address: Character3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e3527bff62490e4f9e60651dc6c7f58
+    m_Address: Character4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ab293b283bb5b441a8aaa37cb1b7a50
+    m_Address: Character5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 51f5e11a257f92a429799a0ed32fe0b6
+    m_Address: Character6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 537afb711db054a40b369f14f2c3f918
+    m_Address: Character7
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 05768249346241b47b132f2b504316b1
+    m_Address: CharacterIcon1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4bb83679f8f8534cad4425939d1f9a3
+    m_Address: CharacterIcon2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e46ec2a57163c594f80e258e468f3e94
+    m_Address: CharacterIcon3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a1df18bc73c8ebc47b3c409e2cdc24fa
+    m_Address: CharacterIcon4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d5a957ccf84f4ec45b27185bae640a37
+    m_Address: CharacterIcon5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c8296a7f88f60d4ea2d45e990f42582
+    m_Address: CharacterIcon6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6167cf47d8a1f704b9f2c87384b703a6
+    m_Address: CharacterIcon7
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

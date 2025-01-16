@@ -12,7 +12,9 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public AssetReference BaseMaterialAssetReference;
         public AssetReferenceGameObject MainMenuWrapperAssetReference;
         public AssetReferenceGameObject GameplayWrapperAssetReference;
+        public string Name;
 
         public uint Key => Level;
+
     }
 }

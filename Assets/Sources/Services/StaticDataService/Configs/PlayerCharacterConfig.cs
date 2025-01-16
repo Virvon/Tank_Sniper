@@ -9,7 +9,9 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public string Id;
         public bool IsUnlockedOnStart;
         public AssetReferenceGameObject AssetReference;
+        public AssetReference Icon;
 
         public string Key => Id;
+
     }
 }

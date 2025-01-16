@@ -1,10 +1,13 @@
 ﻿using Assets.Sources.Data;
 using Assets.Sources.Infrastructure.Factories.UiFactory;
+using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.Services.PersistentProgress;
+using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Sources.UI.MainMenu.Store
 {
@@ -12,6 +15,16 @@ namespace Assets.Sources.UI.MainMenu.Store
     {
         [SerializeField] private int _tankRotationAngle;
         [SerializeField] private UiSelectedTankPoint _tankPoint;
+
+        private IStaticDataService _staticDataService;
+        private IAssetProvider _assetProvider;
+
+        [Inject]
+        private void Construct(IStaticDataService staticDataService, IAssetProvider assetProvider)
+        {
+            _staticDataService = staticDataService;
+            _assetProvider = assetProvider;
+        }
 
         public override void Open()
         {
@@ -36,7 +49,9 @@ namespace Assets.Sources.UI.MainMenu.Store
             {
                 SelectingPanelElement panel = await uiFactory.CreateCharacterSkinPanel(content);
 
-                //panel.Initialize(skinData.Type.ToString());
+                Sprite icon = await _assetProvider.Load<Sprite>(_staticDataService.GetPlayerCharacter(skinData.Id).Icon);
+
+                panel.Initialize(icon);
 
                 if (skinData.IsUnlocked)
                     panel.Unlock();
