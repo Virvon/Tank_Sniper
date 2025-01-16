@@ -35,3 +35,9 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   Name: "\u0413\u0420\u041E\u041C"
+  Icon:
+    m_AssetGUID: 2e209fc4fea16a64b82b4e165d819d57
+    m_SubObjectName: ThunderIcon
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1

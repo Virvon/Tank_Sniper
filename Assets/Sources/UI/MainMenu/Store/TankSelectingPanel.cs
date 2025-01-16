@@ -1,15 +1,31 @@
 ﻿using Assets.Sources.Data;
 using Assets.Sources.Infrastructure.Factories.UiFactory;
+using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.Services.PersistentProgress;
+using Assets.Sources.Services.StaticDataService;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
+using Zenject;
 
 namespace Assets.Sources.UI.MainMenu.Store
 {
     public class TankSelectingPanel : SelectionPanel<uint>
     {
+        [SerializeField] private Image _icon;
+
+        private IStaticDataService _staticDataService;
+        private IAssetProvider _assetProvider;
+
+        [Inject]
+        private void Construct(IStaticDataService staticDataService, IAssetProvider assetProvider)
+        {
+            _staticDataService = staticDataService;
+            _assetProvider = assetProvider;
+        }
+
         protected override void Unsubscribe(IPersistentProgressService persistentProgressService) =>
             persistentProgressService.Progress.TankUnlocked -= Unlock;
 
@@ -28,7 +44,9 @@ namespace Assets.Sources.UI.MainMenu.Store
             {
                 SelectingPanelElement tankPanel = await uiFactory.CreateTankPanel(content);
 
-                //tankPanel.Initialize(tankData.Level.ToString());
+                Sprite icon = await _assetProvider.Load<Sprite>(_staticDataService.GetTank(tankData.Level).Icon);
+
+                tankPanel.Initialize(icon);
 
                 if (tankData.IsUnlocked)
                     tankPanel.Unlock();

@@ -35,3 +35,9 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   Name: "\u0414\u0420\u041E\u0411\u0418\u0422\u0415\u041B\u042C"
+  Icon:
+    m_AssetGUID: 87589807af4d06a46960ef975b350600
+    m_SubObjectName: CrusherIcon
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1

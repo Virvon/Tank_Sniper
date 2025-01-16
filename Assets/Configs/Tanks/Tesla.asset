@@ -35,3 +35,9 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   Name: "\u0422\u0415\u0421\u041B\u0410"
+  Icon:
+    m_AssetGUID: 9c4cc700996dfe540942fb7d27b81b89
+    m_SubObjectName: TeslaIcon
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1

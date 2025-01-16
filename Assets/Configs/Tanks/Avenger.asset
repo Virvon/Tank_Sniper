@@ -35,3 +35,9 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   Name: "\u041C\u0421\u0422\u0418\u0422\u0415\u041B\u042C"
+  Icon:
+    m_AssetGUID: ad6181ef4f508e048b2141540c272c4d
+    m_SubObjectName: AvengerIcon
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1

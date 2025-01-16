@@ -35,3 +35,9 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   Name: "\u041B\u0423\u0427\u041D\u0418\u041A"
+  Icon:
+    m_AssetGUID: 7cdb7ae226ef82e4d8749799735ed264
+    m_SubObjectName: ArcherIcon
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1

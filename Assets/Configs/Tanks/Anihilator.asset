@@ -35,3 +35,9 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   Name: "\u0410\u041D\u0418\u0413\u0418\u041B\u042F\u0422\u041E\u0420"
+  Icon:
+    m_AssetGUID: 5a93c6318dac8a740abb5f47da31ec4e
+    m_SubObjectName: AnnihilatorIcon
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1

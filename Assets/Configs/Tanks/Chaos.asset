@@ -35,3 +35,9 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   Name: "\u0425\u0410\u041E\u0421"
+  Icon:
+    m_AssetGUID: dbfe638f087335d4ea12d3fb2b6ff790
+    m_SubObjectName: ChaosIcon
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1

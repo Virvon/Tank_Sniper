@@ -1508,6 +1508,46 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a93c6318dac8a740abb5f47da31ec4e
+    m_Address: Assets/Tanks/Icons/AnnihilatorIcon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7cdb7ae226ef82e4d8749799735ed264
+    m_Address: Assets/Tanks/Icons/ArcherIcon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad6181ef4f508e048b2141540c272c4d
+    m_Address: Assets/Tanks/Icons/AvengerIcon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dbfe638f087335d4ea12d3fb2b6ff790
+    m_Address: Assets/Tanks/Icons/ChaosIcon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 87589807af4d06a46960ef975b350600
+    m_Address: Assets/Tanks/Icons/CrusherIcon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 107f850a7a74d5b4095cc6bf840e9b08
+    m_Address: Assets/Tanks/Icons/RangerIcon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9c4cc700996dfe540942fb7d27b81b89
+    m_Address: Assets/Tanks/Icons/TeslaIcon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e209fc4fea16a64b82b4e165d819d57
+    m_Address: Assets/Tanks/Icons/ThunderIcon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a44638466bf414438293c9d18a37e72, type: 2}
   m_SchemaSet:
