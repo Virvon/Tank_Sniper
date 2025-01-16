@@ -6,12 +6,14 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using Zenject;
 
 namespace Assets.Sources.Gameplay.Player
 {
     public class Drone : HandleableRotationObject
     {
+        private const string MixerVolume = "Volume";
         private const int ActiveCameraPriority = 1;
         private const int DeactiveCameraPriority = 0;
 
@@ -24,10 +26,13 @@ namespace Assets.Sources.Gameplay.Player
         [SerializeField] private Collider _collider;
         [SerializeField] private uint _maxRotation;
         [SerializeField] private uint _maxDistance;
+        [SerializeField] private AudioMixer _audioMixer;
+        [SerializeField] private float _soundVolume;
 
         private DroneAiming _aiming;
         private GameplayCamera _gameplayCamera;
         private RotationCamera _rotationCamera;
+        private CameraNoise _cameraNoise;
 
         private bool _canMove;
         private bool _isCollided;
@@ -37,14 +42,17 @@ namespace Assets.Sources.Gameplay.Player
         private Vector3 _startDiretion;
         private Vector3 _startPosition;
 
+        private float _startSoundVolume;
+
         public event Action Exploded;
 
         [Inject]
-        private void Construct(DroneAiming droneAiming, GameplayCamera gameplayCamera, RotationCamera rotationCamera)
+        private void Construct(DroneAiming droneAiming, GameplayCamera gameplayCamera, RotationCamera rotationCamera, CameraNoise cameraNoise)
         {
             _aiming = droneAiming;
             _gameplayCamera = gameplayCamera;
             _rotationCamera = rotationCamera;
+            _cameraNoise = cameraNoise;
 
             _canMove = false;
             _isCollided = false;
@@ -99,9 +107,13 @@ namespace Assets.Sources.Gameplay.Player
             _isShootedProcess = true;
             _gameplayCamera.SetBlednDuration(_cameraBlendDuration);
             _camera.Priority = ActiveCameraPriority;
+            _cameraNoise.SetActive(true);
 
             _startDiretion = _rigidbody.transform.forward;
             _startPosition = transform.position;
+
+            _audioMixer.GetFloat(MixerVolume, out _startSoundVolume);
+            _audioMixer.SetFloat(MixerVolume, _soundVolume);
 
             Rotation = new Vector2(0, _rotationCamera.Rotation.y);
 
@@ -111,7 +123,9 @@ namespace Assets.Sources.Gameplay.Player
         private void Explode()
         {
             _isExploded = true;
+            _cameraNoise.SetActive(false);
             _camera.Priority = DeactiveCameraPriority;
+            _audioMixer.SetFloat(MixerVolume, _startSoundVolume);
             _gameplayCamera.SetBlednDuration(0);
             _rotationCamera.ResetRotation();
             _rigidbody.isKinematic = true;

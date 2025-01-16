@@ -4,11 +4,15 @@ using Assets.Sources.Gameplay.Player.Aiming;
 using Assets.Sources.Gameplay.Player.Weapons;
 using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Assets.Sources.Services.PersistentProgress;
+using Assets.Sources.Services.StaticDataService;
+using Assets.Sources.Services.StaticDataService.Configs;
+using Assets.Sources.Tanks;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Assets.Sources.Gameplay.Player.Wrappers
 {
@@ -16,6 +20,7 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
     {
         [SerializeField] private float _dronRotationSpeed;
         [SerializeField] private float _playerCharacterRotation;
+        [SerializeField] private Transform _playerPoint;
 
         private AimingCameraPoint _aimingCameraPoint;
         private ITankFactory _tankFactory;
@@ -23,12 +28,14 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
         private DroneAiming _aiming;
         private DefeatHandler _defeatHandler;
         private WictoryHandler _wictoryHangler;
+        private AnimationsConfig _animationsConfig;
 
         private uint _maxDronesCount;
         private uint _dronesCount;
 
         private Drone _drone;
         private Coroutine _rotatiter;
+        private Coroutine _animator;
         private bool _isDronAimed;
 
         public uint BulletsCount => _dronesCount;
@@ -37,7 +44,7 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
         public event Action BulletsCountChanged;
 
         [Inject]
-        private void Construct(
+        private async void Construct(
             AimingCameraPoint aimingCameraPoint,
             ITankFactory tankFactory,
             RotationCamera rotationCamera,
@@ -45,7 +52,8 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
             DefeatHandler defeatHandler,
             uint dronesCount,
             WictoryHandler wictoryHandler,
-            IPersistentProgressService persistentProgressService)
+            IPersistentProgressService persistentProgressService,
+            IStaticDataService staticDataService)
         {
             _aimingCameraPoint = aimingCameraPoint;
             _tankFactory = tankFactory;
@@ -54,14 +62,31 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
             _defeatHandler = defeatHandler;
             _maxDronesCount = dronesCount;
             _wictoryHangler = wictoryHandler;
+            _animationsConfig = staticDataService.AnimationsConfig;
 
             _dronesCount = _maxDronesCount;
 
-            tankFactory.CreatePlayerCharacter(
+            PlayerCharacter playerCharacter = await tankFactory.CreatePlayerCharacter(
                 persistentProgressService.Progress.SelectedPlayerCharacterId,
-                transform.position,
+                _playerPoint.position,
                 Quaternion.Euler(0, transform.rotation.eulerAngles.y + _playerCharacterRotation, 0),
                 transform);
+
+            PlayerAccessor glasses = await tankFactory.CreatePlayerGlasses(
+                playerCharacter.GlassesPoint.position,
+                playerCharacter.GlassesPoint.rotation,
+                playerCharacter.GlassesPoint.transform);
+
+            await tankFactory.CreatePlayerDroneContoller(
+                playerCharacter.ControllerPoint.transform.position,
+                playerCharacter.ControllerPoint.rotation,
+                playerCharacter.ControllerPoint.transform);
+
+            playerCharacter.StartDroneControlling();
+            playerCharacter.TryDestroyGlasses();
+
+            glasses.transform.rotation = playerCharacter.GlassesPoint.rotation;
+            glasses.transform.position = playerCharacter.GlassesPoint.position;
 
             _aiming.Shooted += OnPlayerShooted;
             _defeatHandler.ProgressRecovered += OnProgressRecovered;
@@ -102,7 +127,11 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
             if (_rotatiter != null)
                 StopCoroutine(_rotatiter);
 
+            if (_animator != null)
+                StopCoroutine(_animator);
+
             _rotatiter = StartCoroutine(Rotater());
+            _animator = StartCoroutine(Animator());
         }
 
         private async void OnDroneExploded()
@@ -135,6 +164,26 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
                 Vector3 targetDiretion = new Vector3(_rotationCamera.transform.forward.x, 0, _rotationCamera.transform.forward.z);
                 Quaternion targetRotation = Quaternion.LookRotation(targetDiretion);
                 _drone.transform.rotation = Quaternion.RotateTowards(_drone.transform.rotation, targetRotation, _dronRotationSpeed * Time.deltaTime);
+
+                yield return null;
+            }
+        }
+
+        private IEnumerator Animator()
+        {
+            while (_isDronAimed)
+            {
+                Vector3 targetPosition = Random.insideUnitSphere * _animationsConfig.DroneAnimationRadius + _aimingCameraPoint.transform.position;
+
+                while(Vector3.Distance(_drone.transform.position, targetPosition) > 0.1f && _isDronAimed)
+                {
+                    _drone.transform.position = Vector3.MoveTowards(
+                        _drone.transform.position,
+                        targetPosition,
+                        _animationsConfig.DroneAnimationSpeed * Time.deltaTime);
+
+                    yield return null;
+                }
 
                 yield return null;
             }

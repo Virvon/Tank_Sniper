@@ -17,5 +17,8 @@ namespace Assets.Sources.Services.StaticDataService.Configs
 
         public AnimationCurve DroneDefeatRecoveryProgressButtonAnimationCurve;
         public float DroneDefeateRecoveryProgressButtonAnimationDuration;
+
+        public float DroneAnimationRadius;
+        public float DroneAnimationSpeed;
     }
 }

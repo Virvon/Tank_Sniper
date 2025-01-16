@@ -12,7 +12,9 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
     {
         UniTask<Drone> CreateDrone(Vector3 position, Quaternion rotation);
         UniTask<PlayerCharacter> CreatePlayerCharacter(string id, Vector3 position, Quaternion rotation, Transform parent);
+        UniTask CreatePlayerDroneContoller(Vector3 position, Quaternion rotation, Transform parent);
         UniTask CreatePlayerDroneWrapper(Vector3 position, Quaternion rotation);
+        UniTask<PlayerAccessor> CreatePlayerGlasses(Vector3 position, Quaternion rotation, Transform parent);
         UniTask<PlayerTankWrapper> CreatePlayerTankWrapper(uint tankLevel, Vector3 position, Quaternion rotation);
         UniTask<Tank> CreateTank(
             uint level,

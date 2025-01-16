@@ -39,6 +39,10 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
             Container
                 .BindFactory<string, Vector3, Quaternion, UniTask<Drone>, Drone.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<Drone>>();
+            
+            Container
+                .BindFactory<string, Vector3, Quaternion, Transform, UniTask<PlayerAccessor>, PlayerAccessor.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<PlayerAccessor>>();
         }
     }
 }

@@ -176,3 +176,5 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   DroneDefeateRecoveryProgressButtonAnimationDuration: 1.5
+  DroneAnimationRadius: 0.4
+  DroneAnimationSpeed: 0.1

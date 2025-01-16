@@ -9,6 +9,7 @@ using Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints;
 using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -49,8 +50,7 @@ namespace Assets.Sources.Gameplay.Root
             BiomeType biomeType = PersistentProgressService.Progress.CurrentBiomeType;
             LevelConfig levelConfig = _staticDataService.GetLevel(_staticDataService.GetLevelsSequence(biomeType).GetLevel(levelIndex));
 
-
-            await _gameplayFactory.CreateCamera();
+            await CreateCamera(_gameplayFactory);
             await CreateAimingVirtualCamera(_gameplayFactory, _aimingCameraPoint.transform.position, _aimingCameraPoint.transform.rotation);
 
             await CreatePlayerWrapper(_tankFactory, _playerPoint);
@@ -62,6 +62,9 @@ namespace Assets.Sources.Gameplay.Root
             await _uiFactory.CreateLoadingCurtain();
             await _uiFactory.CreateWictroyWindow();
         }
+
+        protected virtual async UniTask<GameplayCamera> CreateCamera(IGameplayFactory gameplayFactory) =>
+            await gameplayFactory.CreateCamera();
 
         protected abstract UniTask CreateDefeatWndow(IUiFactory uiFactory);
 

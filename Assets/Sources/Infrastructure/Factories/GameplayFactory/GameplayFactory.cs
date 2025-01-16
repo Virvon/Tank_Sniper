@@ -1,6 +1,7 @@
 ﻿using Assets.Sources.Gameplay.Cameras;
 using Assets.Sources.Gameplay.Enemies;
 using Assets.Sources.Gameplay.Handlers;
+using Assets.Sources.Gameplay.Player;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         private readonly Enemy.Factory _enemyFactory;
         private readonly RotationCamera.Factory _rotationCameraFactory;
         private readonly WictoryHandler _winHandler;
+        private readonly CameraNoise.Factory _cameraNoiseFactory;
 
         public GameplayFactory(
             IStaticDataService staticDataService,
@@ -24,7 +26,8 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             GameplayCamera.Factory gameplayCameraFactory,
             Enemy.Factory enemyFactory,
             RotationCamera.Factory aimingFactory,
-            WictoryHandler winHandler)
+            WictoryHandler winHandler,
+            CameraNoise.Factory cameraNoiseFactory)
         {
             _staticDataService = staticDataService;
             _container = container;
@@ -32,6 +35,13 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             _enemyFactory = enemyFactory;
             _rotationCameraFactory = aimingFactory;
             _winHandler = winHandler;
+            _cameraNoiseFactory = cameraNoiseFactory;
+        }
+
+        public async UniTask CreateCameraNoise(Transform parent)
+        {
+            CameraNoise cameraNoise = await _cameraNoiseFactory.Create(GameplayFactoryAssets.CameraNoise, parent);
+            _container.BindInstance(cameraNoise).AsSingle();
         }
 
         public async UniTask CreateRotationVirtualCamera(Vector3 position, Quaternion rotation)
@@ -46,11 +56,13 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             _container.BindInstance(rotationCamera.GetComponentInChildren<CameraShaking>()).AsSingle();
         }
 
-        public async UniTask CreateCamera()
+        public async UniTask<GameplayCamera> CreateCamera()
         {
             GameplayCamera gameplayCamera = await _gameplayCameraFactory.Create(GameplayFactoryAssets.Camera);
 
             _container.BindInstance(gameplayCamera).AsSingle();
+
+            return gameplayCamera;
         }
 
         public async UniTask<Enemy> CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation)

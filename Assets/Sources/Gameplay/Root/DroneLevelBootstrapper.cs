@@ -24,6 +24,14 @@ namespace Assets.Sources.Gameplay.Root
         {
         }
 
+        protected override async UniTask<GameplayCamera> CreateCamera(IGameplayFactory gameplayFactory)
+        {
+            GameplayCamera gameplayCamera = await base.CreateCamera(gameplayFactory);
+            await gameplayFactory.CreateCameraNoise(gameplayCamera.transform);
+
+            return gameplayCamera;
+        }
+
         protected override async UniTask CreateAimingVirtualCamera(IGameplayFactory gameplayFactory, Vector3 position, Quaternion rotation) =>
             await gameplayFactory.CreateRotationVirtualCamera(position, rotation);
 

@@ -1,5 +1,6 @@
 ﻿using Assets.Sources.Gameplay.Cameras;
 using Assets.Sources.Gameplay.Enemies;
+using Assets.Sources.Gameplay.Player;
 using Assets.Sources.Services.AssetManagement;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -28,6 +29,10 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<string, Vector3, Quaternion, UniTask<RotationCamera>, RotationCamera.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<RotationCamera>>();
+            
+            Container
+                .BindFactory<string, Transform, UniTask<CameraNoise>, CameraNoise.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<CameraNoise>>();
         }
     }
 }
