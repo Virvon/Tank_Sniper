@@ -7,7 +7,7 @@ namespace Assets.Sources.UI
     {
         [SerializeField] private CanvasGroup _mainCanvasGroup;
         [SerializeField] private float _closeDuration;
-        [SerializeField] private float _openDuration;
+        [SerializeField] protected float _openDuration;
         [SerializeField] private bool _isOpenedOnAwake;
 
         private Coroutine _swithcer;

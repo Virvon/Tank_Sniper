@@ -12,6 +12,7 @@ namespace Assets.Sources.UI.MainMenu
     {
         [SerializeField] private Button _button;
         [SerializeField] private TMP_Text _costValue;
+        [SerializeField] private CanvasGroup _buyingMarkCanvasGroup;
 
         private IPersistentProgressService _persistentProgressService;
         private Desk _desk;
@@ -64,7 +65,10 @@ namespace Assets.Sources.UI.MainMenu
             ChangeInteractable();
         }
 
-        private void ChangeInteractable() =>
+        private void ChangeInteractable()
+        {
             _button.interactable = _isWalletValueEnough && _deskHasEmptyCells;
+            _buyingMarkCanvasGroup.alpha = _isWalletValueEnough && _deskHasEmptyCells ? 1 : 0;
+        }
     }
 }

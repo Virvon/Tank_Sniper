@@ -1,4 +1,5 @@
 ﻿using Assets.Sources.UI;
+using Assets.Sources.UI.Gameplay;
 using Assets.Sources.UI.Gameplay.Aim;
 using Assets.Sources.UI.Gameplay.BulletsPanel;
 using Assets.Sources.UI.MainMenu;
@@ -16,7 +17,7 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         UniTask CreateTankGameplayWindow();
         UniTask CreateTankDefeatWindow();
         UniTask CreateWictroyWindow();
-        UniTask CreateLoadingCurtain();
+        UniTask<LoadingCurtain> CreateLoadingCurtain();
         UniTask CreateDroneGameplayWindow();
         UniTask CreateDroneDefeatWindow();
         UniTask<SelectingPanelElement> CreateCharacterSkinPanel(Transform parent);

@@ -131,6 +131,7 @@ MonoBehaviour:
   _closeDuration: 0
   _openDuration: 0.5
   _isOpenedOnAwake: 0
+  _showDuration: 10
 --- !u!1 &8144924791199046550
 GameObject:
   m_ObjectHideFlags: 0

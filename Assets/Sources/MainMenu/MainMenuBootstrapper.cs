@@ -2,6 +2,7 @@
 using Assets.Sources.Infrastructure.Factories.UiFactory;
 using Assets.Sources.Infrastructure.GameStateMachine;
 using Assets.Sources.Infrastructure.GameStateMachine.States;
+using Assets.Sources.UI.Gameplay;
 using Assets.Sources.UI.MainMenu;
 using Cysharp.Threading.Tasks;
 using System;

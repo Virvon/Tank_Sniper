@@ -39,7 +39,7 @@ namespace Assets.Sources.Tanks
         private void OnDestroy() =>
             _persistentProgressService.Progress.DecalChanged -= OnDecalChanged;
 
-        public async void Initialize(Material decalMaterial, bool isChangable)
+        public void Initialize(Material decalMaterial, bool isChangable)
         {
             ChangeDecalMaterial(decalMaterial);
             _isChangable = isChangable;

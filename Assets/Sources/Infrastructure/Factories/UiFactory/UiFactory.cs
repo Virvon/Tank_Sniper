@@ -66,10 +66,12 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         public async UniTask<SelectingPanelElement> CreateCharacterSkinPanel(Transform parent) =>
             await _selectingPanelElementFactory.Create(UiFactoryAssets.CharacterSkinPanel, parent);
 
-        public async UniTask CreateLoadingCurtain()
+        public async UniTask<LoadingCurtain> CreateLoadingCurtain()
         {
             LoadingCurtain loadingCurtain = await _windowFactory.Create(UiFactoryAssets.LoadingCurtain) as LoadingCurtain;
             _container.BindInstance(loadingCurtain).AsSingle();
+
+            return loadingCurtain;
         }
 
         public async UniTask CreateWictroyWindow() =>
