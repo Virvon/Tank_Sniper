@@ -20,5 +20,8 @@ namespace Assets.Sources.Services.StaticDataService.Configs
 
         public float DroneAnimationRadius;
         public float DroneAnimationSpeed;
+
+        public AnimationCurve TankAimCellAnimationCurve;
+        public float TankAimCellAnimationDuration;
     }
 }

@@ -1,4 +1,5 @@
-﻿using Assets.Sources.Gameplay.Cameras;
+﻿using Assets.Sources.Gameplay.Bullets;
+using Assets.Sources.Gameplay.Cameras;
 using Assets.Sources.Gameplay.Handlers;
 using Assets.Sources.Gameplay.Player.Aiming;
 using Assets.Sources.Gameplay.Player.Weapons;
@@ -10,6 +11,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Assets.Sources.Gameplay.Player.Wrappers
 {
@@ -22,6 +24,7 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
         private AimingCameraPoint _aimingCameraPoint;
         private AimingConfig _aimingConfig;
         private DefeatHandler _defeatHandler;
+        private GameplayCamera _gameplayCamera;
 
         private Transform _turret;
         private float _movingDistance;
@@ -33,6 +36,7 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
         private GameObject _smokeParticle;
 
         public event Action HealthChanged;
+        public event Action<Vector2> Attacked;
 
         public uint MaxHealth { get; private set; }
         public uint Health { get; private set; }
@@ -42,12 +46,14 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
             TankAiming aiming,
             AimingCameraPoint aimingCameraPoint,
             IStaticDataService staticDataService,
-            DefeatHandler defeatHandler)
+            DefeatHandler defeatHandler,
+            GameplayCamera gameplayCamera)
         {
             _aiming = aiming;
             _aimingCameraPoint = aimingCameraPoint;
             _aimingConfig = staticDataService.AimingConfig;
             _defeatHandler = defeatHandler;
+            _gameplayCamera = gameplayCamera;
 
             MaxHealth = staticDataService.GameplaySettingsConfig.PlayerHealth;
             Health = MaxHealth;
@@ -63,6 +69,19 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
             _aiming.StateChanged -= OnAimingStateChanged;
             _defeatHandler.ProgressRecovered -= OnProgressRecovery;
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.transform.TryGetComponent(out ExplodingBullet bullet))
+            {
+                Vector3 bulletPosition = _gameplayCamera.Camera.WorldToScreenPoint(new Vector3(bullet.StartPosition.x, bullet.StartPosition.y, 1));
+                Vector3 position = _gameplayCamera.Camera.WorldToScreenPoint(new Vector3(_gameplayCamera.transform.position.x, _gameplayCamera.transform.position.y, 1));
+
+                Vector2 attackPosition = new Vector2(Random.Range(-1, 2), Random.Range(-0, 2));
+                Attacked?.Invoke(attackPosition);
+            }
+        }
+
 
         public void Initialize(Transform[] bulletPoints, Transform turret)
         {

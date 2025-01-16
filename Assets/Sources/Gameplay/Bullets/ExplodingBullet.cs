@@ -10,7 +10,11 @@ namespace Assets.Sources.Gameplay.Bullets
         private uint _explosionForce;
         private uint _damage;
 
+        public Vector3 StartPosition;
         protected GameObject Projectile => _projectile;
+
+        private void Start() =>
+            StartPosition = transform.position;
 
         public ExplodingBullet BindExplosionSettings(float explosionRadius, uint explosionForce, uint damage)
         {
