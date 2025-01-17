@@ -18,7 +18,7 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         UniTask CreateTankGameplayWindow();
         UniTask CreateTankDefeatWindow();
         UniTask CreateWictroyWindow(WictoryWindowType type);
-        UniTask<LoadingCurtain> CreateLoadingCurtain();
+        UniTask<GameplayLoadingCurtain> CreateLoadingCurtain();
         UniTask CreateDroneGameplayWindow();
         UniTask CreateDroneDefeatWindow();
         UniTask<SelectingPanelElement> CreateCharacterSkinPanel(Transform parent);

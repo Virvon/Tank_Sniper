@@ -6,6 +6,9 @@ using Assets.Sources.Services.PersistentProgress;
 using Assets.Sources.Services.SaveLoadProgress;
 using Assets.Sources.Services.SceneManagment;
 using Assets.Sources.Services.StaticDataService;
+using Assets.Sources.UI.Gameplay;
+using Assets.Sources.UI.LoadingCurtain;
+using Cysharp.Threading.Tasks;
 using Zenject;
 
 namespace Assets.Sources.CompositionRoot
@@ -22,6 +25,18 @@ namespace Assets.Sources.CompositionRoot
             BindStaticDataService();
             BindPersistentProgressService();
             BindSaveLoadService();
+            BindLoadingCurtain();
+        }
+
+        private void BindLoadingCurtain()
+        {
+            Container
+                .BindFactory<string, UniTask<LoadingCurtain>, LoadingCurtain.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<LoadingCurtain>>();
+
+            Container
+                .BindInterfacesAndSelfTo<LoadingCurtainProxy>()
+                .AsSingle();
         }
 
         private void BindSaveLoadService() =>

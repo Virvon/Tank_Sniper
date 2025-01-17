@@ -23,7 +23,11 @@ namespace Assets.Sources.MainMenu
             BindBulletFactory();
             BindTankFactoryInstaller();
             BindTankBuyer();
+            BindTankShootingHandler();
         }
+
+        private void BindTankShootingHandler() =>
+            Container.BindInterfacesAndSelfTo<TankShootingHandler>().AsSingle();
 
         private void BindTankBuyer() =>
             Container.Bind<TankBuyer>().AsSingle();

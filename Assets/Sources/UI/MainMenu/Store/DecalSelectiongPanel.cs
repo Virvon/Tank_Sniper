@@ -76,8 +76,14 @@ namespace Assets.Sources.UI.MainMenu.Store
 
             if (decalData.IsUnlocked == false)
             {
-                Debug.Log("Reward video");
+#if !UNITY_WEBGL || UNITY_EDITOR
                 persistentProgressService.Progress.UnlockDecal(key);
+#else
+            Agava.YandexGames.InterstitialAd.Show(onCloseCallback: (value) =>
+            {
+                persistentProgressService.Progress.UnlockDecal(key);
+            });
+#endif                
             }
             else
             {

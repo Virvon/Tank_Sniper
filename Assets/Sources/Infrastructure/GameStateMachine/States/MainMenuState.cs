@@ -5,6 +5,7 @@ using Assets.Sources.Services.SaveLoadProgress;
 using Assets.Sources.Services.SceneManagment;
 using Assets.Sources.Services.StateMachine;
 using Assets.Sources.Services.StaticDataService;
+using Assets.Sources.UI.LoadingCurtain;
 using Cysharp.Threading.Tasks;
 
 namespace Assets.Sources.Infrastructure.GameStateMachine.States
@@ -17,6 +18,7 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
         private readonly IAssetProvider _assetProvider;
         private readonly IInputService _inputService;
         private readonly ISaveLoadService _saveLoadService;
+        private readonly ILoadingCurtain _loadingCurtain;
 
         public MainMenuState(
             ISceneLoader sceneLoader,
@@ -24,7 +26,8 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
             IStaticDataService staticDataService,
             IAssetProvider assetProvider,
             IInputService inputService,
-            ISaveLoadService saveLoadService)
+            ISaveLoadService saveLoadService,
+            ILoadingCurtain loadingCurtain)
         {
             _sceneLoader = sceneLoader;
             _persistentProgressService = persistentProgressService;
@@ -32,10 +35,12 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
             _assetProvider = assetProvider;
             _inputService = inputService;
             _saveLoadService = saveLoadService;
+            _loadingCurtain = loadingCurtain;
         }
 
         public async UniTask Enter()
         {
+            _loadingCurtain.Hide();
             await _assetProvider.WarmupAssetsByLable(AssetLabels.MainMenu);
             await _sceneLoader.Load(_staticDataService.GetLevelsSequence(_persistentProgressService.Progress.CurrentBiomeType).MainMenuScene);
             _inputService.SetActive(true);
@@ -43,6 +48,7 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
 
         public async UniTask Exit()
         {
+            _loadingCurtain.Show();
             _saveLoadService.SaveProgress();
             await _assetProvider.ReleaseAssetsByLabel(AssetLabels.MainMenu);
         }

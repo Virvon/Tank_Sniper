@@ -16,20 +16,20 @@ namespace Assets.Sources.MainMenu
         [SerializeField] private Weapon _weapon;
         [SerializeField] private ShootingAnimator _shootingAnimator;
 
-        private IInputService _inputService;
+        private TankShootingHandler _tankShootingHandler;
         private MainMenuCamera _camera;
 
         [Inject]
-        private void Construct(IInputService inputService, MainMenuCamera camera)
+        private void Construct(TankShootingHandler tankShootingHandler, MainMenuCamera camera)
         {
-            _inputService = inputService;
+            _tankShootingHandler = tankShootingHandler;
             _camera = camera;
 
-            _inputService.HandlePressed += OnHandlePressed;
+            _tankShootingHandler.HandlePressed += OnHandlePressed;
         }
 
         private void OnDestroy() =>
-            _inputService.HandlePressed -= OnHandlePressed;
+            _tankShootingHandler.HandlePressed -= OnHandlePressed;
 
         public void SetBulletPoints(Transform[] bulletPoints) =>
             _weapon.SetBulletPoints(bulletPoints);

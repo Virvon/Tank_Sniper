@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2244421405932116770}
   - component: {fileID: 2539942933464453976}
   - component: {fileID: 1731267530196227501}
-  - component: {fileID: 4137468119182954257}
+  - component: {fileID: -6879937367809190215}
   m_Layer: 5
   m_Name: LoadingCurtain
   m_TagString: Untagged
@@ -115,7 +115,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &4137468119182954257
+--- !u!114 &-6879937367809190215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,13 +124,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 563100173173134119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b40bdb4f733551945be32cd5a7082442, type: 3}
+  m_Script: {fileID: 11500000, guid: 56f80fee734b6d84482d8d5353a1fde7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCanvasGroup: {fileID: 1731267530196227501}
-  _closeDuration: 0
-  _openDuration: 0.5
-  _isOpenedOnAwake: 0
+  _canvasGroup: {fileID: 1731267530196227501}
+  _showDuration: 1.2
 --- !u!1 &8144924791199046550
 GameObject:
   m_ObjectHideFlags: 0

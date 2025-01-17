@@ -19,8 +19,16 @@ namespace Assets.Sources.Gameplay.Handlers
 
         public void TryRecoveryProgress()
         {
+#if !UNITY_WEBGL || UNITY_EDITOR
             _inputService.SetActive(true);
             ProgressRecovered?.Invoke();
+#else
+            Agava.YandexGames.InterstitialAd.Show(onCloseCallback: (value) =>
+            {
+                _inputService.SetActive(true);
+                ProgressRecovered?.Invoke();
+            });
+#endif
         }
 
         public void OnDefeat()

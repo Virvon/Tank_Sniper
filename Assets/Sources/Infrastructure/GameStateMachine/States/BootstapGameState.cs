@@ -6,6 +6,7 @@ using System.Collections;
 using System;
 using Assets.Sources.Services.CoroutineRunner;
 using Agava.YandexGames;
+using Assets.Sources.UI.LoadingCurtain;
 
 namespace Assets.Sources.Infrastructure.GameStateMachine.States
 {
@@ -15,17 +16,20 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
         private readonly GameStateMachine _gameStateMachine;
         private readonly IStaticDataService _staticDataService;
         private readonly ICoroutineRunner _coroutineRunner;
+        private readonly LoadingCurtainProxy _loadingCurtainProyxy;
 
         public BootstapGameState(
             IAssetProvider assetProvider,
             GameStateMachine gameStateMachine,
             IStaticDataService staticDataService,
-            ICoroutineRunner coroutineRunner)
+            ICoroutineRunner coroutineRunner,
+            LoadingCurtainProxy loadingCurtainProyxy)
         {
             _assetProvider = assetProvider;
             _gameStateMachine = gameStateMachine;
             _staticDataService = staticDataService;
             _coroutineRunner = coroutineRunner;
+            _loadingCurtainProyxy = loadingCurtainProyxy;
         }
 
         public async UniTask Enter()
@@ -35,13 +39,17 @@ namespace Assets.Sources.Infrastructure.GameStateMachine.States
             _coroutineRunner.StartCoroutine(InitializeYandexSdk(callback: () => _gameStateMachine.Enter<LoadProgressState>().Forget()));
         }
 
-        public UniTask Exit() =>
-            default;
+        public UniTask Exit()
+        {
+            _loadingCurtainProyxy.Show();
+            return default;
+        }
 
         private async UniTask Initialize()
         {
             await _assetProvider.InitializeAsync();
             await _staticDataService.InitializeAsync();
+            await _loadingCurtainProyxy.InitializeAsync();
         }
 
         private IEnumerator InitializeYandexSdk(Action callback)

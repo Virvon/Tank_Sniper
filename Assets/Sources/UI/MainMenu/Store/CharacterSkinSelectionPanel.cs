@@ -70,8 +70,14 @@ namespace Assets.Sources.UI.MainMenu.Store
 
             if(skinData.IsUnlocked == false)
             {
-                Debug.Log("reward video");
+#if !UNITY_WEBGL || UNITY_EDITOR
                 persistentProgressService.Progress.UnlockCharacterSkin(key);
+#else
+            Agava.YandexGames.InterstitialAd.Show(onCloseCallback: (value) =>
+            {
+                persistentProgressService.Progress.UnlockCharacterSkin(key);
+            });
+#endif
             }
             else
             {

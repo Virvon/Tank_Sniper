@@ -30,10 +30,8 @@ namespace Assets.Sources.UI.MainMenu.Store
         private void OnDestroy() =>
             _button.onClick.RemoveListener(OnButtonClicked);
 
-        public void Initialize(Sprite sprite)
-        {
+        public void Initialize(Sprite sprite) =>
             _icon.sprite = sprite;
-        }
 
         public abstract void Unlock();
 

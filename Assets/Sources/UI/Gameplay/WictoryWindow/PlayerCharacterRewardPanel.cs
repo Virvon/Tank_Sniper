@@ -39,9 +39,18 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
 
         private void OnCollectButtonClicked()
         {
+#if !UNITY_WEBGL || UNITY_EDITOR
             _persistentProgressService.Progress.GetPlayerCharacter(_characterId).IsUnlocked = true;
 
             Hide();
+#else
+            Agava.YandexGames.InterstitialAd.Show(onCloseCallback: (value) =>
+            {
+                _persistentProgressService.Progress.GetPlayerCharacter(_characterId).IsUnlocked = true;
+
+                Hide();
+            });
+#endif
         }
 
         public async UniTask GenerateCharacter()

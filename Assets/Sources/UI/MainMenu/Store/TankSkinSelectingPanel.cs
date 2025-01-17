@@ -63,8 +63,14 @@ namespace Assets.Sources.UI.MainMenu.Store
 
             if(tankSkinData.IsUnlocked == false)
             {
-                Debug.Log("Reward video");
+#if !UNITY_WEBGL || UNITY_EDITOR
                 persistentProgressService.Progress.UnlockTankSkin(key);
+#else
+            Agava.YandexGames.InterstitialAd.Show(onCloseCallback: (value) =>
+            {
+                persistentProgressService.Progress.UnlockTankSkin(key);
+            });
+#endif    
             }
             else
             {

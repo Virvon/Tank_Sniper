@@ -67,9 +67,9 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         public async UniTask<SelectingPanelElement> CreateCharacterSkinPanel(Transform parent) =>
             await _selectingPanelElementFactory.Create(UiFactoryAssets.CharacterSkinPanel, parent);
 
-        public async UniTask<LoadingCurtain> CreateLoadingCurtain()
+        public async UniTask<GameplayLoadingCurtain> CreateLoadingCurtain()
         {
-            LoadingCurtain loadingCurtain = await _windowFactory.Create(UiFactoryAssets.LoadingCurtain) as LoadingCurtain;
+            GameplayLoadingCurtain loadingCurtain = await _windowFactory.Create(UiFactoryAssets.LoadingCurtain) as GameplayLoadingCurtain;
             _container.BindInstance(loadingCurtain).AsSingle();
 
             return loadingCurtain;

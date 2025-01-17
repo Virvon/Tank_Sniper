@@ -2,6 +2,6 @@
 {
     public class InfrastructureAssetPath
     {
-
+        public const string Curtain = "Curtain";
     }
 }

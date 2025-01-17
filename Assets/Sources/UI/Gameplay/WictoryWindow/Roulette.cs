@@ -43,7 +43,14 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
             _button.interactable = false;
             _isRotated = false;
 
+#if !UNITY_WEBGL || UNITY_EDITOR
             Rewarded?.Invoke(_reward);
+#else
+            Agava.YandexGames.InterstitialAd.Show(onCloseCallback: (value) =>
+            {
+                Rewarded?.Invoke(_reward);
+            });
+#endif
         }
 
         public void Work(uint reward)

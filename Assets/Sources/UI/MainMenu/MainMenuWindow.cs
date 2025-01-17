@@ -27,15 +27,22 @@ namespace Assets.Sources.UI.MainMenu
         private Desk _desk;
         private OptionsWindow _optionsWindow;
         private TankBuyer _tankBuyer;
+        private TankShootingHandler _tankShootingHandler;
 
         public event Action FightButtonClicked;
 
         [Inject]
-        public void Construct(Desk desk, MainMenuCamera mainMenuCamera, OptionsWindow optionsWindow, TankBuyer tankBuyer)
+        public void Construct(
+            Desk desk,
+            MainMenuCamera mainMenuCamera,
+            OptionsWindow optionsWindow,
+            TankBuyer tankBuyer,
+            TankShootingHandler tankShootingHandler)
         {
             _desk = desk;
             _optionsWindow = optionsWindow;
             _tankBuyer = tankBuyer;
+            _tankShootingHandler = tankShootingHandler;
 
             _canvas.worldCamera = mainMenuCamera.UiCamera;
 
@@ -70,6 +77,7 @@ namespace Assets.Sources.UI.MainMenu
             SetCanvasGroupActive(_storeCanvasGroup, false);
 
             _selectedTankPoint.Hide();
+            _tankShootingHandler.SetActive(true);
         }
 
         private void OnOpenStoreButtonClicked()
@@ -78,6 +86,7 @@ namespace Assets.Sources.UI.MainMenu
             SetCanvasGroupActive(_storeCanvasGroup, true);
 
             _selectedTankPoint.Show();
+            _tankShootingHandler.SetActive(false);
         }
 
         private void SetCanvasGroupActive(CanvasGroup canvasGroup, bool isActive)

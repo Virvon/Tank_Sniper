@@ -24,10 +24,11 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
         [SerializeField] private TMP_Text _rewardValue;
         [SerializeField] private TMP_Text _currentLevelValue;
         [SerializeField] private WalletPanel _walletPanel;
+        [SerializeField] private ParticleSystem _particleSystem;
 
         private WictoryHandler _wictoryHandler;
         private GameStateMachine _gameStateMachine;
-        private LoadingCurtain _loadingCurtain;
+        private GameplayLoadingCurtain _loadingCurtain;
         private IStaticDataService _staticDataService;
         private IPersistentProgressService _persistentProgressService;
         private RewardCounter _rewardCounter;
@@ -42,7 +43,7 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
         private void Construct(
             WictoryHandler wictoryHandler,
             GameStateMachine gameStateMachine,
-            LoadingCurtain loadingCurtain,
+            GameplayLoadingCurtain loadingCurtain,
             IStaticDataService staticDataService,
             IPersistentProgressService persistentProgressService,
             RewardCounter rewardCounter,
@@ -88,6 +89,7 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
             StartCoroutine(Animator(_staticDataService.AnimationsConfig.WalletValueChangingDuration, callback: LoadNextScene));
 
             _walletPanel.CreditReward(_reward, _staticDataService.AnimationsConfig.WalletValueChangingDuration);
+            _particleSystem.Play();
 
             _persistentProgressService.Progress.Wallet.Give(_reward);
         }
