@@ -1,6 +1,7 @@
 ﻿using Assets.Sources.Gameplay.Player;
 using Assets.Sources.Gameplay.Player.Wrappers;
 using Assets.Sources.MainMenu;
+using Assets.Sources.MainMenu.Desk;
 using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.Tanks;
 using Cysharp.Threading.Tasks;
@@ -43,6 +44,10 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
             Container
                 .BindFactory<string, Vector3, Quaternion, Transform, UniTask<PlayerAccessor>, PlayerAccessor.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<PlayerAccessor>>();
+            
+            Container
+                .BindFactory<string, Vector3, Transform, UniTask<DeskTankWrapper>, DeskTankWrapper.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<DeskTankWrapper>>();
         }
     }
 }

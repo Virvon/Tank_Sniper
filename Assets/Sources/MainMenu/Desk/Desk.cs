@@ -41,7 +41,7 @@ namespace Assets.Sources.MainMenu.Desk
 
             DeskCell cell = emptyCells[Random.Range(0, emptyCells.Length)];
 
-            await cell.CreateTank(level);
+            await cell.CreateTank(level, false);
 
             _saveLoadService.SaveProgress();
         }

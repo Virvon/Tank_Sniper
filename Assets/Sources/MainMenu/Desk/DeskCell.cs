@@ -12,8 +12,6 @@ namespace Assets.Sources.MainMenu.Desk
 {
     public class DeskCell : MonoBehaviour
     {
-        private const string Decal = "Decal1";
-
         [SerializeField] private Transform _tankPoint;
         [SerializeField] private Marker _marker;
         [SerializeField] private Quaternion _tankRotation;
@@ -24,9 +22,9 @@ namespace Assets.Sources.MainMenu.Desk
         private IPersistentProgressService _persistentProgressService;
         private IStaticDataService _staicDataService;
 
-        private Tank _tank;
+        private DeskTankWrapper _tankWrapper;
 
-        public bool IsEmpty => _tank == null;
+        public bool IsEmpty => _tankWrapper == null;
 
         public event Action EmploymentChanged;
 
@@ -43,51 +41,58 @@ namespace Assets.Sources.MainMenu.Desk
             await Initialize();
         }
 
-        public async UniTask CreateTank(uint level)
+        public async UniTask CreateTank(uint level, bool needAnimate)
         {
-            _tank = await _tankFactory.CreateTank(level, _tankPoint.position, _tankRotation, transform, string.Empty, Decal);
-            _tank.transform.localScale = Vector3.one * _tankScale;
-            _persistentProgressService.Progress.DeskData.UpdateCellInfo(_id, _tank.Level);
+            _tankWrapper = await _tankFactory.CreateDeskTankWrapper(_tankPoint.position, transform);
+            _tankWrapper.Initialize(level);
+
+            Tank tank = await _tankFactory.CreateTank(level, _tankWrapper.TankPoint.position, _tankRotation, _tankWrapper.TankPoint, string.Empty, string.Empty);
+            tank.transform.localScale = Vector3.one * _tankScale;
+
+            if (needAnimate)
+                _tankWrapper.Animate();
+
+            _persistentProgressService.Progress.DeskData.UpdateCellInfo(_id, tank.Level);
 
             EmploymentChanged?.Invoke();
         }
 
         public async UniTask UpgradeTank()
         {
-            uint targetLevel = _tank.Level + 1;
+            uint targetLevel = _tankWrapper.TankLevel + 1;
 
             _persistentProgressService.Progress.TryUnlockTank(targetLevel);
-            
-            _tank.Destroy();
 
-            await CreateTank(targetLevel);
+            _tankWrapper.Destroy();
+
+            await CreateTank(targetLevel, true);
         }
 
-        public void PlaceTank(Tank tank)
+        public void PlaceTank(DeskTankWrapper tankWrapper)
         {
-            _tank = tank;
-            _tank.transform.position = _tankPoint.position;
-            _tank.transform.parent = transform;
-            _persistentProgressService.Progress.DeskData.UpdateCellInfo(_id, _tank.Level);
+            _tankWrapper = tankWrapper;
+            _tankWrapper.transform.position = _tankPoint.position;
+            _tankWrapper.transform.parent = transform;
+            _persistentProgressService.Progress.DeskData.UpdateCellInfo(_id, _tankWrapper.TankLevel);
 
             EmploymentChanged?.Invoke();
         }
 
-        public Tank GetTank()
+        public DeskTankWrapper GetTankWrapper()
         {
-            Tank tank = _tank;
-            _tank = null;
+            DeskTankWrapper tankWrapper = _tankWrapper;
+            _tankWrapper = null;
             _persistentProgressService.Progress.DeskData.UpdateCellInfo(_id, 0);
 
-            return tank;
+            return tankWrapper;
         }
 
         public bool CanPlace(uint tankLevel)
         {
-            if (IsEmpty == false && _staicDataService.TankConfigs.Any(config => config.Level == _tank.Level + 1) == false)
+            if (IsEmpty == false && _staicDataService.TankConfigs.Any(config => config.Level == _tankWrapper.TankLevel + 1) == false)
                 return false;
 
-            return (IsEmpty == false && _tank.Level != tankLevel) == false;
+            return (IsEmpty == false && _tankWrapper.TankLevel != tankLevel) == false;
         }
 
         public void Mark(uint tankLevel) =>
@@ -101,7 +106,7 @@ namespace Assets.Sources.MainMenu.Desk
             uint tankLevel = _persistentProgressService.Progress.DeskData.GetCellInfo(_id);
 
             if(tankLevel != 0)
-                await CreateTank(tankLevel);
+                await CreateTank(tankLevel, false);
         }
     }
 }

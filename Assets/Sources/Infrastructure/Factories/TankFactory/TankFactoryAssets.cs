@@ -6,5 +6,6 @@
         public const string Drone = "Drone";
         public const string PlayerGlasses = "PlayerGlasses";
         public const string PlayerDroneController = "PlayerDroneController";
+        public const string DeskTankWrapper = "DeskTankWrapper";
     }
 }

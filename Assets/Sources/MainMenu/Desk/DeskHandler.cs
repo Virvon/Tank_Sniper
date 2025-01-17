@@ -14,7 +14,7 @@ namespace Assets.Sources.MainMenu.Desk
         private readonly MainMenuCamera _camera;
 
         private DeskCell _currentTankParentCell;
-        private Tank _tank;
+        private DeskTankWrapper _tankWrapper;
         private Vector2 _lastHandlePosition;
         private DeskCell _lastMarkedCell;
 
@@ -40,14 +40,14 @@ namespace Assets.Sources.MainMenu.Desk
         {
             if (CheckDeskCellIntersection(handlePosition, out DeskCell deskCell))
             {
-                _tank = deskCell.GetTank();
+                _tankWrapper = deskCell.GetTankWrapper();
                 _currentTankParentCell = deskCell;
             }
         }
 
         private void OnHandleMoved(Vector2 handlePosition)
         {
-            if (_tank != null)
+            if (_tankWrapper != null)
             {
                 Ray ray = _camera.GetRay(handlePosition);
                 Plane plane = new Plane(Vector3.up, new Vector3(0, ReplacedTankBuildingHeight, 0));
@@ -56,7 +56,7 @@ namespace Assets.Sources.MainMenu.Desk
                 {
                     Vector3 worldPosition = ray.GetPoint(distanceToPlane);
 
-                    _tank.transform.position = new Vector3(worldPosition.x, ReplacedTankBuildingHeight, worldPosition.z);
+                    _tankWrapper.transform.position = new Vector3(worldPosition.x, ReplacedTankBuildingHeight, worldPosition.z);
                 }
 
                 if (CheckDeskCellIntersection(handlePosition, out DeskCell deskCell))
@@ -65,7 +65,7 @@ namespace Assets.Sources.MainMenu.Desk
                     {
                         _lastMarkedCell?.HideMark();
                         _lastMarkedCell = deskCell;
-                        _lastMarkedCell.Mark(_tank.Level);
+                        _lastMarkedCell.Mark(_tankWrapper.TankLevel);
                     }
                 }
                 else if (_lastMarkedCell != null)
@@ -80,24 +80,24 @@ namespace Assets.Sources.MainMenu.Desk
 
         private async void OnHandleMoveCompleted()
         {
-            if (_tank == null)
+            if (_tankWrapper == null)
                 return;
 
-            if (CheckDeskCellIntersection(_lastHandlePosition, out DeskCell deskCell) && deskCell.CanPlace(_tank.Level))
+            if (CheckDeskCellIntersection(_lastHandlePosition, out DeskCell deskCell) && deskCell.CanPlace(_tankWrapper.TankLevel))
             {
                 if (deskCell.IsEmpty)
                 {
-                    deskCell.PlaceTank(_tank);
+                    deskCell.PlaceTank(_tankWrapper);
                 }
                 else
                 {
-                    _tank.Destroy();
+                    _tankWrapper.Destroy();
                     await deskCell.UpgradeTank();
                 }
             }
             else
             {
-                _currentTankParentCell.PlaceTank(_tank);
+                _currentTankParentCell.PlaceTank(_tankWrapper);
             }
 
             if (_lastMarkedCell != null)
@@ -106,7 +106,7 @@ namespace Assets.Sources.MainMenu.Desk
                 _lastMarkedCell = null;
             }
 
-            _tank = null;
+            _tankWrapper = null;
         }
 
         private bool CheckDeskCellIntersection(Vector2 handlePosition, out DeskCell deskCell)

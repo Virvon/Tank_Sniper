@@ -63,6 +63,14 @@ namespace Assets.Sources.Tanks
 
         private void ChangeDecalMaterial(Material material)
         {
+            if(material == null)
+            {
+                foreach (DecalProjector decalProjector in _decalProjectors)
+                    decalProjector.enabled = false;
+
+                return;
+            }
+
             foreach (DecalProjector decalProjector in _decalProjectors)
                 decalProjector.material = material;
         }

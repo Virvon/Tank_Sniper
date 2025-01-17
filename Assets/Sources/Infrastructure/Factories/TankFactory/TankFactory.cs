@@ -2,6 +2,7 @@
 using Assets.Sources.Gameplay.Player.Weapons;
 using Assets.Sources.Gameplay.Player.Wrappers;
 using Assets.Sources.MainMenu;
+using Assets.Sources.MainMenu.Desk;
 using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Tanks;
@@ -24,6 +25,7 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
         private readonly Drone.Factory _droneFactory;
         private readonly PlayerCharacter.Factory _playerCharacterFactory;
         private readonly PlayerAccessor.Factory _playerAccessorFactory;
+        private readonly DeskTankWrapper.Factory _deskTankWrapperFactory;
 
         public TankFactory(
             IAssetProvider assetProvider,
@@ -35,7 +37,8 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
             PlayerDroneWrapper.Factory playerDronFactory,
             Drone.Factory droneFactory,
             PlayerCharacter.Factory playerCharacterFactory,
-            PlayerAccessor.Factory playerAccessorFactory)
+            PlayerAccessor.Factory playerAccessorFactory,
+            DeskTankWrapper.Factory deskTankWrapperFactory)
         {
             _assetProvider = assetProvider;
             _staticDataService = staticDataService;
@@ -47,7 +50,11 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
             _droneFactory = droneFactory;
             _playerCharacterFactory = playerCharacterFactory;
             _playerAccessorFactory = playerAccessorFactory;
+            _deskTankWrapperFactory = deskTankWrapperFactory;
         }
+
+        public async UniTask<DeskTankWrapper> CreateDeskTankWrapper(Vector3 position, Transform parent) =>
+            await _deskTankWrapperFactory.Create(TankFactoryAssets.DeskTankWrapper, position, parent);
 
         public async UniTask CreatePlayerDroneContoller(Vector3 position, Quaternion rotation, Transform parent) =>
             await _playerAccessorFactory.Create(TankFactoryAssets.PlayerDroneController, position, rotation, parent);
@@ -95,7 +102,7 @@ namespace Assets.Sources.Infrastructure.Factories.TankFactory
             else
                 skinMaterial = await _assetProvider.Load<Material>(_staticDataService.GetSkin(skinId).MaterialAssetReference);
 
-            Material decalMaterial = await _assetProvider.Load<Material>(_staticDataService.GetDecal(decalId).MaterialAssetReference);
+            Material decalMaterial = decalId == string.Empty ? null : await _assetProvider.Load<Material>(_staticDataService.GetDecal(decalId).MaterialAssetReference);
 
             Tank tank = await _tankFactory.Create(_staticDataService.GetTank(level).AssetReference, position, rotation, parent);
 
