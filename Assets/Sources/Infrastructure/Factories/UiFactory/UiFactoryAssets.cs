@@ -20,5 +20,6 @@
         public const string RestartWindow = "RestartWindow";
         public const string DecalPanel = "DecalPanel";
         public const string RouletteWictoryWindow = "RouletteWictoryWindow";
+        public const string CharacterRewardWictoryWindow = "CharacterRewardWictoryWindow";
     }
 }

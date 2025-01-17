@@ -3,12 +3,12 @@
 namespace Assets.Sources.Data
 {
     [Serializable]
-    public class CharacterSkinData
+    public class PlayerCharacterData
     {
         public string Id;
         public bool IsUnlocked;
 
-        public CharacterSkinData(string id, bool isUnlocked)
+        public PlayerCharacterData(string id, bool isUnlocked)
         {
             Id = id;
             IsUnlocked = isUnlocked;

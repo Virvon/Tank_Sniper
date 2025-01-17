@@ -5017,6 +5017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPoint: {fileID: 216416439}
   _aimingCameraPoint: {fileID: 1314033459}
+  _wictoryWindowType: 2
 --- !u!4 &1993806547
 Transform:
   m_ObjectHideFlags: 0

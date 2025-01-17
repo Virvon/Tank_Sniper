@@ -14,7 +14,7 @@ namespace Assets.Sources.Data
         public DecalData[] Decals;
         public BiomeType CurrentBiomeType;
         public uint CurrentLevelIndex;
-        public CharacterSkinData[] CharacterSkins;
+        public PlayerCharacterData[] PlayerCharacters;
         public string SelectedPlayerCharacterId;
         public Wallet Wallet;
         public TankBuyingData TankBuyingData;
@@ -27,18 +27,18 @@ namespace Assets.Sources.Data
             TankSkinData[] skins,
             DecalData[] decals,
             BiomeType startLevelType,
-            CharacterSkinData[] characterSkins,
+            PlayerCharacterData[] characterSkins,
             uint startTankBuyingCost)
         {
             Tanks = tanks;
             TankSkins = skins;
             Decals = decals;
             CurrentBiomeType = startLevelType;
-            CharacterSkins = characterSkins;
+            PlayerCharacters = characterSkins;
 
             SelectedTankLevel = Tanks.Where(tank => tank.IsUnlocked).First().Level;
             CurrentLevelIndex = 0;
-            SelectedPlayerCharacterId = CharacterSkins.First(skin => skin.IsUnlocked).Id;
+            SelectedPlayerCharacterId = PlayerCharacters.First(skin => skin.IsUnlocked).Id;
             Wallet = new();
             TankBuyingData = new(startTankBuyingCost);
             CompletedLevelsCount = 0;
@@ -125,12 +125,12 @@ namespace Assets.Sources.Data
             DecalChanged?.Invoke(id);
         }
 
-        public CharacterSkinData GetCharacterSkin(string id) =>
-            CharacterSkins.First(skin => skin.Id == id);
+        public PlayerCharacterData GetPlayerCharacter(string id) =>
+            PlayerCharacters.First(skin => skin.Id == id);
 
         public void UnlockCharacterSkin(string id)
         {
-            GetCharacterSkin(id).IsUnlocked = true;
+            GetPlayerCharacter(id).IsUnlocked = true;
 
             CharacterSkinUnlocked?.Invoke(id);
             SelectCharacterSkin(id);

@@ -85,6 +85,9 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
                 case WictoryWindowType.Roulette:
                     await _windowFactory.Create(UiFactoryAssets.RouletteWictoryWindow);
                     break;
+                case WictoryWindowType.CharacterReward:
+                    await _windowFactory.Create(UiFactoryAssets.CharacterRewardWictoryWindow);
+                    break;
             }
         }
 

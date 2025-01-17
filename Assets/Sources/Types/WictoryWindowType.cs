@@ -4,5 +4,6 @@
     {
         Default,
         Roulette,
+        CharacterReward,
     }
 }

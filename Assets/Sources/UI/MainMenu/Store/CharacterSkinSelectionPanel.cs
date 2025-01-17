@@ -45,7 +45,7 @@ namespace Assets.Sources.UI.MainMenu.Store
         {
             Dictionary<string, SelectingPanelElement> panels = new();
 
-            foreach(CharacterSkinData skinData in persistentProgressService.Progress.CharacterSkins)
+            foreach(PlayerCharacterData skinData in persistentProgressService.Progress.PlayerCharacters)
             {
                 SelectingPanelElement panel = await uiFactory.CreateCharacterSkinPanel(content);
 
@@ -66,7 +66,7 @@ namespace Assets.Sources.UI.MainMenu.Store
 
         protected override void Select(string key, IPersistentProgressService persistentProgressService)
         {
-            CharacterSkinData skinData = persistentProgressService.Progress.GetCharacterSkin(key);
+            PlayerCharacterData skinData = persistentProgressService.Progress.GetPlayerCharacter(key);
 
             if(skinData.IsUnlocked == false)
             {
