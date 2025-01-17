@@ -9,7 +9,6 @@ using Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints;
 using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -23,6 +22,7 @@ namespace Assets.Sources.Gameplay.Root
         private readonly AimingCameraPoint _aimingCameraPoint;
         private readonly IStaticDataService _staticDataService;
         private readonly PlayerPoint _playerPoint;
+        private readonly WictoryWindowType _wictoryWindowType;
 
         protected readonly IPersistentProgressService PersistentProgressService;
 
@@ -33,7 +33,8 @@ namespace Assets.Sources.Gameplay.Root
             PlayerPoint playerPoint,
             AimingCameraPoint aimingCameraPoint,
             IStaticDataService staticDataService,
-            IPersistentProgressService persistentProgressService)
+            IPersistentProgressService persistentProgressService,
+            WictoryWindowType wictoryWindowType)
         {
             _uiFactory = uiFactory;
             _gameplayFactory = gameplayFactory;
@@ -42,6 +43,7 @@ namespace Assets.Sources.Gameplay.Root
             _aimingCameraPoint = aimingCameraPoint;
             _staticDataService = staticDataService;
             PersistentProgressService = persistentProgressService;
+            _wictoryWindowType = wictoryWindowType;
         }
 
         public async void Initialize()
@@ -60,7 +62,7 @@ namespace Assets.Sources.Gameplay.Root
             await CreateGameplayWindow(_uiFactory);
             await CreateDefeatWndow(_uiFactory);
             await _uiFactory.CreateLoadingCurtain();
-            await _uiFactory.CreateWictroyWindow();
+            await _uiFactory.CreateWictroyWindow(_wictoryWindowType);
         }
 
         protected virtual async UniTask<GameplayCamera> CreateCamera(IGameplayFactory gameplayFactory) =>

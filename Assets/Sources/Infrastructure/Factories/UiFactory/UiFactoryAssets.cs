@@ -19,5 +19,6 @@
         public const string DroneBulletIcon = "DroneBulletIcon";
         public const string RestartWindow = "RestartWindow";
         public const string DecalPanel = "DecalPanel";
+        public const string RouletteWictoryWindow = "RouletteWictoryWindow";
     }
 }

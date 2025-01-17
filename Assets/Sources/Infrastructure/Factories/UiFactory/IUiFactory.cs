@@ -1,4 +1,5 @@
-﻿using Assets.Sources.UI;
+﻿using Assets.Sources.Types;
+using Assets.Sources.UI;
 using Assets.Sources.UI.Gameplay;
 using Assets.Sources.UI.Gameplay.Aim;
 using Assets.Sources.UI.Gameplay.BulletsPanel;
@@ -16,7 +17,7 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
         UniTask<SelectingPanelElement> CreateUnlockingPanel(Transform parent);
         UniTask CreateTankGameplayWindow();
         UniTask CreateTankDefeatWindow();
-        UniTask CreateWictroyWindow();
+        UniTask CreateWictroyWindow(WictoryWindowType type);
         UniTask<LoadingCurtain> CreateLoadingCurtain();
         UniTask CreateDroneGameplayWindow();
         UniTask CreateDroneDefeatWindow();

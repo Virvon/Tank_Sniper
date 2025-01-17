@@ -5,6 +5,7 @@ using Assets.Sources.Infrastructure.Factories.BulletFactory;
 using Assets.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Assets.Sources.Infrastructure.Factories.UiFactory;
+using Assets.Sources.Types;
 using UnityEngine;
 using Zenject;
 
@@ -14,6 +15,7 @@ namespace Assets.Sources.Gameplay.Root
     {
         [SerializeField] private PlayerPoint _playerPoint;
         [SerializeField] private AimingCameraPoint _aimingCameraPoint;
+        [SerializeField] private WictoryWindowType _wictoryWindowType;
 
         public override void InstallBindings()
         {
@@ -28,11 +30,15 @@ namespace Assets.Sources.Gameplay.Root
             BindDefeatHandler();
             BindWinHandler();
             BindRewardCounter();
+            BindWictoryWindowType();
         }
 
         protected abstract void BindGameplayBootstrapper();
 
         protected abstract void BindAiming();
+
+        private void BindWictoryWindowType() =>
+            Container.BindInstance(_wictoryWindowType).AsSingle();
 
         private void BindRewardCounter() =>
             Container.Bind<RewardCounter>().AsSingle();

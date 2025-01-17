@@ -23,5 +23,10 @@ namespace Assets.Sources.Services.StaticDataService.Configs
 
         public AnimationCurve TankAimCellAnimationCurve;
         public float TankAimCellAnimationDuration;
+
+        public AnimationCurve RouletteAnimationCurve;
+        public float RouletteRotateDuration;
+
+        public float WalletValueChangingDuration;
     }
 }

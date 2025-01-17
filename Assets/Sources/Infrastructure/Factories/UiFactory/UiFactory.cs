@@ -1,4 +1,5 @@
-﻿using Assets.Sources.UI;
+﻿using Assets.Sources.Types;
+using Assets.Sources.UI;
 using Assets.Sources.UI.Gameplay;
 using Assets.Sources.UI.Gameplay.Aim;
 using Assets.Sources.UI.Gameplay.BulletsPanel;
@@ -74,8 +75,18 @@ namespace Assets.Sources.Infrastructure.Factories.UiFactory
             return loadingCurtain;
         }
 
-        public async UniTask CreateWictroyWindow() =>
-            await _windowFactory.Create(UiFactoryAssets.WictoryWindow);
+        public async UniTask CreateWictroyWindow(WictoryWindowType type)
+        {
+            switch (type)
+            {
+                case WictoryWindowType.Default:
+                    await _windowFactory.Create(UiFactoryAssets.WictoryWindow);
+                    break;
+                case WictoryWindowType.Roulette:
+                    await _windowFactory.Create(UiFactoryAssets.RouletteWictoryWindow);
+                    break;
+            }
+        }
 
         public async UniTask CreateTankDefeatWindow() =>
             await _windowFactory.Create(UiFactoryAssets.TankDefeatWindow);

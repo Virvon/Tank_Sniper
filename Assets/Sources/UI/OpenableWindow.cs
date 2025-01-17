@@ -12,7 +12,7 @@ namespace Assets.Sources.UI
 
         private Coroutine _swithcer;
 
-        private void Start()
+        protected virtual void Start()
         {
             _mainCanvasGroup.blocksRaycasts = _isOpenedOnAwake;
             _mainCanvasGroup.interactable = _isOpenedOnAwake;

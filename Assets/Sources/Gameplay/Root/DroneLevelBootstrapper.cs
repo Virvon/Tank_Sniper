@@ -5,6 +5,7 @@ using Assets.Sources.Infrastructure.Factories.TankFactory;
 using Assets.Sources.Infrastructure.Factories.UiFactory;
 using Assets.Sources.Services.PersistentProgress;
 using Assets.Sources.Services.StaticDataService;
+using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -19,8 +20,9 @@ namespace Assets.Sources.Gameplay.Root
             PlayerPoint playerPoint,
             AimingCameraPoint aimingCameraPoint,
             IStaticDataService staticDataService,
-            IPersistentProgressService persistentProgressService)
-            : base(uiFactory, gameplayFactory, tankFactory, playerPoint, aimingCameraPoint, staticDataService, persistentProgressService)
+            IPersistentProgressService persistentProgressService,
+            WictoryWindowType wictoryWindowType)
+            : base(uiFactory, gameplayFactory, tankFactory, playerPoint, aimingCameraPoint, staticDataService, persistentProgressService, wictoryWindowType)
         {
         }
 

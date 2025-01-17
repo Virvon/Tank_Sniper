@@ -8,12 +8,13 @@ using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Assets.Sources.UI.Gameplay
+namespace Assets.Sources.UI.Gameplay.WictoryWindow
 {
     public class WicotoryWindow : OpenableWindow
     {
@@ -22,6 +23,7 @@ namespace Assets.Sources.UI.Gameplay
         [SerializeField] private Button _continueButton;
         [SerializeField] private TMP_Text _rewardValue;
         [SerializeField] private TMP_Text _currentLevelValue;
+        [SerializeField] private WalletPanel _walletPanel;
 
         private WictoryHandler _wictoryHandler;
         private GameStateMachine _gameStateMachine;
@@ -32,6 +34,9 @@ namespace Assets.Sources.UI.Gameplay
         private ISaveLoadService _saveLoadService;
 
         private uint _reward;
+
+        protected RewardCounter RewardCounter => _rewardCounter;
+        protected IPersistentProgressService PersistentProgressService => _persistentProgressService;
 
         [Inject]
         private void Construct(
@@ -51,24 +56,40 @@ namespace Assets.Sources.UI.Gameplay
             _rewardCounter = rewardCounter;
             _saveLoadService = saveLoadService;
 
-            _currentLevelValue.text = $"{LevelInfo} {(_persistentProgressService.Progress.CurrentLevelIndex + 1)}";
+            _currentLevelValue.text = $"{LevelInfo} {_persistentProgressService.Progress.CurrentLevelIndex + 1}";
 
             _wictoryHandler.WindowsSwithed += OnWindowsSwitched;
             _continueButton.onClick.AddListener(OnContinueButtonClicked);
         }
 
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
             _wictoryHandler.WindowsSwithed -= OnWindowsSwitched;
             _continueButton.onClick.RemoveListener(OnContinueButtonClicked);
         }
 
-        private void OnContinueButtonClicked()
+        protected virtual void OnWindowsSwitched()
         {
-            _persistentProgressService.Progress.Wallet.Give(_reward);
-            SetNextLevel();
+            _reward = _rewardCounter.GetReward();
+            _rewardValue.text = $"{_reward}";
+
+            Show();
+        }
+
+        protected void LoadNextScene()
+        {
             _loadingCurtain.Show();
             _gameStateMachine.Enter<MainMenuState>().Forget();
+            SetNextLevel();
+        }
+
+        private void OnContinueButtonClicked()
+        {
+            StartCoroutine(Animator(_staticDataService.AnimationsConfig.WalletValueChangingDuration, callback: LoadNextScene));
+
+            _walletPanel.CreditReward(_reward, _staticDataService.AnimationsConfig.WalletValueChangingDuration);
+
+            _persistentProgressService.Progress.Wallet.Give(_reward);
         }
 
         private void SetNextLevel()
@@ -94,12 +115,28 @@ namespace Assets.Sources.UI.Gameplay
             _saveLoadService.SaveProgress();
         }
 
-        private void OnWindowsSwitched()
+        private IEnumerator Animator(float duration, Action callback)
         {
-            _reward = _rewardCounter.GetReward();
-            _rewardValue.text = $"{_reward}";
+            float progress;
+            float passedTime = 0;
+            uint startValue = _reward;
+            bool isAnimated = true;
 
-            Show();
+            while (isAnimated)
+            {
+                progress = passedTime / duration;
+                passedTime += Time.deltaTime;
+
+                int value = (int)Mathf.Lerp(startValue, 0, progress);
+                _rewardValue.text = value.ToString();
+
+                if(value == 0)
+                    isAnimated = false;
+
+                yield return null;
+            }
+
+            callback?.Invoke();
         }
     }
 }
