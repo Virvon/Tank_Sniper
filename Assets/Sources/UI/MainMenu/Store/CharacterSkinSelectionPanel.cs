@@ -53,8 +53,11 @@ namespace Assets.Sources.UI.MainMenu.Store
 
                 panel.Initialize(icon);
 
-                if (skinData.IsUnlocked)
+                if (skinData.IsBuyed)
                     panel.Unlock();
+
+                if (skinData.IsUnlocked)
+                    ((PlayerCharacterPanel)panel).RemoveBackground();
 
                 panel.Clicked += OnPanelClicked;
 
@@ -68,18 +71,18 @@ namespace Assets.Sources.UI.MainMenu.Store
         {
             PlayerCharacterData skinData = persistentProgressService.Progress.GetPlayerCharacter(key);
 
-            if(skinData.IsUnlocked == false)
+            if(skinData.IsBuyed == false)
             {
 #if !UNITY_WEBGL || UNITY_EDITOR
-                persistentProgressService.Progress.UnlockCharacterSkin(key);
+                persistentProgressService.Progress.BuyCharacterSkin(key);
 #else
             Agava.YandexGames.InterstitialAd.Show(onCloseCallback: (value) =>
             {
-                persistentProgressService.Progress.UnlockCharacterSkin(key);
+                persistentProgressService.Progress.BuyCharacterSkin(key);
             });
 #endif
             }
-            else
+            else if(skinData.IsUnlocked)
             {
                 persistentProgressService.Progress.SelectCharacterSkin(key);
             }
@@ -88,10 +91,10 @@ namespace Assets.Sources.UI.MainMenu.Store
         }
 
         protected override void Subscribe(IPersistentProgressService persistentProgressService) =>
-            persistentProgressService.Progress.CharacterSkinUnlocked += Unlock;
+            persistentProgressService.Progress.CharacterSkinBuyed += Unlock;
 
         protected override void Unsubscribe(IPersistentProgressService persistentProgressService) =>
-            persistentProgressService.Progress.CharacterSkinUnlocked -= Unlock;
+            persistentProgressService.Progress.CharacterSkinBuyed -= Unlock;
 
         protected override string GetCurrentSelectedPanel(IPersistentProgressService persistentProgressService) =>
             persistentProgressService.Progress.SelectedPlayerCharacterId;

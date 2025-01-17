@@ -7,11 +7,13 @@ namespace Assets.Sources.Data
     {
         public string Id;
         public bool IsUnlocked;
+        public bool IsBuyed;
 
         public PlayerCharacterData(string id, bool isUnlocked)
         {
             Id = id;
             IsUnlocked = isUnlocked;
+            IsBuyed = isUnlocked;
         }
     }
 }

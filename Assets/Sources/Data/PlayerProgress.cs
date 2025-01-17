@@ -51,7 +51,7 @@ namespace Assets.Sources.Data
         public event Action<string> TankSkinUnlocked;
         public event Action<string> DecalUnlocked;
         public event Action<string> DecalChanged;
-        public event Action<string> CharacterSkinUnlocked;
+        public event Action<string> CharacterSkinBuyed;
         public event Action<string> CharacterSkinChanged;
 
         public void TryUnlockTank(uint level)
@@ -128,11 +128,15 @@ namespace Assets.Sources.Data
         public PlayerCharacterData GetPlayerCharacter(string id) =>
             PlayerCharacters.First(skin => skin.Id == id);
 
-        public void UnlockCharacterSkin(string id)
-        {
+        public void UnlockCharacterSkin(string id) =>
             GetPlayerCharacter(id).IsUnlocked = true;
 
-            CharacterSkinUnlocked?.Invoke(id);
+        public void BuyCharacterSkin(string id)
+        {
+            GetPlayerCharacter(id).IsBuyed = true;
+
+            CharacterSkinBuyed?.Invoke(id);
+
             SelectCharacterSkin(id);
         }
 

@@ -23,7 +23,10 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
         string _characterId;
 
         [Inject]
-        private async void Construct(IPersistentProgressService persistentProgressService, IStaticDataService staticDataService, IAssetProvider assetProvider)
+        private async void Construct(
+            IPersistentProgressService persistentProgressService,
+            IStaticDataService staticDataService,
+            IAssetProvider assetProvider)
         {
             _persistentProgressService = persistentProgressService;
             _staticDataService = staticDataService;
@@ -40,13 +43,13 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
         private void OnCollectButtonClicked()
         {
 #if !UNITY_WEBGL || UNITY_EDITOR
-            _persistentProgressService.Progress.GetPlayerCharacter(_characterId).IsUnlocked = true;
+            _persistentProgressService.Progress.GetPlayerCharacter(_characterId).IsBuyed = true;
 
             Hide();
 #else
             Agava.YandexGames.InterstitialAd.Show(onCloseCallback: (value) =>
             {
-                _persistentProgressService.Progress.GetPlayerCharacter(_characterId).IsUnlocked = true;
+                _persistentProgressService.Progress.GetPlayerCharacter(_characterId).IsBuyed = true;
 
                 Hide();
             });
@@ -68,6 +71,7 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
 
             PlayerCharacterData characterData = lockedDatas[Random.Range(0, lockedDatas.Length)];
             _characterId = characterData.Id;
+            _persistentProgressService.Progress.GetPlayerCharacter(_characterId).IsUnlocked = true;
 
             Sprite icon= await _assetProvider.Load<Sprite>(_staticDataService.GetPlayerCharacter(_characterId).Icon);
             _icon.sprite = icon;
