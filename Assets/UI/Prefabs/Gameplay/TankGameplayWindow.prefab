@@ -1436,7 +1436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reactionPosition: {x: -1, y: -1}
-  _canvasGroup: {fileID: 6795179943323004090}
+  _canvasGroup: {fileID: 7951712145118543277}
 --- !u!225 &7951712145118543277
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1972,7 +1972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reactionPosition: {x: 1, y: 1}
-  _canvasGroup: {fileID: 6795179943323004090}
+  _canvasGroup: {fileID: 2089719439001934412}
 --- !u!225 &2089719439001934412
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3296,8 +3296,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4291151301
+  m_fontColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3703,7 +3703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reactionPosition: {x: -1, y: 1}
-  _canvasGroup: {fileID: 6795179943323004090}
+  _canvasGroup: {fileID: 5207257590879507126}
 --- !u!225 &5207257590879507126
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -75,13 +75,10 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
             if (collision.transform.TryGetComponent(out ExplodingBullet bullet))
             {
                 Vector3 bulletPosition = _gameplayCamera.Camera.WorldToScreenPoint(new Vector3(bullet.StartPosition.x, bullet.StartPosition.y, 1));
-                Vector3 position = _gameplayCamera.Camera.WorldToScreenPoint(new Vector3(_gameplayCamera.transform.position.x, _gameplayCamera.transform.position.y, 1));
 
-                Vector2 attackPosition = new Vector2(Random.Range(-1, 2), Random.Range(-0, 2));
-                Attacked?.Invoke(attackPosition);
+                Attacked?.Invoke(bulletPosition);
             }
         }
-
 
         public void Initialize(Transform[] bulletPoints, Transform turret)
         {
