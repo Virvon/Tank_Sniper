@@ -32,7 +32,6 @@ namespace Assets.Sources.Gameplay.Player
         private DroneAiming _aiming;
         private GameplayCamera _gameplayCamera;
         private RotationCamera _rotationCamera;
-        private CameraNoise _cameraNoise;
 
         private bool _canMove;
         private bool _isCollided;
@@ -47,12 +46,11 @@ namespace Assets.Sources.Gameplay.Player
         public event Action Exploded;
 
         [Inject]
-        private void Construct(DroneAiming droneAiming, GameplayCamera gameplayCamera, RotationCamera rotationCamera, CameraNoise cameraNoise)
+        private void Construct(DroneAiming droneAiming, GameplayCamera gameplayCamera, RotationCamera rotationCamera)
         {
             _aiming = droneAiming;
             _gameplayCamera = gameplayCamera;
             _rotationCamera = rotationCamera;
-            _cameraNoise = cameraNoise;
 
             _canMove = false;
             _isCollided = false;
@@ -107,7 +105,6 @@ namespace Assets.Sources.Gameplay.Player
             _isShootedProcess = true;
             _gameplayCamera.SetBlednDuration(_cameraBlendDuration);
             _camera.Priority = ActiveCameraPriority;
-            _cameraNoise.SetActive(true);
 
             _startDiretion = _rigidbody.transform.forward;
             _startPosition = transform.position;
@@ -123,7 +120,6 @@ namespace Assets.Sources.Gameplay.Player
         private void Explode()
         {
             _isExploded = true;
-            _cameraNoise.SetActive(false);
             _camera.Priority = DeactiveCameraPriority;
             _audioMixer.SetFloat(MixerVolume, _startSoundVolume);
             _gameplayCamera.SetBlednDuration(0);

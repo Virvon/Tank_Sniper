@@ -21,6 +21,7 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
         [SerializeField] private float _dronRotationSpeed;
         [SerializeField] private float _playerCharacterRotation;
         [SerializeField] private Transform _playerPoint;
+        [SerializeField] private Vector3 _droneOffset;
 
         private AimingCameraPoint _aimingCameraPoint;
         private ITankFactory _tankFactory;
@@ -117,7 +118,7 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
         private async UniTask CreateDrone()
         {
             _drone = await _tankFactory.CreateDrone(
-                            _aimingCameraPoint.transform.position,
+                            _aimingCameraPoint.transform.position + _droneOffset,
                             Quaternion.Euler(0, _rotationCamera.transform.rotation.eulerAngles.y, 0));
 
             _drone.Exploded += OnDroneExploded;
@@ -173,7 +174,7 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
         {
             while (_isDronAimed)
             {
-                Vector3 targetPosition = Random.insideUnitSphere * _animationsConfig.DroneAnimationRadius + _aimingCameraPoint.transform.position;
+                Vector3 targetPosition = Random.insideUnitSphere * _animationsConfig.DroneAnimationRadius + _aimingCameraPoint.transform.position + _droneOffset;
 
                 while(Vector3.Distance(_drone.transform.position, targetPosition) > 0.1f && _isDronAimed)
                 {
