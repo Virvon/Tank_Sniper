@@ -548,7 +548,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d137a49a3692eeb469e726d470163c3b
+  - m_GUID: 5358278c91f1d12488a5abcce04473d5
     m_Address: Desert4
     m_ReadOnly: 0
     m_SerializedLabels: []
@@ -556,8 +556,7 @@ MonoBehaviour:
   - m_GUID: 980c2427b0a116245b9a5cc19c683eff
     m_Address: DesertLevelConfig4
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Configs
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 29e7ee25cb59ca34299cecfee2016cb8
     m_Address: Boot
@@ -1610,6 +1609,12 @@ MonoBehaviour:
     m_Address: Laser2
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f7719086673a5bd45b8f0bc0694441ca
+    m_Address: DesertLevelConfig4 2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a44638466bf414438293c9d18a37e72, type: 2}

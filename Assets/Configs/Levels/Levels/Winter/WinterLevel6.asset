@@ -31,7 +31,7 @@ MonoBehaviour:
   - Id: Winter4_9fec0891-fdd9-4560-b261-d790fe7e6120
     StartPosition: {x: 19.199999, y: 0, z: 38.13}
     StartRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
-    EnemyType: 9
+    EnemyType: 3
     Path:
     - Position: {x: 19.199999, y: 0, z: 38.13}
       RotationAngle: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   - Id: Winter3_1b9b3538-2f18-44ec-84a7-9972de028c63
     StartPosition: {x: 28.66, y: 14.71, z: 30.63}
     StartRotation: {x: -0, y: -0, z: -0, w: 1}
-    EnemyType: 5
+    EnemyType: 11
     Path:
     - Position: {x: 28.66, y: 14.71, z: 30.63}
       RotationAngle: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af2a2466a564c84b9cd7f785464a879, type: 3}
   m_Name: ForestLevelsSequenceConfig
   m_EditorClassIdentifier: 
-  Type: 1
+  Type: 0
   Sequence:
   - Forest1
   - Forest2

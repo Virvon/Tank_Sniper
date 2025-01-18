@@ -3,7 +3,7 @@
     public enum BiomeType
     {
         Forest = 0,
-        Winter = 1,
-        Desert = 2,
+        Desert = 1,
+        Winter = 2,
     }
 }
