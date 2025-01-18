@@ -12,14 +12,14 @@ namespace Assets.Sources.Gameplay.Weapons
         private const float LaserRotationSpeed = 10;
         private const float RaycasDistance = 300;
 
-        [SerializeField] private GameObject _laserPrefab;
+        [SerializeField] private RobotLaser _laserPrefab;
         [SerializeField] private uint _damgagePerTime;
         [SerializeField] private float _damageCooldown;
         [SerializeField] private Transform _shootPoint;
         [SerializeField] private uint _explosionForce;
         [SerializeField] private EnemyRobot _enemyRobot;
 
-        private GameObject _laser;
+        private RobotLaser _laser;
         private Quaternion _targetRotation;
 
         public event Action ShootingStarted;
@@ -51,7 +51,8 @@ namespace Assets.Sources.Gameplay.Weapons
                         if (_laser == null)
                         {
                             _laser = Instantiate(_laserPrefab, _shootPoint.position, GetShootingRotation(), _shootPoint.transform);
-                            ShootingStarted?.Invoke();
+                            _laser.transform.localPosition = Vector3.zero;
+                            //ShootingStarted?.Invoke();
                         }
                         else
                         {
@@ -71,20 +72,23 @@ namespace Assets.Sources.Gameplay.Weapons
 
                             if (Physics.Raycast(GetCurrentShootingPosition(), _laser.transform.forward, out RaycastHit hitInfo, RaycasDistance)
                                 && hitInfo.transform.TryGetComponent(out IDamageable damageable) && damageable is not EnemyRobot)
+                            {
+                                _laser.SetLaser(GetCurrentShootingPosition(), hitInfo.point);
                                 damageable.TakeDamage(new ExplosionInfo(hitInfo.point, _explosionForce, true, _damgagePerTime));
+                            }
                         }
                     }
                     else if (_laser != null)
                     {
-                        ShootingFinished?.Invoke();
-                        Destroy(_laser);
+                        //ShootingFinished?.Invoke();
+                        Destroy(_laser.gameObject);
                         _laser = null;
                     }
                 }
                 else if (_laser != null)
                 {
-                    ShootingFinished?.Invoke();
-                    Destroy(_laser);
+                    //ShootingFinished?.Invoke();
+                    Destroy(_laser.gameObject);
                     _laser = null;
                 }
 

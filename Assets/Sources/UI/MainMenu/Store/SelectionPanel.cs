@@ -43,8 +43,11 @@ namespace Assets.Sources.UI.MainMenu.Store
         {
             Unsubscribe(_persistentProgressService);
 
-            foreach (SelectingPanelElement panel in _panels.Values)
-                panel.Clicked -= OnPanelClicked;
+            if(_panels != null && _panels.Count > 0)
+            {
+                foreach (SelectingPanelElement panel in _panels.Values)
+                    panel.Clicked -= OnPanelClicked;
+            }
 
             _persistentProgressService.Progress.SelectedTankChanged -= OnSelectedTankChanged;
         }

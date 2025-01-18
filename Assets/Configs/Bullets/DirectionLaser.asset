@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DirectionLaser
   m_EditorClassIdentifier: 
   AssetReference:
-    m_AssetGUID: c5597ac86a998fb46a76f3f1317325ec
+    m_AssetGUID: 0b6c953f9a49bee4bb03200a78d0412f
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Collide
+  - asteroid
+  - ship
   layers:
   - Default
   - TransparentFX
@@ -24,7 +26,7 @@ TagManager:
   - IgnoreEnemyProjectiles
   - Bomb
   - Borier
-  - 
+  - CharacterRewardWictoryWindow
   - 
   - 
   - 

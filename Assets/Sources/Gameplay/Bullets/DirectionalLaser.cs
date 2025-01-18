@@ -5,6 +5,9 @@ namespace Assets.Sources.Gameplay.Bullets
     public class DirectionalLaser : Laser
     {
         private const float MaxDistance = 200;
+        private const float Size = 0.5f;
+
+        [SerializeField] private LaserLine _laserLine;
 
         public override Laser BindLifeTimes(float explosionLifeTime, float projectileLifeTime)
         {
@@ -16,6 +19,10 @@ namespace Assets.Sources.Gameplay.Bullets
         protected bool Launch(out RaycastHit hitInfo)
         {
             bool isHited = Physics.Raycast(transform.position, transform.forward, out hitInfo, MaxDistance);
+
+            _laserLine.Initialize(transform.position, hitInfo.point, Size);
+            _laserLine.SetActive(true);
+            Debug.Log("laynch");
 
             if (isHited)
             {

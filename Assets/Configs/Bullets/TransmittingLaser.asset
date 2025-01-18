@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TransmittingLaser
   m_EditorClassIdentifier: 
   AssetReference:
-    m_AssetGUID: 6f1ce352ec51e9041b7690420c37ae36
+    m_AssetGUID: f93ae5ff04b2d374495affb9d51b6c60
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

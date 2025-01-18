@@ -246,4 +246,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   RouletteRotateDuration: 1
-  WalletValueChangingDuration: 0.8
+  WalletValueChangingDuration: 1.4

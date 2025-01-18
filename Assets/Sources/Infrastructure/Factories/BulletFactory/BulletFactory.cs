@@ -16,7 +16,7 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
         private readonly IStaticDataService _staticDataService;
         private readonly Factory<CollidingBullet> _forwardFlyingBulletFactory;
         private readonly Factory<HomingBullet> _homingBulletFactory;
-        private readonly Factory<Laser> _directionalLaserFactory;
+        private readonly Factory<DirectionalLaser> _directionalLaserFactory;
         private readonly Factory<TargetingLaser> _targetingLaserFactory;
         private readonly Factory<TransmittingLaser> _transmittedLaserFactory;
         private readonly Factory<CompositeBullet> _compositeBulletFactory;
@@ -25,7 +25,7 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
         public BulletFactory(
             IStaticDataService staticDataService,
             Factory<CollidingBullet> forwardFlyingBulletFactory,
-            Factory<Laser> directionalLaserFactory,
+            Factory<DirectionalLaser> directionalLaserFactory,
             Muzzle.Factory muzzleFactory,
             Factory<HomingBullet> homingBulletFactory,
             Factory<CompositeBullet> compositeBulletFactory,
@@ -67,19 +67,23 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
             TargetingLaser laser = await _targetingLaserFactory.Create(config.AssetReference, position, Quaternion.identity);
 
             laser
-                .BindTarget(targetPosition)
+                .BindTarget(targetPosition, position)
                 .BindLifeTimes(config.ExplosionLifeTime, config.ProjectileLifeTime)
                 .BindExplosionSettings(config.ExplosionRadius, config.ExplosionForce, config.Damage);
         }
 
-        public async UniTask CreateDirectionalLaser(Vector3 position, Quaternion rotation)
+        public UniTask CreateDirectionalLaser(Vector3 position, Quaternion rotation)
         {
-            LaserConfig config = _staticDataService.DiretionalLaserConfig;
-            Laser laser = await _directionalLaserFactory.Create(config.AssetReference, position, rotation);
+            //Debug.Log("create direction laser");
+            //LaserConfig config = _staticDataService.DiretionalLaserConfig;
+            //Debug.Log(config != null);
+            //Debug.Log(_directionalLaserFactory != null);
+            //DirectionalLaser laser = await _directionalLaserFactory.Create(config.AssetReference, position, rotation);
 
-            laser
-                .BindLifeTimes(config.ExplosionLifeTime, config.ProjectileLifeTime)
-                .BindExplosionSettings(config.ExplosionRadius, config.ExplosionForce, config.Damage);
+            //laser
+            //    .BindLifeTimes(config.ExplosionLifeTime, config.ProjectileLifeTime)
+            //    .BindExplosionSettings(config.ExplosionRadius, config.ExplosionForce, config.Damage);
+            return default;
         }
 
         public async UniTask CreateForwardFlyingBullet(ForwardFlyingBulletType type, Vector3 position, Quaternion rotation)

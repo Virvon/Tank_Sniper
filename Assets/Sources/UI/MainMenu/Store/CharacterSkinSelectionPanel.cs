@@ -4,8 +4,11 @@ using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.Services.PersistentProgress;
 using Assets.Sources.Services.StaticDataService;
 using Assets.Sources.Types;
+using Assets.Sources.UI.Gameplay.WictoryWindow;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -45,7 +48,30 @@ namespace Assets.Sources.UI.MainMenu.Store
         {
             Dictionary<string, SelectingPanelElement> panels = new();
 
-            foreach(PlayerCharacterData skinData in persistentProgressService.Progress.PlayerCharacters)
+            PlayerCharacterData[] datas = persistentProgressService.Progress.PlayerCharacters.Where(data => data.IsUnlocked).ToArray();
+
+            foreach (PlayerCharacterData skinData in datas)
+            {
+                SelectingPanelElement panel = await uiFactory.CreateCharacterSkinPanel(content);
+
+                Sprite icon = await _assetProvider.Load<Sprite>(_staticDataService.GetPlayerCharacter(skinData.Id).Icon);
+
+                panel.Initialize(icon);
+
+                if (skinData.IsBuyed)
+                    panel.Unlock();
+
+                if (skinData.IsUnlocked)
+                    ((PlayerCharacterPanel)panel).RemoveBackground();
+
+                panel.Clicked += OnPanelClicked;
+
+                panels.Add(skinData.Id, panel);
+            }
+
+            datas = persistentProgressService.Progress.PlayerCharacters.Where(data => data.IsUnlocked == false).ToArray();
+
+            foreach (PlayerCharacterData skinData in datas)
             {
                 SelectingPanelElement panel = await uiFactory.CreateCharacterSkinPanel(content);
 

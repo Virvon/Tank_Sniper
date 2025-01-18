@@ -42,6 +42,7 @@ namespace Assets.Sources.Tanks
         public void Initialize(Material decalMaterial, bool isChangable)
         {
             ChangeDecalMaterial(decalMaterial);
+            ChangeDecalMaterial(decalMaterial);
             _isChangable = isChangable;
         }
 

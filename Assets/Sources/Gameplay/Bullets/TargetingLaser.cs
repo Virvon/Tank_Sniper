@@ -6,12 +6,14 @@ namespace Assets.Sources.Gameplay.Bullets
     public class TargetingLaser : Laser
     {
         private const string PositionValue = "Position";
+        private const float Size = 0.5f;
 
-        [SerializeField] private VisualEffect _projectileVisualEffect;
+        [SerializeField] private LaserLine _laserLine;
 
-        public TargetingLaser BindTarget(Vector3 targetPosition)
+        public TargetingLaser BindTarget(Vector3 targetPosition, Vector3 startPosition)
         {
-            _projectileVisualEffect.SetVector3(PositionValue, targetPosition);
+            _laserLine.Initialize(startPosition, targetPosition, Size);
+            _laserLine.SetActive(true);
 
             CreateExplosionParticle(targetPosition, Quaternion.identity);
             Explode(targetPosition);

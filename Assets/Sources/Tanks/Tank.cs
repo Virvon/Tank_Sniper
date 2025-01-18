@@ -20,8 +20,8 @@ namespace Assets.Sources.Tanks
         public void Initialize(uint level, Material skinMaterial, Material decalMaterial, bool isDecalsChangable)
         {
             Level = level;
-            _decals.Initialize(decalMaterial, isDecalsChangable);
             _tankSkin.SetMaterial(skinMaterial);
+            _decals.Initialize(decalMaterial, isDecalsChangable);
         }
 
         public void Destroy() =>

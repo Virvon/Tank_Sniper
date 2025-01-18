@@ -22,8 +22,8 @@ namespace Assets.Sources.Infrastructure.Factories.BulletFactory
                .FromFactory<ReferencePrefabFactoryAsync<HomingBullet>>();
             
             Container
-               .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<Laser>, BulletFactory.Factory<Laser>>()
-               .FromFactory<ReferencePrefabFactoryAsync<Laser>>();
+               .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<DirectionalLaser>, BulletFactory.Factory<DirectionalLaser>>()
+               .FromFactory<ReferencePrefabFactoryAsync<DirectionalLaser>>();
             
             Container
                .BindFactory<AssetReferenceGameObject, Vector3, Quaternion, UniTask<TargetingLaser>, BulletFactory.Factory<TargetingLaser>>()

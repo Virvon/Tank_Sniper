@@ -41,7 +41,7 @@ namespace Assets.Sources.MainMenu.Desk
             await Initialize();
         }
 
-        public async UniTask CreateTank(uint level, bool needAnimate)
+        public async UniTask CreateTank(uint level, bool needAnimate, bool needParticles)
         {
             _tankWrapper = await _tankFactory.CreateDeskTankWrapper(_tankPoint.position, transform);
             _tankWrapper.Initialize(level);
@@ -50,7 +50,7 @@ namespace Assets.Sources.MainMenu.Desk
             tank.transform.localScale = Vector3.one * _tankScale;
 
             if (needAnimate)
-                _tankWrapper.Animate();
+                _tankWrapper.Animate(needParticles);
 
             _persistentProgressService.Progress.DeskData.UpdateCellInfo(_id, tank.Level);
 
@@ -65,7 +65,7 @@ namespace Assets.Sources.MainMenu.Desk
 
             _tankWrapper.Destroy();
 
-            await CreateTank(targetLevel, true);
+            await CreateTank(targetLevel, true, true);
         }
 
         public void PlaceTank(DeskTankWrapper tankWrapper)
@@ -106,7 +106,7 @@ namespace Assets.Sources.MainMenu.Desk
             uint tankLevel = _persistentProgressService.Progress.DeskData.GetCellInfo(_id);
 
             if(tankLevel != 0)
-                await CreateTank(tankLevel, false);
+                await CreateTank(tankLevel, false, false);
         }
     }
 }

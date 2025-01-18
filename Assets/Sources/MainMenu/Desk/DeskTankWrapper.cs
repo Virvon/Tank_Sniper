@@ -24,11 +24,13 @@ namespace Assets.Sources.MainMenu.Desk
             _tankLevelValue.text = tankLevel.ToString();
         }
 
-        public void Animate()
+        public void Animate(bool needParticles)
         {
             _tankScalingAnimator.Play();
-            _particleSystem.Play();
             _audioSource.Play();
+            
+            if(needParticles)
+                _particleSystem.Play();
         }
 
         public void Destroy() =>
