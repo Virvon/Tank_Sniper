@@ -7,7 +7,7 @@ namespace Assets.Sources.Tanks
 {
     public class DecalScalingAnimator : TankAnimator
     {
-        private const float StartScale = 1;
+        private const float StartScale = 0.05f;
 
         protected override IEnumerator Animator()
         {

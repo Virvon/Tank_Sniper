@@ -1,18 +1,15 @@
 ﻿using Assets.Sources.Services.AssetManagement;
 using Assets.Sources.Services.PersistentProgress;
 using Assets.Sources.Services.StaticDataService;
-using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
-using System;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using Zenject;
 
 namespace Assets.Sources.Tanks
 {
     public class Decals : MonoBehaviour
     {
-        [SerializeField] private DecalProjector[] _decalProjectors;
+        [SerializeField] private MeshRenderer[] _renderers;
         [SerializeField] private DecalScalingAnimator[] _decalAnimators;
 
         private IPersistentProgressService _persistentProgressService;
@@ -65,14 +62,18 @@ namespace Assets.Sources.Tanks
         {
             if(material == null)
             {
-                foreach (DecalProjector decalProjector in _decalProjectors)
-                    decalProjector.enabled = false;
+                foreach (MeshRenderer renderer in _renderers)
+                    renderer.gameObject.SetActive(false);
 
                 return;
             }
 
-            foreach (DecalProjector decalProjector in _decalProjectors)
-                decalProjector.material = material;
+            foreach (MeshRenderer renderer in _renderers)
+            {
+                Material[] materials = renderer.materials;
+                materials[0] = material;
+                renderer.materials = materials;
+            }
         }
 
         private async void OnDecalChanged(string id) =>
