@@ -246,4 +246,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   RouletteRotateDuration: 1
-  WalletValueChangingDuration: 1.4
+  WalletValueChangingDuration: 1
+  MoneyEffectDelay: 0.4
+  MoneyEffectRadius: 140

@@ -28,12 +28,19 @@ namespace Assets.Sources.Gameplay.Enemies
             }
 
             if (_destructablePart == null)
-                Debug.LogError($"{typeof(DestructionCell)} not founded");
+                Debug.LogError($"{typeof(IDestructablePart)} not founded");
 
-            _destructablePart.Destructed += Destruct;
+            _destructablePart.Destructed += OnPartDestructed;
         }
 
         private void OnDestroy() =>
-            _destructablePart.Destructed -= Destruct;
+            _destructablePart.Destructed -= OnPartDestructed;
+
+        private void OnPartDestructed(Vector3 explosionPosition, uint explosionForce)
+        {
+            Debug.Log("destructed");
+
+            Destruct(explosionPosition, explosionForce);
+        }
     }
 }

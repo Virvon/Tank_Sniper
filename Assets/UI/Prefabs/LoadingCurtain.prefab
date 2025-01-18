@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 1731267530196227501}
-  _showDuration: 1.2
+  _showDuration: 1.5
 --- !u!1 &8144924791199046550
 GameObject:
   m_ObjectHideFlags: 0

@@ -53,4 +53,4 @@ MonoBehaviour:
     type: 3}
   _starPoint: {fileID: 0}
   _targetPoint: {fileID: 0}
-  _particlesCount: 4
+  _particlesCount: 7

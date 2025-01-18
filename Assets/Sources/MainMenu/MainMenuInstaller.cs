@@ -42,7 +42,7 @@ namespace Assets.Sources.MainMenu
             Container.BindInstance(_camera).AsSingle();
 
         private void BindDeskHandler() =>
-            Container.BindInterfacesTo<DeskHandler>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<DeskHandler>().AsSingle();
 
         private void BindMainMenuFactory() =>
             MainMenuFactoryInstaller.Install(Container);

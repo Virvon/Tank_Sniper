@@ -18,11 +18,15 @@ namespace Assets.Sources.MainMenu.Desk
         private Vector2 _lastHandlePosition;
         private DeskCell _lastMarkedCell;
 
+        private bool _isActive;
+
         public DeskHandler(IInputService inputService, MainMenuCamera camera)
         {
             _inputService = inputService;
 
             _camera = camera;
+
+            _isActive = true;
 
             _inputService.HandlePressed += OnHandlePressed;
             _inputService.HandleMoved += OnHandleMoved;
@@ -36,9 +40,12 @@ namespace Assets.Sources.MainMenu.Desk
             _inputService.HandleMoveCompleted -= OnHandleMoveCompleted;
         }
 
+        public void SetActive(bool isActive) =>
+            _isActive = isActive;
+
         private void OnHandlePressed(Vector2 handlePosition)
         {
-            if (CheckDeskCellIntersection(handlePosition, out DeskCell deskCell))
+            if (CheckDeskCellIntersection(handlePosition, out DeskCell deskCell) && _isActive)
             {
                 _tankWrapper = deskCell.GetTankWrapper();
                 _currentTankParentCell = deskCell;

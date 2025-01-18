@@ -5,7 +5,7 @@ namespace Assets.Sources.Data
     [Serializable]
     public class Wallet
     {
-        public uint Value;
+        public uint Value = 9000000;
 
         public event Action ValueChanged;
         

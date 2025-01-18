@@ -36,6 +36,7 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
         private ISaveLoadService _saveLoadService;
 
         private uint _reward;
+        private bool _isContinueButtonClicked;
 
         protected RewardCounter RewardCounter => _rewardCounter;
         protected IPersistentProgressService PersistentProgressService => _persistentProgressService;
@@ -59,6 +60,8 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
             _saveLoadService = saveLoadService;
 
             _currentLevelValue.text = $"{LevelInfo} {_persistentProgressService.Progress.CurrentLevelIndex + 1}";
+
+            _isContinueButtonClicked = false;
 
             _wictoryHandler.WindowsSwithed += OnWindowsSwitched;
             _continueButton.onClick.AddListener(OnContinueButtonClicked);
@@ -87,6 +90,11 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
 
         private void OnContinueButtonClicked()
         {
+            if (_isContinueButtonClicked)
+                return;
+
+            _isContinueButtonClicked = true;
+
             StartCoroutine(Animator(_staticDataService.AnimationsConfig.WalletValueChangingDuration, callback: LoadNextScene));
 
             _walletPanel.CreditReward(_reward, _staticDataService.AnimationsConfig.WalletValueChangingDuration);
