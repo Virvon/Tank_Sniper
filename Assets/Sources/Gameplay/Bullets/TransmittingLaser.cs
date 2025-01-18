@@ -45,7 +45,7 @@ namespace Assets.Sources.Gameplay.Bullets
                 if (hitInfo.transform.TryGetComponent(out Enemy _))
                     enemies = enemies.Skip(1).ToArray();
 
-                await _bulletFactory.CreateTargetingLaser(fitsPoint, enemies[1].transform.position + _offset);
+                await _bulletFactory.CreateTargetingLaser(fitsPoint, enemies[0].transform.position + _offset);
 
                 for (int i = 0; i < enemies.Count - 1; i++)
                     await _bulletFactory.CreateTargetingLaser(enemies[i].transform.position + _offset, enemies[i + 1].transform.position + _offset);

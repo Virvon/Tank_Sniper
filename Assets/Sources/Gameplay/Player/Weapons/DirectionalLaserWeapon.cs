@@ -8,7 +8,7 @@ namespace Assets.Sources.Gameplay.Player.Weapons
     {
         protected override void Shoot()
         {
-            BulletFactory.CreateDirectionalLaser(GetBulletPoint(0).position, BulletRotation);
+            BulletFactory.CreateHomingBullet(HomingBulletType.Laser, GetBulletPoint(0).position, BulletRotation);
             OnBulletCreated();
         }
 

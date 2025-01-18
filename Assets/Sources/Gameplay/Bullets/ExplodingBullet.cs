@@ -16,7 +16,7 @@ namespace Assets.Sources.Gameplay.Bullets
         private void Start() =>
             StartPosition = transform.position;
 
-        public ExplodingBullet BindExplosionSettings(float explosionRadius, uint explosionForce, uint damage)
+        public virtual ExplodingBullet BindExplosionSettings(float explosionRadius, uint explosionForce, uint damage)
         {
             _explosionRadius = explosionRadius;
             _explosionForce = explosionForce;

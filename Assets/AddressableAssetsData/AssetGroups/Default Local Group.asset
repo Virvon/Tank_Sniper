@@ -1621,6 +1621,71 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 580c80a4defa3e84a9763d6dc35cd2c2
+    m_Address: Assets/Tanks/Textures/DecalIcons/Decal3.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26e123bf5bb412845a849c932c15963b
+    m_Address: Assets/Tanks/Textures/DecalIcons/Decal4.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec1dc82f97604fe48b2cfee4b572df3c
+    m_Address: Assets/Tanks/Textures/DecalIcons/Decal5.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f054478edb5a3704f93bfb3502b5933b
+    m_Address: Assets/Tanks/Textures/DecalIcons/Decal6.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c081223a162a2294ea0f7096739e88e2
+    m_Address: Assets/Tanks/Textures/DecalIcons/Decal7.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec3643f1a2bf5fa43bfc3ec73c11b4f7
+    m_Address: Assets/Tanks/Textures/DecalIcons/Decal8.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0630e52d0435ccb47a5d05346b637ed9
+    m_Address: Assets/Tanks/Textures/DecalIcons/Decal9.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 057f725f765ce44418dbe2c41f0ee79f
+    m_Address: Assets/Tanks/Textures/DecalIcons/Decal10.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fef57d50c11379a45a1a8f451313908e
+    m_Address: Assets/Tanks/Textures/DecalIcons/Decal11.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c4cdffa42c288bf4bbec349fc4c85708
+    m_Address: Assets/Tanks/Textures/DecalIcons/Decal12.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58319e92c5dda834daadbbbf10a3f3d1
+    m_Address: Assets/Tanks/Textures/DecalIcons/Decal13.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 34a14eee996f4614b8afd26ebcc06761
+    m_Address: Assets/Tanks/Textures/DecalIcons/Decal14.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 753966882ee89c54cb1513c0a38489ab
+    m_Address: Assets/Tanks/Textures/DecalIcons/Decal15.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a44638466bf414438293c9d18a37e72, type: 2}
   m_SchemaSet:

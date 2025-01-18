@@ -10,13 +10,10 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
         [SerializeField] private PlayerCharacterRewardPanel _playerCharacterRewardPanel;
         [SerializeField] private CanvasGroup _continueButtonCanvasGroup;
         [SerializeField] private float _continueButtonShowDuration;
-        [SerializeField] private Canvas _canvas;
 
         [Inject]
-        private void Construct(UiCamera uiCamera)
+        private void Construct()
         {
-            _canvas.worldCamera = uiCamera.Camera;
-
             SetContinueButtonActive(false);
         }
 

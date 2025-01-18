@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c92bbc91b40a54986f7759bf3223f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 0}
+  _camera: {fileID: 516503557}
 --- !u!1001 &2100437180
 PrefabInstance:
   m_ObjectHideFlags: 0

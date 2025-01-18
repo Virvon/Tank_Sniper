@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 2
   Sequence:
-  - Winter6
   - Winter1
   - Winter2
   - Winter3
   - Winter4
   - Winter5
+  - Winter6
   MainMenuScene: WinterMainMenuScene
   IconReference:
     m_AssetGUID: 03f36f564c9594c4e8735c420f2660e1

@@ -20,7 +20,7 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   IsUnlockedOnStart: 0
   SpriteAssetReference:
-    m_AssetGUID: 4f70057de4ccbbf4fb6c9cbae6e5697e
+    m_AssetGUID: 753966882ee89c54cb1513c0a38489ab
     m_SubObjectName: Decal15
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null

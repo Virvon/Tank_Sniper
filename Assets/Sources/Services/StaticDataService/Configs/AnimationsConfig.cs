@@ -28,5 +28,8 @@ namespace Assets.Sources.Services.StaticDataService.Configs
         public float RouletteRotateDuration;
 
         public float WalletValueChangingDuration;
+
+        public float MoneyEffectDelay;
+        public float MoneyEffectRadius;
     }
 }

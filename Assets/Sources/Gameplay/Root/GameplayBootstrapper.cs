@@ -101,9 +101,12 @@ namespace Assets.Sources.Gameplay.Root
 
         private async UniTask CreateWictoryWindow()
         {
-            if(_wictoryWindowType != WictoryWindowType.CharacterReward)
+            await _uiFactory.CreateWictroyWindow(_wictoryWindowType);
+
+            return;
+            if (_wictoryWindowType != WictoryWindowType.CharacterReward)
             {
-                await _uiFactory.CreateWictroyWindow(_wictoryWindowType);
+                
             }
             else
             {

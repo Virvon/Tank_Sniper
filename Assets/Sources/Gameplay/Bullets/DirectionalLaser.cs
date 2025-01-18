@@ -22,7 +22,6 @@ namespace Assets.Sources.Gameplay.Bullets
 
             _laserLine.Initialize(transform.position, hitInfo.point, Size);
             _laserLine.SetActive(true);
-            Debug.Log("laynch");
 
             if (isHited)
             {

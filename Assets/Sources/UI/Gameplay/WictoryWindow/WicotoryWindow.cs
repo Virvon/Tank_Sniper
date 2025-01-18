@@ -19,12 +19,13 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
     public class WicotoryWindow : OpenableWindow
     {
         private const string LevelInfo = "УРОВЕНЬ";
+        private const float CloseDelay = 0.5f;
 
         [SerializeField] private Button _continueButton;
         [SerializeField] private TMP_Text _rewardValue;
         [SerializeField] private TMP_Text _currentLevelValue;
         [SerializeField] private WalletPanel _walletPanel;
-        [SerializeField] private ParticleSystem _particleSystem;
+        [SerializeField] private MoneyEffect _moneyEffect;
 
         private WictoryHandler _wictoryHandler;
         private GameStateMachine _gameStateMachine;
@@ -89,7 +90,7 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
             StartCoroutine(Animator(_staticDataService.AnimationsConfig.WalletValueChangingDuration, callback: LoadNextScene));
 
             _walletPanel.CreditReward(_reward, _staticDataService.AnimationsConfig.WalletValueChangingDuration);
-            _particleSystem.Play();
+            _moneyEffect.Play();
 
             _persistentProgressService.Progress.Wallet.Give(_reward);
         }
@@ -137,6 +138,8 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
 
                 yield return null;
             }
+
+            yield return new WaitForSeconds(CloseDelay);
 
             callback?.Invoke();
         }
