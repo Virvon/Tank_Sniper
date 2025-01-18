@@ -86,7 +86,7 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
             _characterId = characterData.Id;
             _persistentProgressService.Progress.GetPlayerCharacter(_characterId).IsUnlocked = true;
 
-            _playerCharacter = await _tankFactory.CreatePlayerCharacter(_characterId, _characterPoint.position, _characterPoint.rotation, _characterPoint);
+            _playerCharacter = await _tankFactory.CreatePlayerCharacter(_characterId, _characterPoint.position, Quaternion.identity, _characterPoint);
 
             foreach (Transform transform in _playerCharacter.GetComponentsInChildren<Transform>())
                 transform.gameObject.layer = LayerMask.NameToLayer(Layer);
@@ -107,13 +107,13 @@ namespace Assets.Sources.UI.Gameplay.WictoryWindow
         {
             bool isRotated = true;
 
-            float rotation = _playerCharacter.transform.rotation.eulerAngles.y;
+            float rotation = _characterPoint.rotation.eulerAngles.y;
 
             while (isRotated)
             {
                 rotation += _characterRotationSpeed * Time.deltaTime;
 
-                _playerCharacter.transform.rotation = Quaternion.Euler(0, rotation, 0);
+                _characterPoint.rotation = Quaternion.Euler(0, rotation, 0);
 
                 yield return null;
             }

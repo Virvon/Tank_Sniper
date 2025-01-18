@@ -144,8 +144,8 @@ GameObject:
   - component: {fileID: 766101903992020727}
   - component: {fileID: 148933802975401919}
   - component: {fileID: 6131305566428359081}
-  - component: {fileID: 7526723435861980404}
   - component: {fileID: 4149866057797487915}
+  - component: {fileID: 7667191087167165808}
   m_Layer: 0
   m_Name: HMG20_LOD1_00_low.001
   m_TagString: Untagged
@@ -242,7 +242,7 @@ MonoBehaviour:
   _shootDuration: 0.125
   _bulletPoint: {fileID: 3854906222176311977}
   _helicopter: {fileID: 5839955110556970388}
-  _weaponPart: {fileID: 7526723435861980404}
+  _weaponPart: {fileID: 7667191087167165808}
 --- !u!65 &6131305566428359081
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -256,19 +256,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.004932647, y: 0.008745815, z: 0.002516301}
   m_Center: {x: 0.0000000011641532, y: -0.0030262945, z: 0.00033188515}
---- !u!114 &7526723435861980404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459903692900749254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8cbc7dff9834641a2fc879758ba96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isDestroyedImmediately: 0
 --- !u!54 &4149866057797487915
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -285,6 +272,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7667191087167165808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459903692900749254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ebfefe994e5d644c86f9edb0de87f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isDestroyedImmediately: 0
 --- !u!1 &1847584723830917720
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,10 +527,10 @@ MonoBehaviour:
   _helicopterPart: {fileID: 6865833680857783120}
   _explosion: {fileID: 5924300773723010989}
   _destructionParts:
-  - {fileID: 5978336515715017654}
-  - {fileID: 3618250026512261418}
-  - {fileID: 537588392566405997}
-  - {fileID: 7526723435861980404}
+  - {fileID: 4106540772440783383}
+  - {fileID: 2653836126438073752}
+  - {fileID: 7667191087167165808}
+  - {fileID: 7778597918845999422}
   - {fileID: 3065169885896591051}
   - {fileID: 8216216402714705370}
   - {fileID: 5883921292917990494}
@@ -539,10 +539,10 @@ MonoBehaviour:
   _firePargiclePrefab: {fileID: 167718, guid: ef184c5ce02b68d4188ce99b4b612bc2, type: 3}
   _health: 40
   _weaponParts:
-  - {fileID: 5978336515715017654}
-  - {fileID: 3618250026512261418}
-  - {fileID: 7526723435861980404}
-  - {fileID: 537588392566405997}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &4754529281684853730
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,9 +584,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1801394775080536945}
   - component: {fileID: 4423543792429797762}
-  - component: {fileID: 5978336515715017654}
   - component: {fileID: 2215560625534981814}
   - component: {fileID: 1375719085518737387}
+  - component: {fileID: 2653836126438073752}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -633,20 +633,7 @@ MonoBehaviour:
   _shootDuration: 0
   _bulletPoint: {fileID: 5502036772174146972}
   _helicopter: {fileID: 5839955110556970388}
-  _weaponPart: {fileID: 5978336515715017654}
---- !u!114 &5978336515715017654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5033490365174960019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8cbc7dff9834641a2fc879758ba96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isDestroyedImmediately: 0
+  _weaponPart: {fileID: 2653836126438073752}
 --- !u!65 &2215560625534981814
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -676,6 +663,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2653836126438073752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5033490365174960019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ebfefe994e5d644c86f9edb0de87f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isDestroyedImmediately: 0
 --- !u!1 &5768617534133326604
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,8 +815,8 @@ GameObject:
   - component: {fileID: 5922341578207545676}
   - component: {fileID: 8349716601615816586}
   - component: {fileID: 3056498504690723110}
-  - component: {fileID: 3618250026512261418}
   - component: {fileID: 9080111895722439008}
+  - component: {fileID: 4106540772440783383}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -863,7 +863,7 @@ MonoBehaviour:
   _shootDuration: 0.2
   _bulletPoint: {fileID: 417368379007887645}
   _helicopter: {fileID: 5839955110556970388}
-  _weaponPart: {fileID: 3618250026512261418}
+  _weaponPart: {fileID: 4106540772440783383}
 --- !u!65 &3056498504690723110
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -877,19 +877,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9, y: 1.1, z: 1.7}
   m_Center: {x: 0.5, y: 0.1, z: 0.2}
---- !u!114 &3618250026512261418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5919605946629173672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8cbc7dff9834641a2fc879758ba96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isDestroyedImmediately: 0
 --- !u!54 &9080111895722439008
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -906,6 +893,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4106540772440783383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5919605946629173672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ebfefe994e5d644c86f9edb0de87f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isDestroyedImmediately: 0
 --- !u!1 &6249693719997511490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,8 +1288,8 @@ GameObject:
   - component: {fileID: 7548172215365274924}
   - component: {fileID: 671266886348563103}
   - component: {fileID: 7665854754482454308}
-  - component: {fileID: 537588392566405997}
   - component: {fileID: 6626933679347214579}
+  - component: {fileID: 7778597918845999422}
   m_Layer: 0
   m_Name: HMG20_LOD0_00_low.002
   m_TagString: Untagged
@@ -1386,7 +1386,7 @@ MonoBehaviour:
   _shootDuration: 0
   _bulletPoint: {fileID: 8539262824142963291}
   _helicopter: {fileID: 5839955110556970388}
-  _weaponPart: {fileID: 537588392566405997}
+  _weaponPart: {fileID: 7778597918845999422}
 --- !u!65 &7665854754482454308
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1400,19 +1400,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.004932647, y: 0.008688812, z: 0.0025163018}
   m_Center: {x: 0.0000000011649334, y: -0.002997793, z: 0.0003318851}
---- !u!114 &537588392566405997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8576590002831926223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8cbc7dff9834641a2fc879758ba96a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isDestroyedImmediately: 0
 --- !u!54 &6626933679347214579
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1429,6 +1416,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7778597918845999422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8576590002831926223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ebfefe994e5d644c86f9edb0de87f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isDestroyedImmediately: 0
 --- !u!1 &8975648851927558408
 GameObject:
   m_ObjectHideFlags: 0

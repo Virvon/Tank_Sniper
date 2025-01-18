@@ -2,7 +2,7 @@
 
 namespace Assets.Sources.Gameplay.Destructions
 {
-    public class BossDestructionPart : DestructionPart
+    public class HelicopterDestructionPart : CollidingDestructionPart
     {
         public bool IsDesturcted { get; private set; }
 

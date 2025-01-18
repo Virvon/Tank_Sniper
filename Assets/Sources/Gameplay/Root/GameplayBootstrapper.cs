@@ -9,7 +9,9 @@ using Assets.Sources.Services.StaticDataService.Configs.Level.EnemyPoints;
 using Assets.Sources.Types;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using Zenject;
 
 namespace Assets.Sources.Gameplay.Root
@@ -25,6 +27,8 @@ namespace Assets.Sources.Gameplay.Root
         private readonly WictoryWindowType _wictoryWindowType;
 
         protected readonly IPersistentProgressService PersistentProgressService;
+
+        private GameplayCamera _gameplayCamera;
 
         public GameplayBootstrapper(
             IUiFactory uiFactory,
@@ -52,7 +56,7 @@ namespace Assets.Sources.Gameplay.Root
             BiomeType biomeType = PersistentProgressService.Progress.CurrentBiomeType;
             LevelConfig levelConfig = _staticDataService.GetLevel(_staticDataService.GetLevelsSequence(biomeType).GetLevel(levelIndex));
 
-            await CreateCamera(_gameplayFactory);
+            _gameplayCamera = await CreateCamera(_gameplayFactory);
             await CreateAimingVirtualCamera(_gameplayFactory, _aimingCameraPoint.transform.position, _aimingCameraPoint.transform.rotation);
 
             await CreatePlayerWrapper(_tankFactory, _playerPoint);
@@ -62,7 +66,7 @@ namespace Assets.Sources.Gameplay.Root
             await CreateGameplayWindow(_uiFactory);
             await CreateDefeatWndow(_uiFactory);
             await _uiFactory.CreateLoadingCurtain();
-            await _uiFactory.CreateWictroyWindow(_wictoryWindowType);
+            await CreateWictoryWindow();
         }
 
         protected virtual async UniTask<GameplayCamera> CreateCamera(IGameplayFactory gameplayFactory) =>
@@ -93,6 +97,25 @@ namespace Assets.Sources.Gameplay.Root
                 tasks.Add(staticEnemyPointConfig.Create(_gameplayFactory));
 
             await UniTask.WhenAll(tasks);
+        }
+
+        private async UniTask CreateWictoryWindow()
+        {
+            if(_wictoryWindowType != WictoryWindowType.CharacterReward)
+            {
+                await _uiFactory.CreateWictroyWindow(_wictoryWindowType);
+            }
+            else
+            {
+                UiCamera uiCamera = await _gameplayFactory.CreateUiCamra();
+                uiCamera.transform.parent = _gameplayCamera.transform;
+                uiCamera.transform.position = _gameplayCamera.transform.position;
+
+                UniversalAdditionalCameraData cameraData = _gameplayCamera.Camera.GetUniversalAdditionalCameraData();
+                cameraData.cameraStack.Add(uiCamera.Camera);
+
+                await _uiFactory.CreateWictroyWindow(_wictoryWindowType);
+            }
         }
     }
 }

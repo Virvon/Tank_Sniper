@@ -19,6 +19,7 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         private readonly RotationCamera.Factory _rotationCameraFactory;
         private readonly WictoryHandler _winHandler;
         private readonly CameraNoise.Factory _cameraNoiseFactory;
+        private readonly UiCamera.Factory _uiCameraFactory;
 
         public GameplayFactory(
             IStaticDataService staticDataService,
@@ -27,7 +28,8 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             Enemy.Factory enemyFactory,
             RotationCamera.Factory aimingFactory,
             WictoryHandler winHandler,
-            CameraNoise.Factory cameraNoiseFactory)
+            CameraNoise.Factory cameraNoiseFactory,
+            UiCamera.Factory uiCameraFactory)
         {
             _staticDataService = staticDataService;
             _container = container;
@@ -36,6 +38,15 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             _rotationCameraFactory = aimingFactory;
             _winHandler = winHandler;
             _cameraNoiseFactory = cameraNoiseFactory;
+            _uiCameraFactory = uiCameraFactory;
+        }
+
+        public async UniTask<UiCamera> CreateUiCamra()
+        {
+            UiCamera uiCamera = await _uiCameraFactory.Create(GameplayFactoryAssets.UiCamera);
+            _container.BindInstance(uiCamera).AsSingle();
+
+            return uiCamera;
         }
 
         public async UniTask CreateCameraNoise(Transform parent)

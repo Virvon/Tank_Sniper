@@ -7,5 +7,6 @@
         public const string AimingCamera = "AimingCamera";
         public const string RotationCamera = "RotationCamera";
         public const string CameraNoise = "CameraNoise";
+        public const string UiCamera = "UiCamera";
     }
 }

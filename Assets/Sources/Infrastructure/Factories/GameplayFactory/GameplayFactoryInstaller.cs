@@ -33,6 +33,10 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<string, Transform, UniTask<CameraNoise>, CameraNoise.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<CameraNoise>>();
+            
+            Container
+                .BindFactory<string, UniTask<UiCamera>, UiCamera.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<UiCamera>>();
         }
     }
 }

@@ -13,5 +13,6 @@ namespace Assets.Sources.Infrastructure.Factories.GameplayFactory
         UniTask CreateCameraNoise(Transform parent);
         UniTask<Enemy> CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation);
         UniTask CreateRotationVirtualCamera(Vector3 position, Quaternion rotation);
+        UniTask<UiCamera> CreateUiCamra();
     }
 }

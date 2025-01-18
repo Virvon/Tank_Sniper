@@ -10,7 +10,7 @@ namespace Assets.Sources.Gameplay.Enemies.Helicopter.BossHelicopter
         [SerializeField] private float _shootDuration;
         [SerializeField] private Transform _bulletPoint;
         [SerializeField] private Transform _helicopter;
-        [SerializeField] private BossDestructionPart _weaponPart;
+        [SerializeField] private HelicopterDestructionPart _weaponPart;
 
         protected override bool CanShoot => _weaponPart.IsDesturcted == false && base.CanShoot && Vector2.Angle(new Vector2(PlayerWrapper.transform.position.x - LookStartPosition.x, PlayerWrapper.transform.position.z - LookStartPosition.z), new Vector2(_helicopter.transform.forward.x, _helicopter.transform.forward.z)) < AngleDelta;
 

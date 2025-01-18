@@ -91,7 +91,7 @@ MonoBehaviour:
     - Position: {x: -11.460001, y: 8.7300005, z: 18.85}
       RotationAngle: 0
       RotationDelta: 3
-    Speed: 13
+    Speed: 0
     IsWaitedAttack: 1
     IsPathLooped: 1
     WaitingTimeOnPoint: 4
