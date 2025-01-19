@@ -15,8 +15,7 @@ namespace Assets.Sources.MainMenu.CharacterPoints
         [SerializeField] private Quaternion _spawnRotation;
         [SerializeField] private TankScalingAnimator _scalingAnimator;
 
-        private ITankFactory _tankFactory;
-
+        protected ITankFactory TankFactory { get; private set; }
         protected GameObject SelectedTank { get; private set; }
         protected IPersistentProgressService PersistentProgressService { get; private set; }
         protected Transform TankPoint => _tankPoint;
@@ -25,7 +24,7 @@ namespace Assets.Sources.MainMenu.CharacterPoints
         private void Construct(IPersistentProgressService persistentProgressService, ITankFactory tankFactory)
         {
             PersistentProgressService = persistentProgressService;
-            _tankFactory = tankFactory;
+            TankFactory = tankFactory;
 
             PersistentProgressService.Progress.SelectedTankChanged += OnSelectedTankChanged;
         }
@@ -33,7 +32,7 @@ namespace Assets.Sources.MainMenu.CharacterPoints
         private async void Start() =>
             await OnStart();
 
-        private void OnDestroy() =>
+        protected virtual void OnDestroy() =>
             PersistentProgressService.Progress.SelectedTankChanged -= OnSelectedTankChanged;
 
         private async void OnSelectedTankChanged(uint level) =>
@@ -46,7 +45,7 @@ namespace Assets.Sources.MainMenu.CharacterPoints
             if (SelectedTank != null)
                 Destroy(SelectedTank);
 
-            SelectedTank = await CreateTank(tankData, _tankPoint.position, GetRotation(), GetParent(), _tankFactory);
+            SelectedTank = await CreateTank(tankData, _tankPoint.position, GetRotation(), GetParent(), TankFactory);
 
             if (needToAnimate)
                 _scalingAnimator.Play();

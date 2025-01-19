@@ -1,12 +1,11 @@
 ﻿using Assets.Sources.Data;
-using Assets.Sources.Infrastructure.Factories.MainMenuFactory;
 using Assets.Sources.Infrastructure.Factories.TankFactory;
-using Assets.Sources.Services.PersistentProgress;
 using Assets.Sources.Tanks;
 using Cysharp.Threading.Tasks;
+using System;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
-using Zenject;
 
 namespace Assets.Sources.MainMenu.CharacterPoints
 {
@@ -15,6 +14,21 @@ namespace Assets.Sources.MainMenu.CharacterPoints
         [SerializeField] private TMP_Text _tankLevelValue;
 
         private readonly Vector3 _offset = new Vector3(0, 2, 0);
+
+        private PlayerCharacter _playerCharacter;
+        private Tank _tank;
+
+        protected override async UniTask OnStart()
+        {
+            await base.OnStart();
+            PersistentProgressService.Progress.CharacterSkinChanged += OnCharacterSkinChanged;
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            PersistentProgressService.Progress.CharacterSkinChanged -= OnCharacterSkinChanged;
+        }
 
         protected override async UniTask<GameObject> CreateTank(
             TankData tankData,
@@ -25,7 +39,7 @@ namespace Assets.Sources.MainMenu.CharacterPoints
         {
             TankShootingWrapper tankWrapper = await tankFactory.CreateTankShootingWrapper(tankData.Level, position, rotation, parent);
 
-            Tank tank = await tankFactory.CreateTank(
+            _tank = await tankFactory.CreateTank(
                 tankData.Level,
                 position,
                 tankWrapper.transform.rotation,
@@ -34,13 +48,9 @@ namespace Assets.Sources.MainMenu.CharacterPoints
                 tankData.DecalId,
                 true);
 
-            await tankFactory.CreatePlayerCharacter(
-                PersistentProgressService.Progress.SelectedPlayerCharacterId,
-                tank.transform.position + _offset,
-                tank.transform.rotation,
-                tank.transform);
+            _playerCharacter = await CreatePlayerCharacter(tankFactory, _tank);
 
-            tankWrapper.SetBulletPoints(tank.BulletPoints);
+            tankWrapper.SetBulletPoints(_tank.BulletPoints);
 
             _tankLevelValue.text = tankData.Level.ToString();
 
@@ -49,5 +59,22 @@ namespace Assets.Sources.MainMenu.CharacterPoints
 
         protected override Transform GetParent() =>
             TankPoint.transform;
+
+        private async void OnCharacterSkinChanged(string characterId)
+        {
+            if (_playerCharacter != null)
+                Destroy(_playerCharacter.gameObject);
+
+            _playerCharacter = await CreatePlayerCharacter(TankFactory, _tank);
+        }
+
+        private async UniTask<PlayerCharacter> CreatePlayerCharacter(ITankFactory tankFactory, Tank tank)
+        {
+            return await tankFactory.CreatePlayerCharacter(
+                PersistentProgressService.Progress.SelectedPlayerCharacterId,
+                tank.transform.position + _offset,
+                tank.transform.rotation,
+                tank.transform);
+        }
     }
 }
