@@ -16,6 +16,8 @@ namespace Assets.Sources.Gameplay.Destructions
 
         private Rigidbody _rigidbody;
 
+        protected virtual bool IsIgnoreRotation => false;
+
         [Inject]
         private void Construct(IStaticDataService staticDataService)
         {
@@ -35,7 +37,9 @@ namespace Assets.Sources.Gameplay.Destructions
 
             _rigidbody.isKinematic = false;
             _rigidbody.AddForce(explosionDirection * explosionForce, ForceMode.Impulse);
-            _rigidbody.AddTorque(explosionDirection * _destructionConfig.RotationForce, ForceMode.Impulse);
+            
+            if(IsIgnoreRotation == false)
+                _rigidbody.AddTorque(explosionDirection * _destructionConfig.RotationForce, ForceMode.Impulse);
 
             StartCoroutine(Destroyer());
         }

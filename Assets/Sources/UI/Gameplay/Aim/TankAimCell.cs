@@ -30,9 +30,9 @@ namespace Assets.Sources.UI.Gameplay.Aim
         private void OnDestroy() =>
             _playerTankWrapper.Attacked -= OnPlayerAttacked;
 
-        private void OnPlayerAttacked(Vector2 bulletPosition)
+        private void OnPlayerAttacked(Vector2 attackPosition)
         {
-            Vector2 attackPosition = new Vector2(bulletPosition.x - transform.position.x > 0 ? 1 : -1, bulletPosition.y + transform.position.y > 0 ? 1 : -1);
+            //Vector2 attackPosition = new Vector2(bulletPosition.x - transform.position.x > 0 ? 1 : -1, bulletPosition.y + transform.position.y > 0 ? 1 : -1);
 
             if (attackPosition != _reactionPosition)
                 return;

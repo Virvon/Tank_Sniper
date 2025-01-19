@@ -66,16 +66,16 @@ namespace Assets.Sources.Gameplay.Weapons
                             _targetRotation = GetShootingRotation();
                         }
 
+                        bool isHitted = Physics.Raycast(GetCurrentShootingPosition(), _laser.transform.forward, out RaycastHit hitInfo, RaycasDistance);
+
+                        _laser.SetLaser(GetCurrentShootingPosition(), hitInfo.point);
+
                         if (attackPassedTime >= _damageCooldown)
                         {
                             attackPassedTime = 0;
 
-                            if (Physics.Raycast(GetCurrentShootingPosition(), _laser.transform.forward, out RaycastHit hitInfo, RaycasDistance)
-                                && hitInfo.transform.TryGetComponent(out IDamageable damageable) && damageable is not EnemyRobot)
-                            {
-                                _laser.SetLaser(GetCurrentShootingPosition(), hitInfo.point);
+                            if (isHitted && hitInfo.transform.TryGetComponent(out IDamageable damageable) && damageable is not EnemyRobot)
                                 damageable.TakeDamage(new ExplosionInfo(hitInfo.point, _explosionForce, true, _damgagePerTime));
-                            }
                         }
                     }
                     else if (_laser != null)

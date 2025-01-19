@@ -74,9 +74,12 @@ namespace Assets.Sources.Gameplay.Player.Wrappers
         {
             if (collision.transform.TryGetComponent(out ExplodingBullet bullet))
             {
-                Vector3 bulletPosition = _gameplayCamera.Camera.WorldToScreenPoint(new Vector3(bullet.StartPosition.x, bullet.StartPosition.y, 1));
+                Vector3 bulletPosition = _gameplayCamera.Camera.WorldToScreenPoint(new Vector3(bullet.StartPosition.x, bullet.StartPosition.y, bullet.StartPosition.z));
+                float height = Screen.resolutions[0].height;
+                float widht = Screen.resolutions[0].width;
+                Vector2 attackPosition = new Vector2(bulletPosition.x > height ? 1 : -1, bulletPosition.y > widht ? 1 : -1);
 
-                Attacked?.Invoke(bulletPosition);
+                Attacked?.Invoke(attackPosition);
             }
         }
 

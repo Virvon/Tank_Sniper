@@ -30,17 +30,10 @@ namespace Assets.Sources.Gameplay.Enemies
             if (_destructablePart == null)
                 Debug.LogError($"{typeof(IDestructablePart)} not founded");
 
-            _destructablePart.Destructed += OnPartDestructed;
+            _destructablePart.Destructed += Destruct;
         }
 
         private void OnDestroy() =>
-            _destructablePart.Destructed -= OnPartDestructed;
-
-        private void OnPartDestructed(Vector3 explosionPosition, uint explosionForce)
-        {
-            Debug.Log("destructed");
-
-            Destruct(explosionPosition, explosionForce);
-        }
+            _destructablePart.Destructed -= Destruct;
     }
 }

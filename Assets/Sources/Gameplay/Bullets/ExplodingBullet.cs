@@ -13,14 +13,13 @@ namespace Assets.Sources.Gameplay.Bullets
         public Vector3 StartPosition;
         protected GameObject Projectile => _projectile;
 
-        private void Start() =>
-            StartPosition = transform.position;
-
         public virtual ExplodingBullet BindExplosionSettings(float explosionRadius, uint explosionForce, uint damage)
         {
             _explosionRadius = explosionRadius;
             _explosionForce = explosionForce;
             _damage = damage;
+
+            StartPosition = transform.position;
 
             return this;
         }

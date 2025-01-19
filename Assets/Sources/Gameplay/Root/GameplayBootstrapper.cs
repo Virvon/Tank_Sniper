@@ -28,8 +28,6 @@ namespace Assets.Sources.Gameplay.Root
 
         protected readonly IPersistentProgressService PersistentProgressService;
 
-        private GameplayCamera _gameplayCamera;
-
         public GameplayBootstrapper(
             IUiFactory uiFactory,
             IGameplayFactory gameplayFactory,
@@ -56,7 +54,7 @@ namespace Assets.Sources.Gameplay.Root
             BiomeType biomeType = PersistentProgressService.Progress.CurrentBiomeType;
             LevelConfig levelConfig = _staticDataService.GetLevel(_staticDataService.GetLevelsSequence(biomeType).GetLevel(levelIndex));
 
-            _gameplayCamera = await CreateCamera(_gameplayFactory);
+            await CreateCamera(_gameplayFactory);
             await CreateAimingVirtualCamera(_gameplayFactory, _aimingCameraPoint.transform.position, _aimingCameraPoint.transform.rotation);
 
             await CreatePlayerWrapper(_tankFactory, _playerPoint);
@@ -66,7 +64,7 @@ namespace Assets.Sources.Gameplay.Root
             await CreateGameplayWindow(_uiFactory);
             await CreateDefeatWndow(_uiFactory);
             await _uiFactory.CreateLoadingCurtain();
-            await CreateWictoryWindow();
+            await _uiFactory.CreateWictroyWindow(_wictoryWindowType);
         }
 
         protected virtual async UniTask<GameplayCamera> CreateCamera(IGameplayFactory gameplayFactory) =>
@@ -97,28 +95,6 @@ namespace Assets.Sources.Gameplay.Root
                 tasks.Add(staticEnemyPointConfig.Create(_gameplayFactory));
 
             await UniTask.WhenAll(tasks);
-        }
-
-        private async UniTask CreateWictoryWindow()
-        {
-            await _uiFactory.CreateWictroyWindow(_wictoryWindowType);
-
-            return;
-            if (_wictoryWindowType != WictoryWindowType.CharacterReward)
-            {
-                
-            }
-            else
-            {
-                UiCamera uiCamera = await _gameplayFactory.CreateUiCamra();
-                uiCamera.transform.parent = _gameplayCamera.transform;
-                uiCamera.transform.position = _gameplayCamera.transform.position;
-
-                UniversalAdditionalCameraData cameraData = _gameplayCamera.Camera.GetUniversalAdditionalCameraData();
-                cameraData.cameraStack.Add(uiCamera.Camera);
-
-                await _uiFactory.CreateWictroyWindow(_wictoryWindowType);
-            }
         }
     }
 }

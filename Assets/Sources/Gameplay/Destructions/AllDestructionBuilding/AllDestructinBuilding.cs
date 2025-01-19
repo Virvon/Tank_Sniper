@@ -14,13 +14,13 @@ namespace Assets.Sources.Gameplay.Destructions.AllDestructionBuilding
             _isBreaked = false;
 
             foreach (AllDestructionBuildingPart part in _parts)
-                part.Destructed += OnPartDamaged;
+                part.Damaged += OnPartDamaged;
         }
 
         private void OnDestroy()
         {
             foreach (AllDestructionBuildingPart part in _parts)
-                part.Destructed -= OnPartDamaged;
+                part.Damaged -= OnPartDamaged;
         }
 
         private void OnPartDamaged(Vector3 bulletPosition, uint explosionForce)
@@ -31,7 +31,10 @@ namespace Assets.Sources.Gameplay.Destructions.AllDestructionBuilding
             _isBreaked = true;
 
             foreach (AllDestructionBuildingPart part in _parts)
+            {
                 part.Destruct(bulletPosition, explosionForce);
+                part.OnDestruct(bulletPosition, explosionForce);
+            }
         }
     }
 }
