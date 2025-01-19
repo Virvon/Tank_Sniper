@@ -52,7 +52,7 @@ namespace Assets.Sources.Gameplay.Weapons
                         {
                             _laser = Instantiate(_laserPrefab, _shootPoint.position, GetShootingRotation(), _shootPoint.transform);
                             _laser.transform.localPosition = Vector3.zero;
-                            //ShootingStarted?.Invoke();
+                            ShootingStarted?.Invoke();
                         }
                         else
                         {
@@ -80,14 +80,14 @@ namespace Assets.Sources.Gameplay.Weapons
                     }
                     else if (_laser != null)
                     {
-                        //ShootingFinished?.Invoke();
+                        ShootingFinished?.Invoke();
                         Destroy(_laser.gameObject);
                         _laser = null;
                     }
                 }
                 else if (_laser != null)
                 {
-                    //ShootingFinished?.Invoke();
+                    ShootingFinished?.Invoke();
                     Destroy(_laser.gameObject);
                     _laser = null;
                 }

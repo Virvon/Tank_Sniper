@@ -15,7 +15,7 @@ MonoBehaviour:
   EnemyScatter: 2
   EnemyLayerMask:
     serializedVersion: 2
-    m_Bits: 5303
+    m_Bits: 529591
   PlayerHealth: 200
   WindowsSwitchDeley: 2
   ProgressRecoveryAvailableTime: 7
